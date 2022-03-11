@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name ="author" content="FrameJTech"/> 
+    <meta name = "Keywords" content=" Prototipo, Tickets"/>
+    <title>Prototipo Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="style_GenerarT.css">
+    
+</head>
+
+<body>
+    <header class="header">
+		<div class="container">
+		    <div class="btn-menu">
+			    <label for="btn-menu">☰</label>
+		    </div>
+			<nav class="menu">
+				<a href="#">( Zėbrands )</a>
+			</nav>
+		</div>
+	</header>
+	
+<!--	--------------->
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+	    <div class="cont-menu">
+		    <nav>
+			    <a href="GenerarT.html">Generar ticket</a>
+			    <a href="#">Buscar Tickets Activos</a>
+			    <a href="#">Buscar Usuarios</a>
+			    <a href="#">Historial</a>
+			    <a href="#">Metricas</a>
+			    <a href="#" class = "l">Configuración</a>
+		    </nav>
+		    <label for="btn-menu">✖️</label>
+	    </div>
+    </div>
+    <form action="" method="POST" id="form">
+        <div class="form">
+
+            <div class="grupo">
+                <input type="text" name="" id="name" required><span class="barra"></span>
+                <label for="">Categoría</label>
+            </div>
+            <div class="grupo">
+                <input type="email" name="" id="email" required><span class="barra"></span>
+                <label for="">Email</label>
+            </div>
+            <div class="grupo">
+                <input type="password" name="" id="password" required><span class="barra"></span>
+                <label for="">Password</label>
+            </div>
+
+            <button type="submit">Generar</button>
+        </div>
+    </form>
+
+</body>
