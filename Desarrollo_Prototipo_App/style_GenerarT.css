@@ -69,8 +69,6 @@
 	/*Menù lateral*/
 	#btn-menu{
 		display: none;
-	
-		
 	}
 
 	.container-menu{
@@ -148,8 +146,8 @@
     }
     
     input{
-        background: none;
-        color: #c6c6c6;
+        background: linear-gradient(to right, #ffffff, #f0f0f0);
+        color: #969494;
         font-size: 18px;
         padding: 10px 10px 10px 5px;
         display: block;
