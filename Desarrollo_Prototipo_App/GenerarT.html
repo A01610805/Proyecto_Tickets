@@ -43,20 +43,42 @@
         <div class="form">
 
             <div class="grupo">
-                <input type="text" name="" id="name" required><span class="barra"></span>
-                <label for="">Categoría</label>
+                <ul class="list">
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <a href="#" class="nav__link">Categoría</a>
+                        </div>
+        
+                        <ul class="list__show">
+                            <li class="list__inside">
+                                <a href="#" class="nav__link nav__link--inside">Template1</a>
+                            </li>
+        
+                            <li class="list__inside">
+                                <a href="#" class="nav__link nav__link--inside">Template2</a>
+                            </li>
+                        </ul>
+        
+                    </li>
+                </ul>
+                
             </div>
             <div class="grupo">
                 <input type="email" name="" id="email" required><span class="barra"></span>
-                <label for="">Email</label>
+                <label for="">Descripcion</label>
             </div>
             <div class="grupo">
                 <input type="password" name="" id="password" required><span class="barra"></span>
-                <label for="">Password</label>
+                <label for="">Pregunta 2</label>
+            </div>
+            <div class="grupo">
+                <input type="password" name="" id="password" required><span class="barra"></span>
+                <label for="">Pregunta 2</label>
             </div>
 
             <button type="submit">Generar</button>
         </div>
     </form>
+    <script src="barra.js"></script>
 
 </body>
