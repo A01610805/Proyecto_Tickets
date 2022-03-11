@@ -201,6 +201,7 @@
         display: block;
         padding: 15px 0;
         text-decoration: none;
+        
     }
     
     .nav__link--inside{
@@ -218,6 +219,7 @@
         flex-direction: column;
         border-radius: 0 16px 16px 0;
         background: #fff;
+        
     }
     
     .list__item{
@@ -237,6 +239,7 @@
         gap: 1em;
         width: 70%;
         margin: 0 auto;
+        margin-right: 70px;
     }
     
     
