@@ -1,7 +1,15 @@
-document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
+let listElements = document.querySelectorAll('.list__button--click');
 
-function mostrar_menu(){
+listElements.forEach(listElement => {
+    listElement.addEventListener('click', ()=>{
+        
+        let height = 0;
+        let menu = listElement.nextElementSibling;
+        if(menu.clientHeight == "0"){
+            height=menu.scrollHeight;
+        }
 
-    document.getElementById("move-content").classList.toggle('move-container-all');
-    document.getElementById("show-menu").classList.toggle('show-lateral');
-}
+        menu.style.height = `${height}px`;
+
+    })
+});
