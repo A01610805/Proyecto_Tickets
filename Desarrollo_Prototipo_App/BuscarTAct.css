@@ -95,7 +95,7 @@
 		transform: translateX(-100%);
 	}
 	.cont-menu .l{
-		margin-top: 400px;
+		margin-top: 200px;
 	}
 	#btn-menu:checked ~ .container-menu .cont-menu{
 		transform: translateX(0%);
@@ -167,7 +167,7 @@
 	.menu__links{
 		align-items: center;
 		margin-top: 170px;
-		margin-left: 450px;
+		margin-left: 250px;
 		height: 20px;
 		transition: transform .5s;
 		display: flex;
