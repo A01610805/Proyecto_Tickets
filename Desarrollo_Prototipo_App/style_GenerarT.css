@@ -95,7 +95,7 @@
 		transform: translateX(-100%);
 	}
 	.cont-menu .l{
-		margin-top: 400px;
+		margin-top: 200px;
 	}
 	#btn-menu:checked ~ .container-menu .cont-menu{
 		transform: translateX(0%);
@@ -127,12 +127,11 @@
     
     form{
         background: #fff;
-        padding: 40px 0;
+        padding: 30px 0;
         box-shadow: 0 0 6px 0 rgba(49, 49, 49, 0.8);
         border-radius: 10px;
         margin: auto;
-        margin-top: 200px;
-        
+        margin-top: 120px;
     }
     
     .form{
