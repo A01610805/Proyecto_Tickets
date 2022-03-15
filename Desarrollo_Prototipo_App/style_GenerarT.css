@@ -75,7 +75,7 @@
 		position: absolute;
 		background: rgba(0, 0, 0, 0.5);
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		top: 0;left: 0;
 		transition: all 500ms ease;
 		opacity: 0;
@@ -95,7 +95,7 @@
 		transform: translateX(-100%);
 	}
 	.cont-menu .l{
-		margin-top: 500px;
+		margin-top: 400px;
 	}
 	#btn-menu:checked ~ .container-menu .cont-menu{
 		transform: translateX(0%);
