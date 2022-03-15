@@ -18,7 +18,7 @@
 		height: 100px;
 		position: fixed;
 		top: 0;left: 0;	
-		background-color: #2c2c2c;
+		background-color: #2c2c2c;	
 	}
 
 	.container{
@@ -69,8 +69,6 @@
 	/*Menù lateral*/
 	#btn-menu{
 		display: none;
-	
-		
 	}
 
 	.container-menu{
@@ -126,7 +124,34 @@
 		cursor: pointer;
 		font-size: 18px;
 	}
-	table thead{
+	#main-container{
+		margin-top: 300px;
+		margin-left: 650px;
+		width: 600px;
+	}
+	
+	table{
+		background-color: white;
+		text-align: center;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	th, td{
+		padding: 20px;
+	}
+	
+	thead{
 		background-color: #2c2c2c;
-		color: white;   
-		}
+		color: white;
+	}
+	
+	tr:nth-child(even){
+		background-color: #ddd;
+	}
+	
+	tr:hover td{
+		background-color: #00283f;
+		color: white;
+	}
+	
