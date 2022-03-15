@@ -95,7 +95,7 @@
 		transform: translateX(-100%);
 	}
 	.cont-menu .l{
-		margin-top: 500px;
+		margin-top: 400px;
 	}
 	#btn-menu:checked ~ .container-menu .cont-menu{
 		transform: translateX(0%);
@@ -126,7 +126,7 @@
 	}
 	#main-container{
 		margin-top: 300px;
-		margin-left: 350px;
+		margin-left: -770px;
 		width: 600px;
 	}
 	
@@ -155,7 +155,57 @@
 		color: white;
 	}
 
+	.menu__container{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 90%;
+		max-width: 1200px;
+		height: 100%;
+		margin: 0 auto;
+	}
+	.menu__links{
+		align-items: center;
+		margin-top: 170px;
+		margin-left: 450px;
+		height: 20px;
+		transition: transform .5s;
+		display: flex;
 
+	}
+	.menu__item{
+		list-style: none;
+		position: relative;
+		height: 100%;
+		--clip: polygon(0 0, 100% 0, 100% 0, 0 0);
+		--transform: rotate(-90deg);
+
+	}
+	.menu__item:hover{
+		--clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+		--transform: rotate(0);
+	}
+	.menu__link{
+		color: white;
+		text-decoration: none;
+		padding: 0 60px;
+		display: flex;
+		height: 100%;
+		align-items: center;
+		padding-bottom: 5px;
+		padding-top: 5px;
+	}
+	.menu__nesting{
+		clip-path: var(--clip);
+		list-style: none;
+		transition: clip-path .3s;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: max-content;
+		transform: translateY(100%);
+		background-color: #000;
+	}
     @media screen and (max-width:500px){
         form{
             width: 80%;
