@@ -1,6 +1,6 @@
 const db = require('../util/database');
 
-module.exports = class Capybara {
+module.exports = class Ticket {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(ID_Ticket, description, preg1, preg2, preg3) {
