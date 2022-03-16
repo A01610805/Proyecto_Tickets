@@ -1,0 +1,48 @@
+<%- include('includes/head.ejs') %>
+    
+	<form action="" method="POST" id="form">
+        <div class="form">
+
+            <div class="grupo">
+                <ul class="list">
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <a href="#" class="nav__link">Categoria</a>
+                        </div>
+                        <ul class="list__show">
+                            <li class="list__inside">
+                                <a href="#" class="nav__link nav__link--inside">Template1</a>
+                            </li>
+        
+                            <li class="list__inside">
+                                <a href="#" class="nav__link nav__link--inside">Template2</a>
+                            </li>
+                        </ul>
+        
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="grupo">
+                <input><span class="barra"></span>
+                <label for="">Descripcion</label>
+            </div>
+            <div class="grupo">
+                <input><span class="barra"></span>
+                <label for="">Pregunta </label>
+            </div>
+            <div class="grupo">
+                <input><span class="barra"></span>
+                <label for="">Pregunta</label>
+            </div>
+
+        </div>
+
+    </form>    
+    <div>
+        <button id="btnAdd" type="submit">Agregar pregunta</button>
+        <button id="btnAdd" type="submit">Eliminar pregunta</button>
+        <button type="submit">Cambiar</button>
+        <button type="submit">Cancelar</button>
+    </div>
+<%- include('includes/foot.ejs') %>

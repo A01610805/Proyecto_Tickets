@@ -1,0 +1,116 @@
+<%- include('includes/head.ejs') %>
+		<ul class="menu__links">
+            <!-- Item del menu: ID -->
+			<li class="menu__item">
+				<a href="" class="menu__link">Busqueda por ID</a>
+				<ul class="menu__nesting">
+					<li class="menu__inside">
+						<div class="grupo">
+                            <input><span class="barra"></span>
+                            <label for="">ID</label>
+                        </div>
+					</li>
+					<li class="menu__inside">
+						<button name="button">Buscar empleado por ID</button>
+					</li>
+				</ul>
+			</li>
+            <!-- Item del menu: NOMBRE -->
+			<li class="menu__item">
+				<a href="" class="menu__link">Busqueda por nombre</a>
+				<ul class="menu__nesting">
+					<li class="menu__inside">
+						<li class="menu__inside">
+                            <div class="grupo">
+                                <input><span class="barra"></span>
+                                <label for="">Nombre</label>
+                            </div>
+                        </li>
+                        <li class="menu__inside">
+                            <button name="button">Buscar por nombre</button>
+                        </li>
+					</li>
+					<li class="menu__inside">
+						<li class="menu__inside">
+                            <div class="grupo">
+                                <input><span class="barra"></span>
+                                <label for="">Apellido paterno</label>
+                            </div>
+                        </li>
+                        <li class="menu__inside">
+                            <button name="button">Buscar por apellido paterno</button>
+                        </li>
+					</li>
+                    <li class="menu__inside">
+						<li class="menu__inside">
+                            <div class="grupo">
+                                <input><span class="barra"></span>
+                                <label for="">Apellido materno</label>
+                            </div>
+                        </li>
+                        <li class="menu__inside">
+                            <button name="button">Buscar por apellido materno</button>
+                        </li>
+					</li>
+				</ul>
+			</li>
+            <!-- Item del menu: BUSQUEDA POR ROL -->
+			<li class="menu__item">
+				<a href="" class="menu__link">Busqueda por rol</a>
+				<ul class="menu__nesting">
+					<li class="menu__inside">
+                        <li class="menu__inside">
+                            <a href="" class="menu__link menu--inside">Administrador</a>
+                        </li>
+                        <li class="menu__inside">
+                            <button name="button">Buscar por rol</button>
+                        </li>
+					</li>
+					<li class="menu__inside">
+						<li class="menu__inside">
+                            <a href="" class="menu__link menu--inside">Empleado de soporte</a>
+                        </li>
+                        <li class="menu__inside">
+                            <button name="button">Buscar por rol</button>
+                        </li>
+					</li>
+                    <li class="menu__inside">
+						<li class="menu__inside">
+                            <a href="" class="menu__link menu--inside">Empleado general</a>
+                        </li>
+                        <li class="menu__inside">
+                            <button name="button">Buscar por rol</button>
+                        </li>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<div id="main-container">
+
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>Rol</th>
+					</tr>
+				</thead>
+	
+				<tr>
+					<td>6251463</td><td>Aldo</td><td>Tena</td><td>García</td><td>Empleado de soporte</td>
+				</tr>
+				<tr>
+					<td>8437456</td><td>José</td><td>Antonio</td><td>Lopez</td><td>Administrador</td>
+				</tr>
+				<tr>
+					<td>2735763</td><td>Marco Antonio</td><td>Camalich</td><td>Pérez</td><td>Empleado de soporte</td>
+				</tr>
+				<tr>
+					<td>6835464</td><td>Renato Sebastián</td><td>Ramirez</td><td>Calva</td><td>Empleado general</td>
+				</tr>
+				<tr>
+					<td>6835464</td><td>Flavio</td><td>Ruvacalba</td><td>Lejia</td><td>Empleado de soporte</td>
+				</tr>
+			</table>
+		</div>
+
+<%- include('includes/foot.ejs') %>
