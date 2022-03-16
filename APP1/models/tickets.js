@@ -13,7 +13,7 @@ module.exports = class Ticket {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        return db.execute('INSERT INTO zebrands_tickets (nombre, descripcion, imagen, duenio_id) VALUES (?, ?, ?, ?, ?)', 
+        return db.execute('INSERT INTO ticket (nombre, descripcion, imagen, duenio_id) VALUES (?, ?, ?, ?, ?)', 
             [this.id, this.descripcion, this.pregunta_uno, this.pregunta_dos, this.pregunta_tres]);
     }
 
@@ -22,9 +22,4 @@ module.exports = class Ticket {
         return db.execute(
             'SELECT c.nombre, descripcion, imagen, duenio_id, c.created_at, u.nombre as duenio FROM capybaras c, usuarios u WHERE c.duenio_id = u.username');
     }
-
-    static fetchOne(capybara_id) {
-        return db.execute('SELECT c.nombre, descripcion, imagen, duenio_id, c.created_at, u.nombre as duenio FROM capybaras c, usuarios u WHERE c.duenio_id = u.username AND id=?', [capybara_id]);
-    }
-
 }
