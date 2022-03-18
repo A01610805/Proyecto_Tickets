@@ -1,24 +1,4 @@
 <%- include('includes/head.ejs') %>
-	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="#!">Op1</a></li>
-		<li><a href="#!">Op2</a></li>
-		<li><a href="#!">0p3</a></li>
-	</ul>
-	<ul id="dropdown2" class="dropdown-content">
-		<li><a href="#!">Op1</a></li>
-		<li><a href="#!">Op2</a></li>
-		<li><a href="#!">0p3</a></li>
-	</ul>
-	<ul id="dropdown3" class="dropdown-content">
-		<li><a href="#!">Op1</a></li>
-		<li><a href="#!">Op2</a></li>
-		<li><a href="#!">0p3</a></li>
-	</ul>
-	<ul id="dropdown4" class="dropdown-content">
-		<li><a href="#!">Op1</a></li>
-		<li><a href="#!">Op2</a></li>
-		<li><a href="#!">0p3</a></li>
-	</ul>
 	<ul id="dropdown5" class="dropdown-content">
 		<li><a href="#!">Op1</a></li>
 		<li><a href="#!">Op2</a></li>
@@ -27,11 +7,24 @@
 	<nav class="grey darken-3">
 		<div class="nav-wrapper">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown1">ID<i class="material-icons right">arrow_drop_down</i></a></li>
-				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown2">Nombre<i class="material-icons right">arrow_drop_down</i></a></li>
-				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown3">Apellido Paterno<i class="material-icons right">arrow_drop_down</i></a></li>
-				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown4">Apellido Materno<i class="material-icons right">arrow_drop_down</i></a></li>
+				
 				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown5">Rol<i class="material-icons right">arrow_drop_down</i></a></li>
+				<div class=" right input-field col s6">
+					<input id="ID" type="text" class="validate">
+					<label for="ID">ID</label>
+				</div>
+				<div class="right input-field col s6">
+					<input id="first_name" type="text" class="validate">
+					<label for="first_name">Nombre</label>
+				</div>
+				<div class="right input-field col s6">
+					<input id="second_name" type="text" class="validate">
+					<label for="second_name">Apellido Paterno</label>
+				</div>
+				<div class="right input-field col s6">
+					<input  id="third_name" type="text" class="validate">
+					<label for="third_name">Apellido Materno</label>
+				</div>
 			</ul>
 		</div>
 	</nav>
