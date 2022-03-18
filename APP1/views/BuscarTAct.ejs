@@ -1,93 +1,66 @@
 <%- include('includes/head.ejs') %>
-		<ul class="menu__links">
-			<div class="grupo">
-                <input required><span class="barra"></span>
-                <label for="">ID</label>
-            </div>
-			<li class="menu__item">
-				<a href="" class="menu__link">Dia</a>
-				
-				<ul class="menu__nesting">
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op1</a>
-					</li>
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op2</a>
-					</li>
-				</ul>
-			</li>
-			<li class="menu__item">
-				<a href="" class="menu__link">Mes</a>
-				
-				<ul class="menu__nesting">
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op1</a>
-					</li>
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op2</a>
-					</li>
-				</ul>
-			</li>
-			<li class="menu__item">
-				<a href="" class="menu__link">Año</a>
-				
-				<ul class="menu__nesting">
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op1</a>
-					</li>
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op2</a>
-					</li>
-				</ul>
-			</li>
-			<li class="menu__item">
-				<a href="" class="menu__link">Prioridad</a>
-				
-				<ul class="menu__nesting">
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op1</a>
-					</li>
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op2</a>
-					</li>
-				</ul>
-			</li>
-			<li class="menu__item">
-				<a href="" class="menu__link">Categoria</a>
-				
-				<ul class="menu__nesting">
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op1</a>
-					</li>
-					<li class="menu__inside">
-						<a href="" class="menu__link menu--inside">Op2</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-
-		<div id="main-container">
-
-			<table>
-				<thead>
-					<tr>
-						<th>ID</th><th>Dia</th><th>Mes</th><th>Año</th><th>Prioridad</th><th>Categoria</th>
-					</tr>
-				</thead>
-	
-				<tr>
-					<td>6251463</td><td>23</td><td>Ene</td><td>2022</td><td>Alta</td><td>agffaf</td>
-				</tr>
-				<tr>
-					<td>8437456</td><td>02</td><td>Sep</td><td>2022</td><td>Baja</td><td>sgfsdga</td>
-				</tr>
-				<tr>
-					<td>2735763</td><td>05</td><td>Feb</td><td>2022</td><td>Media</td><td>dfgsdxc</td>
-				</tr>
-				<tr>
-					<td>6835464</td><td>11</td><td>Mar</td><td>2022</td><td>Urgente</td><td>fghcdfgbs</td>
-				</tr>
-			</table>
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="#!">Op1</a></li>
+		<li><a href="#!">Op2</a></li>
+		<li><a href="#!">0p3</a></li>
+	</ul>
+	<ul id="dropdown2" class="dropdown-content">
+		<li><a href="#!">Op1</a></li>
+		<li><a href="#!">Op2</a></li>
+		<li><a href="#!">0p3</a></li>
+	</ul>
+	<ul id="dropdown3" class="dropdown-content">
+		<li><a href="#!">Op1</a></li>
+		<li><a href="#!">Op2</a></li>
+		<li><a href="#!">0p3</a></li>
+	</ul>
+	<ul id="dropdown4" class="dropdown-content">
+		<li><a href="#!">Op1</a></li>
+		<li><a href="#!">Op2</a></li>
+		<li><a href="#!">0p3</a></li>
+	</ul>
+	<ul id="dropdown5" class="dropdown-content">
+		<li><a href="#!">Op1</a></li>
+		<li><a href="#!">Op2</a></li>
+		<li><a href="#!">0p3</a></li>
+	</ul>
+	<nav class="grey darken-3">
+		<div class="nav-wrapper">
+			<ul class="right hide-on-med-and-down">
+				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown1">Dia<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown2">Mes<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown3">Año<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown4">Categoria<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown5">Prioridad<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
 		</div>
+	</nav>
+
+
+
+
+	<div>
+
+	<table class="striped responsive-table centered" >
+		<thead>
+			<tr>
+				<th>ID</th><th>Dia</th><th>Mes</th><th>Año</th><th>Prioridad</th><th>Categoria</th>
+			</tr>
+		</thead>
+
+		<tr>
+			<td>6251463</td><td>23</td><td>Ene</td><td>2022</td><td>Alta</td><td>agffaf</td>
+		</tr>
+		<tr>
+			<td>8437456</td><td>02</td><td>Sep</td><td>2022</td><td>Baja</td><td>sgfsdga</td>
+		</tr>
+		<tr>
+			<td>2735763</td><td>05</td><td>Feb</td><td>2022</td><td>Media</td><td>dfgsdxc</td>
+		</tr>
+		<tr>
+			<td>6835464</td><td>11</td><td>Mar</td><td>2022</td><td>Urgente</td><td>fghcdfgbs</td>
+		</tr>
+	</table>
+	</div>
 
 <%- include('includes/foot.ejs') %>
