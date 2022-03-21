@@ -1,6 +1,6 @@
 <%- include('includes/head.ejs') %>
     
-	<form action="" method="POST" id="form">
+    <form action="" method="POST" id="form">
         <div class="form">
 
             <div class="grupo">
@@ -24,9 +24,11 @@
 
     </form>    
     <div>
-        <button id="btnAdd" type="submit">Agregar pregunta</button>
-        <button id="btnAdd" type="submit">Eliminar pregunta</button>
-        <button type="submit">Generar Template</button>
-        <button type="submit">Cancelar</button>
+        <a id="btnAdd" class="waves-effect waves-light btn grey darken-3">Agregar pregunta</a>
+        <a id="btnAdd" class="waves-effect waves-light btn grey darken-3">Eliminar pregunta</a>
+        <a class="waves-effect waves-light btn grey darken-3">Generar Template</a>
+        <a class="waves-effect waves-light btn grey darken-3">Cancelar</a>
+
     </div>
+    <script type ="text/javascript" src="agregar.js"></script>
 <%- include('includes/foot.ejs') %>
