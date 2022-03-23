@@ -18,6 +18,7 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended: false}));
 
 const rutas_login = require('./routes/route_login');
+//const rutas_login = require('./routes/route_login');
 
 /*
 app.use((request, response, next) => {
@@ -29,9 +30,9 @@ app.use((request, response, next) => {
 
 app.use('/users', rutas_login);
 
-app.use((request, response, next) => {
+app.use((request, response,) => {
     console.log('Middleware!');
-    response.redirect('/login');
+    response.redirect('/users');
 });
 
 app.use((request, response,next) => {

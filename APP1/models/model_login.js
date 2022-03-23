@@ -21,8 +21,8 @@ module.exports = class User {
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
-    static findOne(username) {
-        return db.execute('SELECT * FROM usuario WHERE ID_usuario=?',
-            [username]);
+    static findOne(name) {
+        return db.execute('SELECT * FROM usuario WHERE nombre=?',
+            [name]);
     }
 }
