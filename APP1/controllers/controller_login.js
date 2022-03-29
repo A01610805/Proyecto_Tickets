@@ -1,6 +1,7 @@
 const path = require('path');
 const user = require('../models/model_login');
 const bcrypt = require('bcryptjs');
+const {auth} = require('./auth')
 
 exports.get_login = (request, response, next) => {
     response.render('Log_in', {
