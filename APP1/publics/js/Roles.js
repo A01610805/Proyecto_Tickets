@@ -13,7 +13,7 @@ const addJsonElement = json => {
 }
 
 (function load(){
-    if(request.body.ID_rol == 1){
+    if(user.ID_rol == 1){
         const $btnAdd = document.getElementById("btnAdd")
         const $form = document.getElementById("form")
         const templateElement = () => {
