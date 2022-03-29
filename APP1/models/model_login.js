@@ -25,8 +25,4 @@ module.exports = class User {
         return db.execute('SELECT * FROM usuario WHERE nombre=?',
             [name]);
     }
-    static findR(name) {
-        return db.execute('SELECT * FROM usuario WHERE ID_rol=?',
-            [name]);
-    }
 }

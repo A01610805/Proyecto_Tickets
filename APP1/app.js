@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-
+const {authRole} = require('./controllers/authR');
 
 const app = express();
 
@@ -37,6 +37,10 @@ app.use((request, response,) => {
     console.log('Middleware!');
     response.redirect('/users');
 });
+
+app.get('/GenTem',authRole(1), (req, res) => {
+    res.redirect(GenTem)
+})
 
 app.use((request, response,next) => {
     console.log("Error 404");
