@@ -1,7 +1,4 @@
-const path = require('path');
 const user = require('../models/model_login');
-const bcrypt = require('bcryptjs');
-const { request } = require('http');
 
 
 let parameters = []
