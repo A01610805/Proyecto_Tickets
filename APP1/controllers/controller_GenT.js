@@ -1,8 +1,7 @@
-const User = require('../models/model_login');
-const bcrypt = require('bcryptjs');
+const User = require('../models/ticket');
 
 exports.get_login = (request, response, next) => {
-    response.render('Log_in', {
+    response.render('GenerarT', {
         username: request.session.usuario ? request.session.usuario : '',
     }); 
 };
