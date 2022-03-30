@@ -37,6 +37,13 @@ app.use((request, response,) => {
     console.log('Middleware!');
     response.redirect('/users');
 });
+/*
+app.use((request, response, next) => {
+    console.log("Pagina, Pantalla_principal");
+    response.render('principal',{
+        username: request.session.username ? request.session.username : ''
+    });
+});*/
 
 app.get('/GenTem',authRole(1), (req, res) => {
     res.redirect(GenTem)

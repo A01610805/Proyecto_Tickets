@@ -14,20 +14,26 @@ const addJsonElement = json => {
 
 (function load(){
     if(user.ID_rol == 1){
-        const $btnAdd = document.getElementById("btnAdd")
-        const $form = document.getElementById("form")
+        const $NAV = document.getElementById("nav-mobile")
         const templateElement = () => {
             return (`
-                <input required><span class="barra"></span>
-                <label for="">Pregunta </label>
+                <li>
+                <a href="GenTem" class="btn-floating">
+                    Generar Template<i class="material-icons">add_circle</i>
+                </a>
+                </li>
+                <li>
+                    <a href="ModTem" class="btn-floating">
+                        Modificar Template<i class="material-icons">edit</i>
+                    </a>
+                </li>
             `)
         }
-        $btnAdd.addEventListener("click", (event) => {
-            const $div = document.createElement("div")
-            $div.classList.add("grupo")
-            $div.innerHTML = templateElement()
-            $form.insertBefore($div, $form.lastChild)
-        })
+
+        const $li = document.createElement("li")
+        $li.classList.add("grupo")
+        $li.innerHTML = templateElement()
+        $form.insertBefore($li, $NAV.lastChild)
     }
 
 })()

@@ -1,5 +1,4 @@
-const path = require('path');
-const user = require('../models/model_login');
+const User = require('../models/model_login');
 const bcrypt = require('bcryptjs');
 
 exports.get_login = (request, response, next) => {
@@ -11,31 +10,30 @@ exports.get_login = (request, response, next) => {
 exports.login = (request, response, next) => {
     console.log('Entrando a fetchOne');
     console.log(request.body);
-    user.findOne(request.body.nombre)
+    User.findOne(request.body.nombre)
         .then(([rows, fielData])=>{
             
         //Si no existe el usuario, redirige a la pantalla de login
         if (rows.length < 1) {
             return response.redirect('/users/login');
         }
-        else{
-            return response.render('Primer_Pantalla');
-        }
-        
-        const user = new User(rows[0].nombre, rows[0].username, rows[0].password);
-        bcrypt.compare(request.body.password, user.password)
+        const user = new User(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
+        console.log(request.body.password);
+        console.log(user.password);
+        bcrypt.compare(request .body.password, user.password)
             .then(doMatch => {
                 if (doMatch) {
+                    console.log('Pass coinciden');
                     request.session.isLoggedIn = true;
                     request.session.user = user;
                     request.session.username = user.nombre;
                     return request.session.save(err => {
-                        response.redirect('/capybaras');
+                        response.render('Primer_pantalla');
                     });
                 }
                 response.redirect('/users/login');
             }).catch(err => {
-        
+                response.redirect('/users/login');
             });
     }).catch((error)=>{
         console.log(error)
@@ -43,28 +41,28 @@ exports.login = (request, response, next) => {
 
 };
 
-
 exports.get_signup = (request, response, next) => {
-    response.render('Primer_Pantalla', {
+    response.render('signup', {
         username: request.session.usuario ? request.session.usuario : '',
         info: ''
     }); 
 };
 
 exports.post_signup = (request, response, next) => {
-    const user = 
-        new User(request.body.nombre, request.body.username, request.body.password);
+    console.log(request.body);
+    const user = new User(request.body.rol, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.Email, request.body.password);
     user.save()
         .then(()=>{
-            response.redirect('Primer pantalla'); 
+            response.redirect('Primer_pantalla'); 
         }).catch((error)=>{
             console.log(error);
+            console.log('Aqui esta el error');
         });
 };
 
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {
-        response.redirect('Primer pantalla'); //Este código se ejecuta cuando la sesión se elimina.
+        response.redirect('Primer_pantalla'); //Este código se ejecuta cuando la sesión se elimina.
     });
 };
 

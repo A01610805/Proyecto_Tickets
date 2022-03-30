@@ -1,10 +1,10 @@
 const db = require('../util/database');
+const bcrypt = require('bcryptjs');
 
 module.exports = class User {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, password) {
-        this.ID_usuario = ID_usuario;
+    constructor(ID_rol, nombre, apellido_paterno, apellido_materno, correo, password) {
         this.ID_rol = ID_rol;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -15,9 +15,14 @@ module.exports = class User {
 
     //Como solo se quieren obtener los datos no se incluye un metodo save().
     save() {
-        //return db.execute(
-        //    'INSERT INTO usuarios(nombre, username, password) VALUES(?,?,?)',
-        //    [this.nombre, this.username, password_cifrado]);
+        return bcrypt.hash(this.password, 12)
+            .then((password_cifrado)=>{
+                return db.execute(
+                    'INSERT INTO usuario(ID_rol, nombre, apellido_paterno, apellido_materno, correo, password) VALUES(?,?,?,?,?,?)',
+                    [this.ID_rol, this.nombre, this.apellido_paterno, this.apellido_materno, this.correo, password_cifrado]);
+            }).catch((error)=>{ 
+                console.log(error);
+            }); 
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
