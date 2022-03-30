@@ -1,9 +1,27 @@
-const info = require('../models/info_gentickets');
+const Info = require('../models/info_gentickets');
+const Categoria = require('../models/categorias');
+
 
 exports.get_genticket = (request, response, next) => {
-    response.render('GenerarT', {
-        Tiname: request.session.usuario ? request.session.usuario : '',
-    }); 
+    Categoria.fetchAll()
+        .then(([rows, fielData]) => {
+            response.render('GenerarT', {
+                Tiname: request.session.usuario ? request.session.usuario : '',
+                categorias: rows,
+            }); 
+        })
+        .catch(error => {console.log(error)});
+};
+
+exports.get_categoria = (request, response, next) => {
+    Categoria.fetchPreguntas(request.params.id)
+        .then(([rows, fielData]) => {
+            response.render('GenerarT', {
+                Tiname: request.session.usuario ? request.session.usuario : '',
+                preguntas: rows,
+            }); 
+        })
+        .catch(error => {console.log(error)});
 };
 
 exports.enviar_ticket = (request, response, next) => {

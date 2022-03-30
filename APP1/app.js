@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const {authRole} = require('./controllers/authR');
+//const {authRole} = require('./controllers/authR');
 
 const app = express();
 
@@ -22,15 +22,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 const rutas_login = require('./routes/route_login');
 const rutas_pp = require('./routes/route_Pp');
-//const rutas_genticket = require('./routes/route_GenT');
+const rutas_genticket = require('./routes/route_GenT');
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
-//app.use('/generar_ticket', rutas_genticket);
+app.use('/generar_ticket', rutas_genticket);
 
-app.get('/GenTem',authRole(1), (req, res) => {
-    res.redirect(GenTem)
-})
+// app.get('/GenTem',authRole(1), (req, res) => {
+//     res.redirect(GenTem)
+// })
 
 app.use((request, response,) => {
     console.log('Middleware!');

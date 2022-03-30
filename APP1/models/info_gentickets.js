@@ -23,4 +23,6 @@ module.exports = class Info_GenTickets {
         return db.execute(
             'SELECT * FROM info_tickets WHERE ID_categoria=?', [id]);
     }
+
+   
 }
