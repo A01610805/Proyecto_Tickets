@@ -3,8 +3,8 @@ const router = express.Router();
 
 const cgenticket = require('../controllers/controller_GenT');
 
-router.get('/enviar-ticket', cgenticket.get_genticket);
-router.post('/enviar-ticket', cgenticket.genticket);
-router.get('/', clogin.root);
+router.get('/enviar_ticket', cgenticket.get_genticket);
+router.post('/enviar_ticket', cgenticket.genticket);
+router.get('/', cgenticket.root);
 
 module.exports = router;

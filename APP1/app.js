@@ -26,7 +26,7 @@ const rutas_genticket = require('./routes/route_GenT');
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
-app.use('/generar-ticket',rutas_genticket);
+app.use('/generar_ticket', rutas_genticket);
 
 app.get('/GenTem',authRole(1), (req, res) => {
     res.redirect(GenTem)
