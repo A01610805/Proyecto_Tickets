@@ -31,6 +31,6 @@ module.exports = class User {
             [name]);
     }
     static fetchAll(){
-        return db.execute('SELECT ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario');
+        return db.execute('SELECT ID_usuario, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario');
     }
 }
