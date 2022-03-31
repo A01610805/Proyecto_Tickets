@@ -1,68 +1,49 @@
-const Info = require('../models/info_gentickets');
 const Categoria = require('../models/categorias');
-
+const Pregunta = require('../models/preguntas');
 
 exports.get_genticket = (request, response, next) => {
     Categoria.fetchAll()
         .then(([rows, fielData]) => {
-            response.render('GenerarT', {
+            response.render('GenerarTicket', {
                 Tiname: request.session.usuario ? request.session.usuario : '',
                 categorias: rows,
             }); 
-        })
-        .catch(error => {console.log(error)});
+        }) 
+    .catch(error => {console.log(error)});
 };
 
-exports.get_categoria = (request, response, next) => {
-    Categoria.fetchPreguntas(request.params.id)
+exports.get_preguntas = (request, response, next) => {
+    console.log(request.params.id);
+    //Categoria.fetchOne(request.params.id)
+    Categoria.fetchAll()    
         .then(([rows, fielData]) => {
-            response.render('GenerarT', {
-                Tiname: request.session.usuario ? request.session.usuario : '',
-                preguntas: rows,
-            }); 
+            Pregunta.fetchPreguntas(request.params.id)
+                .then(([rows2, fielData]) => {
+                    response.render('TiGen', {
+                        Tiname: request.session.usuario ? request.session.usuario : '',
+                        categorias: rows,
+                        preguntas: rows2,
+                        id: request.params.id ? request.params.id : 1,
+                    }); 
+                }) 
+                .catch(error => {console.log(error)}); 
+        }) 
+    .catch(error => {console.log(error)});
+}
+
+exports.post_genticket = (request,response, next) => {
+    console.log('POST /ticket/nuevo');
+    const ticket = 
+        new Gen_Tickets(
+            request.body.titulo, request.body.descripcion,
+            request.body.ID_categoria, request.body.texto_respuesta,
+            request.body.ID_pregunta);
+    ticket.save()
+        .then(() => {
+            request.session.info = ticket.nombre + ' fue registrado con éxito';
+            response.redirect('/home');
         })
-        .catch(error => {console.log(error)});
-};
-
-exports.enviar_ticket = (request, response, next) => {
-    console.log('Entrando a fetchOne');
-    console.log(request.body);
-    Ti.findOne(request.body.nombre)
-        .then(([rows, fielData])=>{
-            
-        //Si no existe el usuario, redirige a la pantalla de login
-        if (rows.length < 1) {
-            return response.redirect('/Tis/login');
-        }
-        const Ti = new Ti(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
-        console.log(request.body.password);
-        console.log(Ti.password);
-        bcrypt.compare(request .body.password, Ti.password)
-            .then(doMatch => {
-                if (doMatch) {
-                    console.log('Pass coinciden');
-                    request.session.isLoggedIn = true;
-                    request.session.Ti = Ti;
-                    request.session.Tiname = Ti.nombre;
-                    return request.session.save(err => {
-                        response.redirect('/home');
-                    });
-                }
-                response.redirect('/Tis/login');
-            }).catch(err => {
-                response.redirect('/Tis/login');
-            });
-    }).catch((error)=>{
-        console.log(error)
-    });
-
-};
-
-exports.get_signup = (request, response, next) => {
-    response.render('signup', {
-        Tiname: request.session.usuario ? request.session.usuario : '',
-        info: ''
-    }); 
+        .catch(err => console.log(err));
 };
 
 exports.root = (request, response, next) => {

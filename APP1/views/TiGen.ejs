@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+    <div class="container">
+
+         <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
+            <% for (let categoria of categorias) { %>
+                <li class="">
+                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                </li>
+            <% } %>
+         </ul>
+        <nav class="grey darken-3">
+            <div class="nav-wrapper">
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a></li>
+            </div>
+        </nav>
+        <div class="form">
+            <form action="" method="GET" id="form">
+            <div class="grupo">
+                <input required id="titulo" name="titulo"><span class="barra"></span>
+                <label for="">Titulo</label>
+            </div>
+            <div class="grupo">
+                <input required id="descripcion" name="Descripcion"><span class="barra"></span>
+                <label for="">Descripcion</label>
+            </div>
+            <%var i=0; %>
+            <% for (let pregunta of preguntas) { %> 
+                <div class="grupo">
+                    <input required id="texto_respuesta" name="texto_respuesta"><span class="barra"></span>
+                    <label  href="/generar_ticket/pregunta/<%= pregunta.ID_categoria %>" for="ID_pregunta"><%= pregunta.texto_pregunta %></label>
+                </div>
+            <% } %>  
+            <br>
+            </form>
+            <form action="" method="POST" id="form">
+            <button type="submit">Generar</button>
+            <button type="submit">Cancelar</button>
+            </form>
+        </div>
+    
+    </div>
+    
+<%- include('includes/footer.ejs') %>

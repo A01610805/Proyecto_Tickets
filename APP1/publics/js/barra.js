@@ -1,15 +1,6 @@
-let listElements = document.querySelectorAll('.list__button--click');
-
-listElements.forEach(listElement => {
-    listElement.addEventListener('click', ()=>{
-        
-        let height = 0;
-        let menu = listElement.nextElementSibling;
-        if(menu.clientHeight == "0"){
-            height=menu.scrollHeight;
-        }
-
-        menu.style.height = `${height}px`;
-
-    })
-});
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      toolbarEnabled: true
+    });
+  });
