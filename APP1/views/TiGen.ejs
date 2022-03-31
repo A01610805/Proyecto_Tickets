@@ -14,7 +14,7 @@
             </div>
         </nav>
         <div class="form">
-            <form action="" method="GET" id="form">
+            <form action="" method="POST" id="form">
             <div class="grupo">
                 <input required id="titulo" name="titulo"><span class="barra"></span>
                 <label for="">Titulo</label>
@@ -23,16 +23,17 @@
                 <input required id="descripcion" name="Descripcion"><span class="barra"></span>
                 <label for="">Descripcion</label>
             </div>
-            <%var i=0; %>
+            <%var i=1; %>
             <% for (let pregunta of preguntas) { %> 
                 <div class="grupo">
-                    <input required id="texto_respuesta" name="texto_respuesta"><span class="barra"></span>
+                    <%var nombre = "texto_respuesta"+i%>
+                    <input required id="<%nombre%>" name="texto_respuesta"><span class="barra"></span>
                     <label  href="/generar_ticket/pregunta/<%= pregunta.ID_categoria %>" for="ID_pregunta"><%= pregunta.texto_pregunta %></label>
                 </div>
+                <%i=i+1;%>
             <% } %>  
             <br>
-            </form>
-            <form action="" method="POST" id="form">
+            
             <button type="submit">Generar</button>
             <button type="submit">Cancelar</button>
             </form>

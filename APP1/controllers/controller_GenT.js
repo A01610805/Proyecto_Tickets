@@ -1,5 +1,7 @@
 const Categoria = require('../models/categorias');
 const Pregunta = require('../models/preguntas');
+const Gen_Tickets = require('../models/gen_ticket');
+const Respuesta = require('../models/respuestas');
 
 exports.get_genticket = (request, response, next) => {
     Categoria.fetchAll()
@@ -33,17 +35,38 @@ exports.get_preguntas = (request, response, next) => {
 
 exports.post_genticket = (request,response, next) => {
     console.log('POST /ticket/nuevo');
+    console.log(request.body);
+
     const ticket = 
         new Gen_Tickets(
-            request.body.titulo, request.body.descripcion,
-            request.body.ID_categoria, request.body.texto_respuesta,
-            request.body.ID_pregunta);
-    ticket.save()
-        .then(() => {
-            request.session.info = ticket.nombre + ' fue registrado con éxito';
-            response.redirect('/home');
-        })
-        .catch(err => console.log(err));
+            request.params.id,request.body.titulo, 
+            request.body.descripcion);
+        console.log('Esto es antes de ticket.save()');
+        ticket.save();
+        console.log('Esto es después de ticket.save()');
+        idticket=ticket.obtenerid();
+        idpregunta=Pregunta.ID_pregunta(request.params.id);
+        console.log(idpregunta);
+        var i = -1;
+        for(let texto_respuesta of request.body.texto_respuesta){
+            i=i+1;
+            var respuesta = new Respuesta(idpregunta[i], idticket, request.body.texto_respuesta[i])
+            respuesta.save();
+        }
+
+        response.redirect('/home');
+            //.then(() => {
+              //  response.redirect('/home');
+            //})
+            //.catch(err => console.log(err));
+            
+    // var i = -1;
+    // for(let texto_respuesta of request.body.texto_respuesta){
+    //     i=i+1;
+    //     var pregunta = new Pregunta(request.params.id, request.body.texto_respuesta[i])
+    //     console.log(request.body.texto_respuesta[i]);
+    //     pregunta.save();
+    // }
 };
 
 exports.root = (request, response, next) => {

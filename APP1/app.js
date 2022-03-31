@@ -3,12 +3,17 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+//const placeholder = require('placeholder-loading');
+
 //const {authRole} = require('./controllers/authR');
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+
+//app.use(placeholder());
+
 app.use(session({
     secret: 'qweasdzxc', 
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió 
