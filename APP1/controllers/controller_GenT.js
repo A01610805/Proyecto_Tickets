@@ -44,15 +44,15 @@ exports.post_genticket = (request,response, next) => {
         console.log('Esto es antes de ticket.save()');
         ticket.save();
         console.log('Esto es después de ticket.save()');
-        idticket=ticket.obtenerid();
-        idpregunta=Pregunta.ID_pregunta(request.params.id);
-        console.log(idpregunta);
-        var i = -1;
-        for(let texto_respuesta of request.body.texto_respuesta){
-            i=i+1;
-            var respuesta = new Respuesta(idpregunta[i], idticket, request.body.texto_respuesta[i])
-            respuesta.save();
-        }
+        // idticket=ticket.obtenerid();
+        // idpregunta=Pregunta.ID_pregunta(request.params.id);
+        // console.log(idpregunta);
+        // var i = -1;
+        // for(let texto_respuesta of request.body.texto_respuesta){
+        //     i=i+1;
+        //     var respuesta = new Respuesta(idpregunta[i], idticket, request.body.texto_respuesta[i])
+        //     respuesta.save();
+        // }
 
         response.redirect('/home');
             //.then(() => {
