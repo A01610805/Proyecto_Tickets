@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const bUser = require('../controllers/controller_login');
+const bUser = require('../controllers/controller_BuscarU');
 
-router.get('/b_Usuario', bUser.get_Usuarios);
-router.get('/Busqueda', bUser.get_Busqueda);
+router.get('/busqueda', bUser.get_Busqueda);
+router.get('/', bUser.root);
+
+module.exports = router; 

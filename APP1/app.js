@@ -28,12 +28,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 const rutas_login = require('./routes/route_login');
 const rutas_pp = require('./routes/route_Pp');
 const rutas_genticket = require('./routes/route_GenT');
-const rutas_busUs = require('./routes/route_BuscarU');
+const rutas_busus = require('./routes/route_BuscarU');
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
 app.use('/generar_ticket', rutas_genticket);
-app.use('/Buscar_Uusario', rutas_busUs);
+app.use('/buscar_usario', rutas_busus);
 
 // app.get('/GenTem',authRole(1), (req, res) => {
 //     res.redirect(GenTem)
