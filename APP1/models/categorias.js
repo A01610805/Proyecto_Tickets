@@ -17,12 +17,16 @@ module.exports = class Categoria {
         return db.execute() VALUES ()', 
             []);
     }*/
-
+ 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute(
-            'SELECT * FROM categoria', );
+            'SELECT * FROM categoria');
+    }
+    
+    static fetchOne(num) {
+        return db.execute(
+            'SELECT * FROM categoria WHERE ID_categoria=?',[num]);
     }
 
-   
 }
