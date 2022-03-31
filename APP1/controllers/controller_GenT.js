@@ -37,11 +37,9 @@ exports.post_genticket = (request,response, next) => {
     console.log('POST /ticket/nuevo');
     console.log(request.body);
 
-    const ticket = 
-        new Gen_Tickets(
-            request.params.id,request.body.titulo, 
-            request.body.descripcion);
+    const ticket = new Gen_Tickets(request.params.id, request.body.titulo, request.body.descripcion);
         console.log('Esto es antes de ticket.save()');
+        console.log(ticket);
         ticket.save();
         console.log('Esto es después de ticket.save()');
         // idticket=ticket.obtenerid();
