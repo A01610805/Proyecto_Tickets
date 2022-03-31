@@ -1,4 +1,4 @@
-const { response } = require('express');
+const { res } = require('express');
 const User = require('../models/model_login');
 const Rol = require('../models/rol');
 
