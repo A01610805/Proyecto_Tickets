@@ -1,7 +1,7 @@
 <%- include('includes/head.ejs') %>
 	<ul id="dropdown5" class="dropdown-content">
 		<% for (let roles of rol) { %>
-			<li><a href="#!"><%= rol.nombre_rol%></a></li>
+			<li><a href="#!"><%= roles.nombre_rol%></a></li>
 		<% } %>
 	</ul>
 	<nav class="grey darken-3">
@@ -33,9 +33,6 @@
 		</div>
 	</nav>
 
-
-
-
 	<div>
 
 	<table class="striped responsive-table centered" >
@@ -51,4 +48,4 @@
 		<% } %>
 		
 	</table>
-<%- include('includes/foot.ejs') %>
+<%- include('includes/footer.ejs') %>

@@ -1,8 +1,7 @@
-const { res } = require('express');
 const User = require('../models/model_login');
 const Rol = require('../models/rol');
 
-exports.get_Busqueda = (req,res,next) => {
+exports.get_busqueda = (req,res,next) => {
     console.log('Entrando a Buscar Usuario');
     User.fetchAll()
         .then(([rows, fielData])=>{
