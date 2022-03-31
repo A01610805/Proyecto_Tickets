@@ -8,7 +8,7 @@ exports.get_Busqueda = (req,res,next) => {
         .then(([rows, fielData])=>{
             Rol.findOne()
                 .then(([rows2, fielData]) => {
-                    response.render('BuscarUsuarios',{
+                    res.render('BuscarUsuarios',{
                         model_login: rows,
                         rol: rows2,
                     });
@@ -16,9 +16,9 @@ exports.get_Busqueda = (req,res,next) => {
             .catch(error => {console.log(error)});
         })
      .catch(error => {console.log(error)});
-}
+};
 
 exports.root = (req,res,next) => {
     console.log('Ruta por defecto de buscar usuario');
-    response.redirect('/home'); 
-}
+    res.redirect('/home'); 
+};

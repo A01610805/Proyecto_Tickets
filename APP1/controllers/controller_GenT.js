@@ -31,7 +31,7 @@ exports.get_preguntas = (request, response, next) => {
                 .catch(error => {console.log(error)}); 
         }) 
     .catch(error => {console.log(error)});
-}
+};
 
 exports.post_genticket = (request,response, next) => {
     console.log('POST /ticket/nuevo');
