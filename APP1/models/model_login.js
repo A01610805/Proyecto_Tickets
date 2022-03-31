@@ -30,4 +30,7 @@ module.exports = class User {
         return db.execute('SELECT * FROM usuario WHERE nombre=?',
             [name]);
     }
+    static fetchAll(){
+        return db.execute('SELECT * usuario');
+    }
 }
