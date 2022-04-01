@@ -19,8 +19,10 @@ exports.get_preguntas = (request, response, next) => {
     //Categoria.fetchOne(request.params.id)
     Categoria.fetchAll()    
         .then(([rows, fielData]) => {
+            console.log('Entrando a categoria');
             Pregunta.fetchPreguntas(request.params.id)
                 .then(([rows2, fielData]) => {
+                    console.log('Entrando a pregunta y render');
                     response.render('TiGen', {
                         Tiname: request.session.usuario ? request.session.usuario : '',
                         categorias: rows,
@@ -33,31 +35,43 @@ exports.get_preguntas = (request, response, next) => {
     .catch(error => {console.log(error)});
 };
 
-exports.post_genticket = (request,response, next) => {
+exports.post_genticket = async(request,response, next) => {
     console.log('POST /ticket/nuevo');
     console.log(request.body);
-
     const ticket = new Gen_Tickets(request.params.id, request.body.titulo, request.body.descripcion);
-        console.log('Esto es antes de ticket.save()');
-        console.log(ticket);
-        ticket.save();
-        console.log('Esto es después de ticket.save()');
-        // idticket=ticket.obtenerid();
-        // idpregunta=Pregunta.ID_pregunta(request.params.id);
-        // console.log(idpregunta);
-        // var i = -1;
-        // for(let texto_respuesta of request.body.texto_respuesta){
-        //     i=i+1;
-        //     var respuesta = new Respuesta(idpregunta[i], idticket, request.body.texto_respuesta[i])
-        //     respuesta.save();
-        // }
+    console.log('Esto es antes de ticket.save()');
+    console.log(ticket);
+    //ticket.save();
+    console.log('Esto es después de ticket.save()');
 
-        response.redirect('/home');
-            //.then(() => {
-              //  response.redirect('/home');
-            //})
-            //.catch(err => console.log(err));
-            
+    console.log(ticket);
+    idticket = await ticket.obtenerid();
+    console.log(idticket);
+    pregunta = new Pregunta;
+    idpregunta = await pregunta.idpreg(request.params.id);
+    console.log(idpregunta);
+    
+    // npreguntas = idpregunta.length();
+    // console.log(npreguntas);
+
+    var n = 0;
+    for(let i in idpregunta ){
+        console.log("entramos al for");
+        console.log(idpregunta[n]);
+        n = n + 1;
+    }
+    
+    // var i = -1;
+    //  for(let n of npreguntas){
+    //      i=i+1;
+    //     var respuesta = new Respuesta(idpregunta[n], idticket, request.body.texto_respuesta[n]);
+    //     //respuesta.save();
+    // }
+    response.redirect('/home')
+            // .then(() => {
+            //     response.redirect('/home');
+            // })
+            // .catch(err => console.log(err));
     // var i = -1;
     // for(let texto_respuesta of request.body.texto_respuesta){
     //     i=i+1;

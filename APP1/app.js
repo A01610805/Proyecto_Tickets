@@ -44,7 +44,6 @@ app.use((request, response,) => {
     response.redirect('/users');
 });
 
-
 app.use((request, response,next) => {
     console.log("Error 404");
 });

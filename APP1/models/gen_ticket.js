@@ -22,9 +22,9 @@ module.exports = class Gen_Tickets {
 
     }
 
-    // obtenerid(){
-    //     return db.execute('SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1')
-    // }
+    obtenerid(){
+        return db.execute('SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1')
+    }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     /*static fetch(id) {

@@ -7,7 +7,7 @@ module.exports = class Pregunta {
             'SELECT * FROM pregunta WHERE ID_categoria=?', [id]);
     }
     
-    ID_pregunta(id){
+    idpreg(id){
         return db.execute(
             'SELECT ID_pregunta FROM pregunta WHERE ID_categoria=?', [id]);
     }

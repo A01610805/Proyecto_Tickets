@@ -14,9 +14,9 @@ module.exports = class Respuesta {
         return db.execute() VALUES ()', 
             []);
     }*/
-    save(i){
+    save(){
         return db.execute('INSERT INTO respuesta(ID_pregunta, ID_ticket, texto_respuesta) VALUES(?,?,?)',
-        [i, this.ID_ticket ,this.texto_respuesta]);
+        [this.ID_pregunta, this.ID_ticket ,this.texto_respuesta])
     }
 
 }
