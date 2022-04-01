@@ -2,7 +2,7 @@ const Ticket = require("../models/tickets");
 
 exports.get_activos=(request, response, next)=>{
 let tipo=1;
-tickets=Ticket.fetchticketsactivos()
+tickets=fetchticketsactivos()
 .then(([rows, fieldData]) => {
     console.log(rows);
     response.render('Consulta', {
@@ -60,6 +60,3 @@ tickets=fetchticketsusuario(request.session.username)
 exports.post_tickusuario=(request, response, next)=>{
 
 }
-exports.root = (request, response, next) => {
-    response.redirect('/home'); 
-};
