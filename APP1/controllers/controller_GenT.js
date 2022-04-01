@@ -46,13 +46,15 @@ exports.post_genticket = async(request,response, next) => {
 
     console.log(ticket);
     idticket = await ticket.obtenerid();
-    console.log(idticket);
+    console.log(idticket[0]);
+
     pregunta = new Pregunta;
     idpregunta = await pregunta.idpreg(request.params.id);
-    console.log(idpregunta);
+    console.log(idpregunta[0]);
     
-    // npreguntas = idpregunta.length();
-    // console.log(npreguntas);
+    npreguntas = await pregunta.countpreg(request.params.id);
+    console.log(npreguntas[0]);
+    console.log(npreguntas[0].value);
 
     // var n = 0;
     // for(let i in idpregunta ){
@@ -61,12 +63,12 @@ exports.post_genticket = async(request,response, next) => {
     //     n = n + 1;
     // }
 
-    var i = -1;
-    for(let n of npreguntas){
-          i=i+1;
+    for(var i = 0; i <= npreguntas[0]; i++){
+        console.log('Entrando al for de respuetas');
          var respuesta = new Respuesta(idpregunta[n], idticket, request.body.texto_respuesta[n]);
-         respuesta.save();
-     }
+         respuesta.save(idpregunta[n],idticket[n]);
+         console.log('Pregunta registrada.');
+    }
     response.redirect('/home')
             // .then(() => {
             //     response.redirect('/home');

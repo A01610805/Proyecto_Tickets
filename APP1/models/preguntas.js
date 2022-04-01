@@ -12,4 +12,8 @@ module.exports = class Pregunta {
             'SELECT ID_pregunta FROM pregunta WHERE ID_categoria=?', [id]);
     }
 
+    countpreg(id){
+        return db.execute(
+            'SELECT COUNT(*) FROM pregunta WHERE ID_categoria = ?', [id]);
+    }
 }
