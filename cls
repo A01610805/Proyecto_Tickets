@@ -1,0 +1,282 @@
+[33mcommit c8ee889bba0b659cde9a4f762875e12a82ffc797[m[33m ([m[1;36mHEAD -> [m[1;32mInt-RBAC[m[33m, [m[1;31morigin/Int-RBAC[m[33m)[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Thu Mar 31 12:01:26 2022 -0600
+
+    Envio correcto de información al ticket.
+
+[33mcommit 8d6b074a0d7120edaa64f951c1ffdc54ef7d0b22[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 10:39:00 2022 -0600
+
+    cambios y anexos a Int-RBAC
+
+[33mcommit 1b80baf76cba5a5c7440a93998f27fbf6e7b9c37[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Thu Mar 31 10:34:02 2022 -0600
+
+    Comprobar buscar usuarios.
+
+[33mcommit f0c61f3c5a981e0e4a16202110f9d84adc30fd6b[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 10:21:19 2022 -0600
+
+    cambios a BuscarUsuarios.ejs y anexar modelo rol
+
+[33mcommit f738c6923ab83733d923dfcacf5a81cf3b37f808[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 10:12:46 2022 -0600
+
+    cambios y anexos a Int-RBAC
+
+[33mcommit 0cb80550d239c07724de25e80cd6c547496db5ec[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 10:04:28 2022 -0600
+
+    cambios ejs
+
+[33mcommit 3a9360cd5f7cbaa35d85595cc4ffdd5a6d9171c2[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 10:01:52 2022 -0600
+
+    cambios ejs
+
+[33mcommit 0a68a745e4c61bf84f86c903893508b3c7bab1f3[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 09:43:10 2022 -0600
+
+    añadir Buscar Usuarios
+
+[33mcommit c28b347430e13af15cea8e771866364030c9df36[m
+Merge: 0c51303 a596420
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 09:14:56 2022 -0600
+
+    Merge branch 'Int-RBAC' of https://github.com/A01610805/Proyecto_Tickets into Int-RBAC
+
+[33mcommit 0c5130303e85344e1a349419cb7ba1f9f2cd6121[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 31 09:14:53 2022 -0600
+
+    algo
+
+[33mcommit a59642016e38f47a5b30f5805400be23372c9d31[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Wed Mar 30 22:15:35 2022 -0600
+
+    Error en el registro de tickets en la base de datos.
+
+[33mcommit 2f7744a5bb69eb3589a70453fc2005b836021919[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Wed Mar 30 21:52:32 2022 -0600
+
+    Error en el registro de tickets.
+
+[33mcommit 9971608bd014e7ddbcd4deaedf1af6fc832ce694[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Wed Mar 30 19:53:26 2022 -0600
+
+    Falta enviar datos del ticket.
+
+[33mcommit 97cc76128f18a228c830a277c355c30734cefb25[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Wed Mar 30 14:58:47 2022 -0600
+
+    La palabra de Lalo, la mano de dios, funciona crear rutas de respuestas.
+
+[33mcommit 2c4c1085af23ba902e72cab1a3222a9b6636a42a[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Wed Mar 30 13:41:27 2022 -0600
+
+    Faltan los modelos y ccs.
+
+[33mcommit a88125e04a7e779277140a0d21eca02b09d221be[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Wed Mar 30 13:01:57 2022 -0600
+
+    Modelos de generar tickets, falta el de insertar información.
+
+[33mcommit 17716f2568e816ada1bc9d22564f29dd08708433[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Tue Mar 29 19:49:08 2022 -0600
+
+    Inicio de registrar tickets.
+
+[33mcommit 9d1fe6e9cf99bf81e5bc2fac5468d53bb952f08a[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Tue Mar 29 18:01:43 2022 -0600
+
+    Log In y Sign Up, agregar ruta principal.
+
+[33mcommit 69bd62aca6acb88787d5dd128163906ba8684fc9[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Tue Mar 29 16:14:16 2022 -0600
+
+    intento
+
+[33mcommit 768300f2046f0c84b161f3a75b6f6e758f4e093f[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Tue Mar 29 15:49:35 2022 -0600
+
+    intento
+
+[33mcommit c97449ab36a15e6742c6d50cca7c81fb611b956d[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Tue Mar 29 15:41:30 2022 -0600
+
+    intento
+
+[33mcommit da9024899751cc7cd4ac745a4d24b3f3a78f6f21[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Tue Mar 29 09:50:12 2022 -0600
+
+    intento
+
+[33mcommit 100fc9e114855ccf08f0f569a264105edfc9a90a[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Tue Mar 29 00:35:03 2022 -0600
+
+    no pude alch
+
+[33mcommit 1b4b9a657007b122cbdda3de5cf2024243e2eb61[m[33m ([m[1;31morigin/Log-in[m[33m, [m[1;32mLog-in[m[33m)[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Tue Mar 22 19:55:21 2022 -0600
+
+    Guardar cambios en models.
+
+[33mcommit 98dd4f6b0a5bf2357d74776dcaf461ee17d41ea6[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Tue Mar 22 19:53:46 2022 -0600
+
+    Redirección desde login, verificar passwords y users.
+
+[33mcommit 429f002dcfb97f91a11d8bcba3b10f2a1158c410[m
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Tue Mar 22 18:46:25 2022 -0600
+
+    Ruta login, falta terminar controlador.
+
+[33mcommit 528f343be133fa320d2bf9d37238ac44dbb484dc[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: 279a602 b96cb19
+Author: ATG-5222 <A01275222@tec.mx>
+Date:   Tue Mar 22 16:49:17 2022 -0600
+
+    Merge branch 'prueba-colab' into develop
+
+[33mcommit b96cb19755971726f98a87e3db5080d3c514638c[m[33m ([m[1;31morigin/prueba-colab[m[33m, [m[1;32mprueba-colab[m[33m)[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Sun Mar 20 22:52:40 2022 -0600
+
+    modificaciones
+
+[33mcommit db34085b92cd9f03f85b24571e4387bba979cb7b[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Fri Mar 18 09:27:53 2022 -0600
+
+    modificaciones
+
+[33mcommit 53fab3d51c0b9ad4966932108dcd1f2dc9c46720[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 17 22:57:22 2022 -0600
+
+    modificaciones
+
+[33mcommit ffda8e4824aaa4e114cfa6e9ee1d3b4644be30fa[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 17 22:45:05 2022 -0600
+
+    modificaciones
+
+[33mcommit 1dabaf2ae10cd3f432987933da088dc7611775f7[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 17 21:44:56 2022 -0600
+
+    modificaciones
+
+[33mcommit df2dadbfeabc79bac6540931174ce1fb556ba442[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Thu Mar 17 11:49:12 2022 -0600
+
+    modificaciones
+
+[33mcommit 4f18d41fe06053f1adb977a0e79bd47d8bf20034[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Wed Mar 16 18:34:07 2022 -0600
+
+    modificaciones
+
+[33mcommit 6190dea7a9c686367a872f21f8466709f4e3c278[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Wed Mar 16 17:22:58 2022 -0600
+
+    modificaciones
+
+[33mcommit 3b68a5e6dd66674b684de326e39c696047c8011a[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Wed Mar 16 17:16:32 2022 -0600
+
+    cambio nombre
+
+[33mcommit b9d09e1f32ea568530800def0ddc3d6cd4918b2f[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Wed Mar 16 17:13:54 2022 -0600
+
+    agregar controllers y models
+
+[33mcommit af312ee7336d56355d2184bc86ed2a45c04c7241[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Wed Mar 16 16:11:30 2022 -0600
+
+    cambiar log in
+
+[33mcommit 0b31bddd5b4ca34642367a9c6951e9f8f71288ae[m
+Author: Renato549 <A01275401@itesm.mx>
+Date:   Wed Mar 16 15:55:46 2022 -0600
+
+    cambiar log in
+
+[33mcommit e42b846b5090f3da09c29e5ae4c93b2197b89ce7[m
+Author: Jose <A01610805@tec.mx>
+Date:   Wed Mar 16 14:13:42 2022 -0600
+
+    views
+
+[33mcommit c596b7c4425bd6d0625bbf1f4ad65f53df9fcbc3[m
+Author: Jose <A01610805@tec.mx>
+Date:   Wed Mar 16 14:04:40 2022 -0600
+
+    cambio de views
+
+[33mcommit 279a6028f2839ce0d7af875c0ec774192d6f7bf1[m
+Author: FlavioRr <A01367631@itesm.mx>
+Date:   Wed Mar 16 13:54:41 2022 -0600
+
+    nada
+
+[33mcommit ca091c64726d0bd64a5b1fc25aff4a06571ac0c6[m
+Merge: db3f670 16c7c35
+Author: FlavioRr <A01367631@itesm.mx>
+Date:   Wed Mar 16 13:27:32 2022 -0600
+
+    Merge branch 'develop' of https://github.com/A01610805/Proyecto_Tickets into develop
+
+[33mcommit 16c7c354b966135b96be689530a5d89788f2ec6a[m
+Author: Flavio Ruvalcaba Leija <71139354+FlavioRr@users.noreply.github.com>
+Date:   Wed Mar 16 12:57:24 2022 -0600
+
+    Add files via upload
+
+[33mcommit db3f670fcda261763892fe204c6f644a6129c5bd[m
+Merge: dba2355 b0b3106
+Author: FlavioRr <A01367631@itesm.mx>
+Date:   Wed Mar 16 12:55:20 2022 -0600
+
+    Merge branch 'develop' of https://github.com/A01610805/Proyecto_Tickets into develop
+
+[33mcommit dba23553f532724cba8e49fb599905feea67229d[m
+Merge: 250e59c 34b589e
+Author: FlavioRr <A01367631@itesm.mx>
+Date:   Wed Mar 16 12:55:16 2022 -0600
+
+    nada
+
+[33mcommit 56dd021cf644502f6c4b8dad2d333ddf90673f8e[m
