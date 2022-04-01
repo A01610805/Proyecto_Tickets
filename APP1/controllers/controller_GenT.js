@@ -54,19 +54,19 @@ exports.post_genticket = async(request,response, next) => {
     // npreguntas = idpregunta.length();
     // console.log(npreguntas);
 
-    var n = 0;
-    for(let i in idpregunta ){
-        console.log("entramos al for");
-        console.log(idpregunta[n]);
-        n = n + 1;
-    }
-    
-    // var i = -1;
-    //  for(let n of npreguntas){
-    //      i=i+1;
-    //     var respuesta = new Respuesta(idpregunta[n], idticket, request.body.texto_respuesta[n]);
-    //     //respuesta.save();
+    // var n = 0;
+    // for(let i in idpregunta ){
+    //     console.log("entramos al for");
+    //     console.log(idpregunta[n]);
+    //     n = n + 1;
     // }
+
+    var i = -1;
+    for(let n of npreguntas){
+          i=i+1;
+         var respuesta = new Respuesta(idpregunta[n], idticket, request.body.texto_respuesta[n]);
+         respuesta.save();
+     }
     response.redirect('/home')
             // .then(() => {
             //     response.redirect('/home');
