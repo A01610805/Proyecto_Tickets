@@ -1,0 +1,110 @@
+const User = require('../models/model_login');
+const Ticket = require("../models/tickets");
+const bcrypt = require('bcryptjs');
+var nombre_usuario='';
+exports.get_login = (request, response, next) => {
+    response.render('Log_in', {
+        username: request.session.usuario ? request.session.usuario : '',
+    }); 
+};
+
+exports.login = (request, response, next) => {
+    console.log('Entrando a fetchOne');
+    console.log(request.body);
+    nombre_usuario=request.body.nombre;
+    User.findOne(request.body.nombre)
+        .then(([rows, fielData])=>{
+            
+        //Si no existe el usuario, redirige a la pantalla de login
+        if (rows.length < 1) {
+            return response.redirect('/users/login');
+        }
+        const user = new User(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
+        
+        const rolusuario = rows[0].ID_rol
+        response.cookie('rolusuario',rolusuario, {
+        httpOnly: true
+        })
+
+        const nombre_usuario = rows[0].nombre
+        response.cookie('nombre_usuario',nombre_usuario, {
+        httpOnly: true})
+
+        
+
+        console.log(request.body.password);
+        console.log(user.password);
+        bcrypt.compare(request .body.password, user.password)
+            .then(doMatch => {
+                if (doMatch) {
+                    console.log('Pass coinciden');
+                    request.session.isLoggedIn = true;
+                    request.session.user = user;
+                    request.session.username = user.nombre;
+                    return request.session.save(err => {
+                        response.redirect('/home');
+                    });
+                }
+                response.redirect('/users/login');
+            }).catch(err => {
+                response.redirect('/users/login');
+            });
+    }).catch((error)=>{
+        console.log(error)
+    });
+
+};
+
+exports.get_signup = (request, response, next) => {
+    response.render('signup', {
+        username: request.session.usuario ? request.session.usuario : '',
+        info: ''
+    }); 
+};
+
+exports.post_signup = (request, response, next) => {
+    console.log(request.body);
+    const user = new User(request.body.rol, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.Email, request.body.password);
+    user.save()
+        .then(()=>{
+            response.redirect('Primer_pantalla'); 
+        }).catch((error)=>{
+            console.log(error);
+            console.log('Aqui esta el error');
+        });
+};
+
+exports.logout = (request, response, next) => {
+    request.session.destroy(() => {
+        response.redirect('Log_In'); //Este código se ejecuta cuando la sesión se elimina.
+    });
+};
+
+exports.get_ticketspropios=(request, response, next)=>{
+    let tipo=3;
+    tickets=Ticket.fetchticketsusuario(nombre_usuario)
+    .then(([rows, fieldData]) => {
+        console.log(rows);
+        response.render('Consulta', {
+            tickets: rows,
+            username: request.session.nombre ? request.session.nombre : '',
+            tipo:tipo,
+            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+        }); 
+    })
+    .catch(err => {
+        console.log(err);
+    }); 
+    //response.render('Consulta',{
+        //ticket:ticket,
+      //  tipo:tipo,
+    //});
+    }
+exports.borrarpropios=(request, response, next)=>{
+    Ticket.borrarticketpropio(request.body.idticket);
+    response.redirect('/users/login'); 
+}
+
+exports.root = (request, response, next) => {
+    response.redirect('/users/login'); 
+};

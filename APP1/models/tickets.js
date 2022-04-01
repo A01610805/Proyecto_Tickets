@@ -1,28 +1,26 @@
-const path = require('path');
+const { execute } = require('../util/database');
 const db = require('../util/database');
-
+ 
 module.exports = class Ticket {
-    //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(ID_Ticket, titulo, categoria, descripcion, preg1, preg2, preg3) {
-        this.id = ID_Ticket;
-        this.ti = titulo;
-        this.cat = categoria;
-        this.descripcion = descripcion;
-        this.pregunta_uno = preg1;
-        this.pregunta_dos = preg2;
-        this.pregunta_tres = preg3;
+    
+    fetch(){
+        return db.execute('SELECT * FROM ticketentero');
+        //CREATE VIEW usuarios_ticket AS (SELECT resuelve_ticket.ID_ticket, genera_ticket.ID_usuario AS 'Creador', genera_ticket.fecha_emision, resuelve_ticket.ID_usuario AS 'Encargado', resuelve_ticket.fecha_inicio, resuelve_ticket.fecha_fin, resuelve_ticket.comentarios_solucion FROM usuario, resuelve_ticket, genera_ticket WHERE resuelve_ticket.ID_usuario=usuario.ID_usuario AND genera_ticket.ID_usuario=usuario.ID_usuario)
     }
 
-    //Este método servirá para guardar de manera persistente el nuevo objeto. 
-    save() {
-        return db.execute('INSERT INTO ticket (id, ti, cat, descripcion, pregunta_uno, pregunta_dos, pregunta_tres) VALUES (?, ?, ?, ?, ?)', 
-            [this.id, this.ti, this.cat, this.descripcion, this.pregunta_uno, this.pregunta_dos, this.pregunta_tres]);
+    static fetchticketsusuario(id){
+        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=?',[id]);
     }
 
-    //Este método servirá para devolver los objetos del almacenamiento persistente.
-    static fetchAll() {
-        return db.execute(
-            'SELECT c.nombre, descripcion, imagen, duenio_id, c.created_at, u.nombre as duenio FROM capybaras c, usuarios u WHERE c.duenio_id = u.username');
+    static fetchticketsarchivados(){
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5');
     }
+
+    static fetchticketsactivos(){
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5');
+    }
+    static borrarticketpropio(id){
+        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?',[id])
+    }
+
 }
-
