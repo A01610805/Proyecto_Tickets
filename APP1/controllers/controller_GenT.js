@@ -54,7 +54,6 @@ exports.post_genticket = async(request,response, next) => {
     
     npreguntas = await pregunta.countpreg(request.params.id);
     console.log(npreguntas[0]);
-    console.log(npreguntas[0].value);
 
     // var n = 0;
     // for(let i in idpregunta ){
