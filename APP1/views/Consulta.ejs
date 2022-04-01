@@ -1,0 +1,70 @@
+<%- include('includes/head.ejs') %>
+<% for (let ticket of tickets) { 
+  var color=switch(tickets.nombre_prioridad){
+    case 1:
+    let respuesta = 'grey lighten-5';
+    return respuesta;
+    [break;]
+
+    case 2:
+    let respuesta = 'light-blue lighten-5';
+    return respuesta;
+    [break;]
+
+    case 3:
+    let respuesta = 'orange lighten-5';
+    return respuesta;
+    [break;]
+
+    case 4:
+    let respuesta = 'yellow lighten-5';
+    return respuesta;
+    [break;]
+
+    case 5:
+    let respuesta = 'red lighten-1';
+    return respuesta;
+    [break;]
+
+    case 6:
+    let respuesta = 'light-green accent-1';
+    return respuesta;
+    [break;]
+  }
+
+%>
+
+<div class="row">
+	<div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-content">
+              <h1><%ticket.titulo %></h1>
+            </div>
+            <div class="card-tabs">
+              <ul class="tabs tabs-fixed-width">
+                <li class="tab"><a href="#descripcion">Descripción</a></li>
+                <li class="tab"><a class="active" href="#p&r">Preguntas y Respuestas</a></li>
+                <li class="tab"><a href="#datosgenerales">Datos Generales</a></li>
+                <li class="tab"><a href="#comentarios">Comentarios</a></li>
+              </ul>
+            </div>
+            <%let content='card-content '+color%>
+            <div class=<% content %> >
+              <div id="descripcion">
+                <%document.getElementById("descripcion").innerHTML = tickets.descripcion%>	
+              </div>
+              <div id="p&r">
+              	<h5>Material Design tutorial</h5>
+               </div>
+              <div id="datosgenerales">
+              	<h5>Bootstrap 4 Tutorial</h5>
+              </div>
+              <div id="comentarios">
+              	<h5>Bootstrap 4 Tutorial</h5>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %> 
+<%- include('includes/footer.ejs') %>

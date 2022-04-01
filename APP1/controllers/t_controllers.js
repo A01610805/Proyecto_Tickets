@@ -1,7 +1,18 @@
 const Ticket = require("../models/tickets");
 
 exports.get_activos=(request, response, next)=>{
-ticket=fetchticketsactivos();
+let tipo=1;
+tickets=fetchticketsactivos()
+.then(([rows, fieldData]) => {
+    console.log(rows);
+    response.render('Consulta', {
+        tickets: rows,
+        username: request.session.username ? request.session.username : '',
+    }); 
+})
+.catch(err => {
+    console.log(err);
+});
 }
 
 exports.post_activos=(request, response, next)=>{
@@ -9,7 +20,18 @@ exports.post_activos=(request, response, next)=>{
 }
 
 exports.get_archivo=(request, response, next)=>{
-ticket=fetchticketsarchivados();
+let tipo=2;
+tickets=fetchticketsarchivados()
+.then(([rows, fieldData]) => {
+    console.log(rows);
+    response.render('Consulta', {
+        tickets: rows,
+        username: request.session.username ? request.session.username : '',
+    }); 
+})
+.catch(err => {
+    console.log(err);
+});
 }
 
 exports.post_archivo=(request, response, next)=>{
@@ -17,7 +39,22 @@ exports.post_archivo=(request, response, next)=>{
 }
 
 exports.get_tickusuario=(request, response, next)=>{
-ticket=fetchticketsactivos();
+let tipo=3;
+tickets=fetchticketsusuario(request.session.username)
+.then(([rows, fieldData]) => {
+    console.log(rows);
+    response.render('Consulta', {
+        tickets: rows,
+        username: request.session.username ? request.session.username : '',
+    }); 
+})
+.catch(err => {
+    console.log(err);
+}); 
+//response.render('Consulta',{
+    //ticket:ticket,
+  //  tipo:tipo,
+//});
 }
 
 exports.post_tickusuario=(request, response, next)=>{
