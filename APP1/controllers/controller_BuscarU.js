@@ -1,9 +1,9 @@
-const User = require('../models/model_login');
+const Busqueda = require('../models/usuario');
 const Rol = require('../models/rol');
 
 exports.get_busqueda = (req,res,next) => {
     console.log('Entrando a Buscar Usuario');
-    User.fetchAll()
+    Busqueda.fetchAll()
         .then(([rows, fielData])=>{
             Rol.findOne()
                 .then(([rows2, fielData]) => {
