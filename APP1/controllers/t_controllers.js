@@ -1,4 +1,4 @@
-const res = require("express/lib/response");
+//const res = require("express/lib/response");
 const Ticket = require("../models/tickets");
 
 exports.get_activos=(request, response, next)=>{
@@ -6,7 +6,7 @@ let tipo=1;
 console.log(request.session.usuario);
 tickets=Ticket.fetchticketsactivos()
     .then(([rows, fieldData]) => {
-        console.log(rows);
+        //console.log(rows);
         response.render('Consulta', {
             tickets: rows,
             username: request.session.username ? request.session.username : '',
@@ -24,13 +24,14 @@ exports.post_activos=(request, response, next)=>{
     Ticket.borrarticketpropio(request.body.idticket);
     response.redirect('/home');  
 }
+
  // A partir de aqui inicia la implementación en ajax
 exports.buscar_activos = (request, response, next) => {
-    tickets=Ticket.fetchticketsactivos()
+    tickets2=Ticket.fetchticketsactivos_creador(request.params.valor)
     .then(([rows, fieldData]) => {
         console.log(rows);
         response.render('Consulta', {
-            tickets: rows,
+            tickets2: rows,
             username: request.session.username ? request.session.username : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
