@@ -1,6 +1,8 @@
 <%- include('includes/head.ejs') %>
+
 <% var i=1; 
 var titulo='';
+
 if(tipo==1){
 titulo='Consulta de tickets activos';
 }
@@ -10,7 +12,9 @@ else if(tipo==2){
 else if(tipo==3){
 titulo='Consulta de tickets propios';
 } %>
+
 <h1><%=titulo %></h1>
+
 <% for (let ticket of tickets) {
   var color ='';
  if(ticket.ID_estado == 1){
@@ -40,6 +44,7 @@ titulo='Consulta de tickets propios';
             <div class="card-content">
               <h3><%=ticket.titulo %></h3>
             </div>
+
             <div class="card-tabs">
               <ul class="tabs tabs-fixed-width">
                 <li class="tab"><a class="active" href="#descripcion/<%=i%>">Descripción</a></li>
@@ -48,6 +53,7 @@ titulo='Consulta de tickets propios';
                 <li class="tab"><a href="#comentarios<%=i%>">Comentarios</a></li>
               </ul>
             </div>
+            
             <div class="card-content <%=color %>">
               <div id="#descripcion/<%= i%>">
 
