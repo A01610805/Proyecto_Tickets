@@ -1,6 +1,7 @@
 const User = require('../models/model_login');
+const Ticket = require("../models/tickets");
 const bcrypt = require('bcryptjs');
-
+var nombre_usuario='';
 exports.get_login = (request, response, next) => {
     response.render('Log_in', {
         username: request.session.usuario ? request.session.usuario : '',
@@ -10,6 +11,7 @@ exports.get_login = (request, response, next) => {
 exports.login = (request, response, next) => {
     console.log('Entrando a fetchOne');
     console.log(request.body);
+    nombre_usuario=request.body.nombre;
     User.findOne(request.body.nombre)
         .then(([rows, fielData])=>{
             
@@ -18,6 +20,18 @@ exports.login = (request, response, next) => {
             return response.redirect('/users/login');
         }
         const user = new User(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
+        
+        const rolusuario = rows[0].ID_rol
+        response.cookie('rolusuario',rolusuario, {
+        httpOnly: true
+        })
+
+        const nombre_usuario = rows[0].nombre
+        response.cookie('nombre_usuario',nombre_usuario, {
+        httpOnly: true})
+
+        
+
         console.log(request.body.password);
         console.log(user.password);
         bcrypt.compare(request .body.password, user.password)
@@ -62,9 +76,34 @@ exports.post_signup = (request, response, next) => {
 
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {
-        response.redirect('Primer_pantalla'); //Este código se ejecuta cuando la sesión se elimina.
+        response.redirect('Log_In'); //Este código se ejecuta cuando la sesión se elimina.
     });
 };
+
+exports.get_ticketspropios=(request, response, next)=>{
+    let tipo=3;
+    tickets=Ticket.fetchticketsusuario(nombre_usuario)
+    .then(([rows, fieldData]) => {
+        console.log(rows);
+        response.render('Consulta', {
+            tickets: rows,
+            username: request.session.nombre ? request.session.nombre : '',
+            tipo:tipo,
+            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+        }); 
+    })
+    .catch(err => {
+        console.log(err);
+    }); 
+    //response.render('Consulta',{
+        //ticket:ticket,
+      //  tipo:tipo,
+    //});
+    }
+exports.borrarpropios=(request, response, next)=>{
+    Ticket.borrarticketpropio(request.body.idticket);
+    response.redirect('/users/login'); 
+}
 
 exports.root = (request, response, next) => {
     response.redirect('/users/login'); 

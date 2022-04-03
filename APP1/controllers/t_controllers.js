@@ -1,59 +1,77 @@
+const res = require("express/lib/response");
 const Ticket = require("../models/tickets");
 
-exports.post_nuevo = (request, response, next) => {
-
-    const tick = 
-        new Ticket(
-            request.body.id, request.body.ti, request.body.cat, request.body.description, 
-            request.body.pregunta_uno, request.body.pregunta_dos,  request.body.pregunta_tres);
-    tick.save()
-        .then(() => {
-            request.session.info = tick.id + ' fue registrado con éxito';
-            response.setHeader('Set-Cookie', 
-                'ultimo_capybara='+tick.id+'; HttpOnly');
-            response.redirect('/Primer pantalla');
-        })
-        .catch(err => console.log(err));
-};
-
-exports.listar = (request, response, next) => {
-    console.log('Ruta /capybaras');
-    //console.log(request.get('Cookie').split('=')[1]);
-    console.log(request.cookies);
-    const info = request.session.info ? request.session.info : '';
-    request.session.info = '';
-    Ticket.fetchAll()
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            response.render('lista', {
-                capybaras: rows,
-                username: request.session.username ? request.session.username : '',
-                ultimo_capybara: request.cookies.ultimo_capybara ? request.cookies.ultimo_capybara : '',
-                info: info //El primer info es la variable del template, el segundo la constante creada arriba
-            }); 
-        })
-        .catch(err => {
-            console.log(err);
-        }); 
+exports.get_activos=(request, response, next)=>{
+let tipo=1;
+console.log(request.session.usuario);
+tickets=Ticket.fetchticketsactivos()
+.then(([rows, fieldData]) => {
+    console.log(rows);
+    response.render('Consulta', {
+        tickets: rows,
+        username: request.session.username ? request.session.username : '',
+        rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+        tipo:tipo,
+    }); 
+})
+.catch(err => {
+    console.log(err);
+});
 }
 
-exports.filtrar = (request, response, next) => {
-    console.log(request.params.capybara_id);
-    //console.log(request.get('Cookie').split('=')[1]);
-    console.log(request.cookies);
-    const info = request.session.info ? request.session.info : '';
-    request.session.info = '';
-    Capybara.fetchOne(request.params.capybara_id)
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            response.render('lista', {
-                capybaras: rows,
-                username: request.session.username ? request.session.username : '',
-                ultimo_capybara: request.cookies.ultimo_capybara ? request.cookies.ultimo_capybara : '',
-                info: info //El primer info es la variable del template, el segundo la constante creada arriba
-            }); 
-        })
-        .catch(err => {
-            console.log(err);
+exports.post_activos=(request, response, next)=>{
+    console.log(request.body);
+    Ticket.borrarticketpropio(request.body.idticket);
+    response.redirect('/home');  
+}
+
+exports.get_archivo=(request, response, next)=>{
+let tipo=2;
+tickets=Ticket.fetchticketsarchivados()
+.then(([rows, fieldData]) => {
+    console.log(rows);
+    response.render('Consulta', {
+        tickets: rows,
+        username: request.session.username ? request.session.username : '',
+        rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+        tipo:tipo,
+    }); 
+})
+.catch(err => {
+    console.log(err);
+});
+}
+
+exports.post_archivo=(request, response, next)=>{
+    Ticket.borrarticketpropio(request.body.idticket);
+    response.redirect('/home'); 
+}
+
+exports.get_ticketspropios=(request, response, next)=>{
+    let tipo=3;
+    tickets=Ticket.fetchticketsusuario(request.cookies.nombre_usuario)
+    .then(([rows, fieldData]) => {
+        console.log(rows);
+        response.render('Consulta', {
+            tickets: rows,
+            username: request.session.nombre ? request.session.nombre : '',
+            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+            tipo:tipo,
         }); 
+    })
+    .catch(err => {
+        console.log(err);
+    }); 
+    //response.render('Consulta',{
+        //ticket:ticket,
+      //  tipo:tipo,
+    //});
     }
+exports.borrarpropios=(request, response, next)=>{
+    Ticket.borrarticketpropio(request.body.idticket);
+    response.redirect('/home'); 
+}
+
+exports.root = (request, response, next) => {
+    response.redirect('/home'); 
+};
