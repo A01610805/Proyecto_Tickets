@@ -24,7 +24,7 @@ exports.post_activos=(request, response, next)=>{
     Ticket.borrarticketpropio(request.body.idticket);
     response.redirect('/home');  
 }
-
+ // A partir de aqui inicia la implementación en ajax
 exports.buscar_activos = (request, response, next) => {
     tickets=Ticket.fetchticketsactivos()
     .then(([rows, fieldData]) => {
