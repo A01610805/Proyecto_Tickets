@@ -3,17 +3,17 @@
 const express = require('express');
 // path nos permite poder manejar las rutas tanto relativas 
 // como absolutas de nuestra PC y de nuestro proyecto.
-// path al igual que otros módulos cuenta con muchísimos 
-// métodos, no los quieras aprender todos de golpe, aprender los 
-// más usados y a medida que avances con Node podrás conocer 
-// más métodos.
+
 const path = require('path');
 // Para manejar la solicitud de HTTP POST en Express.js version 4
 //  y superior, necesita instalar un módulo de middleware llamado 
 // body-parser. body-parser extrae toda la parte del cuerpo de una 
 // secuencia de solicitud entrante y la expone en req.body.
 const bodyParser = require('body-parser');
-
+// Una cookie HTTP es una pequeña parte de datos que el servidor envía al navegador web del usuario, 
+// que puede guardarlo y mandarlo de nuevo junto con la siguiente petición al mismo servidor. 
+// Típicamente, se utiliza para saber si dos peticiones vienen del mismo navegador , 
+// permitiendo mantener la sesión del usuario "loggeada", por ejemplo.
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 //const placeholder = require('placeholder-loading');

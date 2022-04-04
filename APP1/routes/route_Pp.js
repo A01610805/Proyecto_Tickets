@@ -3,6 +3,6 @@ const router = express.Router();
 
 const PPController = require('../controllers/controller_pp');
 
-router.use('/', PPController.principal);
+router.get('/', PPController.get_principal);
 
 module.exports = router;
