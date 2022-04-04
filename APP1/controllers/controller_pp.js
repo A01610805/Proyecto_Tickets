@@ -5,23 +5,24 @@ const Respuesta = require('../models/respuestas');
 const Tickets = require('../models/tickets');
 
 exports.get_principal = (request, response, next) => {
-        console.log('Pantalla principal');
-        Tickets.fetchticketsactivos()
-            .then(([rows, fielData]))
-        console.log(rows);
-        response.render('Primer_pantalla', {
-            username: request.session.name ? request.session.name : '',
-            ticketss: rows,
-        });
+    console.log('Pantalla principal');
+    Tickets.fetchticketsactivos()
+        .then(([rows, fielData]) => {
+            response.render('Primer_pantalla', {
+                username: request.session.name ? request.session.name : '',
+                ticketss: rows
+            });
 
-    }
-    // exports.get_genticket = (request, response, next) => {
-    //     Categoria.fetchAll()
-    //         .then(([rows, fielData]) => {
-    //             response.render('GenerarTicket', {
-    //                 Tiname: request.session.usuario ? request.session.usuario : '',
-    //                 categrias: rows,
-    //             });
-    //         })
-    //         .catch(error => { console.log(error) });
-    // };
+        })
+        .catch(error => { console.log(error) });
+};
+// exports.get_genticket = (request, response, next) => {
+//     Categoria.fetchAll()
+//         .then(([rows, fielData]) => {
+//             response.render('GenerarTicket', {
+//                 Tiname: request.session.usuario ? request.session.usuario : '',
+//                 categrias: rows,
+//             });
+//         })
+//         .catch(error => { console.log(error) });
+// };

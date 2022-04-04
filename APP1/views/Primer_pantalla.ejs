@@ -7,49 +7,82 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
 
     <body>
-        <div class="container">
-            <h1>Tickets Activos</h1>
-            <!-- Page Content goes here -->
-            <ul class="collection">
-                <!-- aqui se hace un for cada ticket -->
-                <% for (let ticket of ticketss) { %>
-                    <li class="collection-item">
-                        <div class="col s12 m2">
-                            <p class="z-depth-4">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <p id="titulo">
-                                            <%= ticket.titulo %>
-                                        </p>
+        <!-- <div class="row">
+            <div class="col s12 m9 l10">
+                <div id="urgente" class="section scrollspy">
+                    <p>Urgente </p>
+                </div>
+
+                <div id="alta" class="section scrollspy">
+                    <p>Alta </p>
+                </div>
+
+                <div id="media" class="section scrollspy">
+                    <p>Media </p>
+                </div>
+
+                <div id="baja" class="section scrollspy">
+                    <p>Baja </p>
+                </div>
+            </div>
+            <div class="col hide-on-small-only m3 l2">
+                <ul class="section table-of-contents right top">
+                    <h7>Prioridad</h7>
+                    <li><a href="#urgente">Urgente</a></li>
+                    <li><a href="#alta">Alta</a></li>
+                    <li><a href="#media">Media</a></li>
+                    <li><a href="#baja">Baja</a></li>
+                </ul>
+            </div>
+        </div> -->
+
+        <h4>Tickets Activos</h4>
+        <!-- Page Content goes here -->
+        <ul class="collection left">
+            <!-- aqui se hace un for cada ticket -->
+            <% for (let ticket of ticketss) { %>
+                <li class="collection-item">
+                    <div class="col s12 m2">
+                        <p class="z-depth-4">
+                            <div class="card">
+                                <div class="card-content">
+                                    <p id="titulo">
+                                        <%= ticket.titulo %>
+                                    </p>
+                                </div>
+                                <div class="card-tabs">
+                                    <ul class="tabs tabs-fixed-width">
+                                        <li class="tab"><a class="active" href="#test4">Descripcion</a></li>
+                                        <li class="tab"><a href="#test5">Preguntas/Respuestas</a></li>
+                                        <li class="tab"><a href="#test6">Comentarios</a></li>
+                                    </ul>
+                                </div>
+                                <div class="card-content">
+                                    <div id="test4">
+                                        <%= ticket.descripcion %>
                                     </div>
-                                    <div class="card-tabs">
-                                        <ul class="tabs tabs-fixed-width">
-                                            <li class="tab"><a class="active" href="#test4">Descripcion</a></li>
-                                            <li class="tab"><a href="#test5">Preguntas/Respuestas</a></li>
-                                            <li class="tab"><a href="#test6">Comentarios</a></li>
-                                        </ul>
+                                    <div id="test5">
+                                        <%= ticket.descripcion %>
                                     </div>
-                                    <div class="card-content grey lighten-4">
-                                        <div id="test4">
-                                            <%= ticket.descripcion %>
-                                        </div>
-                                        <div id="test5">Test 2</div>
-                                        <div id="test6">Test 3</div>
+                                    <div id="test6">
+                                        <%= ticket.comentarios_solucion %>
                                     </div>
                                 </div>
-                            </p>
-                        </div>
-                    </li>
-                    <% } %>
-            </ul>
-            <!--JavaScript at end of body for optimized loading-->
-            <script type="text/javascript" src="js/materialize.min.js"></script>
+                            </div>
+                        </p>
+
+                </li>
+                <% } %>
+
+        </ul>
+
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
 
     </html>
