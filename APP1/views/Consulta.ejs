@@ -2,15 +2,14 @@
 
 <% var i=1; 
 var titulo='';
-
 if(tipo==1){
 titulo='Consulta de tickets activos';
 }
 else if(tipo==2){
   titulo='Consulta de tickets archivados';
-  }
+}
 else if(tipo==3){
-titulo='Consulta de tickets propios';
+  titulo='Consulta de tickets propios';
 } %>
 
 <h1><%=titulo %></h1>
@@ -23,6 +22,7 @@ titulo='Consulta de tickets propios';
 
 
 <div class="row" id="respuesta_ajax">
+
   <% for (let ticket of tickets) {
     var color ='';
   if(ticket.ID_estado == 1){
@@ -44,6 +44,7 @@ titulo='Consulta de tickets propios';
     color = 'light-green accent-1';
   } 
   %>
+
   <div class="row">
     <div class="col s12 m12 l6">
       <div class="card">
@@ -96,7 +97,7 @@ titulo='Consulta de tickets propios';
     </div>
   </div>
 </div>
-<% i=i+1;}%>
+<% i=i+1;%>
 
 <script>
   const accion_asincrona = () => {
@@ -107,7 +108,7 @@ titulo='Consulta de tickets propios';
       //const csrf = document.getElementById('_csrf').value;
 
       //función que manda la petición asíncrona
-      fetch('/buscar_tickets/activos/'+valor_busqueda, {
+      fetch('/buscar_tickets/activos/' + valor_busqueda, {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -119,7 +120,8 @@ titulo='Consulta de tickets propios';
       }).then(data => {
           //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
           console.log(data);
-          let respuesta = '<div class="row" id="respuesta_ajax">' +
+          let respuesta = '';
+          respuesta += '<div class="row" id="respuesta_ajax">' +
           'for (let ticket of tickets) {' +
             "var color ='';"+
           'if(ticket.ID_estado == 1){'+
@@ -148,54 +150,55 @@ titulo='Consulta de tickets propios';
                 '</div>' +
                 '<div class="card-tabs">' + 
                   '<ul class="tabs tabs-fixed-width">' + 
-                    '<li class="tab"><a class="active" href="#descripcion/' + i + '">Descripción</a></li>' + 
-                    '<li class="tab"><a href="#p&r' + i + '">Preguntas y Respuestas</a></li>' + 
-                    <li class="tab"><a href="#datosgenerales<%=i%>">Datos Generales</a></li>
-                    <li class="tab"><a href="#comentarios<%=i%>">Comentarios</a></li>
-                  </ul>
-                </div>
+                    '<li class="tab"><a class="active" href="#descripcion/i ">Descripción</a></li>' + 
+                    '<li class="tab"><a href="#p&r i">Preguntas y Respuestas</a></li>' + 
+                    '<li class="tab"><a href="#datosgenerales i ">Datos Generales</a></li>' + 
+                    '<li class="tab"><a href="#comentarios i ">Comentarios</a></li>' + 
+                  '</ul>' + 
+                '</div>' + 
                       
-                <div class="card-content <%=color %>">
-                  <div id="#descripcion/<%= i%>"> 
-                  </div>
-                  <div id="#p&r<%=i%>">
-                    <h5>Nombre del Creador: <%=ticket.Nombre_creador%> <%=ticket.Apellido_P_creador%> <%=ticket.Apellido_M_creador%></h5>
-                    <h5>Nombre del Encargado: <%=ticket.Nombre_encargado%> <%=ticket.Apellido_P_encargado%> <%=ticket.Apellido_M_encargado%></h5>
-                    <%if((rol != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
-                    var ruta='';
-                    if(tipo==3){
-                      ruta='propio';
-                    }
-                    else if(tipo==2){
-                      ruta='archivo';
-                    }
-                    else if(tipo==1){
-                      ruta='activos';
-                    }
-                    %>
-                    <form action="/buscar_tickets/<%=ruta%>" method="POST">
-                      <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>"/>
-                      <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket
-                        <i class="material-icons highlight_off">Send</i>
-                      </button>
-                    </form>
-                  </div>
+                '<div class="card-content color ">' + 
+                  '<div id="#descripcion/i"> ' + 
+                  '</div>' + 
+                  '<div id="#p&ri">' +
+                    '<h5>Nombre del Creador: ' + ticket.Nombre_creador + ticket.Apellido_P_creador + ticket.Apellido_M_creador + '</h5>' + 
+                    '<h5>Nombre del Encargado: ' + ticket.Nombre_encargado + ticket.Apellido_P_encargado + ticket.Apellido_M_encargado + '</h5>' + 
+                    'if((rol != 3 || tipo == 3) &&'  + ticket.ID_estado + ' != 5 && ' + ticket.ID_estado + '!=6 ){'+
+                    "var ruta='';"+
+                    'if(tipo==3){'+
+                      "ruta='propio';" + 
+                    '}' +
+                    'else if(tipo==2){' + 
+                      "ruta='archivo';" + 
+                    '}' + 
+                    'else if(tipo==1){' + 
+                      "ruta='activos';" + 
+                    '}' + 
+                    '<form action="/buscar_tickets/ruta" method="POST">' + 
+                      '<input for="idticket" id="idticket" name="idticket" type="hidden" value=" ' + ticket.ID_ticket + '"/>' + 
+                      '<button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket' + 
+                        '<i class="material-icons highlight_off">Send</i>' + 
+                      '</button>' + 
+                    '</form>' + 
+                  '</div>' + 
 
-                  <div id="#datosgenerales<%=i%>">
-                  </div>
-                  <div id="#comentarios<%=i%>">
-                  </div>
+                  '<div id="#datosgenerales i">' + 
+                  '</div>' + 
+                  '<div id="#comentarios i ">' +
+                  '</div>' + 
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% i=i+1;}%>
-          
+                '</div>' + 
+              '</div>' + 
+            '</div>' + 
+          '</div>' + 
+        '</div>' + 
+        'i=i+1;';  
+      
         document.getElementById('respuesta_ajax').innerHTML = respuesta;
+        
       }).catch(err => {
-          console.log(err);
+        console.log('Error de ajax');
+        console.log(err);
       });
   };
   document.getElementById('buscar_creador').onkeyup = accion_asincrona;

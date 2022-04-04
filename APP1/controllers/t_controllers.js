@@ -35,6 +35,7 @@ exports.buscar_activos = (request, response, next) => {
             username: request.session.username ? request.session.username : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
+            async:true,
         }); 
     })
     .catch(err => {
