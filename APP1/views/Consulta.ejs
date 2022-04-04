@@ -85,6 +85,7 @@ else if(tipo==3){
                 <i class="material-icons highlight_off">Send</i>
               </button>
             </form>
+            <%}%>
           </div>
 
           <div id="#datosgenerales<%=i%>">
@@ -98,6 +99,7 @@ else if(tipo==3){
   </div>
 </div>
 <% i=i+1;%>
+<% } %>
 
 <script>
   const accion_asincrona = () => {
@@ -180,6 +182,7 @@ else if(tipo==3){
                         '<i class="material-icons highlight_off">Send</i>' + 
                       '</button>' + 
                     '</form>' + 
+                    '}'+
                   '</div>' + 
 
                   '<div id="#datosgenerales i">' + 
@@ -192,7 +195,8 @@ else if(tipo==3){
             '</div>' + 
           '</div>' + 
         '</div>' + 
-        'i=i+1;';  
+        'i=i+1;'+
+        '}';  
       
         document.getElementById('respuesta_ajax').innerHTML = respuesta;
         
