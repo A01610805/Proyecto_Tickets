@@ -9,24 +9,25 @@
 			<ul class="right hide-on-med-and-down">
 				 
 				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown5">Rol<i class="material-icons right">arrow_drop_down</i></a></li>
+
 				<div class=" right input-field col s6">
-					<input id="ID" type="text" class="validate">
+					<input id="ID" type="text" name="ID" class="validate">
 					<label for="ID">ID</label>
 				</div>
 				<div class="right input-field col s6">
-					<input id="first_name" type="text" class="validate">
+					<input id="first_name" type="text" name="nombre" class="validate">
 					<label for="first_name">Nombre</label>
 				</div>
 				<div class="right input-field col s6">
-					<input id="second_name" type="text" class="validate">
+					<input id="second_name" type="text" name="apaterno" class="validate">
 					<label for="second_name">Apellido Paterno</label>
 				</div>
 				<div class="right input-field col s6">
-					<input  id="third_name" type="text" class="validate">
+					<input  id="third_name" type="text" name="amaterno" class="validate">
 					<label for="third_name">Apellido Materno</label>
 				</div>
 				<div class="right input-field col s6">
-					<input  id="email" type="text" class="validate">
+					<input  id="email" type="text" name="correo" class="validate">
 					<label for="email">Correo</label>
 				</div>
 			</ul>
@@ -48,4 +49,56 @@
 		<% } %>
 		
 	</table>
+
+	<script>
+        const accion_asincrona = () => {
+            const valor_busqueda = document.getElementById('ID').value;
+            console.log(valor_busqueda);
+
+            //El token de protección CSRF
+            //const csrf = document.getElementById('_csrf').value;
+
+            //función que manda la petición asíncrona
+            fetch('/route_BuscarU/buscar/'+ valor_busqueda, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    //'csrf-token': csrf
+                }
+                //body: JSON.stringify(data)
+            }).then(result => {
+                return result.json(); //Regresa otra promesa
+            }).then(data => {
+                //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                console.log(data);
+                let respuesta = '';
+
+                for(let capybara of data) {
+                    respuesta += '<div class="col l3 m4 s12">' + 
+                        '<div class="card">' +
+                        '    <div class="card-image waves-effect waves-block waves-light">' +
+                        '        <img class="activator" src="'+ capybara.imagen +'">' +
+                        '    </div>' +
+                        '   <div class="card-content">' +
+                        '        <span class="card-title activator grey-text text-darken-4">' + capybara.nombre + ' <i class="material-icons right">more_vert</i></span>' +
+                        '        <p>' + capybara.created_at +'</p>' +
+                        '    </div>' +
+                        '    <div class="card-reveal">' +
+                        '        <span class="card-title grey-text text-darken-4">' + capybara.nombre + '<i class="material-icons right">close</i></span>' +
+                        '        <p>' + capybara.descripcion +'</p>' +
+                        '        <p>Su dueño es:' + capybara.duenio + '</p>' +
+                        '    </div>' +
+                        '</div>' +
+                    '</div>';
+                }
+
+                document.getElementById('respuesta_ajax').innerHTML = respuesta;
+                
+            }).catch(err => {
+                console.log(err);
+            });
+        };
+
+        document.getElementById('buscar').onkeyup = accion_asincrona;
+    </script>
 <%- include('includes/footer.ejs') %>
