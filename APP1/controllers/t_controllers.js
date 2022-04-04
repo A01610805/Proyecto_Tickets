@@ -27,22 +27,23 @@ exports.post_activos=(request, response, next)=>{
 
  // A partir de aqui inicia la implementación en ajax
 exports.buscar_activos = (request, response, next) => {
-    tickets2=Ticket.fetchticketsactivos_creador(request.params.valor)
+    let tipo=1;
+    tickets=Ticket.fetchticketsactivos_creador(request.params.valor)
     .then(([rows, fieldData]) => {
         console.log(rows);
-        response.render('Consulta', {
-            tickets2: rows,
-            username: request.session.username ? request.session.username : '',
-            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
-            tipo:tipo,
-            async:true,
-        }); 
+        response.status(200).json(rows);
+        // response.render('Consulta', {
+        //     tickets: rows,
+        //     username: request.session.username ? request.session.username : '',
+        //     rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+        //     tipo:tipo,
+        //     async:true,
+        // }); 
     })
     .catch(err => {
         console.log(err);
     });
 }
-
 
 exports.get_archivo=(request, response, next)=>{
 let tipo=2;
