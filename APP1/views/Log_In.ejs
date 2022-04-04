@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
-</head>
-<body>
-    <div id="envoltura">
-        <div id="contenedor">
-            <div id="cuerpo">
-                <form id="form-login" action="" method="post" autocomplete="off">
-                    <p><label >Usuario:</label></p>
-                        <input name="nombre" type="text" id="nombre" placeholder="Ingresa Usuario" autofocus="" required=""></p>
-                    <p><label>Contraseña:</label></p>
-                        <input name="password" type="password" id="password" placeholder="Ingresa Password" required=""></p>
+<html>
 
-                    <p id="bot"><input type="submit" id="submit" name="submit" value="Ingresar" class="boton"></p>
-                </form>
-            </div>
-            <a href="/users/signup"><i class="material-icons">Crear usuario</i> </a>
-            <div id="pie">Sistema de Login Y Registro</div>
-        </div>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-login" action="" method="post" autocomplete="off">
+            <p><label>Usuario:</label></p>
+            <input name="nombre" type="text" id="nombre" placeholder="Ingresa Usuario" autofocus="" required=""></p>
+            <p><label>Contraseña:</label></p>
+            <input name="password" type="password" id="password" placeholder="Ingresa Password" required=""></p>
+
+            <p id="bot"><input type="submit" id="submit" name="submit" value="Ingresar" class="boton"></p>
+
+        </form>
+    </div>
+    <button href="/users/signup" type="submit" name="action">Crear Usuario
+              </button>
     </div>
 </body>
 
- 
+
 </html>

@@ -19,6 +19,7 @@
                 border: 1px solid #ddd;
                 background: #f1f1f1;
                 overflow-y: scroll;
+                flex-wrap: wrap;
             }
             
             #mensajes {
@@ -27,53 +28,107 @@
             
             #titulo {
                 font-family: 'Monaco';
+                font-size: large;
             }
+            
+            #Tickets_Generados {}
         </style>
+        <div id="Tickets_Generados">
+            <div id="global">
+                <div id="mensajes">
+                    <blockquote>
+                        <h5 id="titulo">Tickets Generados</h5>
+                    </blockquote>
+                    <div class="container left">
+                        <ul class="collection truncate left">
+                            <!-- aqui se hace un for cada ticket -->
+                            <% var i = 0; %>
+                                <% for (let ticket of ticketss) { %>
+                                    <li class="collection-item">
+                                        <div class="col s12 m2">
+                                            <p class="z-depth-4">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <p id="titulo">
+                                                            <%= ticket.titulo %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="card-tabs">
+                                                        <ul class="tabs tabs-fixed-width">
+                                                            <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
+                                                            <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
+                                                            <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div id="test<%= i+1%>">
+                                                            <%= ticket.descripcion %>
+                                                        </div>
+                                                        <div id="test<%= i+2%>">
+                                                            <%= ticket.ID_ticket %>
+                                                        </div>
+                                                        <div id="test<%= i+3%>">
+                                                            <%= ticket.comentarios_solucion %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </p>
 
-        <div id="global">
-            <div id="mensajes">
-                <blockquote>
-                    <h5 id="titulo">Tickets Activos</h5>
-                </blockquote>
-                <div class="container left">
-                    <ul class="collection truncate left">
-                        <!-- aqui se hace un for cada ticket -->
-                        <% var i = 0; %>
-                            <% for (let ticket of ticketss) { %>
-                                <li class="collection-item">
-                                    <div class="col s12 m2">
-                                        <p class="z-depth-4">
-                                            <div class="card">
-                                                <div class="card-content">
-                                                    <p id="titulo">
-                                                        <%= ticket.titulo %>
-                                                    </p>
-                                                </div>
-                                                <div class="card-tabs">
-                                                    <ul class="tabs tabs-fixed-width">
-                                                        <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
-                                                        <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
-                                                        <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="card-content">
-                                                    <div id="test<%= i+1%>">
-                                                        <%= ticket.descripcion %>
+                                    </li>
+                                    <% i=i+3 %>
+                                        <% } %>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Mis_Tickets">
+            <div id="global">
+                <div id="mensajes">
+                    <blockquote>
+                        <h5 id="titulo">Mis Tickets</h5>
+                    </blockquote>
+                    <div class="container left">
+                        <ul class="collection truncate left">
+                            <!-- aqui se hace un for cada ticket -->
+                            <% var i = 0; %>
+                                <% for (let ticket of ticketss) { %>
+                                    <li class="collection-item">
+                                        <div class="col s12 m2">
+                                            <p class="z-depth-4">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <p id="titulo">
+                                                            <%= ticket.titulo %>
+                                                        </p>
                                                     </div>
-                                                    <div id="test<%= i+2%>">
-                                                        <%= ticket.ID_ticket %>
+                                                    <div class="card-tabs">
+                                                        <ul class="tabs tabs-fixed-width">
+                                                            <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
+                                                            <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
+                                                            <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+                                                        </ul>
                                                     </div>
-                                                    <div id="test<%= i+3%>">
-                                                        <%= ticket.comentarios_solucion %>
+                                                    <div class="card-content">
+                                                        <div id="test<%= i+1%>">
+                                                            <%= ticket.descripcion %>
+                                                        </div>
+                                                        <div id="test<%= i+2%>">
+                                                            <%= ticket.ID_ticket %>
+                                                        </div>
+                                                        <div id="test<%= i+3%>">
+                                                            <%= ticket.comentarios_solucion %>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </p>
+                                            </p>
 
-                                </li>
-                                <% i=i+3 %>
-                                    <% } %>
-                    </ul>
+                                    </li>
+                                    <% i=i+3 %>
+                                        <% } %>
+                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
