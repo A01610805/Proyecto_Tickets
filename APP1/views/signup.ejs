@@ -1,4 +1,9 @@
 <%- include('includes/head.ejs') %>
+    <!-- <style type="text/css">
+        body {
+            background-image: url("https://images.ecestaticos.com/LtUY2F-tA12ve8aGzYIVgoX8pJo=/0x0:2121x1414/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd9e%2F66d%2F793%2Fd9e66d793adbc994841e60850a17e61c.jpg");
+        }
+    </style> -->
 
     <form action="/users/signup" method="POST" style="border:1px solid #ccc">
         <div class="container">
@@ -7,28 +12,28 @@
             <h8>Recuerde que el correo debe tener un formato alguien@zeb.mx</h8>
             <br><br>
             <label for="rol">Rol: </label>
-            <input type="text" id="rol" name="rol" >
+            <input type="text" id="rol" name="rol">
             <label for="nombre">Nombre: </label>
-            <input type="text" id="nombre" name="nombre" >
+            <input type="text" id="nombre" name="nombre">
             <label for="ApellidoP">Apellido paterno: </label>
-            <input type="text" id="ApellidoP" name="ApellidoP" >
+            <input type="text" id="ApellidoP" name="ApellidoP">
             <label for="ApellidoM">  Apellido Materno: </label>
-            <input type="text" id="ApellidoM" name="ApellidoM" >
+            <input type="text" id="ApellidoM" name="ApellidoM">
             <label for="Email">Correo: </label>
-            <input type="text" id="Email" name="Email" >
+            <input type="text" id="Email" name="Email">
             <label for="password">Password: </label>
             <input type="password" id="password" name="password">
             <br><br>
-        
+
             <div class="clearfix">
-                <br><br>  
+                <br><br>
                 <input type="submit" value="Enviar">
-                <br><br>        
+                <br><br>
             </div>
 
             <p><a href="/users/login">Regresar a menú de login</a></p>
 
         </div>
-      </form>
+    </form>
 
-<%- include('includes/footer.ejs') %>
+    <%- include('includes/footer.ejs') %>

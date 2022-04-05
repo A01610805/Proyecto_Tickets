@@ -13,11 +13,24 @@
 
     <body>
         <style type="text/css">
+            /* body {
+                background-image: url("https://images.ecestaticos.com/LtUY2F-tA12ve8aGzYIVgoX8pJo=/0x0:2121x1414/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd9e%2F66d%2F793%2Fd9e66d793adbc994841e60850a17e61c.jpg");
+            } */
+            
             #global {
+                height: 900px;
+                width: 700px;
+                border: 1px solid #ddd;
+                background: grey;
+                overflow-y: scroll;
+                flex-wrap: wrap;
+            }
+            
+            #global1 {
                 height: 400px;
                 width: 700px;
                 border: 1px solid #ddd;
-                background: #f1f1f1;
+                background: grey;
                 overflow-y: scroll;
                 flex-wrap: wrap;
             }
@@ -31,16 +44,30 @@
                 font-size: large;
             }
             
-            #Tickets_Generados {}
+            #Tickets_Generados {
+                display: inline-block;
+                width: 750px;
+                height: 50px;
+            }
+            
+            #Mis_Tickets {
+                position: absolute;
+                top: 600;
+                right: auto;
+                display: inline-block;
+                width: 100px;
+                height: 50px;
+            }
         </style>
+
         <div id="Tickets_Generados">
             <div id="global">
                 <div id="mensajes">
                     <blockquote>
                         <h5 id="titulo">Tickets Generados</h5>
                     </blockquote>
-                    <div class="container left">
-                        <ul class="collection truncate left">
+                    <div class=" center">
+                        <ul class="collection">
                             <!-- aqui se hace un for cada ticket -->
                             <% var i = 0; %>
                                 <% for (let ticket of ticketss) { %>
@@ -84,48 +111,48 @@
             </div>
         </div>
         <div id="Mis_Tickets">
-            <div id="global">
+            <div id="global1">
                 <div id="mensajes">
                     <blockquote>
                         <h5 id="titulo">Mis Tickets</h5>
                     </blockquote>
-                    <div class="container left">
-                        <ul class="collection truncate left">
+                    <div class=" center">
+                        <ul class="collection">
                             <!-- aqui se hace un for cada ticket -->
-                            <% var i = 0; %>
-                                <% for (let ticket of ticketss) { %>
+                            <% var z = 0; %>
+                                <% for (let ticket2 of ticketss) { %>
                                     <li class="collection-item">
                                         <div class="col s12 m2">
                                             <p class="z-depth-4">
                                                 <div class="card">
                                                     <div class="card-content">
                                                         <p id="titulo">
-                                                            <%= ticket.titulo %>
+                                                            <%= ticket2.titulo %>
                                                         </p>
                                                     </div>
                                                     <div class="card-tabs">
                                                         <ul class="tabs tabs-fixed-width">
-                                                            <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
-                                                            <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
-                                                            <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+                                                            <li class="tab"><a class="active" href="#tests<%= z+1%>">Descripcion</a></li>
+                                                            <li class="tab"><a href="#tests<%= z+2%>">Preguntas/Respuestas</a></li>
+                                                            <li class="tab"><a href="#tests<%= z+3%>">Comentarios</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="card-content">
-                                                        <div id="test<%= i+1%>">
-                                                            <%= ticket.descripcion %>
+                                                        <div id="tests<%= z+1%>">
+                                                            <%= ticket2.descripcion %>
                                                         </div>
-                                                        <div id="test<%= i+2%>">
-                                                            <%= ticket.ID_ticket %>
+                                                        <div id="tests<%=z+2%>">
+                                                            <%= ticket2.ID_ticket %>
                                                         </div>
-                                                        <div id="test<%= i+3%>">
-                                                            <%= ticket.comentarios_solucion %>
+                                                        <div id="tests<%= z+3%>">
+                                                            <%= ticket2.comentarios_solucion %>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </p>
 
                                     </li>
-                                    <% i=i+3 %>
+                                    <% z=z+3 %>
                                         <% } %>
                         </ul>
                         </div>
