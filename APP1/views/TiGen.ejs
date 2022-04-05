@@ -1,5 +1,51 @@
 <%- include('includes/head.ejs') %>
-    <div class="container">
+   
+    <br><br>
+    <div>
+        <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar categoría del ticket<i class="material-icons right">arrow_drop_down</i></a>
+    
+        <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
+            <% for (let categoria of categorias) { %>
+                <li class="">
+                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                </li>
+            <% } %>
+            </ul>
+    </div>
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input  id="Titulo" type="text" class="validate">
+                    <label for="Titulo" style="font-size:16px">Título</label>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" class="materialize-textarea" data-length="100"></textarea>
+                    <label for="descripcion" style="font-size:18px">Descripción</label>
+                </div>
+            </div>
+
+            <%var j=1; %>
+            <% for (let pregunta of preguntas) { %> 
+                <div class="row">
+                    <div class="input-field col s12">
+                        <%var nombre = "texto_respuesta"+j%>
+                        <textarea id="pregunta <+ j>" class="materialize-textarea" data-length="1000"></textarea>  
+                        <label for="pregunta <+ j%>"><%= pregunta.texto_pregunta %></label>
+                    </div>
+                </div>
+                <%j=j+1;%>
+            <% } %>  
+        </form>
+    </div>
+        
+
+
+
+<!--  <div class="container">
 
          <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
             <% for (let categoria of categorias) { %>
@@ -13,6 +59,9 @@
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a></li>
             </div>
         </nav>
+
+
+
         <div class="form">
             <form action="" method="POST" id="form">
             <div class="grupo">
@@ -39,6 +88,27 @@
             </form>
         </div>
     
-    </div>
+    </div> -->
+
+
+
+
+    <!-- Intento fallido de cambio de categorías
+        <div class="input-field col s6 m6 l6">
+        <select>
+        <option value="" disabled selected>Categorías</option>
+        <& let i = 0;%>
+        <% for (let categoria of categorias) { %>
+            <option href="/generar_ticket/categoria/<%= categoria.ID_categoria %>">
+                <%= categoria.nombre_categoria %> 
+            </option>
+            <% i++;%>
+        <% } %>
+        </select>
+        <label>Cambiar de Categoría</label>
+        <h1>Creación de ticket <br></h1>
+    </div> -->
+
+
     
 <%- include('includes/footer.ejs') %>
