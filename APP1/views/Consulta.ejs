@@ -14,12 +14,24 @@ else if(tipo==3){
 
 <h1><%=titulo %></h1>
 
-<label for="buscar_creador">Buscar por nombre del creador: </label>
-<input type="text" name="buscar_creador" id="buscar_creador">
-
-<label for="buscar_encargado">Buscar por nombre del encargado: </label>
-<input type="text" name="buscar_encargado" id="buscar_encargado">
-
+<nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <ul class="left hide-on-med-and-down">
+      <div class="right input-field col s5">
+        <label for="buscar_encargado">Encargado: </label>
+        <input type="text" name="buscar_encargado" id="buscar_encargado" color="white">
+      </div>
+      <div class="right input-field col s4">
+        <label for="buscar_creador">Creador: </label>
+        <input type="text" name="buscar_creador" id="buscar_creador">
+      </div>
+      <div class="right input-field col s4">
+        <label for="titulo">Filtrar por: </label>
+        <input disabled value = '' type="text" name="titulo" id="titulo">
+      </div>
+    </ul>
+  </div>
+</nav>
 
 <div class="row" id="respuesta_ajax">
 
@@ -46,7 +58,7 @@ else if(tipo==3){
   %>
 
   <div class="row">
-    <div class="col s12 m12 l6">
+    <div class="col s4 m6 8">
       <div class="card">
         <div class="card-content">
           <h3><%=ticket.titulo %></h3>
@@ -55,7 +67,7 @@ else if(tipo==3){
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width">
             <li class="tab"><a class="active" href="#descripcion/<%=i%>">Descripción</a></li>
-            <!-- <<li class="tab"><a href="#p&r/<%=i%>">Preguntas y Respuestas</a></li> -->
+            <li class="tab"><a href="#p&r<%=i%>">Preguntas y Respuestas</a></li>
             <li class="tab"><a href="#datosgenerales/<%=i%>">Datos Generales</a></li>
             <li class="tab"><a href="#comentarios/<%=i%>">Comentarios</a></li>
           </ul>
@@ -154,7 +166,7 @@ else if(tipo==3){
                   '<div class="card-tabs">' + 
                     '<ul class="tabs tabs-fixed-width">' + 
                       '<li class="tab"><a class="active" href="#descripcion/'+i+'">Descripción</a></li>' + 
-                      '<!-- <<li class="tab"><a href="#p&r'+i+'">Preguntas y Respuestas</a></li> -->' + 
+                      '<li class="tab"><a href="#p&r'+i+'">Preguntas y Respuestas</a></li>' + 
                       '<li class="tab"><a href="#datosgenerales'+i+'">Datos Generales</a></li>' + 
                       '<li class="tab"><a href="#comentarios'+i+'">Comentarios</a></li>' + 
                     '</ul>' + 
