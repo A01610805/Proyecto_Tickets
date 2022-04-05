@@ -17,10 +17,6 @@ else if(tipo==3){
 <nav class="grey darken-3">
   <div class="nav-wrapper">
     <ul class="left hide-on-med-and-down">
-      <div class="right input-field col s5">
-        <label for="buscar_encargado">Encargado: </label>
-        <input type="text" name="buscar_encargado" id="buscar_encargado" color="white">
-      </div>
       <div class="right input-field col s4">
         <label for="buscar_creador">Creador: </label>
         <input type="text" name="buscar_creador" id="buscar_creador">
@@ -66,17 +62,17 @@ else if(tipo==3){
 
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width">
-            <li class="tab"><a class="active" href="#descripcion/<%=i%>">Descripción</a></li>
-            <li class="tab"><a href="#p&r<%=i%>">Preguntas y Respuestas</a></li>
-            <li class="tab"><a href="#datosgenerales/<%=i%>">Datos Generales</a></li>
-            <li class="tab"><a href="#comentarios/<%=i%>">Comentarios</a></li>
+            <li class="tab"><a class="active" href="#descripcion/<%=i+1%>">Descripción</a></li>
+            <li class="tab"><a href="#p&r<%=i+2%>">Preguntas y Respuestas</a></li>
+            <li class="tab"><a href="#datosgenerales/<%=i+3%>">Datos Generales</a></li>
+            <li class="tab"><a href="#comentarios/<%=i+4%>">Comentarios</a></li>
           </ul>
         </div>
               
         <div class="card-content <%=color %>">
-          <div id="#descripcion/<%= i%>"> 
+          <div id="#descripcion/<%= i+1%>"> 
           </div>
-          <div id="#p&r/<%=i%>">
+          <div id="#p&r/<%=i+2%>">
             <h5>Nombre del Creador: <%=ticket.Nombre_creador%> <%=ticket.apellido_P_creador%> <%=ticket.Apellido_M_creador%></h5>
             <h5>Nombre del Encargado: <%=ticket.Nombre_encargado%> <%=ticket.Apellido_P_encargado%> <%=ticket.Apellido_M_encargado%></h5>
             <%if((rol != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
@@ -100,9 +96,9 @@ else if(tipo==3){
             <%}%>
           </div>
 
-          <div id="#datosgenerales/<%=i%>">
+          <div id="#datosgenerales/<%=i+3%>">
           </div>
-          <div id="#comentarios/<%=i%>">
+          <div id="#comentarios/<%=i+4%>">
           </div>
 
         </div>
@@ -110,7 +106,7 @@ else if(tipo==3){
     </div>
   </div>
 </div>
-<% i=i+1;%>
+<% i=i+4;%>
 <% } %>
 
 <script>
@@ -172,7 +168,7 @@ else if(tipo==3){
                     '</ul>' + 
                   '</div>' + 
                         
-                  '<div class="card-content'+color+'">' + 
+                  '<div class="card-content '+color+'">' + 
                     '<div id="#descripcion/'+i+'">' + 
                     '</div>' + 
                     '<div id="#p&r/'+i+'">' +
