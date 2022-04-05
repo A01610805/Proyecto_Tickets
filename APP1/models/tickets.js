@@ -20,8 +20,11 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5');
     }
     
-    static fetchticketsactivos_creador(valor){
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado !=6 AND ID_estado !=5 AND Nombre_creador LIKE ?', ['%'+valor+'%']);
+    static fetchticketsactivos_filtros(valor){
+        let arr = valor.split('&');
+        console.log(arr[0]);
+        console.log(arr[1]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado !=6 AND ID_estado !=5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
     }
 
     static borrarticketpropio(id){
