@@ -14,7 +14,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsusuario(id) {
-        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=?', [id]);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador=?', [id]);
     }
 
     static fetchticketsarchivados() {
