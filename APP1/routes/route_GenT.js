@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const cgenticket = require('../controllers/controller_GenT');
 
 router.get('/enviar_ticket', cgenticket.get_genticket);
