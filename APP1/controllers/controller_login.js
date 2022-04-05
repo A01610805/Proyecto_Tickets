@@ -64,7 +64,7 @@ exports.get_signup = (request, response, next) => {
 
 exports.post_signup = (request, response, next) => {
     console.log(request.body);
-    const user = new User(request.body.rol, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.Email, request.body.password);
+    const user = new User(request.body.rol, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, (request.body.Email).toLowerCase(), request.body.password);
     user.save()
         .then(()=>{
             response.redirect('Primer_pantalla'); 
