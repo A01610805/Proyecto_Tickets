@@ -38,14 +38,42 @@ exports.filtrar = (req, res, next) => {
 }
 exports.buscar = (req, res, next) => {
     // console.log(req.params.valor);
-    Busqueda.fetch(req.params.valor)
+    Busqueda.fetch_ID(req.params.valor)
         .then(([rows, fieldData]) => {
-            console.log(rows);
-            res.status(200).json(rows);
+            Busqueda.fetch_nombre(req.params.valor)
+                .then(([rows2, fieldData]) => {
+                    Busqueda.fetch_apellidoP(req.params.valor)
+                        .then(([rows3, fieldData]) => {
+                            Busqueda.fetch_apellidoM(req.params.valor)
+                                .then(([rows4, fieldData]) => {
+                                    Busqueda.fetch_correo(req.params.valor)
+                                        .then(([rows5, fieldData]) => {
+                                            console.log(rows);
+                                            res.status(200).json(rows, rows2, rows3, rows4, rows5);
+                                        })
+                                        .catch(err => {
+                                            console.log(err);
+                                        }); 
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                }); 
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                })
+                .catch(err => {
+                    console.log(err);
+                }); 
         })
         .catch(err => {
             console.log(err);
         }); 
+    
+     
+        
+
 }
 
 exports.root = (req,res,next) => {

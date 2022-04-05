@@ -7,8 +7,20 @@ module.exports = class Busqueda {
     static fetchAll(){
         return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario NATURAL JOIN rol');
     }
-    static fetch(valor){
-        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE (nombre LIKE ? OR apellido_paterno LIKE ? OR apellido_materno LIKE ? OR ID_usuario LIKE ? OR ID_rol LIKE ? OR nombre_rol LIKE ? OR correo LIKE ?)', ['%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%']);
+    static fetch_ID(valor){
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE ( ID_usuario LIKE ? )', ['%'+valor+'%']);
+    }
+    static fetch_nombre(valor){
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE ( nombre LIKE ? )', ['%'+valor+'%']);
+    }
+    static fetch_apellidoP(valor){
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE ( apellido_pateno LIKE ? )', ['%'+valor+'%']);
+    }
+    static fetch_apellidoM(valor){
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE ( apelllido_materno LIKE ? )', ['%'+valor+'%']);
+    }
+    static fetch_correo(valor){
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE ( correo LIKE ? )', ['%'+valor+'%']);
     }
     static fetchOne(){
         return db.execute('SELECT ID_rol FROM usuario NATURAL JOIN rol');
