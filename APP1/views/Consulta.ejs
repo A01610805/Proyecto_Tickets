@@ -55,17 +55,17 @@ else if(tipo==3){
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width">
             <li class="tab"><a class="active" href="#descripcion/<%=i%>">Descripción</a></li>
-            <li class="tab"><a href="#p&r<%=i%>">Preguntas y Respuestas</a></li>
-            <li class="tab"><a href="#datosgenerales<%=i%>">Datos Generales</a></li>
-            <li class="tab"><a href="#comentarios<%=i%>">Comentarios</a></li>
+            <!-- <<li class="tab"><a href="#p&r/<%=i%>">Preguntas y Respuestas</a></li> -->
+            <li class="tab"><a href="#datosgenerales/<%=i%>">Datos Generales</a></li>
+            <li class="tab"><a href="#comentarios/<%=i%>">Comentarios</a></li>
           </ul>
         </div>
               
         <div class="card-content <%=color %>">
           <div id="#descripcion/<%= i%>"> 
           </div>
-          <div id="#p&r<%=i%>">
-            <h5>Nombre del Creador: <%=ticket.Nombre_creador%> <%=ticket.Apellido_P_creador%> <%=ticket.Apellido_M_creador%></h5>
+          <div id="#p&r/<%=i%>">
+            <h5>Nombre del Creador: <%=ticket.Nombre_creador%> <%=ticket.apellido_P_creador%> <%=ticket.Apellido_M_creador%></h5>
             <h5>Nombre del Encargado: <%=ticket.Nombre_encargado%> <%=ticket.Apellido_P_encargado%> <%=ticket.Apellido_M_encargado%></h5>
             <%if((rol != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
             var ruta='';
@@ -88,9 +88,9 @@ else if(tipo==3){
             <%}%>
           </div>
 
-          <div id="#datosgenerales<%=i%>">
+          <div id="#datosgenerales/<%=i%>">
           </div>
-          <div id="#comentarios<%=i%>">
+          <div id="#comentarios/<%=i%>">
           </div>
 
         </div>
@@ -102,7 +102,7 @@ else if(tipo==3){
 <% } %>
 
 <script>
-  const accion_asincrona = () => {
+  const buscar_por_creador = () => {
       const valor_busqueda = document.getElementById('buscar_creador').value;
       console.log(valor_busqueda);
 
@@ -124,6 +124,8 @@ else if(tipo==3){
           console.log(data);
           let respuesta = '';
           let i=1;
+          let rol = 1;
+          let tipo = 1;
           for (let ticket of data) { 
             let color ='';
             if(ticket.ID_estado == 1){
@@ -152,7 +154,7 @@ else if(tipo==3){
                   '<div class="card-tabs">' + 
                     '<ul class="tabs tabs-fixed-width">' + 
                       '<li class="tab"><a class="active" href="#descripcion/'+i+'">Descripción</a></li>' + 
-                      '<li class="tab"><a href="#p&r'+i+'">Preguntas y Respuestas</a></li>' + 
+                      '<!-- <<li class="tab"><a href="#p&r'+i+'">Preguntas y Respuestas</a></li> -->' + 
                       '<li class="tab"><a href="#datosgenerales'+i+'">Datos Generales</a></li>' + 
                       '<li class="tab"><a href="#comentarios'+i+'">Comentarios</a></li>' + 
                     '</ul>' + 
@@ -161,9 +163,9 @@ else if(tipo==3){
                   '<div class="card-content'+color+'">' + 
                     '<div id="#descripcion/'+i+'">' + 
                     '</div>' + 
-                    '<div id="#p&r'+i+'">' +
-                      '<h5>Nombre del Creador: ' + ticket.Nombre_creador + ticket.Apellido_P_creador + ticket.Apellido_M_creador + '</h5>' + 
-                      '<h5>Nombre del Encargado: ' + ticket.Nombre_encargado + ticket.Apellido_P_encargado + ticket.Apellido_M_encargado + '</h5>'; 
+                    '<div id="#p&r/'+i+'">' +
+                      '<h5>Nombre del Creador: ' + ticket.Nombre_creador + ' ' + ticket.apellido_P_creador+ ' ' + ticket.Apellido_M_creador + '</h5>' + 
+                      '<h5>Nombre del Encargado: ' + ticket.Nombre_encargado + ' ' +  ticket.Apellido_P_encargado  + ' ' + ticket.Apellido_M_encargado + '</h5>'; 
                         if((rol != 3 || tipo == 3) && ticket.ID_estado != 5 &&  ticket.ID_estado  !=6 ){
                           var ruta='';
                           if(tipo==3){
@@ -185,9 +187,9 @@ else if(tipo==3){
                       }
                     respuesta += '</div>' + 
 
-                    '<div id="#datosgenerales'+i+'">' + 
+                    '<div id="#datosgenerales/'+i+'">' + 
                     '</div>' + 
-                    '<div id="#comentarios'+i+'">' +
+                    '<div id="#comentarios/'+i+'">' +
                     '</div>' + 
 
                   '</div>' + 
@@ -205,7 +207,7 @@ else if(tipo==3){
         console.log(err);
       });
   };
-  document.getElementById('buscar_creador').onkeyup = accion_asincrona;
+  document.getElementById('buscar_creador').onkeyup = buscar_por_creador;
 
 </script>
 

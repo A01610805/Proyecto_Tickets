@@ -27,7 +27,6 @@ exports.post_activos=(request, response, next)=>{
 
  // A partir de aqui inicia la implementación en ajax
 exports.buscar_activos = (request, response, next) => {
-    let tipo=1;
     tickets=Ticket.fetchticketsactivos_creador(request.params.valor)
     .then(([rows, fieldData]) => {
         console.log(rows);
