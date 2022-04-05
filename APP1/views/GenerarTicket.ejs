@@ -12,8 +12,20 @@
                 </li>
                 <% } %>
         </ul>
-        <button href="/home" class="btn waves-effect waves-light grey dark-4" type="submit" name="action">Cancelar
-        </button>
+    </div>
+    <div class="center">
+        <a class="waves-effect waves-light btn modal-trigger grey lighten-2 black-text" href="#modal1">Cancelar</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Volver al menu</h4>
+                <p>Seguro volver a la pagina principal?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="/home" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+            </div>
+        </div>
     </div>
 
     <%- include('includes/footer.ejs') %>

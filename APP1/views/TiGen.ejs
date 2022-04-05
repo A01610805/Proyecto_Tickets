@@ -10,9 +10,18 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-    <div class="container">
+    <style>
+        #encuesta {
+            height: 600px;
+            width: 1200px;
+            border: 1px solid #ddd;
+            background: grey;
+            flex-wrap: wrap;
+        }
+    </style>
+    <div class="container black-text" id="encuesta">
 
-        <ul id="dropdown1" class=" hide-on-med-and-down dropdown-content">
+        <ul id="dropdown1" class=" hide-on-med-and-down dropdown-content ">
             <% for (let categoria of categorias) { %>
                 <li class="">
                     <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class="">
@@ -31,28 +40,51 @@
             <form action="" method="POST" id="form">
                 <div class="grupo">
                     <input required id="titulo" name="titulo"><span class="barra"></span>
-                    <label for="">Titulo</label>
+                    <label for="" class="black-text">Titulo</label>
                 </div>
                 <div class="grupo">
                     <input required id="descripcion" name="descripcion"><span class="barra"></span>
-                    <label for="">Descripcion</label>
+                    <label for="" class="black-text">Descripcion</label>
                 </div>
                 <%var i=1; %>
                     <% for (let pregunta of preguntas) { %>
                         <div class="grupo">
                             <%var nombre = "texto_respuesta"+i%>
                                 <input required id="<%nombre%>" name="texto_respuesta"><span class="barra"></span>
-                                <label href="/generar_ticket/pregunta/<%= pregunta.ID_categoria %>" for="ID_pregunta"><%= pregunta.texto_pregunta %></label>
+                                <label href="/generar_ticket/pregunta/<%= pregunta.ID_categoria %>" for="ID_pregunta" class="black-text"><%= pregunta.texto_pregunta %></label>
                         </div>
                         <%i=i+1;%>
                             <% } %>
                                 <br>
 
-                                <button class="btn waves-effect waves-light grey dark-4" type="submit" name="action">Enviar
-                                    <i class="material-icons right">send</i>
-                                  </button>
-                                <button class="btn waves-effect waves-light grey dark-4" href="/home" type="submit" name="action">Cancelar
-                                  </button>
+                                <div class="center">
+                                    <a class="waves-effect waves-light btn modal-trigger grey lighten-2 black-text" href="#modal1">Generar Ticket</a>
+
+                                    <!-- Modal Structure -->
+                                    <div id="modal1" class="modal">
+                                        <div class="modal-content">
+                                            <h4>Seguro Quieres Generar El Ticket?</h4>
+                                            <p>Asegurate de llenar los campos correctamente</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="/home" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="center">
+                                    <a class="waves-effect waves-light btn modal-trigger grey lighten-2 black-text" href="#modal1">Cancelar</a>
+
+                                    <!-- Modal Structure -->
+                                    <div id="modal2" class="modal">
+                                        <div class="modal-content">
+                                            <h4>Volver al menu</h4>
+                                            <p>Seguro volver a la pagina principal?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="/home" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                                        </div>
+                                    </div>
+                                </div>
             </form>
         </div>
 
