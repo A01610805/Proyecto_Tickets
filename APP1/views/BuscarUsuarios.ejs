@@ -73,23 +73,10 @@
                 console.log(data);
                 let respuesta = '';
 
-                for(let capybara of data) {
-                    respuesta += '<div class="col l3 m4 s12">' + 
-                        '<div class="card">' +
-                        '    <div class="card-image waves-effect waves-block waves-light">' +
-                        '        <img class="activator" src="'+ capybara.imagen +'">' +
-                        '    </div>' +
-                        '   <div class="card-content">' +
-                        '        <span class="card-title activator grey-text text-darken-4">' + capybara.nombre + ' <i class="material-icons right">more_vert</i></span>' +
-                        '        <p>' + capybara.created_at +'</p>' +
-                        '    </div>' +
-                        '    <div class="card-reveal">' +
-                        '        <span class="card-title grey-text text-darken-4">' + capybara.nombre + '<i class="material-icons right">close</i></span>' +
-                        '        <p>' + capybara.descripcion +'</p>' +
-                        '        <p>Su dueño es:' + capybara.duenio + '</p>' +
-                        '    </div>' +
-                        '</div>' +
-                    '</div>';
+                for(let usuario of data) {
+                    respuesta += '<tr>'+
+					'		<td><%= usuario.ID_usuario%></td><td><%= usuario.nombre%></td><td><%= usuario.apellido_paterno%></td><td><%= usuario.apellido_materno%></td><td><%= usuario.correo %></td><td><%= usuario.nombre_rol %></td>'+
+					'</tr>';
                 }
 
                 document.getElementById('respuesta_ajax').innerHTML = respuesta;
@@ -99,6 +86,6 @@
             });
         };
 
-        document.getElementById('buscar').onkeyup = accion_asincrona;
+        document.getElementById('ID').onkeyup = accion_asincrona;
     </script>
 <%- include('includes/footer.ejs') %>
