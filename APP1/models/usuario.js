@@ -22,7 +22,7 @@ module.exports = class Busqueda {
     static fetch_correo(valor){
         return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario WHERE ( correo LIKE ? )', ['%'+valor+'%']);
     }
-    static fetchOne(){
+    static fetchRol(){
         return db.execute('SELECT ID_rol FROM usuario NATURAL JOIN rol');
     }
 }
