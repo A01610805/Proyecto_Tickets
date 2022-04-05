@@ -25,7 +25,7 @@ exports.post_activos=(request, response, next)=>{
     response.redirect('/home');  
 }
 
- // A partir de aqui inicia la implementación en ajax
+ // A partir de aqui inicia la implementación en ajax de buscar_activos
 exports.buscar_activos = (request, response, next) => {
     tickets=Ticket.fetchticketsactivos_filtros(request.params.valor)
     .then(([rows, fieldData]) => {
@@ -57,6 +57,18 @@ tickets=Ticket.fetchticketsarchivados()
 exports.post_archivo=(request, response, next)=>{
     Ticket.borrarticketpropio(request.body.idticket);
     response.redirect('/home'); 
+}
+
+ // A partir de aqui inicia la implementación en ajax de buscar_archivo
+ exports.buscar_archivo = (request, response, next) => {
+    tickets=Ticket.fetchticketsarchivados_filtros(request.params.valor)
+    .then(([rows, fieldData]) => {
+        console.log(rows);
+        response.status(200).json(rows);
+    })
+    .catch(err => {
+        console.log(err);
+    });
 }
 
 exports.get_ticketspropios=(request, response, next)=>{

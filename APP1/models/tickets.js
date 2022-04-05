@@ -27,6 +27,13 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado !=6 AND ID_estado !=5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
     }
 
+    static fetchticketsarchivados_filtros(valor){
+        let arr = valor.split('&');
+        console.log(arr[0]);
+        console.log(arr[1]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado !=6 AND ID_estado !=5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+    }
+
     static borrarticketpropio(id){
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?',[id])
     }

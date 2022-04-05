@@ -9,7 +9,7 @@ router.get('/activos', tilogin.get_activos);
 router.post('/activos', tilogin.post_activos);
 
 //Prueba con ajax
-//router.get('/archivo', tilogin.buscar_archivo);
+router.get('/archivo/:valor', tilogin.buscar_archivo);
 router.get('/archivo', tilogin.get_archivo);
 router.post('/archivo', tilogin.post_archivo);
 
