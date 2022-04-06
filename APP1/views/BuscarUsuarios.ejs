@@ -1,15 +1,18 @@
 <%- include('includes/head.ejs') %>
-	<ul id="dropdown5" class="dropdown-content">
-		<% for (let roles of usuarios) { %>
-			<li><a href="#!"><%= roles.nombre_rol%></a></li>
+	<!-- <ul id="dropdown1" class="dropdown-content">
+		<% for (let roles of usuario) { %>
+			<li><a href="#!" id="rol"><%= roles.nombre_rol%></a></li>
 		<% } %>
-	</ul>
+	</ul> -->
 	<nav class="grey darken-3">
 		<div class="nav-wrapper">
 			<ul class="right hide-on-med-and-down">
 				 
-				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown5">Rol<i class="material-icons right">arrow_drop_down</i></a></li>
-
+				<!-- <li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown1">Rol<i class="material-icons right">arrow_drop_down</i></a></li> -->
+				<div class=" right input-field col s6">
+					<input id="Rol" type="text" name="Rol" class="validate">
+					<label for="Rol">Rol</label>
+				</div>
 				<div class=" right input-field col s6">
 					<input id="ID" type="text" name="ID" class="validate">
 					<label for="ID">ID</label>
@@ -17,14 +20,6 @@
 				<div class="right input-field col s6">
 					<input id="first_name" type="text" name="nombre" class="validate">
 					<label for="first_name">Nombre</label>
-				</div>
-				<div class="right input-field col s6">
-					<input id="second_name" type="text" name="apaterno" class="validate">
-					<label for="second_name">Apellido Paterno</label>
-				</div>
-				<div class="right input-field col s6">
-					<input  id="third_name" type="text" name="amaterno" class="validate">
-					<label for="third_name">Apellido Materno</label>
 				</div>
 				<div class="right input-field col s6">
 					<input  id="email" type="text" name="correo" class="validate">
@@ -35,20 +30,21 @@
 	</nav>
 
 	<div>
-
-	<table class="striped responsive-table centered respuesta_ajax" >
-		<thead>
-			<tr>
-				<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>
-			</tr>
-		</thead>
-		<% for (let usuarios of usuarios) { %>
-			<tr>
-				<td><%= usuarios.ID_usuario%></td><td><%= usuarios.nombre%></td><td><%= usuarios.apellido_paterno%></td><td><%= usuarios.apellido_materno%></td><td><%= usuarios.correo %></td><td><%= usuarios.nombre_rol %></td>
-			</tr>
-		<% } %>
-		
-	</table>
+		<table class="striped responsive-table centered" id="respuesta_ajax" >
+			<thead>
+				<tr>
+					<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>
+				</tr>
+			</thead>
+			<% for (let usuarios of usuario) { %>
+				<tr>
+					<td><%= usuarios.ID_usuario%></td><td><%= usuarios.nombre%></td><td><%= usuarios.apellido_paterno%></td><td><%= usuarios.apellido_materno%></td><td><%= usuarios.correo %></td><td><%= usuarios.nombre_rol %></td>
+				</tr>
+			<% } %>
+			
+		</table>
+	</div>
+	
 
 	<script>
         const accion_asincrona = () => {
@@ -59,7 +55,7 @@
             //const csrf = document.getElementById('_csrf').value;
 
             //función que manda la petición asíncrona
-            fetch('/route_BuscarU/buscar/'+ valor_busqueda1, {
+            fetch('/buscar_usuario/buscar/'+ valor_busqueda1, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -94,180 +90,225 @@
         document.getElementById('ID').onkeyup = accion_asincrona;
     </script>
 
-		<script>
-			const accion_asincrona2 = () => {
-				const valor_busqueda2 = document.getElementById('first_name').value;
-				console.log(valor_busqueda2);
+	<script>
+		const accion_asincrona2 = () => {
+			const valor_busqueda2 = document.getElementById('first_name').value;
+			console.log(valor_busqueda2);
+
+			//El token de protección CSRF
+			//const csrf = document.getElementById('_csrf').value;
+
+			//función que manda la petición asíncrona
+			fetch('/buscar_usuario/buscar/'+ valor_busqueda2, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					//'csrf-token': csrf
+				}
+				//body: JSON.stringify(data)
+			}).then(result => {
+				return result.json(); //Regresa otra promesa
+			}).then(data => {
+				//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+				console.log(data);
+				let respuesta = '';
+
+				for(let usuarios of data) {
+					respuesta +='<thead>'+
+								'	<tr>'+
+								'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
+								'	</tr>'+
+								'</thead>'+ 
+								'<tr>'+
+								'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
+								'</tr>';
+				}
+
+				document.getElementById('respuesta_ajax').innerHTML = respuesta;
+				
+			}).catch(err => {
+				console.log(err);
+			});
+		};
+
+		document.getElementById('first_name').onkeyup = accion_asincrona2;
+	</script>
+
+	<script>
+		const accion_asincrona3 = () => {
+			const valor_busqueda3 = document.getElementById('second_name').value;
+			console.log(valor_busqueda3);
+
+			//El token de protección CSRF
+			//const csrf = document.getElementById('_csrf').value;
+
+			//función que manda la petición asíncrona
+			fetch('/buscar_usuario/buscar/'+ valor_busqueda3, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					//'csrf-token': csrf
+				}
+				//body: JSON.stringify(data)
+			}).then(result => {
+				return result.json(); //Regresa otra promesa
+			}).then(data => {
+				//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+				console.log(data);
+				let respuesta = '';
+
+				for(let usuarios of data) {
+					respuesta +='<thead>'+
+								'	<tr>'+
+								'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
+								'	</tr>'+
+								'</thead>'+ 
+								'<tr>'+
+								'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
+								'</tr>';
+				}
+
+				document.getElementById('respuesta_ajax').innerHTML = respuesta;
+				
+			}).catch(err => {
+				console.log(err);
+			});
+		};
+
+		document.getElementById('second_name').onkeyup = accion_asincrona3;
+	</script>
+
+	<script>
+		const accion_asincrona4 = () => {
+			const valor_busqueda4 = document.getElementById('third_name').value;
+			console.log(valor_busqueda4);
+
+			//El token de protección CSRF
+			//const csrf = document.getElementById('_csrf').value;
+
+			//función que manda la petición asíncrona
+			fetch('/buscar_usuario/buscar/'+ valor_busqueda4, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					//'csrf-token': csrf
+				}
+				//body: JSON.stringify(data)
+			}).then(result => {
+				console.log(result);
+				return result.json(); //Regresa otra promesa
+			}).then(data => {
+				//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+				console.log(data);
+				let respuesta = '';
+
+				for(let usuarios of data) {
+					respuesta +='<thead>'+
+								'	<tr>'+
+								'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
+								'	</tr>'+
+								'</thead>'+ 
+								'<tr>'+
+								'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
+								'</tr>';
+				}
+
+				document.getElementById('respuesta_ajax').innerHTML = respuesta;
+				
+			}).catch(err => {
+				console.log(err);
+			});
+		};
+
+		document.getElementById('third_name').onkeyup = accion_asincrona4;
+	</script>
+
+	<script>
+		const accion_asincrona5 = () => {
+			const valor_busqueda5 = document.getElementById('email').value;
+			console.log(valor_busqueda5);
+
+			//El token de protección CSRF
+			//const csrf = document.getElementById('_csrf').value;
+
+			//función que manda la petición asíncrona
+			fetch('/buscar_usuario/buscar/'+ valor_busqueda5, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					//'csrf-token': csrf
+				}
+				//body: JSON.stringify(data)
+			}).then(result => {
+				return result.json(); //Regresa otra promesa
+			}).then(data => {
+				//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+				console.log(data);
+				let respuesta = '';
+
+				for(let usuarios of data) {
+					respuesta += '<thead>'+
+								'	<tr>'+
+								'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
+								'	</tr>'+
+								'</thead>'+ 
+								'<tr>'+
+								'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
+								'</tr>';
+				}
+
+				document.getElementById('respuesta_ajax').innerHTML = respuesta;
+				
+			}).catch(err => {
+				console.log(err);
+			});
+		};
+
+		document.getElementById('email').onkeyup = accion_asincrona5;
+	</script>
 	
-				//El token de protección CSRF
-				//const csrf = document.getElementById('_csrf').value;
-	
-				//función que manda la petición asíncrona
-				fetch_nombre('/route_BuscarU/buscar/'+ valor_busqueda2, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						//'csrf-token': csrf
-					}
-					//body: JSON.stringify(data)
-				}).then(result => {
-					return result.json(); //Regresa otra promesa
-				}).then(data => {
-					//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-					console.log(data);
-					let respuesta = '';
-	
-					for(let usuarios of data) {
-						respuesta +='<thead>'+
-									'	<tr>'+
-									'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
-									'	</tr>'+
-									'</thead>'+ 
-									'<tr>'+
-									'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
-									'</tr>';
-                	}
-	
-					document.getElementById('respuesta_ajax').innerHTML = respuesta;
-					
-				}).catch(err => {
-					console.log(err);
-				});
-			};
-	
-			document.getElementById('first_name').onkeyup = accion_asincrona2;
-		</script>
+	<script>
+		const accion_asincrona6 = () => {
+			const valor_busqueda6 = document.getElementById('Rol').value;
+			console.log(valor_busqueda6);
 
-		<script>
-        	const accion_asincrona3 = () => {
-				const valor_busqueda3 = document.getElementById('second_name').value;
-				console.log(valor_busqueda3);
+			//El token de protección CSRF
+			//const csrf = document.getElementById('_csrf').value;
 
-				//El token de protección CSRF
-				//const csrf = document.getElementById('_csrf').value;
+			//función que manda la petición asíncrona
+			fetch('/buscar_usuario/buscarR/'+ valor_busqueda6, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					//'csrf-token': csrf
+				}
+				//body: JSON.stringify(data)
+			}).then(result => {
+				console.log(result);
+				return result.json(); //Regresa otra promesa
+			}).then(data => {
+				//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+				console.log(data);
+				let respuesta = '';
 
-				//función que manda la petición asíncrona
-				fetch_apellidoP('/route_BuscarU/buscar/'+ valor_busqueda3, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						//'csrf-token': csrf
-					}
-					//body: JSON.stringify(data)
-				}).then(result => {
-					return result.json(); //Regresa otra promesa
-				}).then(data => {
-					//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-					console.log(data);
-					let respuesta = '';
+				for(let usuarios of data) {
+					respuesta +='<thead>'+
+								'	<tr>'+
+								'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
+								'	</tr>'+
+								'</thead>'+ 
+								'<tr>'+
+								'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
+								'</tr>';
+				}
 
-					for(let usuarios of data) {
-						respuesta +='<thead>'+
-									'	<tr>'+
-									'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
-									'	</tr>'+
-									'</thead>'+ 
-									'<tr>'+
-									'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
-									'</tr>';
-					}
+				document.getElementById('respuesta_ajax').innerHTML = respuesta;
+				
+			}).catch(err => {
+				console.log(err);
+			});
+		};
 
-					document.getElementById('respuesta_ajax').innerHTML = respuesta;
-					
-				}).catch(err => {
-					console.log(err);
-				});
-			};
-
-        	document.getElementById('second_name').onkeyup = accion_asincrona3;
-    	</script>
-
-		<script>
-			const accion_asincrona4 = () => {
-				const valor_busqueda4 = document.getElementById('third_name').value;
-				console.log(valor_busqueda4);
-	
-				//El token de protección CSRF
-				//const csrf = document.getElementById('_csrf').value;
-	
-				//función que manda la petición asíncrona
-				fetch('/route_BuscarU/buscar/'+ valor_busqueda4, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						//'csrf-token': csrf
-					}
-					//body: JSON.stringify(data)
-				}).then(result => {
-					return result.json(); //Regresa otra promesa
-				}).then(data => {
-					//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-					console.log(data);
-					let respuesta = '';
-	
-					for(let usuarios of data) {
-						respuesta +='<thead>'+
-									'	<tr>'+
-									'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
-									'	</tr>'+
-									'</thead>'+ 
-									'<tr>'+
-									'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
-									'</tr>';
-                	}
-	
-					document.getElementById('respuesta_ajax').innerHTML = respuesta;
-					
-				}).catch(err => {
-					console.log(err);
-				});
-			};
-	
-			document.getElementById('third_name').onkeyup = accion_asincrona4;
-		</script>
-
-		<script>
-        	const accion_asincrona5 = () => {
-				const valor_busqueda5 = document.getElementById('email').value;
-				console.log(valor_busqueda5);
-
-				//El token de protección CSRF
-				//const csrf = document.getElementById('_csrf').value;
-
-				//función que manda la petición asíncrona
-				fetch('/route_BuscarU/buscar/'+ valor_busqueda5, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-						//'csrf-token': csrf
-					}
-					//body: JSON.stringify(data)
-				}).then(result => {
-					return result.json(); //Regresa otra promesa
-				}).then(data => {
-					//Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
-					console.log(data);
-					let respuesta = '';
-
-					for(let usuarios of data) {
-						respuesta += '<thead>'+
-									'	<tr>'+
-									'		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>'+
-									'	</tr>'+
-									'</thead>'+ 
-									'<tr>'+
-									'	<td>' + usuarios.ID_usuario +'</td><td>'+ usuarios.nombre+ '</td><td>' + usuarios.apellido_paterno+ '</td><td>'+ usuarios.apellido_materno + '</td><td>' + usuarios.correo +'</td><td>' + usuarios.nombre_rol +'</td>' +
-									'</tr>';
-					}
-
-					document.getElementById('respuesta_ajax').innerHTML = respuesta;
-					
-				}).catch(err => {
-					console.log(err);
-				});
-			};
-
-			document.getElementById('email').onkeyup = accion_asincrona5;
-    	</script>
-	
+		document.getElementById('Rol') == accion_asincrona6;
+	</script>
 <%- include('includes/footer.ejs') %>

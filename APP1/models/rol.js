@@ -9,8 +9,8 @@ const db = require('../util/database');
     // }
 
 
-    static findOne() {
-        return db.execute('SELECT nombre_rol FROM rol ',
+    static fetchAll(valor) {
+        return db.execute('SELECT nombre_rol FROM rol WHERE (nombre_rol LIKE ?)', [valor]
         );
     }
 }
