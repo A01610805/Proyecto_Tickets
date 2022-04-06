@@ -24,14 +24,22 @@ module.exports = class Ticket {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado !=6 AND ID_estado !=5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
     }
 
     static fetchticketsarchivados_filtros(valor){
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado !=6 AND ID_estado !=5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 AND ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+    }
+
+    static fetchticketsusuario_filtro(valor){
+        //return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=?',[id]);
+        let arr = valor.split('&');
+        console.log(arr[0]);
+        console.log(arr[1]);
+        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=? AND titulo LIKE ?', [arr[0],'%'+arr[1]+'%']);
     }
 
     static borrarticketpropio(id){

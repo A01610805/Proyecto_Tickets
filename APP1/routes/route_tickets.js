@@ -14,7 +14,7 @@ router.get('/archivo', tilogin.get_archivo);
 router.post('/archivo', tilogin.post_archivo);
 
 //Prueba con ajax
-//router.get('/archivo', tilogin.buscar_propios);
+router.get('/propio/:valor', tilogin.buscar_propios);
 router.get('/propio', tilogin.get_ticketspropios);
 router.post('/propio', tilogin.borrarpropios);
 
