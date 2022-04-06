@@ -195,6 +195,7 @@
                             <% var z = 0; %>
                                 <% for (let ticket2 of ticketss) { %>
                                     <%var color =''; 
+                                    if (ticket2.ID_estado != 1){
                                         if(ticket2.ID_estado == 1){ 
                                             color = 'grey lighten-2'; 
                                         } else if(ticket2.ID_estado == 2){ 
@@ -240,6 +241,7 @@
                                         </li>
                                         <% z=z+3 %>
                                             <% } %>
+                                                <% } %>
                         </ul>
                         </div>
                     </div>
