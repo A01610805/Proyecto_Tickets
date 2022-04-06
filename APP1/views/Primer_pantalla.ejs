@@ -14,10 +14,6 @@
 
     <body>
         <style type="text/css">
-            /* body {
-                background-image: url("https://images.ecestaticos.com/LtUY2F-tA12ve8aGzYIVgoX8pJo=/0x0:2121x1414/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd9e%2F66d%2F793%2Fd9e66d793adbc994841e60850a17e61c.jpg");
-            } */
-            
             #global {
                 height: 900px;
                 width: 700px;
@@ -34,6 +30,10 @@
                 background: grey;
                 overflow-y: scroll;
                 flex-wrap: wrap;
+            }
+            
+            .modal-footer::-webkit-scrollbar {
+                display: none;
             }
             
             #global::-webkit-scrollbar {
@@ -83,7 +83,7 @@
                 <div id="mensajes">
                     <blockquote>
                         <div class="center">
-                            <h5 id="titulo">Tickets Generados</h5>
+                            <h5 id="titulo">Tickets Nuevos</h5>
                             <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                             <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                             <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
@@ -96,8 +96,10 @@
                         <ul class="collection">
                             <!-- aqui se hace un for cada ticket -->
                             <% var i = 0; %>
-                                <% for (let ticket of ticketss) { %>
-                                    <%var color =''; 
+                                <% var j = 0; %>
+                                    <% for (let ticket of ticketss) { %>
+                                        <%var color =''; 
+                                        if (ticket.ID_estado == 1){
                                         if(ticket.ID_estado == 1){ 
                                             color = 'grey lighten-2'; 
                                         } else if(ticket.ID_estado == 2){ 
@@ -110,42 +112,63 @@
                                             color = 'red lighten-1'; 
                                         } else if(ticket.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } %>
-                                        <li class="collection-item">
-                                            <div class="col s12 m2">
-                                                <p class="z-depth-4">
-                                                    <div class="card">
-                                                        <div class="card-content <%=color%>">
-                                                            <p id="titulo">
-                                                                <%= ticket.titulo %>
-                                                            </p>
-                                                        </div>
-                                                        <div class="card-tabs">
-                                                            <ul class="tabs tabs-fixed-width">
-                                                                <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
-                                                                <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
-                                                                <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+                                            <li class="collection-item">
+                                                <div class="col s12 m2">
+                                                    <p class="z-depth-4">
+                                                        <div class="card">
+                                                            <div class="card-content <%=color%>">
+                                                                <p id="titulo">
+                                                                    <%= ticket.titulo %>
+                                                                        <!-- <a class="btn-floating btn-small grey lighten pulse right"><i class="material-icons">edit</i></a> -->
+                                                                        <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal<%=j%>"><i class="material-icons">edit</i></a>
+                                                                        <!-- Modal Structure -->
+                                                                        <div id="modal<%=j%>" class="modal">
+                                                                            <div class="modal-content">
+                                                                                <h4>
+                                                                                    <%= ticket.titulo %>
+                                                                                </h4>
+                                                                                <p>
+                                                                                    <%= ticket.descripcion %>
+                                                                                </p>
+                                                                            </div>
+                                                                            <%j=j+1%>
+                                                                                <div class="modal-footer">
+                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
 
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-content">
-                                                            <div id="test<%= i+1%>">
-                                                                <%= ticket.descripcion %>
-                                                                    <!-- <a class="btn-floating pulse bottom right small grey lighten-1"><i class="material-icons">edit</i></a> -->
+                                                                                </div>
+                                                                        </div>
+                                                                </p>
+                                                            </div>
+                                                            <div class="card-tabs">
+                                                                <ul class="tabs tabs-fixed-width">
+                                                                    <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
+                                                                    <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
+                                                                    <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                            <div class="card-content">
+                                                                <div id="test<%= i+1%>">
+                                                                    <%= ticket.descripcion %>
+                                                                        <!-- <a class="btn-floating pulse bottom right small grey lighten-1"><i class="material-icons">edit</i></a> -->
+
+                                                                </div>
+                                                                <div id="test<%= i+2%>">
+                                                                    <%= ticket.ID_ticket %>
+                                                                </div>
+                                                                <div id="test<%= i+3%>">
+                                                                    <%= ticket.comentarios_solucion %>
+                                                                </div>
 
                                                             </div>
-                                                            <div id="test<%= i+2%>">
-                                                                <%= ticket.ID_ticket %>
-                                                            </div>
-                                                            <div id="test<%= i+3%>">
-                                                                <%= ticket.comentarios_solucion %>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </p>
+                                                    </p>
 
-                                        </li>
-                                        <% i=i+3 %>
-                                            <% } %>
+                                            </li>
+                                            <% i=i+3 %>
+                                                <% } %>
+                                                    <% } %>
                         </ul>
                         </div>
                     </div>

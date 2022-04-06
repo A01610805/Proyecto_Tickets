@@ -21,6 +21,14 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5');
     }
 
+    static fetchticketsnuevos() {
+        return db.execute('SELECT * FROM ticket WHERE ID_estado=1');
+    }
+
+    static fetchmistickets() {
+        return db.execute('SELECT * FROM ticketstotal  WHERE ID_estado!=6 AND ID_estado!=5');
+    }
+
     static fetchticketsactivos() {
         return db.execute('SELECT * FROM ticket WHERE ID_estado!=6 AND ID_estado!=5');
     }
