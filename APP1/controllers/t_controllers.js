@@ -30,6 +30,7 @@ exports.post_activos=(request, response, next)=>{
 exports.buscar_activos = (request, response, next) => {
     tickets=Ticket.fetchticketsactivos_filtros(request.params.valor)
     .then(([rows, fieldData]) => {
+        console.log(request.params.valor);
         console.log(rows);
         response.status(200).json(rows);
     })
@@ -98,6 +99,7 @@ exports.get_ticketspropios=(request, response, next)=>{
 exports.buscar_propios = (request, response, next) => {
     tickets=Ticket.fetchticketsusuario_filtro(request.params.valor)
     .then(([rows, fieldData]) => {
+        console.log(request.params.valor);
         console.log(rows);
         response.status(200).json(rows);
     })

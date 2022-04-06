@@ -14,17 +14,17 @@ else if(tipo==3){
 
 <h1><%=titulo %></h1>
 
-<% if(tipo==1 || tipo == 2){ %>
+<% if (tipo==1){ %>
   <nav class="grey darken-3">
     <div class="nav-wrapper">
       <ul class="left hide-on-med-and-down">
         <div class="right input-field col s4">
-          <label for="buscar_encargado">Encargado: </label>
-          <input type="text" name="buscar_encargado" id="buscar_encargado">
+          <label for="buscar_encargado_1">Encargado: </label>
+          <input type="text" name="buscar_encargado_1" id="buscar_encargado_1">
         </div>
         <div class="right input-field col s4">
-          <label for="buscar_creador">Creador: </label>
-          <input type="text" name="buscar_creador" id="buscar_creador">
+          <label for="buscar_creador_1">Creador: </label>
+          <input type="text" name="buscar_creador_1" id="buscar_creador_1">
         </div>
         <div class="right input-field col s4">
           <label for="titulo">Filtrar por: </label>
@@ -33,7 +33,26 @@ else if(tipo==3){
       </ul>
     </div>
   </nav>
-<% } else{ %>
+<% } else if (tipo == 2) { %>
+    <nav class="grey darken-3">
+      <div class="nav-wrapper">
+        <ul class="left hide-on-med-and-down">
+          <div class="right input-field col s4">
+            <label for="buscar_encargado_2">Encargado_2: </label>
+            <input type="text" name="buscar_encargado_2" id="buscar_encargado_2">
+          </div>
+          <div class="right input-field col s4">
+            <label for="buscar_creador_2">Creador_2: </label>
+            <input type="text" name="buscar_creador_2" id="buscar_creador_2">
+          </div>
+          <div class="right input-field col s4">
+            <label for="titulo">Filtrar por: </label>
+            <input disabled value = '' type="text" name="titulo" id="titulo">
+          </div>
+        </ul>
+      </div>
+    </nav>
+<% } else { %>
   <nav class="grey darken-3">
     <div class="nav-wrapper">
       <ul class="left hide-on-med-and-down">
@@ -134,7 +153,7 @@ else if(tipo==3){
 <script>
 
   const activos = () => {
-      const valor_busqueda = (document.getElementById('buscar_creador').value)+'&'+(document.getElementById('buscar_encargado').value)
+      const valor_busqueda = (document.getElementById('buscar_creador_1').value)+'&'+(document.getElementById('buscar_encargado_1').value)
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -237,12 +256,12 @@ else if(tipo==3){
   };
 
 
-  document.getElementById('buscar_creador').onkeyup = activos;
-  document.getElementById('buscar_encargado').onkeyup = activos;
+  document.getElementById('buscar_creador_1').onkeyup = activos;
+  document.getElementById('buscar_encargado_1').onkeyup = activos;
 
 
   const archivados = () => {
-      const valor_busqueda = (document.getElementById('buscar_creador').value)+'&'+(document.getElementById('buscar_encargado').value)
+      const valor_busqueda = (document.getElementById('buscar_creador_2').value)+'&'+(document.getElementById('buscar_encargado_2').value)
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -344,8 +363,8 @@ else if(tipo==3){
       });
   };
 
-  document.getElementById('buscar_creador').onkeyup = archivados;
-  document.getElementById('buscar_encargado').onkeyup = archivados;
+  document.getElementById('buscar_creador_2').onkeyup = archivados;
+  document.getElementById('buscar_encargado_2').onkeyup = archivados;
 
   const propios = () => {
       const valor_busqueda = (request.cookies.nombre_usuario)+'&'+(document.getElementById('buscar_titulo').value)
