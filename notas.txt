@@ -15,4 +15,5 @@ Buscar Usuarios
     Prueba11 falla parcial, no mostrar consultas con ciertos valores en ciertos campos, solucion restructurar controlador  junto modelo
     Prueba12, falla parcial, no muestra rol, solucion cambiar ruta (route_BuscarU) a (buscar_usuario)
     Prueba13, falla parcial, no interactua input de rol, posibles errores de sintaxis en name y for
-    Prueba14, falla, no muetra consulta por medio de campo rol
+    Prueba14, falla, no muetra consulta por medio de campo rol, no entra a funcion, ya estoy hasta la madre, solucion desconocida
+    Prueba15,exitosa, accion, restructurar campos de busqueda a barra

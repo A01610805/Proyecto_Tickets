@@ -13,7 +13,7 @@ exports.get_busqueda = (req,res,next) => {
      .catch(error => {console.log(error)});
 }
 
-exports.buscar = (req,res,next) =>{
+exports.buscar = (req,res,next) =>{  
     Busqueda.fetch(req.params.valor)                                  
         .then(([rows, fieldData]) => {
             console.log(rows);
@@ -23,15 +23,15 @@ exports.buscar = (req,res,next) =>{
                                         
 }
 
-exports.buscarR = (req,res,next) =>{
-    BusquedaR.fetchAll(req.params.valor)
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            res.status(200).json(rows);
-        })
-        .catch(error => {console.log(error)});  
+// exports.buscarR = (req,res,next) =>{
+//     BusquedaR.fetchAll(req.params.valor)
+//         .then(([rows, fieldData]) => {
+//             console.log(rows);
+//             res.status(200).json(rows);
+//         })
+//         .catch(error => {console.log(error)});  
                                         
-}
+// }
 
 exports.root = (req,res,next) => {
     console.log('Ruta por defecto de buscar usuario');
