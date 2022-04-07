@@ -40,8 +40,17 @@ exports.post_mod = (request, response, next) => {
     categoria.update()
     console.log('Esto es antes de pregunta.update()');
     console.log(request.body); 
-    const pregunta = new Pregunta(request.body.texto_pregunta[1], request.params.id)
-    pregunta.update()
+    for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
+        console.log(index);
+        if (request.body.texto_pregunta[index] != null) {
+            
+            const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
+            console.log(pregunta);
+            pregunta.update()
+        
+        }
+    }
+    
     response.redirect('/home')
 };
 // exports.post_npreg =(request, res, next) => { 

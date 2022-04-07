@@ -1,9 +1,10 @@
 const db = require('../util/database');
  
 module.exports = class Pregunta {
-    constructor(texto_pregunta, ID_categoria) {
+    constructor(texto_pregunta, ID_categoria, ID_pregunta) {
         this.texto_pregunta = texto_pregunta;
         this.ID_categoria = ID_categoria;
+        this.ID_pregunta = ID_pregunta;
 
     }
    
@@ -23,7 +24,7 @@ module.exports = class Pregunta {
     }
     update(){
         return db.execute(
-            'UPDATE pregunta SET texto_pregunta = ? WHERE ID_categoria = ?', [this.texto_pregunta, this.ID_categoria]);
+            'UPDATE pregunta SET texto_pregunta = ? WHERE ID_categoria = ? AND ID_pregunta = ?', [this.texto_pregunta, this.ID_categoria, this.ID_pregunta]);
     }
     // delete(id){
     //     return db.execute(

@@ -30,18 +30,20 @@
                         
                     </div>
                 </div>
-                <% var i = 0; %>
+            
+                
                 <% for (let pregunta of preguntas) { %> 
                     <div>
-                        <label  href="/modificar_template/get_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
+
+                        <label  ><%= pregunta.texto_pregunta %></label>
                         <div class="row col s6">
+                            <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
                             <input required id="texto_pregunta" name="texto_pregunta"><span ></span>
-                            <label for="ID_pregunta">Pregunta nueva</label>
-                            <label name="<%= i %>"></label>
+                            <label>Pregunta nueva</label>
+                           
                         </div>
                         
                     </div>
-                    <% i = i++ %>
                 <% } %>  
 
                 <div class="center ">
