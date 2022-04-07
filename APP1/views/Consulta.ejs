@@ -266,10 +266,10 @@ else if(tipo==3){
       });
   };
 
-
-  document.getElementById('buscar_creador_1').onkeyup = activos;
-  document.getElementById('buscar_encargado_1').onkeyup = activos;
-
+  <%  if (tipo == 1) { %>
+    document.getElementById('buscar_creador_1').onkeyup = activos;
+    document.getElementById('buscar_encargado_1').onkeyup = activos;
+  <% } %>
 
   const archivados = () => {
       const valor_busqueda = (document.getElementById('buscar_creador_2').value)+'&'+(document.getElementById('buscar_encargado_2').value)
@@ -374,8 +374,10 @@ else if(tipo==3){
       });
   };
 
-  document.getElementById('buscar_creador_2').onkeyup = archivados;
-  document.getElementById('buscar_encargado_2').onkeyup = archivados;
+  <%  if (tipo == 2) { %>
+    document.getElementById('buscar_creador_2').onkeyup = archivados;
+    document.getElementById('buscar_encargado_2').onkeyup = archivados;
+  <% } %>
 
   const propios = () => {
       const valor_busqueda = (request.cookies.nombre_usuario)+'&'+(document.getElementById('buscar_titulo').value)
@@ -480,8 +482,9 @@ else if(tipo==3){
       });
   }; 
 
-
-  document.getElementById('buscar_titulo').onkeyup = propios;
+  <%  if (tipo == 3) { %>
+    document.getElementById('buscar_titulo').onkeyup = propios;
+  <% } %>
 
   //document.getElementById('buscar_creador').onkeyup = activos;
   //document.getElementById('buscar_encargado').onkeyup = activos;

@@ -49,9 +49,14 @@ exports.buscar_activos = (request, response, next) => {
 
 
 //Inicio de /buscar_tickets/archivo
-exports.get_archivo=(request, response, next)=>{
+exports.get_archivo=async(request, response, next)=>{
 let tipo=2;
-tickets=Ticket.fetchticketsarchivados()
+
+const total = await Ticket.getTotal_archivados();
+console.log("En total hay: " + total);
+const start = request.params.start ? request.params.start : 0
+
+tickets=Ticket.fetchticketsarchivados_pag(start)
     .then(([rows, fieldData]) => {
         console.log(rows);
         response.render('Consulta', {
@@ -59,6 +64,7 @@ tickets=Ticket.fetchticketsarchivados()
             username: request.session.username ? request.session.username : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
+            total_tickets: total,
         }); 
     })
     .catch(err => {

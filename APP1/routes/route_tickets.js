@@ -11,11 +11,13 @@ router.post('/activos', tilogin.post_activos);
 
 //Prueba con ajax
 router.get('/archivo/:valor', tilogin.buscar_archivo);
+router.get('/start/:start', tilogin.get_activos);
 router.get('/archivo', tilogin.get_archivo);
 router.post('/archivo', tilogin.post_archivo);
 
 //Prueba con ajax
 router.get('/propio/:valor', tilogin.buscar_propios);
+router.get('/start/:start', tilogin.get_activos);
 router.get('/propio', tilogin.get_ticketspropios);
 
 router.post('/propio', tilogin.borrarpropios);

@@ -23,6 +23,10 @@ module.exports = class Ticket {
     static fetchticketsactivos_pag(num){
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 LIMIT ?, 2', [num]);
     }
+
+    static fetchticketsarchivados_pag(num){
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 AND ID_estado=5 LIMIT ?, 2', [num]);
+    }
     
     static fetchticketsactivos_filtros(valor){
         let arr = valor.split('&');
@@ -52,6 +56,32 @@ module.exports = class Ticket {
 
     static getTotal_activos() {
         return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5')
+            .then(([rows, fieldData]) => {
+            console.log(rows);
+            console.log(rows[0].total);
+            return rows[0].total;
+        })
+        .catch(error => {
+            console.log(error);
+            return 0;
+            });
+    }
+
+    static getTotal_archivados() {
+        return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado=6 AND ID_estado=5')
+            .then(([rows, fieldData]) => {
+            console.log(rows);
+            console.log(rows[0].total);
+            return rows[0].total;
+        })
+        .catch(error => {
+            console.log(error);
+            return 0;
+            });
+    }
+
+    static getTotal_propios(id) {
+        return db.execute('SELECT COUNT(*) as total FROM ticketstotal WHERE Nombre_creador,'[id])
             .then(([rows, fieldData]) => {
             console.log(rows);
             console.log(rows[0].total);
