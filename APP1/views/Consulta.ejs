@@ -1,5 +1,7 @@
 <%- include('includes/head.ejs') %>
-<% var i=1; 
+
+
+    <% var i=1; 
 var titulo='';
 if(tipo==1){
 titulo='Consulta de tickets activos';
@@ -10,8 +12,10 @@ else if(tipo==2){
 else if(tipo==3){
 titulo='Consulta de tickets propios';
 } %>
-<h1><%=titulo %></h1>
-<% for (let ticket of tickets) {
+        <h1 class="white-text">
+            <%=titulo %>
+        </h1>
+        <% for (let ticket of tickets) {
   var color ='';
  if(ticket.ID_estado == 1){
   color = 'grey lighten-5';
@@ -34,28 +38,37 @@ titulo='Consulta de tickets propios';
 
 %>
 
-<div class="row">
-  <div class="col s12 m12 l6">
-        <div class="card">
-            <div class="card-content">
-              <h3><%=ticket.titulo %></h3>
-            </div>
-            <div class="card-tabs">
-              <ul class="tabs tabs-fixed-width">
-                <li class="tab"><a class="active" href="#descripcion/<%=i%>">Descripción</a></li>
-                <li class="tab"><a href="#p&r<%=i%>">Preguntas y Respuestas</a></li>
-                <li class="tab"><a href="#datosgenerales<%=i%>">Datos Generales</a></li>
-                <li class="tab"><a href="#comentarios<%=i%>">Comentarios</a></li>
-              </ul>
-            </div>
-            <div class="card-content <%=color %>">
-              <div id="#descripcion/<%= i%>">
+            <div class="row">
+                <div class="col s12 m12 l6">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>
+                                <%=ticket.titulo %>
+                            </h3>
+                        </div>
+                        <div class="card-tabs">
+                            <ul class="tabs tabs-fixed-width">
+                                <li class="tab"><a class="active" href="#descripcion/<%=i%>">Descripción</a></li>
+                                <li class="tab"><a href="#p&r<%=i%>">Preguntas y Respuestas</a></li>
+                                <li class="tab"><a href="#comentarios<%=i%>">Comentarios</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-content <%=color %>">
+                            <div id="#descripcion/<%= i%>">
 
-              </div>
-              <div id="#p&r<%=i%>">
-                <h5>Nombre del Creador: <%=ticket.Nombre_creador%> <%=ticket.Apellido_P_creador%> <%=ticket.Apellido_M_creador%></h5>
-                <h5>Nombre del Encargado: <%=ticket.Nombre_encargado%> <%=ticket.Apellido_P_encargado%> <%=ticket.Apellido_M_encargado%></h5>
-                <%if((rol!=3 || tipo==3) && ticket.ID_estado!=5 && ticket.ID_estado!=6){
+                            </div>
+                            <div id="#p&r<%=i%>">
+                                <h5>Nombre del Creador:
+                                    <%=ticket.Nombre_creador%>
+                                        <%=ticket.Apellido_P_creador%>
+                                            <%=ticket.Apellido_M_creador%>
+                                </h5>
+                                <h5>Nombre del Encargado:
+                                    <%=ticket.Nombre_encargado%>
+                                        <%=ticket.Apellido_P_encargado%>
+                                            <%=ticket.Apellido_M_encargado%>
+                                </h5>
+                                <%if((rol!=3 || tipo==3) && ticket.ID_estado!=5 && ticket.ID_estado!=6){
                   var ruta='';
                   if(tipo==3){
                     ruta='propio';
@@ -68,23 +81,20 @@ titulo='Consulta de tickets propios';
                   }
                   
                   %>
-                  
-                  <form action="/buscar_tickets/<%=ruta%>" method="POST">
-                    <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>"/>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket
-                      <i class="material-icons highlight_off">send</i>
+
+                                    <form action="/buscar_tickets/<%=ruta%>" method="POST">
+                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
+                                        <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket
                   </button>
-                </form>
-                  <%}%>
-               </div>
-              <div id="#datosgenerales<%=i%>">
-              </div>
-              <div id="#comentarios<%=i%>">
-              </div>
-            </div>
-        </div>
-    </div>
-<% i=i+1;} %>
+                                    </form>
+                                    <%}%>
+                            </div>
+                            <div id="#comentarios<%=i%>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% i=i+1;} %>
 
 
-<%- include('includes/footer.ejs') %>
+                    <%- include('includes/footer.ejs') %>

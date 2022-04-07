@@ -15,7 +15,7 @@
     <body>
         <style type="text/css">
             #global {
-                height: 900px;
+                height: 1000px;
                 border: 1px solid #ddd;
                 background: grey;
                 border-radius: 5%;
@@ -43,6 +43,10 @@
             .modal-footer::-webkit-scrollbar {
                 display: none;
             }
+            
+            #carrusel {
+                background-color: #ddd;
+            }
         </style>
 
         <div class="row">
@@ -51,7 +55,7 @@
                 <div id="global">
                     <blockquote>
                         <div class="center">
-                            <h5 id="titulo">Tickets Nuevos</h5>
+                            <h5 id="logo">Tickets Nuevos</h5>
                             <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                             <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                             <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
@@ -144,7 +148,7 @@
                 <div id="global1">
                     <blockquote>
                         <div class="center">
-                            <h5 id="titulo">Mis Tickets</h5>
+                            <h5 id="logo">Mis Tickets</h5>
                             <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                             <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                             <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
@@ -229,14 +233,117 @@
 
                         </div>
                     </div>
+                    <p></p>
+                    <div>
+                        <div id="global1">
+                            <blockquote>
+                                <div class="center">
+                                    <h5 id="logo">Tickets Asignados</h5>
+                                    <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
+                                    <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
+                                    <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
+                                    <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
+                                    <a class="btn tooltipped red" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
+                                    <a class="btn tooltipped light-green" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
+                                </div>
+                            </blockquote>
+                            <div class=" center">
+                                <ul class="collection">
+                                    <% var z = 0; %>
+
+                                        <% var j = 0; %>
+                                            <% for (let ticket2 of ticketss) { %>
+                                                <%var color =''; 
+                                            if (ticket2.ID_estado != 1){
+                                                if(ticket2.ID_estado == 1){ 
+                                                    color = 'grey lighten-2'; 
+                                                } else if(ticket2.ID_estado == 2){ 
+                                                    color = 'light-blue lighten-5'; 
+                                                } else if(ticket2.ID_estado == 3){ 
+                                                    color = 'orange lighten-5'; 
+                                                } else if(ticket2.ID_estado == 4){ 
+                                                    color = 'yellow light-blue lighten-5'; 
+                                                } else if(ticket2.ID_estado == 5){ 
+                                                    color = 'red lighten-1'; 
+                                                } else if(ticket2.ID_estado == 6){ 
+                                                    color = 'light-green accent-1'; } %>
+                                                    <li class="collection-item yellow grey">
+                                                        <div class="col s12">
+                                                            <p class="z-depth-4">
+                                                                <div class="card">
+                                                                    <div class="card-content <%=color%>">
+                                                                        <p id="titulo">
+                                                                            <%= ticket2.titulo %>
+                                                                                <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
+
+                                                                                <div id="modal1<%=j%>" class="modal">
+                                                                                    <div class="modal-content">
+                                                                                        <h4>
+                                                                                            <%= ticket2.titulo %>
+                                                                                        </h4>
+                                                                                        <p>
+                                                                                            <%= ticket2.descripcion %>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <%j=j+1%>
+                                                                                        <div class="modal-footer">
+                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
+
+                                                                                        </div>
+                                                                                </div>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="card-tabs">
+                                                                        <ul class="tabs tabs-fixed-width">
+                                                                            <li class="tab"><a class="active" href="#tests<%= z+1%>">Descripcion</a></li>
+                                                                            <li class="tab"><a href="#tests<%= z+2%>">Preguntas/Respuestas</a></li>
+                                                                            <li class="tab"><a href="#tests<%= z+3%>">Comentarios</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="card-content ">
+                                                                        <div id="tests<%= z+1%>">
+                                                                            <%= ticket2.descripcion %>
+                                                                        </div>
+                                                                        <div id="tests<%=z+2%>">
+                                                                            <%= ticket2.ID_ticket %>
+                                                                        </div>
+                                                                        <div id="tests<%= z+3%>">
+                                                                            <%= ticket2.comentarios_solucion %>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </p>
+
+                                                    </li>
+                                                    <% z=z+3 %>
+                                                        <% } %>
+                                                            <% } %>
+                                </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div id="carrusel" class="row">
+                    <div class="col s6">
+                        <div class="carousel">
+                            <a class="carousel-item" href="#one!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
+                            <a class="carousel-item" href="#two!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
+                            <a class="carousel-item" href="#three!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
+                            <a class="carousel-item" href="#four!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
+                            <a class="carousel-item" href="#five!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
+                        </div>
+                    </div>
+
+                </div>
 
 
 
 
-            <!--JavaScript at end of body for optimized loading-->
-            <script type="text/javascript" src="js/materialize.min.js"></script>
+                <!--JavaScript at end of body for optimized loading-->
+                <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
 
     </html>
