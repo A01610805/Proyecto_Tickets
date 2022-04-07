@@ -15,26 +15,21 @@
     <body>
         <style type="text/css">
             #global {
-                height: 2000%;
-                width: 95%;
+                height: 900px;
                 border: 1px solid #ddd;
                 background: grey;
-                /* border-radius: 50%; */
+                border-radius: 5%;
                 overflow-y: scroll;
                 flex-wrap: wrap;
             }
             
             #global1 {
-                height: 1000%;
-                width: 700%;
+                height: 500px;
                 border: 1px solid #ddd;
                 background: grey;
+                border-radius: 5%;
                 overflow-y: scroll;
                 flex-wrap: wrap;
-            }
-            
-            .modal-footer::-webkit-scrollbar {
-                display: none;
             }
             
             #global::-webkit-scrollbar {
@@ -45,47 +40,19 @@
                 display: none;
             }
             
-            #mensajes {
-                height: auto;
-            }
-            
-            #titulo {
-                font-family: 'Monaco';
-                font-size: large;
-            }
-            
-            #Tickets_Generados {
-                display: inline-block;
-                width: 750px;
-                height: 50px;
-            }
-            
-            #Mis_Tickets {
-                position: absolute;
-                top: 600;
-                right: auto;
-                display: inline-block;
-                width: 100px;
-                height: 50px;
-            }
-            
-            #Detalles {
-                position: absolute;
-                top: 200;
-                right: auto;
-                display: inline-block;
-                width: 100px;
-                height: 50px;
+            .modal-footer::-webkit-scrollbar {
+                display: none;
             }
         </style>
 
-        <div id="Tickets_Generados">
-            <div id="global">
-                <div id="mensajes">
+        <div class="row">
+            <div class="col s12"></div>
+            <div class="col s6">
+                <div id="global">
                     <blockquote>
                         <div class="center">
                             <h5 id="titulo">Tickets Nuevos</h5>
-                            <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
+                            <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                             <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                             <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
                             <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
@@ -95,7 +62,6 @@
                     </blockquote>
                     <div class=" center">
                         <ul class="collection">
-                            <!-- aqui se hace un for cada ticket -->
                             <% var i = 0; %>
                                 <% var j = 0; %>
                                     <% for (let ticket of ticketss) { %>
@@ -113,16 +79,14 @@
                                             color = 'red lighten-1'; 
                                         } else if(ticket.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } %>
-                                            <li class="collection-item">
-                                                <div class="col s12 m2">
+                                            <li class="collection-item grey">
+                                                <div class="col s12 ">
                                                     <p class="z-depth-4">
                                                         <div class="card">
                                                             <div class="card-content <%=color%>">
                                                                 <p id="titulo">
                                                                     <%= ticket.titulo %>
-                                                                        <!-- <a class="btn-floating btn-small grey lighten pulse right"><i class="material-icons">edit</i></a> -->
                                                                         <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal<%=j%>"><i class="material-icons">edit</i></a>
-                                                                        <!-- Modal Structure -->
                                                                         <div id="modal<%=j%>" class="modal">
                                                                             <div class="modal-content">
                                                                                 <h4>
@@ -152,7 +116,6 @@
                                                             <div class="card-content">
                                                                 <div id="test<%= i+1%>">
                                                                     <%= ticket.descripcion %>
-                                                                        <!-- <a class="btn-floating pulse bottom right small grey lighten-1"><i class="material-icons">edit</i></a> -->
 
                                                                 </div>
                                                                 <div id="test<%= i+2%>">
@@ -165,20 +128,20 @@
                                                             </div>
                                                         </div>
                                                     </p>
+                                                </div>
 
                                             </li>
                                             <% i=i+3 %>
                                                 <% } %>
                                                     <% } %>
                         </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="Mis_Tickets">
-            <div id="global1">
-                <div id="mensajes">
+
+            <div class="col s6">
+                <div id="global1">
                     <blockquote>
                         <div class="center">
                             <h5 id="titulo">Mis Tickets</h5>
@@ -192,10 +155,11 @@
                     </blockquote>
                     <div class=" center">
                         <ul class="collection">
-                            <!-- aqui se hace un for cada ticket -->
                             <% var z = 0; %>
-                                <% for (let ticket2 of ticketss) { %>
-                                    <%var color =''; 
+
+                                <% var j = 0; %>
+                                    <% for (let ticket2 of ticketss) { %>
+                                        <%var color =''; 
                                     if (ticket2.ID_estado != 1){
                                         if(ticket2.ID_estado == 1){ 
                                             color = 'grey lighten-2'; 
@@ -209,50 +173,70 @@
                                             color = 'red lighten-1'; 
                                         } else if(ticket2.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } %>
-                                        <li class="collection-item">
-                                            <div class="col s12 m2">
-                                                <p class="z-depth-4">
-                                                    <div class="card">
-                                                        <div class="card-content <%=color%>">
-                                                            <p id="titulo">
-                                                                <%= ticket2.titulo %>
-                                                            </p>
-                                                        </div>
-                                                        <div class="card-tabs">
-                                                            <ul class="tabs tabs-fixed-width">
-                                                                <li class="tab"><a class="active" href="#tests<%= z+1%>">Descripcion</a></li>
-                                                                <li class="tab"><a href="#tests<%= z+2%>">Preguntas/Respuestas</a></li>
-                                                                <li class="tab"><a href="#tests<%= z+3%>">Comentarios</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="card-content ">
-                                                            <div id="tests<%= z+1%>">
-                                                                <%= ticket2.descripcion %>
-                                                            </div>
-                                                            <div id="tests<%=z+2%>">
-                                                                <%= ticket2.ID_ticket %>
-                                                            </div>
-                                                            <div id="tests<%= z+3%>">
-                                                                <%= ticket2.comentarios_solucion %>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
+                                            <li class="collection-item yellow grey">
+                                                <div class="col s12">
+                                                    <p class="z-depth-4">
+                                                        <div class="card">
+                                                            <div class="card-content <%=color%>">
+                                                                <p id="titulo">
+                                                                    <%= ticket2.titulo %>
+                                                                        <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
 
-                                        </li>
-                                        <% z=z+3 %>
-                                            <% } %>
+                                                                        <div id="modal1<%=j%>" class="modal">
+                                                                            <div class="modal-content">
+                                                                                <h4>
+                                                                                    <%= ticket2.titulo %>
+                                                                                </h4>
+                                                                                <p>
+                                                                                    <%= ticket2.descripcion %>
+                                                                                </p>
+                                                                            </div>
+                                                                            <%j=j+1%>
+                                                                                <div class="modal-footer">
+                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
+
+                                                                                </div>
+                                                                        </div>
+                                                                </p>
+                                                            </div>
+                                                            <div class="card-tabs">
+                                                                <ul class="tabs tabs-fixed-width">
+                                                                    <li class="tab"><a class="active" href="#tests<%= z+1%>">Descripcion</a></li>
+                                                                    <li class="tab"><a href="#tests<%= z+2%>">Preguntas/Respuestas</a></li>
+                                                                    <li class="tab"><a href="#tests<%= z+3%>">Comentarios</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="card-content ">
+                                                                <div id="tests<%= z+1%>">
+                                                                    <%= ticket2.descripcion %>
+                                                                </div>
+                                                                <div id="tests<%=z+2%>">
+                                                                    <%= ticket2.ID_ticket %>
+                                                                </div>
+                                                                <div id="tests<%= z+3%>">
+                                                                    <%= ticket2.comentarios_solucion %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </p>
+
+                                            </li>
+                                            <% z=z+3 %>
                                                 <% } %>
+                                                    <% } %>
                         </ul>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+            <!--JavaScript at end of body for optimized loading-->
+            <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
 
     </html>
