@@ -68,8 +68,9 @@
                         <ul class="collection">
                             <% var i = 0; %>
                                 <% var j = 0; %>
-                                    <% for (let ticket of ticketss) { %>
-                                        <%var color =''; 
+                                    <%var y = 0%>
+                                        <% for (let ticket of ticketss) { %>
+                                            <%var color =''; 
                                         if (ticket.ID_estado == 1){
                                         if(ticket.ID_estado == 1){ 
                                             color = 'grey lighten-2'; 
@@ -83,61 +84,81 @@
                                             color = 'red lighten-1'; 
                                         } else if(ticket.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } %>
-                                            <li class="collection-item grey">
-                                                <div class="col s12 ">
-                                                    <p class="z-depth-4">
-                                                        <div class="card">
-                                                            <div class="card-content <%=color%>">
-                                                                <p id="titulo">
-                                                                    <%= ticket.titulo %>
-                                                                        <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal<%=j%>"><i class="material-icons">edit</i></a>
-                                                                        <div id="modal<%=j%>" class="modal">
-                                                                            <div class="modal-content">
-                                                                                <h4>
-                                                                                    <%= ticket.titulo %>
-                                                                                </h4>
-                                                                                <p>
-                                                                                    <%= ticket.descripcion %>
-                                                                                </p>
-                                                                            </div>
-                                                                            <%j=j+1%>
-                                                                                <div class="modal-footer">
-                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
-                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
-
+                                                <li class="collection-item grey">
+                                                    <div class="col s12 ">
+                                                        <p class="z-depth-4">
+                                                            <div class="card">
+                                                                <div class="card-content <%=color%>">
+                                                                    <p id="titulo">
+                                                                        <%= ticket.titulo %>
+                                                                            <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal<%=j%>"><i class="material-icons">edit</i></a>
+                                                                            <div id="modal<%=j%>" class="modal">
+                                                                                <div class="modal-content">
+                                                                                    <h4>
+                                                                                        <%= ticket.titulo %>
+                                                                                    </h4>
+                                                                                    <p>
+                                                                                        <%= ticket.descripcion %>
+                                                                                    </p>
                                                                                 </div>
-                                                                        </div>
-                                                                </p>
-                                                            </div>
-                                                            <div class="card-tabs">
-                                                                <ul class="tabs tabs-fixed-width">
-                                                                    <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
-                                                                    <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
-                                                                    <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+                                                                                <%j=j+1%>
+                                                                                    <div class="modal-footer">
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
 
-                                                                </ul>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <div id="test<%= i+1%>">
-                                                                    <%= ticket.descripcion %>
+                                                                                    </div>
+                                                                            </div>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="card-tabs">
+                                                                    <ul class="tabs tabs-fixed-width">
+                                                                        <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
+                                                                        <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
+                                                                        <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="card-content">
+                                                                    <div id="test<%= i+1%>">
+                                                                        <%= ticket.descripcion %>
+
+                                                                    </div>
+                                                                    <div id="test<%= i+2%>">
+                                                                        <%= ticket.ID_ticket %>
+                                                                    </div>
+                                                                    <div id="test<%= i+3%>">
+                                                                        <%= ticket.comentarios_solucion %>
+                                                                            <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                                            <div id="agregarcomentario<%=y%>" class="modal">
+                                                                                <div class="modal-content">
+                                                                                    <h4>
+                                                                                        Agregar comentario?
+                                                                                    </h4>
+                                                                                    <p>
+                                                                                        <div class="input-field">
+                                                                                            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                                                                                            <label for="first_name">Comentario</label>
+                                                                                        </div>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <%y=y+1%>
+                                                                                    <div class="modal-footer">
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+
+                                                                                    </div>
+                                                                            </div>
+                                                                    </div>
 
                                                                 </div>
-                                                                <div id="test<%= i+2%>">
-                                                                    <%= ticket.ID_ticket %>
-                                                                </div>
-                                                                <div id="test<%= i+3%>">
-                                                                    <%= ticket.comentarios_solucion %>
-                                                                </div>
-
                                                             </div>
-                                                        </div>
-                                                    </p>
-                                                </div>
+                                                        </p>
+                                                    </div>
 
-                                            </li>
-                                            <% i=i+3 %>
-                                                <% } %>
+                                                </li>
+                                                <% i=i+3 %>
                                                     <% } %>
+                                                        <% } %>
                         </ul>
 
                     </div>
@@ -335,6 +356,22 @@
                             <a class="carousel-item" href="#four!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
                             <a class="carousel-item" href="#five!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
                         </div>
+                    </div>
+                    <div class="col s6">
+                        <ul class="collapsible">
+                            <li class="active">
+                                <div class="collapsible-header"><i class="material-icons">place</i>First</div>
+                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
