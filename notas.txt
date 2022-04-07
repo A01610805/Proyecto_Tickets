@@ -19,4 +19,4 @@ Buscar Usuarios
     Prueba15,exitosa, accion, restructurar campos de busqueda a barra
 
 Modificar template
-    
+    Prueba1, no se rompio a primera prueba, a pesar de eso no hizo nada, posible problema encontrado

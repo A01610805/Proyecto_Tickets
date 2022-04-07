@@ -32,11 +32,24 @@ exports.get_preguntas = (request, response, next) => {
         }) 
     .catch(error => {console.log(error)});
 };
-exports.delete_preguntas = (req, res, next) => {
-    console.log(request.params.id);
-    //Categoria.fetchOne(request.params.id)
-    Pregunta.delete_preguntas(request.param.id)
+exports.post_mod = (request, res, next) => {
+    const categoria = new Categoria( request.body.titulo, request.body.tiempo, request.params.id);
+    console.log('Esto es antes de categoria.update()');
+    console.log(categoria);
+    categoria.update()
+    const pregunta = new Pregunta(request.body.texto_pregunta, request.params.id)
+    pregunta.update()
 };
+// exports.post_npreg =(request, res, next) => { 
+//     const pregunta = new Pregunta(request.body.texto_preguntanew, request.params.id)
+//     pregunta.addpreg()
+// }
+
+// exports.delete_preguntas = (req, res, next) => {
+//     console.log(request.params.id);
+//     //Categoria.fetchOne(request.params.id)
+//     Pregunta.delete_preguntas(request.param.id)
+// };
 
 exports.root = (request, response, next) => {
     response.redirect('/modificar_template'); 

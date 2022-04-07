@@ -15,34 +15,34 @@
         </nav>
         <div class="">
             <form action="" method="POST" id="form" class="respuesta_ajax">
-            <div >
-                <label for="">Nombre Categoria</label>
-                <input required id="titulo" name="titulo"><span class=""></span>
-                
-            </div>
-            <div >
-                <label for="">Tiempo estimado</label>
-                <input required id="tiempo" name="tiempo"><span class=""></span>
-                
-            </div>
-            <% for (let pregunta of preguntas) { %> 
-                <div>
-                    <label  href="/modificar_template/mod_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
-                    <div class="row col s6">
-                        <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
-                        <label for="ID_pregunta">Pregunta nueva</label>
-                    </div>
+                <div >
+                    <label for="">Nombre Categoria</label>
+                    <input required id="titulo" name="titulo"><span class=""></span>
                     
                 </div>
-            <% } %>  
-
+                <div >
+                    <label for="">Tiempo estimado</label>
+                    <input required id="tiempo" name="tiempo"><span class=""></span>
+                    
+                </div>
+                <% for (let pregunta of preguntas) { %> 
+                    <div>
+                        <label  href="/modificar_template/mod_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
+                        <div class="row col s6">
+                            <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
+                            <label for="ID_pregunta">Pregunta nueva</label>
+                        </div>
+                        
+                    </div>
+                <% } %>  
+                <div class="center ">
+                    <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                    <button href = "/home" class="waves-effect waves-light btn">Cancelar</button>
+                    <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button>
+                    <!-- <button href = "/modificar_template/de_preg" type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> -->
+                </div>
             </form>
-            <div class="center ">
-                <button type="submit" class="waves-effect waves-light btn">Guardar</button>
-                <button href = "/modificar_template/mod_template" class="waves-effect waves-light btn">Cancelar</button>
-                <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button>
-                <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button>
-            </div>
+            
         </div>
     
     </div>
