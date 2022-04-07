@@ -29,8 +29,8 @@ module.exports = class Pregunta {
     //     return db.execute(
     //         'DELETE FROM pregunta WHERE  ID_categoria=?', [id]);
     // }
-    addpreg(){
-        return db.execute(
-            'INSERT INTO pregunta(texto_pregunta, ID_categoria) VALUES(?, ?) WHERE ID_categoria = ?', [this.texto_pregunta, this.ID_categoria])
-    }
+    // addpreg(){
+    //     return db.execute(
+    //         'INSERT INTO pregunta(texto_pregunta, ID_categoria) VALUES(?, ?) WHERE ID_categoria = ?', [this.texto_pregunta, this.ID_categoria])
+    // }
 }

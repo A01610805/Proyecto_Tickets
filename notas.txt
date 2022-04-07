@@ -20,4 +20,5 @@ Buscar Usuarios
 
 Modificar template
     Prueba1, falla, no actualizo base de datos, restablecer modelos de preguntas y categorias
-    Prueba2, falla, no actualizo base de datos, solucion ?
+    Prueba2, falla, no actualizo base de datos, posible falla en actualizaciones UPDATE , solucion ?, 
+    Prueba3, ya crasheo

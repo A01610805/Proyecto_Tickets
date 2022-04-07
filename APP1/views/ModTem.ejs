@@ -5,6 +5,7 @@
             <% for (let categoria of categorias) { %>
                 <li class="">
                     <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+
                 </li>
             <% } %>
          </ul>
@@ -14,41 +15,54 @@
             </div>
         </nav>
         <div class="">
-            <form action="" method="POST" id="form" class="respuesta_ajax">
-                <div >
-                    <label for="">Nombre Categoria</label>
-                    <input required id="titulo" name="titulo"><span class=""></span>
-                    
+            <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax">
+                <div>
+                    <div >
+                        <label for="">Nombre Categoria</label>
+                        <input required id="titulo" name="titulo"><span class=""></span>
+                        <label for="">Establece nuevo nombre de categoria. </label>
+                        
+                    </div>
+                    <div >
+                        <label for="">Tiempo estimado</label>
+                        <input required id="tiempo" name="tiempo"><span class=""></span>
+                        <label for="">Establece nuevo tiempo estimado. </label>
+                        
+                    </div>
                 </div>
-                <div >
-                    <label for="">Tiempo estimado</label>
-                    <input required id="tiempo" name="tiempo"><span class=""></span>
-                    
-                </div>
+                <% var i = 0; %>
                 <% for (let pregunta of preguntas) { %> 
                     <div>
                         <label  href="/modificar_template/get_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
                         <div class="row col s6">
-                            <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
+                            <input required id="texto_pregunta" name="texto_pregunta"><span ></span>
                             <label for="ID_pregunta">Pregunta nueva</label>
+                            <label name="<%= i %>"></label>
                         </div>
                         
                     </div>
+                    <% i = i++ %>
                 <% } %>  
+
                 <div class="center ">
                     <button type="submit" class="waves-effect waves-light btn">Guardar</button>
-                    <!-- <button href = "/home" class="waves-effect waves-light btn">Cancelar</button> -->
-                    <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button>
+                    <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
+                    <!-- <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> -->
                     <!-- <button href = "/modificar_template/de_preg" type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> -->
                 </div>
+                
             </form>
+            <!-- <form action="" method="post">
+                
+            </form> -->
+            
             
         </div>
     
     </div>
 
     	
-	<script>
+	<!-- <script>
         let parameters = []
 
 
@@ -62,23 +76,22 @@
             const $form = document.getElementById("form")
             const templateElement = () => {
                 return (`
-                    <div>
+                
                         <div class="row col s6">
                             <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
                             <label for="ID_pregunta">Pregunta nueva</label>
                         </div>
-                    </div>
+                    
                 `)
             }
             $btnAdd.addEventListener("click", (event) => {
                 const $div = document.createElement("div")
-                $div.classList.add("grupo")
                 $div.innerHTML = templateElement()
                 $form.insertBefore($div, $form.lastChild)
             })
 
         })()
-    </script>
+    </script> -->
 
     
 <%- include('includes/footer.ejs') %>

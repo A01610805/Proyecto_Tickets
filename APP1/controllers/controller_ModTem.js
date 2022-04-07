@@ -32,13 +32,17 @@ exports.get_preguntas = (request, response, next) => {
         }) 
     .catch(error => {console.log(error)});
 };
-exports.post_mod = (request, res, next) => {
+exports.post_mod = (request, response, next) => {
+    console.log('Esto es antes de declarar constructores')
     const categoria = new Categoria( request.body.titulo, request.body.tiempo, request.params.id);
     console.log('Esto es antes de categoria.update()');
     console.log(categoria);
     categoria.update()
-    const pregunta = new Pregunta(request.body.texto_pregunta, request.params.id)
+    console.log('Esto es antes de pregunta.update()');
+    console.log(request.body); 
+    const pregunta = new Pregunta(request.body.texto_pregunta[1], request.params.id)
     pregunta.update()
+    response.redirect('/home')
 };
 // exports.post_npreg =(request, res, next) => { 
 //     const pregunta = new Pregunta(request.body.texto_preguntanew, request.params.id)
