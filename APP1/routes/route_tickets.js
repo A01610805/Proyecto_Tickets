@@ -5,6 +5,7 @@ const tilogin = require('../controllers/t_controllers');
 
 //Prueba con ajax
 router.get('/activos/:valor',tilogin.buscar_activos);
+router.get('/start/:start', tilogin.get_activos);
 router.get('/activos', tilogin.get_activos);
 router.post('/activos', tilogin.post_activos);
 

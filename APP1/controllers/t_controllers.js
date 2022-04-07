@@ -2,10 +2,15 @@
 const Ticket = require("../models/tickets");
 
 //Inicio de /buscar_tickets/activos
-exports.get_activos=(request, response, next)=>{
+exports.get_activos= async (request, response, next)=>{
 let tipo=1;
 console.log(request.session.usuario);
-tickets=Ticket.fetchticketsactivos()
+
+const total = await Ticket.getTotal_activos();
+console.log("En total hay: " + total);
+const start = request.params.start ? request.params.start : 0
+
+tickets=Ticket.fetchticketsactivos_pag(start)
     .then(([rows, fieldData]) => {
         //console.log(rows);
         response.render('Consulta', {
@@ -13,6 +18,7 @@ tickets=Ticket.fetchticketsactivos()
             username: request.session.username ? request.session.username : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
+            total_tickets: total,
         }); 
     })
     .catch(err => {
@@ -28,6 +34,7 @@ exports.post_activos=(request, response, next)=>{
 
 // A partir de aqui inicia la implementación en ajax de buscar_activos
 exports.buscar_activos = (request, response, next) => {
+    
     tickets=Ticket.fetchticketsactivos_filtros(request.params.valor)
     .then(([rows, fieldData]) => {
         console.log(request.params.valor);

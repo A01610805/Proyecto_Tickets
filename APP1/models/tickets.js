@@ -19,6 +19,10 @@ module.exports = class Ticket {
     static fetchticketsactivos(){
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5');
     }
+
+    static fetchticketsactivos_pag(num){
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 LIMIT ?, 2', [num]);
+    }
     
     static fetchticketsactivos_filtros(valor){
         let arr = valor.split('&');
@@ -46,4 +50,17 @@ module.exports = class Ticket {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?',[id])
     }
 
+    static getTotal_activos() {
+        return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5')
+            .then(([rows, fieldData]) => {
+            console.log(rows);
+            console.log(rows[0].total);
+            return rows[0].total;
+        })
+        .catch(error => {
+            console.log(error);
+            return 0;
+            });
+    }
+    
 }
