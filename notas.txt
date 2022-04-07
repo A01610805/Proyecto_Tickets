@@ -19,4 +19,5 @@ Buscar Usuarios
     Prueba15,exitosa, accion, restructurar campos de busqueda a barra
 
 Modificar template
-    Prueba1, no se rompio a primera prueba, a pesar de eso no hizo nada, posible problema encontrado
+    Prueba1, falla, no actualizo base de datos, restablecer modelos de preguntas y categorias
+    Prueba2, falla, no actualizo base de datos, solucion ?

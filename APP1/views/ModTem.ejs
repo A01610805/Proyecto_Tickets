@@ -4,7 +4,7 @@
          <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
             <% for (let categoria of categorias) { %>
                 <li class="">
-                    <a href="/modificar_template/mod_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                    <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
                 </li>
             <% } %>
          </ul>
@@ -27,7 +27,7 @@
                 </div>
                 <% for (let pregunta of preguntas) { %> 
                     <div>
-                        <label  href="/modificar_template/mod_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
+                        <label  href="/modificar_template/get_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
                         <div class="row col s6">
                             <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
                             <label for="ID_pregunta">Pregunta nueva</label>
@@ -37,7 +37,7 @@
                 <% } %>  
                 <div class="center ">
                     <button type="submit" class="waves-effect waves-light btn">Guardar</button>
-                    <button href = "/home" class="waves-effect waves-light btn">Cancelar</button>
+                    <!-- <button href = "/home" class="waves-effect waves-light btn">Cancelar</button> -->
                     <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button>
                     <!-- <button href = "/modificar_template/de_preg" type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> -->
                 </div>
@@ -62,9 +62,11 @@
             const $form = document.getElementById("form")
             const templateElement = () => {
                 return (`
-                    <div class="row col s6">
-                        <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
-                        <label for="ID_pregunta">Pregunta nueva</label>
+                    <div>
+                        <div class="row col s6">
+                            <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
+                            <label for="ID_pregunta">Pregunta nueva</label>
+                        </div>
                     </div>
                 `)
             }
