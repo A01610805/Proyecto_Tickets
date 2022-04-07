@@ -3,14 +3,13 @@ const db = require('../util/database');
 module.exports = class Categoria {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    // constructor(ID_categoria, nombre_categoria, tiempo_estimado, ID_pregunta, texto_pregunta) {
-    //     this.ID_categoria = ID_categoria;
-    //     this.nombre_categoria = nombre_categoria;
-    //     this.tiempo_estimado = tiempo_estimado;
+     constructor(nombre_categoria, tiempo_estimado) {
+         this.nombre_categoria = nombre_categoria;
+         this.tiempo_estimado = tiempo_estimado;
     //     this.descripcion = descripcion;
     //     this.ID_pregunta = ID_pregunta;
     //     this.texto_pregunta = texto_pregunta;
-    // }
+         }
     //El metodo save no es necesario dentro de la función
     /*
     save() {
@@ -29,4 +28,10 @@ module.exports = class Categoria {
             'SELECT * FROM categoria WHERE ID_categoria=?',[num]);
     }
 
+    save(id) {
+        return db.execute(
+
+            'UPDATE categoria SET  nombre_categoria = ?, tiempo_estimado = ? WHERE ID_categoria = ?', [this.nombre_categoria, this.tiempo_estimado, id])
+
+    }
 }

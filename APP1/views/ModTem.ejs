@@ -1,48 +1,82 @@
 <%- include('includes/head.ejs') %>
-    
-	<form action="" method="POST" id="form">
-        <div class="form">
+    <div class="container">
 
-            <div class="grupo">
-                <ul class="list">
-                    <li class="list__item list__item--click">
-                        <div class="list__button list__button--click">
-                            <a href="#" class="nav__link">Categoria</a>
-                        </div>
-                        <ul class="list__show">
-                            <li class="list__inside">
-                                <a href="#" class="nav__link nav__link--inside">Template1</a>
-                            </li>
-        
-                            <li class="list__inside">
-                                <a href="#" class="nav__link nav__link--inside">Template2</a>
-                            </li>
-                        </ul>
-        
-                    </li>
-                </ul>
+         <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
+            <% for (let categoria of categorias) { %>
+                <li class="">
+                    <a href="/modificar_template/mod_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                </li>
+            <% } %>
+         </ul>
+        <nav class="grey darken-3">
+            <div class="nav-wrapper">
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a></li>
+            </div>
+        </nav>
+        <div class="">
+            <form action="" method="POST" id="form" class="respuesta_ajax">
+            <div >
+                <label for="">Nombre Categoria</label>
+                <input required id="titulo" name="titulo"><span class=""></span>
                 
             </div>
-            <div class="grupo">
-                <input><span class="barra"></span>
-                <label for="">Descripcion</label>
+            <div >
+                <label for="">Tiempo estimado</label>
+                <input required id="tiempo" name="tiempo"><span class=""></span>
+                
             </div>
-            <div class="grupo">
-                <input><span class="barra"></span>
-                <label for="">Pregunta </label>
-            </div>
-            <div class="grupo">
-                <input><span class="barra"></span>
-                <label for="">Pregunta</label>
-            </div>
+            <% for (let pregunta of preguntas) { %> 
+                <div>
+                    <label  href="/modificar_template/mod_preg/<%= pregunta.ID_categoria %>" ><%= pregunta.texto_pregunta %></label>
+                    <div class="row col s6">
+                        <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
+                        <label for="ID_pregunta">Pregunta nueva</label>
+                    </div>
+                    
+                </div>
+            <% } %>  
 
+            </form>
+            <div class="center ">
+                <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                <button href = "/modificar_template/mod_template" class="waves-effect waves-light btn">Cancelar</button>
+                <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button>
+                <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button>
+            </div>
         </div>
-
-    </form>    
-    <div>
-        <button id="btnAdd" type="submit">Agregar pregunta</button>
-        <button id="btnAdd" type="submit">Eliminar pregunta</button>
-        <button type="submit">Cambiar</button>
-        <button type="submit">Cancelar</button>
+    
     </div>
-<%- include('includes/foot.ejs') %>
+
+    	
+	<script>
+        let parameters = []
+
+
+        const addJsonElement = json => {
+            parameters.push(json)
+            return parameters.length - 1
+        }
+
+        (function load(){
+            const $btnAdd = document.getElementById("agregar")
+            const $form = document.getElementById("form")
+            const templateElement = () => {
+                return (`
+                    <div class="row col s6">
+                        <input required id="texto_pregunta" name="texto_respuesta"><span ></span>
+                        <label for="ID_pregunta">Pregunta nueva</label>
+                    </div>
+                `)
+            }
+            $btnAdd.addEventListener("click", (event) => {
+                const $div = document.createElement("div")
+                $div.classList.add("grupo")
+                $div.innerHTML = templateElement()
+                $form.insertBefore($div, $form.lastChild)
+            })
+
+        })()
+    </script>
+
+    
+<%- include('includes/footer.ejs') %>
