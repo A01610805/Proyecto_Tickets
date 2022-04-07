@@ -14,21 +14,18 @@ module.exports = class Gen_Tickets {
 
             'INSERT INTO ticket(ID_categoria, ID_estado, ID_prioridad, titulo, descripcion) VALUES(?,?,?,?,?)',
             [this.ID_categoria, 1, 1, this.titulo, this.descripcion]
-            
-            // ('INSERT INTO genera_ticket(ID_ticket, ID_usuario) VALUES(?,?,?,?,?,?)',
-            // [this.ID_ticket, this.ID_usuario])
 
         )
 
     }
 
-    obtenerid(){
+    static obtenerid(){
         return db.execute('SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1')
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
-    /*static fetch(id) {
+    static fetch(id) {
         return db.execute(
             'SELECT * FROM info_tickets WHERE ID_categoria=?', [id]);
-    }*/
+    }
 }

@@ -2,6 +2,7 @@ const Categoria = require('../models/categorias');
 const Pregunta = require('../models/preguntas');
 const Gen_Tickets = require('../models/gen_ticket');
 const Respuesta = require('../models/respuestas');
+const { idpreg } = require('../models/preguntas');
 
 exports.get_genticket = (request, response, next) => {
     Categoria.fetchAll()
@@ -27,7 +28,7 @@ exports.get_preguntas = (request, response, next) => {
                         Tiname: request.session.usuario ? request.session.usuario : '',
                         categorias: rows,
                         preguntas: rows2,
-                        id: request.params.id ? request.params.id : 1,
+                        id: request.params.id ? request.params.id : 1
                     }); 
                 }) 
                 .catch(error => {console.log(error)}); 
@@ -44,42 +45,28 @@ exports.post_genticket = async(request,response, next) => {
     //ticket.save();
     console.log('Esto es después de ticket.save()');
 
-    console.log(ticket);
-    idticket = await ticket.obtenerid();
-    console.log(idticket[0]);
+    //  console.log(ticket);
+    //  console.log(obtenerid());
+    // idticket = await ticket.obtenerid;
+    // console.log(idticket);
+    //TPrueba = await TicketPrueba.fetchticketsactivos();
+    //console.log(TPrueba);
 
-    pregunta = new Pregunta;
-    idpregunta = await pregunta.idpreg(request.params.id);
-    console.log(idpregunta[0]);
     
-    npreguntas = await pregunta.countpreg(request.params.id);
-    console.log(npreguntas[0]);
+    const ArrayResp = request.body.respuesta;   // Aqui tenemos las 3 respuestas
+    console.log(ArrayResp[0]);
 
-    // var n = 0;
-    // for(let i in idpregunta ){
-    //     console.log("entramos al for");
-    //     console.log(idpregunta[n]);
-    //     n = n + 1;
-    // }
+    const ArrayofArrayIDs = await idpreg(request.params.id);
+    ArrayIDs = ArrayofArrayIDs[0];
+    console.log(ArrayIDs[0].ID_pregunta);
 
-    for(var i = 0; i <= npreguntas[0]; i++){
-        console.log('Entrando al for de respuetas');
-         var respuesta = new Respuesta(idpregunta[n], idticket, request.body.texto_respuesta[n]);
-         respuesta.save(idpregunta[n],idticket[n]);
-         console.log('Pregunta registrada.');
+    
+    for (let i = 0; i<ArrayResp.length; i++){
+        Respuesta.save(ArrayIDs[i].ID_pregunta, ArrayResp[0]);
     }
+ 
     response.redirect('/home')
-            // .then(() => {
-            //     response.redirect('/home');
-            // })
-            // .catch(err => console.log(err));
-    // var i = -1;
-    // for(let texto_respuesta of request.body.texto_respuesta){
-    //     i=i+1;
-    //     var pregunta = new Pregunta(request.params.id, request.body.texto_respuesta[i])
-    //     console.log(request.body.texto_respuesta[i]);
-    //     pregunta.save();
-    // }
+
 };
 
 exports.root = (request, response, next) => {

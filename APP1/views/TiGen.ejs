@@ -1,114 +1,54 @@
 <%- include('includes/head.ejs') %>
    
-    <br><br>
-    <div>
-        <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar categoría del ticket<i class="material-icons right">arrow_drop_down</i></a>
-    
-        <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
-            <% for (let categoria of categorias) { %>
-                <li class="">
-                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-                </li>
-            <% } %>
-            </ul>
-    </div>
+<br><br>
+<div> <!--Dropdown para cambiar de ticket-->
+    <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar categoría del ticket<i class="material-icons right">arrow_drop_down</i></a>
 
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input  id="Titulo" type="text" class="validate">
-                    <label for="Titulo" style="font-size:16px">Título</label>
-                </div>
-            </div> 
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" class="materialize-textarea" data-length="100"></textarea>
-                    <label for="descripcion" style="font-size:18px">Descripción</label>
-                </div>
-            </div>
-
-            <%var j=1; %>
-            <% for (let pregunta of preguntas) { %> 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <%var nombre = "texto_respuesta"+j%>
-                        <textarea id="pregunta <+ j>" class="materialize-textarea" data-length="1000"></textarea>  
-                        <label for="pregunta <+ j%>"><%= pregunta.texto_pregunta %></label>
-                    </div>
-                </div>
-                <%j=j+1;%>
-            <% } %>  
-        </form>
-    </div>
-        
-
-
-
-<!--  <div class="container">
-
-         <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
-            <% for (let categoria of categorias) { %>
-                <li class="">
-                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-                </li>
-            <% } %>
-         </ul>
-        <nav class="grey darken-3">
-            <div class="nav-wrapper">
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a></li>
-            </div>
-        </nav>
-
-
-
-        <div class="form">
-            <form action="" method="POST" id="form">
-            <div class="grupo">
-                <input required id="titulo" name="titulo"><span class="barra"></span>
-                <label for="">Titulo</label>
-            </div>
-            <div class="grupo">
-                <input required id="descripcion" name="descripcion"><span class="barra"></span>
-                <label for="">Descripcion</label>
-            </div>
-            <%var i=1; %>
-            <% for (let pregunta of preguntas) { %> 
-                <div class="grupo">
-                    <%var nombre = "texto_respuesta"+i%>
-                    <input required id="<%nombre%>" name="texto_respuesta"><span class="barra"></span>
-                    <label  href="/generar_ticket/pregunta/<%= pregunta.ID_categoria %>" for="ID_pregunta"><%= pregunta.texto_pregunta %></label>
-                </div>
-                <%i=i+1;%>
-            <% } %>  
-            <br>
-            
-            <button type="submit">Generar</button>
-            <button type="submit">Cancelar</button>
-            </form>
-        </div>
-    
-    </div> -->
-
-
-
-
-    <!-- Intento fallido de cambio de categorías
-        <div class="input-field col s6 m6 l6">
-        <select>
-        <option value="" disabled selected>Categorías</option>
-        <& let i = 0;%>
+    <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
         <% for (let categoria of categorias) { %>
-            <option href="/generar_ticket/categoria/<%= categoria.ID_categoria %>">
-                <%= categoria.nombre_categoria %> 
-            </option>
-            <% i++;%>
+            <li class="">
+                <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+            </li>
         <% } %>
-        </select>
-        <label>Cambiar de Categoría</label>
-        <h1>Creación de ticket <br></h1>
-    </div> -->
+        </ul>
+</div>
+
+<h1>Crear Nuevo Ticket</h1>
 
 
-    
+<div class="row">
+    <form method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input  id="titulo" name="titulo" type="text" class="validate" required="required">
+                <label for="titulo" style="font-size:16px">Título</label>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" name="descripcion" class="materialize-textarea" data-length="100" required="required"></textarea>
+                <label for="descripcion" style="font-size:18px">Descripción</label>
+            </div>
+        </div>
+
+        <%var j=1; %>
+        <% for (let pregunta of preguntas) { %> 
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea placeholder="respuesta" id="respuesta+<%j%>" name="respuesta<%+j%>" class="materialize-textarea" data-length="1000"></textarea>  
+                    <label for="respuesta+<%j%>" style="font-size:18px"><%= pregunta.texto_pregunta %></label>
+                </div>
+            </div>
+            <div id="idpreg" name="idpreg" style="display:none"><%= pregunta.ID_pregunta%></div>
+            <%j=j+1;%>
+        <% } %>  
+        
+        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+            <i class="material-icons right">send</i>
+        </button>
+        <a class="waves-effect waves-light btn" href="/home">Cancelar</a>
+    </form>
+</div>
+
+   
 <%- include('includes/footer.ejs') %>
