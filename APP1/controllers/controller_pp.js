@@ -17,7 +17,7 @@ exports.get_principal = (request, response, next) => {
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');
-    Ticket.borrarticket(request.body.idticket);
+    Tickets.borrarticket(request.body.idticket);
     response.redirect('/home');
 };
 

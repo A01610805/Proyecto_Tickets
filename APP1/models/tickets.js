@@ -30,13 +30,13 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos() {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5');
+        return db.execute('SELECT * FROM ticket WHERE ID_estado!=6 AND ID_estado!=5');
     }
     static borrarticketpropio(id) {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
     }
     static borrarticket(id) {
-        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
+        return db.execute('UPDATE ticket SET ticket.ID_estado=5 WHERE ticket.ID_ticket=?', [id])
     }
 
 }
