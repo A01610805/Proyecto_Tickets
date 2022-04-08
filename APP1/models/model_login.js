@@ -30,7 +30,5 @@ module.exports = class User {
         return db.execute('SELECT * FROM usuario WHERE nombre=?',
             [name]);
     }
-    static fetchAll(){
-        return db.execute('SELECT ID_usuario, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario');
-    }
+
 }
