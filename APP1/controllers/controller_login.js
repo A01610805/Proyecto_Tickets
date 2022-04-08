@@ -26,7 +26,7 @@ exports.login = (request, response, next) => {
                 httpOnly: true
             })
 
-            const correo_usuario = (rows[0].correo).toLowerCase()
+            const correo_usuario = rows[0].correo
             response.cookie('correo_usuario', correo_usuario, {
                 httpOnly: true
             })
@@ -65,10 +65,10 @@ exports.get_signup = (request, response, next) => {
 
 exports.post_signup = (request, response, next) => {
     console.log(request.body);
-    const user = new User(request.body.rol, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, (request.body.Email).toLowerCase(), request.body.password);
+    const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
     user.save()
         .then(() => {
-            response.redirect('Primer_pantalla');
+            response.redirect('Log_In');
         }).catch((error) => {
             console.log(error);
             console.log('Aqui esta el error');
