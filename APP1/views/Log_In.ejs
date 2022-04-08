@@ -1,96 +1,343 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <style>
-        body {
-            display: flex;
-            min-height: 200vh;
-            flex-direction: column;
-        }
-        
-        main {
-            flex: 1 0 auto;
-        }
-        
-        body {
-            background: rgba(255, 255, 255, 0.452);
-        }
-        
-        .input-field input[type=date]:focus+label,
-        .input-field input[type=text]:focus+label,
-        .input-field input[type=email]:focus+label,
-        .input-field input[type=password]:focus+label {
-            color: #16030a73;
-        }
-        
-        .input-field input[type=date]:focus,
-        .input-field input[type=text]:focus,
-        .input-field input[type=email]:focus,
-        .input-field input[type=password]:focus {
-            border-bottom: 2px solid #000000;
-            box-shadow: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Bienvenido a la Plataforma de Zebrands</title>	
+  <style>
+	  @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+html, body {
+  position: relative;
+  min-height: 100vh;
+  background-color: #b8b8b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form-structor {
+  background-color: #222;
+  border-radius: 15px;
+  height: 550px;
+  width: 350px;
+  position: relative;
+  overflow: hidden;
+}
+.form-structor::after {
+  content: "";
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 500px;
+  background-image: url("https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100");
+}
+.form-structor .signup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup.slide-up {
+  top: 5%;
+  -webkit-transform: translate(-50%, 0%);
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup.slide-up .form-holder, .form-structor .signup.slide-up .submit-btn {
+  opacity: 0;
+  visibility: hidden;
+}
+.form-structor .signup.slide-up .form-title {
+  font-size: 1em;
+  cursor: pointer;
+}
+.form-structor .signup.slide-up .form-title span {
+  margin-right: 5px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup .form-title {
+  color: #fff;
+  font-size: 1.7em;
+  text-align: center;
+}
+.form-structor .signup .form-title span {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup .form-holder {
+  border-radius: 15px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup .form-holder .input {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  font-size: 12px;
+}
+.form-structor .signup .form-holder .input:last-child {
+  border-bottom: 0;
+}
+.form-structor .signup .form-holder .input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+.form-structor .signup .submit-btn {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .signup .submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.form-structor .login {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  -webkit-transform: translate(-50%, 0);
+  background-color: #fff;
+  width: 200%;
+  height: 250px;
+  border-radius: 50%;
+  z-index: 4;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center {
+  position: absolute;
+  top: calc(50% - 10%);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .form-title {
+  color: #000;
+  font-size: 1.7em;
+  text-align: center;
+}
+.form-structor .login .center .form-title span {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .form-holder {
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .form-holder .input {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  font-size: 12px;
+}
+.form-structor .login .center .form-holder .input:last-child {
+  border-bottom: 0;
+}
+.form-structor .login .center .form-holder .input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+.form-structor .login .center .submit-btn {
+  background-color: #6B92A4;
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login .center .submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.form-structor .login.slide-up {
+  top: 90%;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .center {
+  top: 10%;
+  -webkit-transform: translate(-50%, 0%);
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .form-holder, .form-structor .login.slide-up .submit-btn {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .form-title {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .login.slide-up .form-title span {
+  margin-right: 5px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+  </style>
+
 </head>
-
 <body>
-    <div class="section"></div>
-    <main>
-        <center>
-            <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />
-            <div class="section"></div>
+<!-- partial:index.partial.html -->
+<div class="form-structor">
+  <form id="form-signup" action="/users/signup" onsubmit="return validateSignupForm()" method="POST" autocomplete="off">
+	<div class="signup">
+		<h2 class="form-title" id="signup"><span>o</span>Regístrate</h2>
+		<div class="form-holder">
+			<input type="text" class="input" id="nombre" name="nombre" placeholder="Nombre(s) del Empleado" />
+            <input type="text" class="input" id="ApellidoP" name="ApellidoP"  placeholder="Apellido Paterno" />
+            <input type="text" class="input" id="ApellidoM" name="ApellidoM"  placeholder="Apellido Materno" />
+            <input type="email" class="input" id="email" name="email" placeholder="Correo @zeb.com/@zeb.mx" />
+            <input type="password" class="input" id="passwords" name="passwords" placeholder="Contraseña" />
+            <input type="password" class="input" id="password2" name="password2" placeholder="Repite la Contraseña" />
+		</div>
+		<button class="submit-btn" name="botonsignup" id="botonsignup">Crear Usuario</button>
+	</div>
+</form>
+	<form id="form-login" action="" method="POST" autocomplete="off">
+	<div class="login slide-up">
+		<div class="center">
+			<h2 class="form-title" id="login"><span>o</span>Inicia Sesión</h2>
+			<div class="form-holder">
+				<input type="email" name='correo' id='correo' class="input" placeholder="Correo Institucional" />
+				<input type="password" name='password' id='password' class="input" placeholder="Contraseña" />
+			</div>
+			<button type="submit" value="Enviar" class="submit-btn">Ingresar</button>
+		</div>
+	</div>
+	</form>
+</div>
 
-            <h5 style="color:#424040">Inicia sesión con tu cuenta Zebrands</h5>
-            <div class="section"></div>
+  <script>
+	  console.clear();
 
-            <div class="container">
-                <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+const loginBtn = document.getElementById('login');
+const signupBtn = document.getElementById('signup');
 
-                    <form class="col s12" method="post">
-                        <div class='row'>
-                            <div class='col s12'>
-                            </div>
-                        </div>
+loginBtn.addEventListener('click', (e) => {
+	let parent = e.target.parentNode.parentNode;
+	Array.from(e.target.parentNode.parentNode.classList).find((element) => {
+		if(element !== "slide-up") {
+			parent.classList.add('slide-up')
+		}else{
+			signupBtn.parentNode.classList.add('slide-up')
+			parent.classList.remove('slide-up')
+		}
+	});
+});
 
-                        <div class='row'>
-                            <div class='input-field col s12'>
+signupBtn.addEventListener('click', (e) => {
+	let parent = e.target.parentNode;
+	Array.from(e.target.parentNode.classList).find((element) => {
+		if(element !== "slide-up") {
+			parent.classList.add('slide-up')
+		}else{
+			loginBtn.parentNode.parentNode.classList.add('slide-up')
+			parent.classList.remove('slide-up')
+		}
+	});
+});
 
-                                <input class='validate' type='email' name='correo' id='correo' placeholder="Ingresa tu correo empresarial" />
-                                <label for='email'>Correo</label>
+function validateSignupForm() {
+	var mail = document.getElementById("email").value;
+	var name = document.getElementById("nombre").value;
+	var password = document.getElementById("passwords").value;
+  var password2 = document.getElementById("password2").value;
+  var apellidopaterno = document.getElementById("ApellidoM").value;
+  var apellidomaterno = document.getElementById("ApellidoP").value;
+  console.log(mail.slice(-7));
 
-                            </div>
-                        </div>
+	if (mail == "" || name == "" || password == "" || apellidopaterno == "" || apellidomaterno == "") {
+		alert("Llena todos los campos requeridos");
+		return false;
+	}
+	else if(password.length < 8) {
+    alert("Tu contraseña debe tener 8 caracteres como mínimo.");
+		return false;
+	}
+  else if(password != password2) {
+    console.log(password);
+    alert("Las contraseñas no coinciden.");
+		return false; 
+	}
+  else if(mail.slice(-7) != '@zeb.mx') {
+		alert("Tu correo debe tener terminación @zeb.mx");
+		return false;
+	}
+	else {
+		alert("El usuario ha sido dado de alta.");
+		return true;
+	}
+}
+  </script>
 
-                        <div class='row'>
-                            <div class='input-field col s12'>
-                                <input class='validate' type='password' name='password' id='password' placeholder="Ingresa tu contraseña" />
-                                <label for='password'>Contraseña</label>
-                            </div>
-                            <label style='float: right;'>
-								<a style="color:#424040" href='#!'><b>¿Olvidaste tu contraseña?</b></a>
-							</label>
-                        </div>
-
-                        <br />
-                        <center>
-                            <div class='row'>
-                                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect grey'>Ingresar</button>
-                            </div>
-                        </center>
-                    </form>
-                </div>
-            </div>
-            <a style="color:#424040" href="/users/signup">Crear Usuario</a>
-        </center>
-
-        <div class="section"></div>
-        <div class="section"></div>
-    </main>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 </body>
-
 </html>
