@@ -22,85 +22,88 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticket WHERE ID_estado=1');
     }
 
-    static fetchticketsactivos_pag(num){
+    static fetchticketsactivos_pag(num) {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 LIMIT ?, 2', [num]);
     }
+    static fetchticketsactivos() {
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 ');
+    }
 
-    static fetchticketsactivos_filtros(valor){
+    static fetchticketsactivos_filtros(valor) {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
-    static fetchticketsarchivados(){
+    static fetchticketsarchivados() {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5');
     }
 
-    static fetchticketsarchivados_filtros(valor){
+    static fetchticketsarchivados_filtros(valor) {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 AND ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 AND ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
-    static fetchticketsarchivados_pag(num){
+    static fetchticketsarchivados_pag(num) {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 LIMIT ?, 2', [num]);
     }
 
-    static fetchticketsusuario_filtro(valor){
+    static fetchticketsusuario_filtro(valor) {
         //return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=?',[id]);
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=? AND titulo LIKE ?', ['%'+arr[0]+'%','%'+arr[1]+'%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=? AND titulo LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
-    static fetchticketspropios_pag(nom,num){
-        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador LIKE ? LIMIT ?, 2', ['%'+nom+'%',num]);
+    static fetchticketspropios_pag(nom, num) {
+        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador LIKE ? LIMIT ?, 2', ['%' + nom + '%', num]);
     }
 
-    static borrarticketpropio(id){
-        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?',[id])
+    static borrarticketpropio(id) {
+        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
     }
 
     static getTotal_activos() {
         return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5')
             .then(([rows, fieldData]) => {
-            console.log(rows);
-            console.log(rows[0].total);
-            return rows[0].total;
-        })
-        .catch(error => {
-            console.log(error);
-            return 0;
+                console.log(rows);
+                console.log(rows[0].total);
+                return rows[0].total;
+            })
+            .catch(error => {
+                console.log(error);
+                return 0;
             });
     }
 
     static getTotal_archivados() {
         return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5')
             .then(([rows, fieldData]) => {
-            console.log(rows);
-            console.log(rows[0].total);
-            return rows[0].total;
-        })
-        .catch(error => {
-            console.log(error);
-            return 0;
+                console.log(rows);
+                console.log(rows[0].total);
+                return rows[0].total;
+            })
+            .catch(error => {
+                console.log(error);
+                return 0;
             });
     }
 
     static getTotal_propios(id) {
-        return db.execute('SELECT COUNT(*) as total FROM ticketstotal WHERE Nombre_creador LIKE ?',['%'+id+'%'])
+        return db.execute('SELECT COUNT(*) as total FROM ticketstotal WHERE Nombre_creador LIKE ?', ['%' + id + '%'])
             .then(([rows, fieldData]) => {
-            console.log(rows);
-            console.log(rows[0].total);
-            return rows[0].total;
-        })
-        .catch(error => {
-            console.log(error);
-            return 0;
+                console.log(rows);
+                console.log(rows[0].total);
+                return rows[0].total;
+            })
+            .catch(error => {
+                console.log(error);
+                return 0;
             });
     }
-    
+
 }
