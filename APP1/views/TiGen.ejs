@@ -26,7 +26,7 @@
         </div> 
         <div class="row">
             <div class="input-field col s12">
-                <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" name="descripcion" class="materialize-textarea" data-length="100" required="required"></textarea>
+                <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" name="descripcion" class="materialize-textarea" maxlength="100" required="required"></textarea>
                 <label for="descripcion" style="font-size:18px">Descripción</label>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <% for (let pregunta of preguntas) { %> 
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea placeholder="respuesta" id="respuesta+<%j%>" name="respuesta<%+j%>" class="materialize-textarea" data-length="1000"></textarea>  
+                    <textarea placeholder="respuesta" id="respuesta+<%j%>" name="respuesta<%+j%>" class="materialize-textarea" maxlength="1000" required="required"></textarea>  
                     <label for="respuesta+<%j%>" style="font-size:18px"><%= pregunta.texto_pregunta %></label>
                 </div>
             </div>

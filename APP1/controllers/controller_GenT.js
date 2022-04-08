@@ -42,27 +42,26 @@ exports.post_genticket = async(request,response, next) => {
     const ticket = new Gen_Tickets(request.params.id, request.body.titulo, request.body.descripcion);
     console.log('Esto es antes de ticket.save()');
     console.log(ticket);
-    //ticket.save();
+    ticket.save();
     console.log('Esto es después de ticket.save()');
 
-    //  console.log(ticket);
-    //  console.log(obtenerid());
-    // idticket = await ticket.obtenerid;
-    // console.log(idticket);
-    //TPrueba = await TicketPrueba.fetchticketsactivos();
-    //console.log(TPrueba);
-
     
-    const ArrayResp = request.body.respuesta;   // Aqui tenemos las 3 respuestas
-    console.log(ArrayResp[0]);
+    const ArrayResp = request.body.respuesta;   // Aqui tenemos las respuestas
+    
 
     const ArrayofArrayIDs = await idpreg(request.params.id);
+    console.log(ArrayofArrayIDs);
     ArrayIDs = ArrayofArrayIDs[0];
+    console.log(ArrayIDs);
     console.log(ArrayIDs[0].ID_pregunta);
 
-    
-    for (let i = 0; i<ArrayResp.length; i++){
-        Respuesta.save(ArrayIDs[i].ID_pregunta, ArrayResp[0]);
+    if (Array.isArray(ArrayResp)){
+        for (let i = 0; i<ArrayResp.length; i++){
+            Respuesta.save(ArrayIDs[i].ID_pregunta, ArrayResp[i]);
+        }
+    }
+    else {
+        Respuesta.save(ArrayIDs[0].ID_pregunta, ArrayResp);
     }
  
     response.redirect('/home')
