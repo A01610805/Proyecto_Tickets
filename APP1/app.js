@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(bodyParser.json());
 
 
 //Estas son las rutas a utilizar se utiliza una constante poara almacenar la direccion de la rutas
@@ -46,13 +46,19 @@ const rutas_login = require('./routes/route_login');
 const rutas_pp = require('./routes/route_Pp');
 const rutas_genticket = require('./routes/route_GenT');
 const rutas_visualizacion = require('./routes/route_tickets');
+
 const rutas_busus = require('./routes/route_BuscarU');
+const rutas_modtem = require('./routes/route_ModTem');
+
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
 app.use('/generar_ticket', rutas_genticket);
 app.use('/buscar_tickets', rutas_visualizacion);
+
 app.use('/buscar_usuario', rutas_busus);
+app.use('/modificar_template', rutas_modtem);
+
 // app.get('/GenTem',authRole(1), (req, res) => {
 //     res.redirect(GenTem)
 // })
