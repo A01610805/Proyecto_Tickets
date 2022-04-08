@@ -15,6 +15,10 @@
     <body>
         <style type="text/css">
             
+            #hola::-webkit-scrollbar {
+                display: none;
+            }
+            
             #global {
                 height: 1000px;
                 border: 1px solid #ddd;
@@ -120,9 +124,9 @@
                                                                 </div>
                                                                 <div class="card-tabs">
                                                                     <ul class="tabs tabs-fixed-width">
-                                                                        <li class="tab"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
-                                                                        <li class="tab"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
-                                                                        <li class="tab"><a href="#test<%= i+3%>">Comentarios</a></li>
+                                                                        <li class="tab btn-small"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
+                                                                        <li class="tab btn-small"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
+                                                                        <li class="tab btn-small"><a href="#test<%= i+3%>">Comentarios</a></li>
 
                                                                     </ul>
                                                                 </div>
@@ -211,7 +215,7 @@
                                                     <p class="z-depth-4">
                                                         <div class="card">
                                                             <div class="card-content <%=color%>">
-                                                                <p id="titulo">
+                                                                <h5 id="titulo">
                                                                     <%= ticket2.titulo %>
                                                                         <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
 
@@ -231,13 +235,13 @@
 
                                                                                 </div>
                                                                         </div>
-                                                                </p>
+                                                                </h5>
                                                             </div>
                                                             <div class="card-tabs">
-                                                                <ul class="tabs tabs-fixed-width">
-                                                                    <li class="tab"><a class="active" href="#tests<%= z+1%>">Descripcion</a></li>
-                                                                    <li class="tab"><a href="#tests<%= z+2%>">Preguntas/Respuestas</a></li>
-                                                                    <li class="tab"><a href="#tests<%= z+3%>">Comentarios</a></li>
+                                                                <ul id="hola" class="tabs tabs-fixed-width">
+                                                                    <li class="tab"><a class="active" href="#tests<%= z+1%>"><i class="material-icons">assignment</i></a></li>
+                                                                    <li class="tab"><a href="#tests<%= z+2%>"><i class="material-icons">forum</i></a></li>
+                                                                    <li class="tab"><a href="#tests<%= z+3%>"><i class="material-icons">chat_bubble_outline</i></a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="card-content ">
