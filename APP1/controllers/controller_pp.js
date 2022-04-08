@@ -6,7 +6,7 @@ const Tickets = require('../models/tickets');
 
 exports.get_principal = (request, response, next) => {
     console.log('Pantalla principal');
-    Tickets.fetchmistickets()
+    Tickets.fetchticketsactivos()
         .then(([rows, fielData]) => {
             response.render('Primer_pantalla', {
                 username: request.session.name ? request.session.name : '',
@@ -15,6 +15,23 @@ exports.get_principal = (request, response, next) => {
 
         })
 };
+exports.post_principal = (request, response, next) => {
+    console.log('Pantalla principal');
+    Ticket.borrarticket(request.body.idticket);
+    response.redirect('/home');
+};
+
+// exports.get_mistickets = (request, response, next) => {
+//     console.log('Pantalla principal');
+//     Tickets.fetchmistickets()
+//         .then(([rows, fielData]) => {
+//             response.render('Primer_pantalla', {
+//                 username: request.session.name ? request.session.name : '',
+//                 ticketss: rows
+//             });
+
+//         })
+// };
 
 // exports.get_principal1 = (request, response, next) => {
 //     console.log('Pantalla principal');

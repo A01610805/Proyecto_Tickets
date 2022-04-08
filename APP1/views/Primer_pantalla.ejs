@@ -103,7 +103,13 @@
                                                                                 </div>
                                                                                 <%j=j+1%>
                                                                                     <div class="modal-footer">
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">
+                                                                                            <form action="/buscar_tickets/activos" method="POST">
+                                                                                                <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
+                                                                                                <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket
+                                                                                                </button>
+                                                                                            </form>
+                                                                                        </a>
                                                                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
 
                                                                                     </div>

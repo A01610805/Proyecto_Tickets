@@ -26,13 +26,16 @@ module.exports = class Ticket {
     }
 
     static fetchmistickets() {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 AND ticketstotal.ID_ticket=?', [id]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 ');
     }
 
     static fetchticketsactivos() {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5');
+        return db.execute('SELECT * FROM ticket WHERE ID_estado!=6 AND ID_estado!=5');
     }
     static borrarticketpropio(id) {
+        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
+    }
+    static borrarticket(id) {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
     }
 
