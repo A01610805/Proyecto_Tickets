@@ -2,28 +2,28 @@
 const Ticket = require("../models/tickets");
 
 //Inicio de /buscar_tickets/activos
-exports.get_activos= async (request, response, next)=>{
-let tipo=1;
-console.log(request.session.usuario);
+exports.get_activos= async(request, response, next)=>{
+    let tipo=1;
+    console.log(request.session.usuario);
 
-const total = await Ticket.getTotal_activos();
-console.log("En total hay: " + total);
-const start = request.params.start ? request.params.start : 0
-
-tickets=Ticket.fetchticketsactivos_pag(start)
-    .then(([rows, fieldData]) => {
-        //console.log(rows);
-        response.render('Consulta', {
-            tickets: rows,
-            username: request.session.username ? request.session.username : '',
-            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
-            tipo:tipo,
-            total_tickets: total,
-        }); 
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    const total = await Ticket.getTotal_activos();
+    console.log("En total hay: " + total);
+    const start = request.params.start ? request.params.start : 0
+    console.log(start);
+    tickets=Ticket.fetchticketsactivos_pag(start)
+        .then(([rows, fieldData]) => {
+            //console.log(rows);
+            response.render('Consulta', {
+                tickets: rows,
+                username: request.session.username ? request.session.username : '',
+                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+                tipo:tipo,
+                total_tickets: total,
+            }); 
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 exports.post_activos=(request, response, next)=>{
@@ -34,7 +34,6 @@ exports.post_activos=(request, response, next)=>{
 
 // A partir de aqui inicia la implementación en ajax de buscar_activos
 exports.buscar_activos = (request, response, next) => {
-    
     tickets=Ticket.fetchticketsactivos_filtros(request.params.valor)
     .then(([rows, fieldData]) => {
         console.log(request.params.valor);
@@ -55,6 +54,7 @@ let tipo=2;
 const total = await Ticket.getTotal_archivados();
 console.log("En total hay: " + total);
 const start = request.params.start ? request.params.start : 0
+console.log(start);
 
 tickets=Ticket.fetchticketsarchivados_pag(start)
     .then(([rows, fieldData]) => {
@@ -92,9 +92,14 @@ exports.post_archivo=(request, response, next)=>{
 
 
 //Inicio de /buscar_tickets/propio
-exports.get_ticketspropios=(request, response, next)=>{
+exports.get_ticketspropios=async(request, response, next)=>{
     let tipo=3;
-    tickets=Ticket.fetchticketsusuario(request.cookies.nombre_usuario)
+
+    const total = await Ticket.getTotal_propios(request.cookies.nombre_usuario);
+    console.log("En total hay: " + total);
+    const start = request.params.start ? request.params.start : 0
+
+    tickets=Ticket.fetchticketspropios_pag(request.cookies.nombre_usuario,start)
     .then(([rows, fieldData]) => {
         console.log(rows);
         response.render('Consulta', {
@@ -102,6 +107,7 @@ exports.get_ticketspropios=(request, response, next)=>{
             username: request.session.nombre ? request.session.nombre : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
+            total_tickets: total,
         }); 
     })
     .catch(err => {
@@ -120,6 +126,12 @@ exports.buscar_propios = (request, response, next) => {
         console.log(err);
     });
 }
+
+exports.post_propios=(request, response, next)=>{
+    Ticket.borrarticketpropio(request.body.idticket);
+    response.redirect('/home'); 
+}
+
 //Final de /buscar_tickets/propio
 
 exports.borrarpropios=(request, response, next)=>{
