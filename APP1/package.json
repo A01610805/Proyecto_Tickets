@@ -20,6 +20,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
+    "materialize-css": "^1.0.0-rc.2",
     "mysql2": "^2.3.3",
     "placeholder-loading": "^0.5.0"
   },

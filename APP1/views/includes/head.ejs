@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-	
-	<head>
-		<meta charset="UTF-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-    	<meta name ="author" content="FrameJTech"/> 
-    	<meta name = "Keywords" content=" Prototipo, Tickets"/>
-    	<title>Prototipo Tickets</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="FrameJTech" />
+    <meta name="Keywords" content=" Prototipo, Tickets" />
+    <title>Zebrands</title>
+    <link rel="icon" type="image/jpg" href="/favicon.ico" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/>
-	</head>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
+</head>
+<!-- 
+<body class="grey lighten-4"> -->
+<style type="text/css">
+    /* body {
+        background-image: url("https://images.ecestaticos.com/LtUY2F-tA12ve8aGzYIVgoX8pJo=/0x0:2121x1414/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd9e%2F66d%2F793%2Fd9e66d793adbc994841e60850a17e61c.jpg");
+    } */
+    
+    #logo {
+        font-family: 'Courier New', Courier, monospace;
+    }
+</style>
 
-	<body class="grey lighten-4">
-			
-		<header >
-			<div >
+<header>
+    <div>
+        <nav class="grey darken-3">
+            <a id="logo" href="/home/" class="brand-logo center">( Zëbrands )</a>
+        </nav>
 
-				<nav class="grey darken-3">
-					<a href="Primer pantalla" class="brand-logo right ">( Zëbrands )</a>
-					<div class="fixed-action-btn toolbar">
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg">
+                    </div>
+                    <a href="/home"><img class="circle" src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
+                    <a href="#name"><span class="white-text name">Bienvenido</span></a>
+                    <a href="#email"><span class="white-text email">Pagina de Tickets de Zebrands</span></a>
+                </div>
+            </li>
+            <li><a href="/generar_ticket/enviar_ticket"><i class="material-icons">add_circle</i>Generar Ticket Nuevo</a></li>
+            <li><a href="#"><i class="material-icons">add_circle</i>Generar Template</a></li>
+            <li><a href="/modificar_template/get_template"><i class="material-icons">add_circle</i>Modificar Template</a></li>
+            <li><a href="/buscar_tickets/activos"><i class="material-icons">assignment</i>Buscar Tickets Activos</a></li>
+            <li><a href="/buscar_tickets/archivo"><i class="material-icons">archive</i>Buscar Tickets Archivados</a></li>
+            <li><a href="/buscar_usuario/busqueda"><i class="material-icons">account_circle</i>Buscar Usuarios</a></li>
+            <li><a href="#"><i class="material-icons">border_color</i>Metricas</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader">Manual de Usuario</a></li>
+            <div class="video-container">
+                <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </ul>
+
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="waves-effect waves-light grey darken-3 material-icons brand-logo left">menu</i></a>
+
+        <!-- <div class="fixed-action-btn toolbar">
 						<a class="btn-floating btn-large grey darken-3">
 							<i class="large material-icons">menu</i>
 						</a>
@@ -49,28 +89,16 @@
 							<li>
 								<a href="Metricas" class="btn-floating">
 									Metricas<i class="material-icons"> assessment</i>
-<<<<<<< HEAD
 								</a>
 							</li>
-=======
-								</a>
-							</li>
-							<li>
-								<a href="GenTem" class="btn-floating">
-									Generar Template<i class="material-icons">add_circle</i>
-								</a>
-							</li>
-							<li>
-									<a href="ModTem" class="btn-floating">
-										Modificar Template<i class="material-icons">edit</i>
-									</a>
-							</li>
->>>>>>> Int-RBAC
 							
 						</ul>
 					</div>
+				<nav class="grey darken-3">
+					<a href="Primer pantalla" class="brand-logo right ">( Zëbrands )</a>
 					
-				</nav>
-			</div>
+				</nav> -->
+    </div>
 
-		</header>	 
+</header>
+<div class="container">

@@ -16,19 +16,19 @@ module.exports = class User {
     //Como solo se quieren obtener los datos no se incluye un metodo save().
     save() {
         return bcrypt.hash(this.password, 12)
-            .then((password_cifrado)=>{
+            .then((password_cifrado) => {
                 return db.execute(
-                    'INSERT INTO usuario(ID_rol, nombre, apellido_paterno, apellido_materno, correo, password) VALUES(?,?,?,?,?,?)',
-                    [this.ID_rol, this.nombre, this.apellido_paterno, this.apellido_materno, this.correo, password_cifrado]);
-            }).catch((error)=>{ 
+                    'INSERT INTO usuario(ID_rol, nombre, apellido_paterno, apellido_materno, correo, password) VALUES(?,?,?,?,?,?)', [this.ID_rol, this.nombre, this.apellido_paterno, this.apellido_materno, this.correo, password_cifrado]);
+            }).catch((error) => {
                 console.log(error);
-            }); 
+            });
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static findOne(name) {
-        return db.execute('SELECT * FROM usuario WHERE nombre=?',
-            [name]);
+        return db.execute('SELECT * FROM usuario WHERE correo=?', [name]);
     }
-
+    static fetchAll() {
+        return db.execute('SELECT ID_usuario, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario');
+    }
 }

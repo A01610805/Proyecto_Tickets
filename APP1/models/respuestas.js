@@ -9,14 +9,9 @@ module.exports = class Respuesta {
         this.texto_respuesta = texto_respuesta;
      }
     //El metodo save no es necesario dentro de la función
-    /*
-    save() {
-        return db.execute() VALUES ()', 
-            []);
-    }*/
-    save(i, e){
-        return db.execute('INSERT INTO respuesta(ID_pregunta, ID_ticket, texto_respuesta) VALUES(?,?,?)',
-        [i, e ,this.texto_respuesta])
-    }
 
+    static save(idp, texres) {
+        return db.execute('CALL RegistraRespuesta(?, ?)',
+        [idp, texres])
+    }
 }
