@@ -3,7 +3,7 @@ const Pregunta = require('../models/preguntas');
 
 exports.get_gentem = (request, response, next) => {
         console.log('Aqui inicia generar template');
-            response.render('Generar_template');  
+            response.render('GenTem');  
 };
 exports.post_gentem = (request, response, next) =>{
 
