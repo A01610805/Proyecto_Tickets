@@ -253,8 +253,8 @@ else if(tipo==3){
             }
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
-                for (let i = 1; i <= Math.ceil(total_tickets/4); i++) {
-                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/(i-1)*2">+i+</a></li>';
+                for (let i = 1; i <= Math.ceil(Object.keys(data)/2); i++) {
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/("'+i+'"-1)*2">+'+i+'+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
