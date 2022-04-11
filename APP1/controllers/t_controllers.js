@@ -8,9 +8,9 @@ exports.get_activos= async(request, response, next)=>{
 
     const total = await Ticket.getTotal_activos();
     console.log("En total hay: " + total);
-    const start = request.params.start ? request.params.start : 0
-    console.log(start);
-    tickets=Ticket.fetchticketsactivos_pag(start)
+    const start1 = request.params.start1 ? request.params.start1 : 0
+    console.log(start1);
+    tickets=Ticket.fetchticketsactivos_pag(start1)
         .then(([rows, fieldData]) => {
             //console.log(rows);
             response.render('Consulta', {

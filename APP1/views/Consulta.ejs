@@ -150,7 +150,7 @@ else if(tipo==3){
   <div class="col l6 m4 s2">
     <ul class="pagination center-align">
       <% for (let i = 1; i <= Math.ceil(total_tickets/2); i++) { %>
-        <li class="active"><a href="/buscar_tickets/start/<%= (i-1)*2 %>"><%= i %></a></li>
+        <li class="active"><a href="/buscar_tickets/start<%= tipo %>/<%= (i-1)*2 %>"><%= i %></a></li>
       <% } %>
     </ul>
   </div>
@@ -249,13 +249,12 @@ else if(tipo==3){
                   '</div>'+
                 '</div>'+
               '</div>'+
-            '</div>'+
-            'i=i+4;';
+            '</div>';
             }
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
-                for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
-                  <li class="active"><a href="/buscar_tickets/start/(i-1)*2">+i+</a></li>
+                for (let i = 1; i <= Math.ceil(total_tickets/4); i++) {
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/(i-1)*2">+i+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
@@ -292,8 +291,7 @@ else if(tipo==3){
           let i=1;
           let rol = 1;
           let tipo = 2;
-          if (data.length > 0) {
-            for (let tickets of data) {
+          for (let ticket of data) {
               var color ='';
             if(ticket.ID_estado == 1){
               color = 'grey lighten-5';
@@ -368,13 +366,11 @@ else if(tipo==3){
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
                 for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
-                  respuesta += '<li class="active"><a href="/buscar_tickets/start/(i-1)*2">+i+</a></li>';
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start2/(i-1)*2">+i+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
-          } else {
-              respuesta += '<h1>Por el momento no hay ningun ticket registrado.</h1>';
-          }      
+              
         document.getElementById('respuesta_ajax').innerHTML = respuesta;
         
       }).catch(err => {
@@ -404,8 +400,7 @@ else if(tipo==3){
           let i=1;
           let rol = 1;
           let tipo = 3;
-          if (data.length > 0) {
-            for (let ticket of data) {
+          for (let ticket of data) {
               var color ='';
             if(ticket.ID_estado == 1){
               color = 'grey lighten-5';
@@ -480,13 +475,11 @@ else if(tipo==3){
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
                 for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
-                  <li class="active"><a href="/buscar_tickets/start/(i-1)*2">+i+</a></li>
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start3/(i-1)*2">+i+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
-          } else {
-              respuesta += '<h1>Por el momento no hay ningun ticket registrado.</h1>';
-          }      
+              
         document.getElementById('respuesta_ajax').innerHTML = respuesta;
         
       }).catch(err => {
