@@ -38,11 +38,11 @@ else if(tipo==3){
       <div class="nav-wrapper">
         <ul class="left hide-on-med-and-down">
           <div class="right input-field col s4">
-            <label for="buscar_encargado_2">Encargado_2: </label>
+            <label for="buscar_encargado_2">Encargado: </label>
             <input type="text" name="buscar_encargado_2" id="buscar_encargado_2">
           </div>
           <div class="right input-field col s4">
-            <label for="buscar_creador_2">Creador_2: </label>
+            <label for="buscar_creador_2">Creador: </label>
             <input type="text" name="buscar_creador_2" id="buscar_creador_2">
           </div>
           <div class="right input-field col s4">
@@ -160,7 +160,18 @@ else if(tipo==3){
 <script>
 
   const activos = () => {
-      const valor_busqueda = (document.getElementById('buscar_creador_1').value)+'&'+(document.getElementById('buscar_encargado_1').value);
+      var str1,str2,
+      bc1 = document.getElementById('buscar_creador_1');
+      be1 = document.getElementById('buscar_encargado_1');
+      if (bc1 != null || be1 != null) {
+          str1 = bc1.value;
+          str2 = be1.value;
+      }
+      else {
+          str1 = null;
+          str2 = null;
+      }
+      const valor_busqueda = str1+'&'+str2;
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -267,11 +278,27 @@ else if(tipo==3){
       });
   };
 
-  document.getElementById('buscar_creador_1').onkeyup = activos();
-  document.getElementById('buscar_encargado_1').onkeyup = activos;
+  bc1 = document.getElementById('buscar_creador_1');
+  be1 = document.getElementById('buscar_encargado_1');
+
+  if (bc1 != null || be1 != null) {
+    document.getElementById('buscar_creador_1').onkeyup = activos;
+    document.getElementById('buscar_encargado_1').onkeyup = activos;
+  }
 
   const archivados = () => {
-      const valor_busqueda = (document.getElementById('buscar_creador_2').value)+'&'+(document.getElementById('buscar_encargado_2').value)
+    var str1,str2,
+    bc2 = document.getElementById('buscar_creador_2');
+    be2 = document.getElementById('buscar_encargado_2');
+    if (bc2 != null || be2 != null) {
+      str1 = bc2.value;
+      str2 = be2.value;
+    }
+    else {
+        str1 = null;
+        str2 = null;
+    }
+      const valor_busqueda = str1+'&'+str2;
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -360,13 +387,12 @@ else if(tipo==3){
                   '</div>'+
                 '</div>'+
               '</div>'+
-            '</div>'+
-            'i=i+4;';
+            '</div>';
             }
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
-                for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
-                  respuesta += '<li class="active"><a href="/buscar_tickets/start2/(i-1)*2">+i+</a></li>';
+                for (let i = 1; i <= Math.ceil(Object.keys(data)/2); i++) {
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/("'+i+'"-1)*2">+'+i+'+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
@@ -379,8 +405,25 @@ else if(tipo==3){
       });
   };
 
+
+  bc2 = document.getElementById('buscar_creador_2');
+  be2 = document.getElementById('buscar_encargado_2');
+
+  if (bc2 != null || be2 != null) {
+    document.getElementById('buscar_creador_2').onkeyup = archivados;
+    document.getElementById('buscar_encargado_2').onkeyup = archivados;
+  }
+
   const propios = () => {
-      const valor_busqueda = (request.cookies.nombre_usuario)+'&'+(document.getElementById('buscar_titulo').value);
+    var str1,
+    bt = document.getElementById('buscar_titulo');
+    if (bc2 != null) {
+      str1 = bT.value;
+    }
+    else {
+        str1 = null;
+    }
+      const valor_busqueda = (request.cookies.correo_usuario)+'&'+str1;
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -469,13 +512,12 @@ else if(tipo==3){
                   '</div>'+
                 '</div>'+
               '</div>'+
-            '</div>'+
-            'i=i+4;';
+            '</div>';
             }
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
                 for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
-                  respuesta += '<li class="active"><a href="/buscar_tickets/start3/(i-1)*2">+i+</a></li>';
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/("'+i+'"-1)*2">+'+i+'+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
@@ -488,9 +530,11 @@ else if(tipo==3){
       });
   }; 
 
+  bt = document.getElementById('buscar_titlo');
 
-  //document.getElementById('buscar_creador').onkeyup = activos;
-  //document.getElementById('buscar_encargado').onkeyup = activos;
+  if (bt != null) {
+    document.getElementById('buscar_titulo').onkeyup = propios;
+  }
 
 </script>
 
