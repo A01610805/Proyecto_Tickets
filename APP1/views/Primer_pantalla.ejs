@@ -17,7 +17,7 @@
             #global {
                 height: 1000px;
                 border: 1px solid #ddd;
-                background: grey;
+                background: rgb(196, 196, 196);
                 border-radius: 5%;
                 overflow-y: scroll;
                 flex-wrap: wrap;
@@ -26,7 +26,7 @@
             #global1 {
                 height: 500px;
                 border: 1px solid #ddd;
-                background: grey;
+                background: rgb(196, 196, 196);
                 border-radius: 5%;
                 overflow-y: scroll;
                 flex-wrap: wrap;
@@ -40,9 +40,9 @@
                 display: none;
             }
             
-            .modal-footer::-webkit-scrollbar {
+            /* .modal-footer::-webkit-scrollbar {
                 display: none;
-            }
+            } */
             
             #carrusel {
                 background-color: #ddd;
@@ -50,138 +50,160 @@
         </style>
 
         <div class="row">
-            <!-- <div class="col s12">
-            </div> -->
-            <div class="col s6">
+            <div class="col s12 m6 l6">
                 <div id="global">
-                    <blockquote>
-                        <div class="center">
-                            <h5 id="logo">Tickets Nuevos</h5>
-                            <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
+                    <!-- <blockquote> -->
+                    <div class="center">
+                        <h4 id="logo">Tickets Nuevos</h4>
+                            <!-- <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                             <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                             <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
                             <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
                             <a class="btn tooltipped red" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
-                            <a class="btn tooltipped light-green" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
-                        </div>
-                    </blockquote>
+                            <a class="btn tooltipped light-green" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a> -->
+                    </div>
+
+                    <!-- </blockquote> -->
                     <div class=" center">
                         <ul class="collection">
-                            <% var i = 0; %>
-                                <% var j = 0; %>
-                                    <%var y = 0%>
-                                        <% for (let ticket of ticketss) { %>
-                                            <%var color =''; 
-                                        if (ticket.ID_estado == 1){
-                                        if(ticket.ID_estado == 1){ 
-                                            color = 'grey lighten-2'; 
-                                        } else if(ticket.ID_estado == 2){ 
-                                            color = 'light-blue lighten-5'; 
-                                        } else if(ticket.ID_estado == 3){ 
-                                            color = 'orange lighten-5'; 
-                                        } else if(ticket.ID_estado == 4){ 
-                                            color = 'yellow light-blue lighten-5'; 
-                                        } else if(ticket.ID_estado == 5){ 
-                                            color = 'red lighten-1'; 
-                                        } else if(ticket.ID_estado == 6){ 
-                                            color = 'light-green accent-1'; } %>
-                                                <li class="collection-item grey">
-                                                    <div class="col s12 ">
-                                                        <p class="z-depth-4">
-                                                            <div class="card">
-                                                                <div class="card-content <%=color%>">
-                                                                    <p id="titulo">
-                                                                        <%= ticket.titulo %>
-                                                                            <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal<%=j%>"><i class="material-icons">edit</i></a>
-                                                                            <div id="modal<%=j%>" class="modal">
-                                                                                <div class="modal-content">
-                                                                                    <h4>
-                                                                                        <%= ticket.titulo %>
-                                                                                    </h4>
-                                                                                    <p>
-                                                                                        <%= ticket.descripcion %>
-                                                                                    </p>
-
-                                                                                    <%j=j+1%>
-                                                                                        <div class="modal-footer">
-                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">
-                                                                                                <form action="/home" method="POST">
-                                                                                                    <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
-                                                                                                    <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket
-                                                                                                </button>
-                                                                                                </form>
-                                                                                            </a>
-                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
-
-                                                                                        </div>
-                                                                                </div>
+                        <% var i = 0; %>
+                        <% var j = 0; %>
+                        <%var y = 0%>
+                        <% for (let ticket of ticketss) { %>
+                                <%var color =''; 
+                            if (ticket.ID_estado == 1){
+                            if(ticket.ID_estado == 1){ 
+                                color = 'purple lighten-2'; 
+                            } else if(ticket.ID_estado == 2){ 
+                                color = 'light-blue lighten-5'; 
+                            } else if(ticket.ID_estado == 3){ 
+                                color = 'orange lighten-5'; 
+                            } else if(ticket.ID_estado == 4){ 
+                                color = 'yellow light-blue lighten-5'; 
+                            } else if(ticket.ID_estado == 5){ 
+                                color = 'red lighten-1'; 
+                            } else if(ticket.ID_estado == 6){ 
+                                color = 'light-green accent-1'; } %>
+                                <!-- <li class="collection-item grey"> -->
+                                    <div class="col s12 m12 l12">
+                                        <p class="z-depth-4">
+                                            <!-- <div class="card">
+                                                <div class="card-content <%=color%>">
+                                                    <p id="titulo"> -->
+                                            <a class="waves-effect waves-light modal-trigger btn-large <%= color%>" href="#modal<%=j%>"><%= ticket.titulo %></a>                                                   
+                                            <!-- <div id="modal<%=j%>" class="modal"> -->
+                                            <div id="modal<%=j%>" class="modal">
+                                                <div class="modal-content">
+                                                    <div class="modal-header center">
+                                                        <span class="close">&times;</span>
+                                                        <h2><%= ticket.titulo %></h2>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col s8 m8 l8">
+                                                                    <h6><b><i>Descripción: </i></b></h6>
+                                                                    <p><%= ticket.descripcion %> <br><br>
+                                                                       <!--un "for" para obtener las preguntas con sus respuestas  -->                                                                   
+                                                                        <i>Q&A</i>
                                                                     </p>
-                                                                    </div>
-                                                                    <div class="card-tabs">
-                                                                        <ul class="tabs tabs-fixed-width">
-                                                                            <li class="tab btn-small"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
-                                                                            <li class="tab btn-small"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
-                                                                            <li class="tab"><a href="#test<%=i+3%>">Datos Generales</a></li>
-                                                                            <li class="tab btn-small"><a href="#test<%= i+4%>">Comentarios</a></li>
-
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="card-content">
-                                                                        <div id="test<%= i+1%>">
-                                                                            <%= ticket.descripcion %>
-
-                                                                        </div>
-                                                                        <div id="test<%= i+2%>">
-                                                                            <%= ticket.ID_ticket %>
-                                                                        </div>
-                                                                        <div id="test<%= i+3%>">
-                                                                            <%= ticket.ID_ticket %>
-                                                                        </div>
-                                                                        <div id="test<%= i+4%>">
-                                                                            <%= ticket.comentarios_solucion %>
-                                                                                <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
-                                                                                <div id="agregarcomentario<%=y%>" class="modal">
-                                                                                    <div class="modal-content">
-                                                                                        <h4>
-                                                                                            Agregar comentario?
-                                                                                        </h4>
-                                                                                        <p>
-                                                                                            <div class="input-field">
-                                                                                                <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
-                                                                                                <label for="first_name">Comentario</label>
-                                                                                            </div>
-                                                                                        </p>
-                                                                                    </div>
-                                                                                    <%y=y+1%>
-                                                                                        <div class="modal-footer">
-                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
-
-                                                                                        </div>
-                                                                                </div>
-                                                                        </div>
-
-                                                                    </div>
                                                                 </div>
-                                                        </p>
+                                                                <div class="col s4 m4 l4">
+                                                                    <p><b><i>Categoría:</i></b> <br><br>
+                                                                        <b><i>Prioridad:</i></b> <br><br>
+                                                                        <b><i>Estatus:</i></b> <br><br>
+                                                                        <b><i>Encargado:</i></b> <br><br>
+                                                                        <b><i>Creador: </i></b> <br><br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col s12 m12 l12">
+                                                                    <h6>Comentarios...</h6>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>                                                                   
+                                                    <%j=j+1%>
+                                                    <div class="modal-footer">
+                                                        <!-- <a href="#!" class="modal-close waves-effect waves-green btn-flat">
+                                                            <form action="/home" method="POST">
+                                                                <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
+                                                                <button class="btn waves-effect waves-light" type="submit" name="action">Cancelar ticket
+                                                            </button>
+                                                            </form>
+                                                        </a>
+                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a> -->
+                                                    </div>
+                                                </div>
+                                                    <!-- </p>
+                                                    </div> -->
 
-                                                </li>
-                                                <% i=i+4 %>
-                                                    <% } %>
-                                                        <% } %>
+                                                    <!-- <div class="card-tabs">
+                                                        <ul class="tabs tabs-fixed-width">
+                                                            <li class="tab btn-small"><a class="active" href="#test<%= i+1%>">Descripcion</a></li>
+                                                            <li class="tab btn-small"><a href="#test<%= i+2%>">Preguntas/Respuestas</a></li>
+                                                            <li class="tab"><a href="#test<%=i+3%>">Datos Generales</a></li>
+                                                            <li class="tab btn-small"><a href="#test<%= i+4%>">Comentarios</a></li>
+
+                                                        </ul>
+                                                    </div> -->
+                                                    <!-- <div class="card-content">
+                                                        <div id="test<%= i+1%>">
+                                                            <%= ticket.descripcion %>
+
+                                                        </div>
+                                                        <div id="test<%= i+2%>">
+                                                            <%= ticket.ID_ticket %>
+                                                        </div>
+                                                        <div id="test<%= i+3%>">
+                                                            <%= ticket.ID_ticket %>
+                                                        </div>
+                                                        <div id="test<%= i+4%>">
+                                                            <%= ticket.comentarios_solucion %>
+                                                            <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                            <div id="agregarcomentario<%=y%>" class="modal">
+                                                                <div class="modal-content">
+                                                                    <h4>
+                                                                        Agregar comentario?
+                                                                    </h4>
+                                                                    <p>
+                                                                        <div class="input-field">
+                                                                            <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
+                                                                            <label for="first_name">Comentario</label>
+                                                                        </div>
+                                                                    </p>
+                                                                </div>
+                                                                <%y=y+1%>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                <!-- </div>-->
+                                            </div>
+                                        </p> 
+                                    </div>                                    
+                                <!-- </li> -->
+                            <% i=i+4 %>
+                        <% } %>
+                    <% } %>
                         </ul>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
-                <div class="col s6">
+
+                <div class="col s12 m6 l6">
                     <div id="global1">
                         <blockquote>
                             <div class="center">
-                                <h5 id="logo">Mis Tickets</h5>
-                                <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
+                                <h4 id="logo">Mis Tickets</h4>
+                                <a class="btn tooltipped purple lighten-2" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                                 <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                                 <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
                                 <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
@@ -209,7 +231,7 @@
                                             color = 'red lighten-1'; 
                                         } else if(ticket2.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } %>
-                                                <li class="collection-item yellow grey">
+                                                <!-- <li class="collection-item yellow grey"> -->
                                                     <div class="col s12">
                                                         <p class="z-depth-4">
                                                             <div class="card">
@@ -262,7 +284,7 @@
                                                             </div>
                                                         </p>
 
-                                                </li>
+                                                <!-- </li> -->
                                                 <% z=z+4 %>
                                                     <% } %>
                                                         <% } %>
@@ -389,7 +411,7 @@
                         </div>
                     </div>
                     <div id="carrusel" class="row">
-                        <div class="col s6">
+                        <!-- <div class="col s6">
                             <div class="carousel">
                                 <a class="carousel-item" href="#one!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
                                 <a class="carousel-item" href="#two!"><img src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
@@ -413,15 +435,142 @@
                                     <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
 
                     </div>
 
 
 
 
-                    <!--JavaScript at end of body for optimized loading-->
-                    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+
+
+    <!-- "Pop up" que muestra toda la info del ticket -->
+    <div>
+        <button class="waves-effect waves-light btn-large" id="myBtn">Título del ticket</button>
+        <!-- <button id="myBtn">Modal de prueba</button> -->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header center">
+                    <span class="close">&times;</span>
+                    <h2>Título del ticket</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <p>Descripción <br>
+                                    Q&A
+                                </p>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <p> Categoría: <br><br>
+                                Prioridad: <br><br>
+                                Encargado: <br><br>
+                                Creador: <br><br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h6>Comentarios...</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <h3>Modal Footer</h3>
+                </div>
+            </div>
+        </div>  
+    </div> 
+
+    <br>
+
+
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1;  /*Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto;  /*Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            /* padding: 20px; */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        } 
+
+        /* Add Animation */
+        @keyframes animatetop {
+        from {top: -300px; opacity: 0}
+        to {top: 0; opacity: 1}
+        }
+    </style>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+    </script>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     </body>
 
     </html>
