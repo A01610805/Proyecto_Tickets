@@ -16,10 +16,13 @@ module.exports = class Ticket {
     static fetchticketsusuario(id) {
         return db.execute('SELECT * FROM ticketstotal WHERE correo_creador=?', [id]);
     }
-
+    
+    static fetchticketsencargado(id) {
+        return db.execute('SELECT * FROM ticketstotal WHERE Correo_encargado=?', [id]);
+    }
 
     static fetchticketsnuevos() {
-        return db.execute('SELECT * FROM ticket WHERE ID_estado=1');
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=1');
     }
 
     static fetchticketsactivos_pag(num) {

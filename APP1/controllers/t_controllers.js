@@ -102,11 +102,11 @@ exports.post_archivo = (request, response, next) => {
 exports.get_ticketspropios=async(request, response, next)=>{
     let tipo=3;
 
-    const total = await Ticket.getTotal_propios(request.cookies.nombre_usuario);
+    const total = await Ticket.getTotal_propios(request.cookies.correo_usuario);
     console.log("En total hay: " + total);
     const start = request.params.start ? request.params.start : 0
 
-    tickets=Ticket.fetchticketspropios_pag(request.cookies.nombre_usuario,start)
+    tickets=Ticket.fetchticketspropios_pag(request.cookies.correo_usuario,start)
     .then(([rows, fieldData]) => {
         console.log(rows);
         respuestas=Ticket.fetchrespuestas()
