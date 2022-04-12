@@ -99,6 +99,7 @@ exports.get_ticketspropios=async(request, response, next)=>{
     console.log(request.cookies.correo_usuario);
     console.log("En total hay: " + total);
     const start3 = request.params.start3 ? request.params.start3 : 0
+    let 
 
     tickets=Ticket.fetchticketspropios_pag(request.cookies.correo_usuario,start3)
     .then(([rows, fieldData]) => {
@@ -115,11 +116,21 @@ exports.get_ticketspropios=async(request, response, next)=>{
         console.log(err);
     }); 
 }
-// A partir de aqui inicia la implementación en ajax de buscar_archivo
+// A partir de aqui inicia la implementación en ajax de buscar_propio
 exports.buscar_propios = (request, response, next) => {
-    tickets=Ticket.fetchticketsusuario_filtro(request.params.valor)
+    let user_mail = request.cookies.correo_usuario;
+    let pregunta = '';
+    if (request.params.valor != null) {
+        pregunta = request.params.valor;
+    }
+    else {
+        user_mail = '';
+        pregunta = '';
+    }
+    let valor_completo = user_mail+'&'+pregunta;
+    tickets=Ticket.fetchticketsusuario_filtro(valor_completo)
     .then(([rows, fieldData]) => {
-        console.log(request.params.valor);
+        console.log(valor_completo);
         console.log(rows);
         response.status(200).json(rows);
     })

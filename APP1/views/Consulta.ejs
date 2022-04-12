@@ -392,7 +392,7 @@ else if(tipo==3){
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
                 for (let i = 1; i <= Math.ceil(Object.keys(data)/2); i++) {
-                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/("'+i+'"-1)*2">+'+i+'+</a></li>';
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start2/("'+i+'"-1)*2">+'+i+'+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
@@ -417,13 +417,13 @@ else if(tipo==3){
   const propios = () => {
     var str1,
     bt = document.getElementById('buscar_titulo');
-    if (bc2 != null) {
-      str1 = bT.value;
+    if (bt != null) {
+      str1 = bt.value;
     }
     else {
-        str1 = null;
+      str1 = null;
     }
-      const valor_busqueda = (request.cookies.correo_usuario)+'&'+str1;
+      const valor_busqueda = str1;
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -516,8 +516,8 @@ else if(tipo==3){
             }
             respuesta += '<div class="col l6 m4 s2">'+
               '<ul class="pagination center-align">';
-                for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
-                  respuesta += '<li class="active"><a href="/buscar_tickets/start1/("'+i+'"-1)*2">+'+i+'+</a></li>';
+                for (let i = 1; i <= Math.ceil(Object.keys(data)/2); i++) {
+                  respuesta += '<li class="active"><a href="/buscar_tickets/start3/("'+i+'"-1)*2">+'+i+'+</a></li>';
                 }
               respuesta+='</ul>'+
             '</div>';
@@ -530,7 +530,7 @@ else if(tipo==3){
       });
   }; 
 
-  bt = document.getElementById('buscar_titlo');
+  bt = document.getElementById('buscar_titulo');
 
   if (bt != null) {
     document.getElementById('buscar_titulo').onkeyup = propios;
