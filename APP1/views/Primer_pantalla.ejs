@@ -51,6 +51,10 @@
             #carrusel {
                 background-color: #ddd;
             }
+            
+            #carta {
+                border-radius: 5%;
+            }
         </style>
 
         <div class="row">
@@ -92,7 +96,7 @@
                                                 <li class="collection-item grey">
                                                     <div class="col s12 ">
                                                         <p class="z-depth-4">
-                                                            <div class="card">
+                                                            <div id="carta" class="card">
                                                                 <div class="card-content <%=color%>">
                                                                     <p id="titulo">
                                                                         <%= ticket.titulo %>
@@ -116,6 +120,8 @@
                                                                                                 </form>
                                                                                             </a>
                                                                                             <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
+
+                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Asignar prioridad</a>
 
                                                                                         </div>
                                                                                 </div>
@@ -213,7 +219,7 @@
                                             color = 'red lighten-1'; 
                                         } else if(ticket2.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } %>
-                                                <li class="collection-item yellow grey">
+                                                <li class="collection-item grey">
                                                     <div class="col s12">
                                                         <p class="z-depth-4">
                                                             <div class="card">
@@ -234,7 +240,9 @@
                                                                                 <%j=j+1%>
                                                                                     <div class="modal-footer">
                                                                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Asignar prioridad</a>
                                                                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
+
 
                                                                                     </div>
                                                                             </div>
@@ -261,6 +269,26 @@
                                                                     </div>
                                                                     <div id="tests<%= z+4%>">
                                                                         <%= ticket2.comentarios_solucion %>
+                                                                            <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                                            <div id="agregarcomentario<%=y%>" class="modal">
+                                                                                <div class="modal-content">
+                                                                                    <h4>
+                                                                                        Agregar comentario?
+                                                                                    </h4>
+                                                                                    <p>
+                                                                                        <div class="input-field">
+                                                                                            <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
+                                                                                            <label for="first_name">Comentario</label>
+                                                                                        </div>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <%y=y+1%>
+                                                                                    <div class="modal-footer">
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+
+                                                                                    </div>
+                                                                            </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -311,7 +339,7 @@
                                                         <li class="collection-item yellow grey">
                                                             <div class="col s12">
                                                                 <p class="z-depth-4">
-                                                                    <div class="card">
+                                                                    <div id="carta" class="card">
                                                                         <div class="card-content <%=color%>">
                                                                             <p id="titulo">
                                                                                 <%= ticket2.titulo %>
@@ -329,6 +357,8 @@
                                                                                         <%j=j+1%>
                                                                                             <div class="modal-footer">
                                                                                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Eliminar Ticket</a>
+
+                                                                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Asignar prioridad</a>
                                                                                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar a Mis Tickets</a>
 
                                                                                             </div>
