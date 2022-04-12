@@ -34,7 +34,9 @@ Generar template
     Prueba7, falla, elimina una sola div.
     Prueba8, falla, no sabe que pregunta eliminar si hay mas de 1.
     Prueba9, falla ,no funciona boton.
-
+    Prueba9, falla, mal uso de consulta en id categoria.
+    Prueba10, falla, mal sintaxys de sql, solucion restructurar insert(concepto de como funciona base de datos)
+    Prueba11, exito actualiza base de datos con categoria nueva.
 
 
     
