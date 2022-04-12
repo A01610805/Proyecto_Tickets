@@ -105,5 +105,8 @@ module.exports = class Ticket {
                 return 0;
             });
     }
+    static fetchrespuestas(){
+        return db.execute('SELECT * FROM conjuntoderespuestas');
+    }
 
 }

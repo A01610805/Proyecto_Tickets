@@ -8,12 +8,16 @@ exports.get_principal = (request, response, next) => {
     console.log('Pantalla principal');
     Tickets.fetchticketsactivos()
         .then(([rows, fielData]) => {
+            respuestas=Tickets.fetchrespuestas()
+            .then(([rows2, fieldData]) => {
             response.render('Primer_pantalla', {
                 username: request.session.name ? request.session.name : '',
-                ticketss: rows
+                ticketss: rows,
+                respuestas: rows2
             });
 
         })
+    }) 
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');

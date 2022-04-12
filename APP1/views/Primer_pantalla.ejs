@@ -136,10 +136,38 @@
 
                                                                         </div>
                                                                         <div id="test<%= i+2%>">
-                                                                            <%= ticket.ID_ticket %>
+                                                                            <p><% 
+                                                                                let r=1;
+                                                                                var pr="";
+                                                                                var rp="";
+                                                                                for(let respuesta of respuestas){
+                                                                                    if(respuesta.ID_ticket==ticket2.ID_ticket){
+                                                                                        pr += r;
+                                                                                        pr += ". ";
+                                                                                        pr += respuesta.texto_pregunta;
+                                                                                        rp += respuesta.texto_respuesta;
+                                                                                        r=r+1; %>
+                                                                                        <b><%= pr%></b>
+                                                                                        <%= rp%>
+                                                                                        <br><br>
+                                                                                        <%pr="";rp="";  
+                                                                                    }
+                                                                                
+                                                                                }%>
+                                                                            
+                                                                            </p>
                                                                         </div>
                                                                         <div id="test<%= i+3%>">
-                                                                            <%= ticket.ID_ticket %>
+                                                                            <p><b>Nombre del Creador:</b>
+                                                                                <%=ticket2.Nombre_creador%>
+                                                                                    <%=ticket2.apellido_P_creador%>
+                                                                                        <%=ticket2.Apellido_M_creador%>
+                                                                            </p>
+                                                                            <p><b>Nombre del Encargado:</b>
+                                                                                <%=ticket2.Nombre_encargado%>
+                                                                                    <%=ticket2.Apellido_P_encargado%>
+                                                                                        <%=ticket2.Apellido_M_encargado%>
+                                                                            </p>
                                                                         </div>
                                                                         <div id="test<%= i+4%>">
                                                                             <%= ticket.comentarios_solucion %>
@@ -254,10 +282,38 @@
                                                                         <%= ticket2.descripcion %>
                                                                     </div>
                                                                     <div id="tests<%=z+2%>">
-                                                                        <%= ticket2.ID_ticket %>
+                                                                        <p><% 
+                                                                            let r=1;
+                                                                            var pr="";
+                                                                            var rp="";
+                                                                            for(let respuesta of respuestas){
+                                                                                if(respuesta.ID_ticket==ticket2.ID_ticket){
+                                                                                    pr += r;
+                                                                                    pr += ". ";
+                                                                                    pr += respuesta.texto_pregunta;
+                                                                                    rp += respuesta.texto_respuesta;
+                                                                                    r=r+1; %>
+                                                                                    <b><%= pr%></b>
+                                                                                    <%= rp%>
+                                                                                    <br><br>
+                                                                                    <%pr="";rp="";  
+                                                                                }
+                                                                            
+                                                                            }%>
+                                                                        
+                                                                        </p>
                                                                     </div>
                                                                     <div id="tests<%= z+3%>">
-                                                                        <%= ticket2.comentarios_solucion %>
+                                                                        <p><b>Nombre del Creador:</b>
+                                                                            <%=ticket2.Nombre_creador%>
+                                                                                <%=ticket2.apellido_P_creador%>
+                                                                                    <%=ticket2.Apellido_M_creador%>
+                                                                        </p>
+                                                                        <p><b>Nombre del Encargado:</b>
+                                                                            <%=ticket2.Nombre_encargado%>
+                                                                                <%=ticket2.Apellido_P_encargado%>
+                                                                                    <%=ticket2.Apellido_M_encargado%>
+                                                                        </p>
                                                                     </div>
                                                                     <div id="tests<%= z+4%>">
                                                                         <%= ticket2.comentarios_solucion %>
@@ -349,10 +405,38 @@
                                                                                 <%= ticket2.descripcion %>
                                                                             </div>
                                                                             <div id="testss<%=j+2%>">
-                                                                                <%= ticket2.ID_ticket %>
+                                                                                <p><% 
+                                                                                    let r=1;
+                                                                                    var pr="";
+                                                                                    var rp="";
+                                                                                    for(let respuesta of respuestas){
+                                                                                        if(respuesta.ID_ticket==ticket2.ID_ticket){
+                                                                                            pr += r;
+                                                                                            pr += ". ";
+                                                                                            pr += respuesta.texto_pregunta;
+                                                                                            rp += respuesta.texto_respuesta;
+                                                                                            r=r+1; %>
+                                                                                            <b><%= pr%></b>
+                                                                                            <%= rp%>
+                                                                                            <br><br>
+                                                                                            <%pr="";rp="";  
+                                                                                        }
+                                                                                    
+                                                                                    }%>
+                                                                                
+                                                                                </p>
                                                                             </div>
                                                                             <div id="testss<%=j+3%>">
-                                                                                <%= ticket2.ID_ticket %>
+                                                                                <p><b>Nombre del Creador:</b>
+                                                                                    <%=ticket2.Nombre_creador%>
+                                                                                        <%=ticket2.apellido_P_creador%>
+                                                                                            <%=ticket2.Apellido_M_creador%>
+                                                                                </p>
+                                                                                <p><b>Nombre del Encargado:</b>
+                                                                                    <%=ticket2.Nombre_encargado%>
+                                                                                        <%=ticket2.Apellido_P_encargado%>
+                                                                                            <%=ticket2.Apellido_M_encargado%>
+                                                                                </p>
                                                                             </div>
                                                                             <div id="testss<%= j+4%>">
                                                                                 <%= ticket2.comentarios_solucion %>

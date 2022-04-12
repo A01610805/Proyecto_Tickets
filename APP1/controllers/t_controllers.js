@@ -12,14 +12,17 @@ exports.get_activos= async(request, response, next)=>{
     console.log(start);
     tickets=Ticket.fetchticketsactivos_pag(start)
         .then(([rows, fieldData]) => {
-            //console.log(rows);
+            respuestas=Ticket.fetchrespuestas()
+            .then(([rows2, fieldData]) => {
             response.render('Consulta', {
                 tickets: rows,
+                respuestas: rows2,
                 username: request.session.username ? request.session.username : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
                 tipo:tipo,
                 total_tickets: total,
             }); 
+        })
         })
         .catch(err => {
             console.log(err);
@@ -59,14 +62,18 @@ console.log(start);
 tickets=Ticket.fetchticketsarchivados_pag(start)
     .then(([rows, fieldData]) => {
         console.log(rows);
+        respuestas=Ticket.fetchrespuestas()
+        .then(([rows2, fieldData]) => {
         response.render('Consulta', {
             tickets: rows,
+            respuestas: rows2,
             username: request.session.username ? request.session.username : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
             total_tickets: total,
         }); 
     })
+})
     .catch(err => {
         console.log(err);
     });
@@ -102,13 +109,17 @@ exports.get_ticketspropios=async(request, response, next)=>{
     tickets=Ticket.fetchticketspropios_pag(request.cookies.nombre_usuario,start)
     .then(([rows, fieldData]) => {
         console.log(rows);
+        respuestas=Ticket.fetchrespuestas()
+        .then(([rows2, fieldData]) => {
         response.render('Consulta', {
             tickets: rows,
+            respuestas: rows2,
             username: request.session.nombre ? request.session.nombre : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
             total_tickets: total,
-        }); 
+        });
+    }) 
     })
     .catch(err => {
         console.log(err);

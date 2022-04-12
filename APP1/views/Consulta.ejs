@@ -225,7 +225,9 @@ else if(tipo==3){
                                 </blockquote>
                                 <div class=" center">
                                     <ul class="collection">
-                                        <% var z = 0; %>
+                                        <% var z = 0; 
+                                            var respuestaconticket=1;
+                                        %>
 
                                             <% var j = 0; %>
                                                 <% for (let ticket2 of tickets) { %>
@@ -284,7 +286,28 @@ else if(tipo==3){
                                                                                 <%= ticket2.descripcion %>
                                                                             </div>
                                                                             <div id="tests<%=z+2%>">
-                                                                                <%= ticket2.ID_ticket %>
+                                                                                <p><% 
+                                                                                let r=1;
+                                                                                var pr="";
+                                                                                var rp="";
+                                                                                for(let respuesta of respuestas){
+                                                                                    if(respuesta.ID_ticket==ticket2.ID_ticket){
+                                                                                        pr += r;
+                                                                                        pr += ". ";
+                                                                                        pr += respuesta.texto_pregunta;
+                                                                                        rp += respuesta.texto_respuesta;
+                                                                                        r=r+1; %>
+                                                                                        <b><%= pr%></b>
+                                                                                        <%= rp%>
+                                                                                        <br><br>
+                                                                                        <%pr="";rp="";  
+                                                                                    }
+                                                                                
+                                                                                }%>
+                                                                            
+                                                                            </p> 
+                                                                                
+                                                                                
                                                                             </div>
                                                                             <div id="tests<%= z+3%>">
                                                                                 <h5>Nombre del Creador:
@@ -323,7 +346,7 @@ else if(tipo==3){
                                                                 </p>
 
                                                         </li>
-                                                        <% z=z+4 %>
+                                                        <% z=z+4%>
                                                             <% } %>
                                                                 <% } %>
                                     </ul>
@@ -434,7 +457,7 @@ else if(tipo==3){
                                         respuesta += '<div class="col l6 m4 s2">' +
                                             '<ul class="pagination center-align">';
                                         for (let i = 1; i <= Math.ceil(total_tickets / 2); i++) { <
-                                            li class = "active" > < a href = "/buscar_tickets/start/(i-1)*2" > +i + < /a></li >
+                                            li class = "active" > <a href = "/buscar_tickets/start/(i-1)*2" > +i + < /a></li >
                                         }
                                         respuesta += '</ul>' +
                                             '</div>';
