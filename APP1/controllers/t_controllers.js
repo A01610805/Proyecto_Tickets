@@ -13,16 +13,17 @@ exports.get_activos= async(request, response, next)=>{
     tickets=Ticket.fetchticketsactivos_pag(start)
         .then(([rows, fieldData]) => {
             respuestas=Ticket.fetchrespuestas()
-            .then(([rows2, fieldData]) => {
-            response.render('Consulta', {
-                tickets: rows,
-                respuestas: rows2,
-                username: request.session.username ? request.session.username : '',
-                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
-                tipo:tipo,
-                total_tickets: total,
-            }); 
-        })
+            .then(([rows2, fieldData]) => { 
+                //console.log(rows);
+                response.render('Consulta', {
+                    tickets: rows,
+                    respuestas: rows2,
+                    username: request.session.username ? request.session.username : '',
+                    rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+                    tipo:tipo,
+                    total_tickets: total,
+                }); 
+            })
         })
         .catch(err => {
             console.log(err);
@@ -39,9 +40,15 @@ exports.post_activos = (request, response, next) => {
 exports.buscar_activos = (request, response, next) => {
     tickets=Ticket.fetchticketsactivos_filtros(request.params.valor)
     .then(([rows, fieldData]) => {
-        console.log(request.params.valor);
-        console.log(rows);
-        response.status(200).json(rows);
+        tickets=Ticket.fetchrespuestas()
+        .then(([rows2, fieldData]) => {
+            console.log(request.params.valor);
+            console.log(rows);
+            response.status(200).json(rows);
+        })
+        .catch(err => {
+            console.log(err);
+        });
     })
     .catch(err => {
         console.log(err);
@@ -56,10 +63,10 @@ let tipo=2;
 
 const total = await Ticket.getTotal_archivados();
 console.log("En total hay: " + total);
-const start = request.params.start ? request.params.start : 0
-console.log(start);
+const start2 = request.params.start2 ? request.params.start2 : 0
+console.log(start2);
 
-tickets=Ticket.fetchticketsarchivados_pag(start)
+tickets=Ticket.fetchticketsarchivados_pag(start2)
     .then(([rows, fieldData]) => {
         console.log(rows);
         respuestas=Ticket.fetchrespuestas()
@@ -104,9 +111,9 @@ exports.get_ticketspropios=async(request, response, next)=>{
 
     const total = await Ticket.getTotal_propios(request.cookies.correo_usuario);
     console.log("En total hay: " + total);
-    const start = request.params.start ? request.params.start : 0
+    const start3 = request.params.start3 ? request.params.start3 : 0
 
-    tickets=Ticket.fetchticketspropios_pag(request.cookies.correo_usuario,start)
+    tickets=Ticket.fetchticketspropios_pag(request.cookies.correo_usuario,start3)
     .then(([rows, fieldData]) => {
         console.log(rows);
         respuestas=Ticket.fetchrespuestas()

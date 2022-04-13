@@ -374,7 +374,7 @@ else if(tipo==3){
                                                         let r=1;
                                                         var pr="";
                                                         var rp="";
-                                                        for(let respuesta of respuestas){
+                                                        /*for(let respuesta of data.rows2){
                                                             if(respuesta.ID_ticket==ticket2.ID_ticket){
                                                                 pr += r;
                                                                 pr += ". ";
@@ -386,7 +386,7 @@ else if(tipo==3){
                                                                 pr="";
                                                                 rp="";  
                                                             }                            
-                                                        }                            
+                                                        } */                           
                                                         respuesta += '</p>'+                                 
                                                         '</div>'+
                                                         '<div id="tests'+z+3+'">'+
@@ -423,7 +423,7 @@ else if(tipo==3){
                 '</div>'+
                 '<div class="s12">'+
                     '<ul class="pagination center-align">';
-                        for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
+                        for (let i = 1; i <= Math.ceil(data.length/2); i++) {
                             respuesta += '<li class="active"><a href="/buscar_tickets/start'+tipo+'/'+(i-1)*2+'">'+i+'</a></li>';
                         }
                     respuesta += '</ul>'

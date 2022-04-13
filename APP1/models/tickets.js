@@ -73,7 +73,6 @@ module.exports = class Ticket {
     static getTotal_activos() {
         return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5')
             .then(([rows, fieldData]) => {
-                console.log(rows);
                 console.log(rows[0].total);
                 return rows[0].total;
             })
