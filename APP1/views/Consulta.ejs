@@ -63,6 +63,9 @@ else if(tipo==3){
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
                 <div class="right input-field col s4">
+                    <a class="boton" href="/buscar_tickets/activos">Reiniciar busqueda</a>
+                </div>
+                <div class="right input-field col s4">
                     <label for="buscar_encargado_1">Encargado: </label>
                     <input type="text" name="buscar_encargado_1" id="buscar_encargado_1">
                 </div>
@@ -82,6 +85,9 @@ else if(tipo==3){
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
                 <div class="right input-field col s4">
+                    <a class="boton" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
+                </div>
+                <div class="right input-field col s4">
                     <label for="buscar_encargado_2">Encargado: </label>
                     <input type="text" name="buscar_encargado_2" id="buscar_encargado_2">
                 </div>
@@ -100,6 +106,9 @@ else if(tipo==3){
     <nav class="grey darken-3">
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
+                <div class="right input-field col s4">
+                    <a class="boton" href="/buscar_tickets/propio">Reiniciar busqueda</a>
+                </div>
                 <div class="right input-field col s4">
                     <label for="buscar_titulo">Titulo: </label>
                     <input type="text" name="buscar_titulo" id="buscar_titulo">
@@ -255,9 +264,9 @@ else if(tipo==3){
         </div>
         <div class="s12">
             <ul class="pagination center-align">
-                <% for (let i = 1; i <= Math.ceil(total_tickets/2); i++) { %>
+                <% for (let i = 1; i <= Math.ceil(total_tickets/4); i++) { %>
                     <li class="active">
-                        <a href="/buscar_tickets/start<%= tipo %>/<%= (i-1)*2 %>"><%= i %>
+                        <a href="/buscar_tickets/start<%= tipo %>/<%= (i-1)*4 %>"><%= i %>
                         </a>
                     </li>
                 <% } %>
@@ -550,7 +559,7 @@ else if(tipo==3){
                                                         let r=1;
                                                         var pr="";
                                                         var rp="";
-                                                        for(let respuesta of respuestas){
+                                                        /*for(let respuesta of respuestas){
                                                             if(respuesta.ID_ticket==ticket2.ID_ticket){
                                                                 pr += r;
                                                                 pr += ". ";
@@ -562,7 +571,7 @@ else if(tipo==3){
                                                                 pr="";
                                                                 rp="";  
                                                             }                            
-                                                        }                            
+                                                        }*/                            
                                                         respuesta += '</p>'+                                 
                                                         '</div>'+
                                                         '<div id="tests'+z+3+'">'+
@@ -599,7 +608,7 @@ else if(tipo==3){
                 '</div>'+
                 '<div class="s12">'+
                     '<ul class="pagination center-align">';
-                        for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
+                        for (let i = 1; i <= Math.ceil(data.length/2); i++) {
                             respuesta += '<li class="active"><a href="/buscar_tickets/start'+tipo+'/'+(i-1)*2+'">'+i+'</a></li>';
                         }
                     respuesta += '</ul>'
@@ -723,7 +732,7 @@ else if(tipo==3){
                                                         let r=1;
                                                         var pr="";
                                                         var rp="";
-                                                        for(let respuesta of respuestas){
+                                                        /*for(let respuesta of respuestas){
                                                             if(respuesta.ID_ticket==ticket2.ID_ticket){
                                                                 pr += r;
                                                                 pr += ". ";
@@ -735,7 +744,7 @@ else if(tipo==3){
                                                                 pr="";
                                                                 rp="";  
                                                             }                            
-                                                        }                            
+                                                        }*/                            
                                                         respuesta += '</p>'+                                 
                                                         '</div>'+
                                                         '<div id="tests'+z+3+'">'+
@@ -772,7 +781,7 @@ else if(tipo==3){
                 '</div>'+
                 '<div class="s12">'+
                     '<ul class="pagination center-align">';
-                        for (let i = 1; i <= Math.ceil(total_tickets/2); i++) {
+                        for (let i = 1; i <= Math.ceil(data.length/2); i++) {
                             respuesta += '<li class="active"><a href="/buscar_tickets/start'+tipo+'/'+(i-1)*2+'">'+i+'</a></li>';
                         }
                     respuesta += '</ul>'

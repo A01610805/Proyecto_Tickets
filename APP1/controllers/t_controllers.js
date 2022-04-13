@@ -95,8 +95,15 @@ exports.post_archivo = (request, response, next) => {
  exports.buscar_archivo = (request, response, next) => {
     tickets=Ticket.fetchticketsarchivados_filtros(request.params.valor)
     .then(([rows, fieldData]) => {
-        console.log(rows);
-        response.status(200).json(rows);
+        tickets=Ticket.fetchrespuestas()
+        .then(([rows2, fieldData]) => {
+            console.log(request.params.valor);
+            console.log(rows);
+            response.status(200).json(rows);
+        })
+        .catch(err => {
+            console.log(err);
+        });
     })
     .catch(err => {
         console.log(err);
@@ -134,11 +141,27 @@ exports.get_ticketspropios=async(request, response, next)=>{
 }
 // A partir de aqui inicia la implementación en ajax de buscar_archivo
 exports.buscar_propios = (request, response, next) => {
-    tickets=Ticket.fetchticketsusuario_filtro(request.params.valor)
+    let user_mail = request.cookies.correo_usuario;
+    let pregunta = '';
+    if (request.params.valor != null) {
+        pregunta = request.params.valor;
+    }
+    else {
+        user_mail = '';
+        pregunta = '';
+    }
+    let valor_completo = user_mail+'&'+pregunta;
+    tickets=Ticket.fetchticketsusuario_filtro(valor_completo)
     .then(([rows, fieldData]) => {
-        console.log(request.params.valor);
-        console.log(rows);
-        response.status(200).json(rows);
+        tickets=Ticket.fetchrespuestas()
+        .then(([rows2, fieldData]) => {
+            console.log(request.params.valor);
+            console.log(rows);
+            response.status(200).json(rows);
+        })
+        .catch(err => {
+            console.log(err);
+        });
     })
     .catch(err => {
         console.log(err);
