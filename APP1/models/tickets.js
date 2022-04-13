@@ -47,7 +47,7 @@ module.exports = class Ticket {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 AND ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 OR ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
     static fetchticketsarchivados_pag(num) {
@@ -59,11 +59,11 @@ module.exports = class Ticket {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=? AND titulo LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? AND titulo LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
     static fetchticketspropios_pag(nom, num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador LIKE ? LIMIT ?, 2', ['%' + nom + '%', num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? LIMIT ?, 2', ['%' + nom + '%', num]);
     }
 
     static borrarticketpropio(id) {
@@ -97,7 +97,7 @@ module.exports = class Ticket {
     }
 
     static getTotal_propios(id) {
-        return db.execute('SELECT COUNT(*) as total FROM ticketstotal WHERE Nombre_creador LIKE ?', ['%' + id + '%'])
+        return db.execute('SELECT COUNT(*) as total FROM ticketstotal WHERE correo_creador LIKE ?', ['%' + id + '%'])
             .then(([rows, fieldData]) => {
                 console.log(rows);
                 console.log(rows[0].total);
@@ -108,6 +108,7 @@ module.exports = class Ticket {
                 return 0;
             });
     }
+
     static fetchrespuestas(){
         return db.execute('SELECT * FROM conjuntoderespuestas');
     }

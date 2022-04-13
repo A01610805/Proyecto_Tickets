@@ -5,19 +5,19 @@ const tilogin = require('../controllers/t_controllers');
 
 //Prueba con ajax
 router.get('/activos/:valor',tilogin.buscar_activos);
-router.get('/start/:start', tilogin.get_activos);
+router.get('/start1/:start1', tilogin.get_activos);
 router.get('/activos', tilogin.get_activos);
 router.post('/activos', tilogin.post_activos);
 
 //Prueba con ajax
 router.get('/archivo/:valor', tilogin.buscar_archivo);
-router.get('/start/:start', tilogin.get_archivo);
+router.get('/start2/:start2', tilogin.get_archivo);
 router.get('/archivo', tilogin.get_archivo);
 router.post('/archivo', tilogin.post_archivo);
 
 //Prueba con ajax
 router.get('/propio/:valor', tilogin.buscar_propios);
-router.get('/start/:start', tilogin.get_ticketspropios);
+router.get('/start3/:start3', tilogin.get_ticketspropios);
 router.get('/propio', tilogin.get_ticketspropios);
 //router.post('/propio', tilogin.post_propio);
 router.post('/propio', tilogin.borrarpropios);
