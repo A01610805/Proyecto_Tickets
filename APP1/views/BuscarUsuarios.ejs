@@ -6,6 +6,9 @@
 	</ul> -->
     <nav class="grey darken-3">
         <div class="nav-wrapper">
+            <div class="right input-field col s4">
+                <a class="boton" href="/buscar_usuario/busqueda">Reiniciar busqueda</a>
+            </div>
             <ul class=" hide-on-med-and-down row">
 
                 <!-- <li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown1">Rol<i class="material-icons right">arrow_drop_down</i></a></li> -->
@@ -60,7 +63,15 @@
 
     <script>
         const accion_asincrona = () => {
-            const valor_busqueda1 = document.getElementById('buscar').value;
+            var str1,
+            bus = document.getElementById('buscar');
+            if (bus != null) {
+                str1 = bus.value;
+            }
+            else {
+                str1 = '';
+            }
+            const valor_busqueda1 = str1;
             console.log(valor_busqueda1);
 
             //El token de protección CSRF
@@ -80,14 +91,14 @@
                 //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
                 console.log(data);
                 let respuesta = '';
-
-                for (let usuarios of data) {
-                    respuesta += '<thead>' +
+                respuesta += '<thead>' +
                         '	<tr>' +
                         '		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>' +
                         '	</tr>' +
-                        '</thead>' +
-                        '<tr>' +
+                        '</thead>' ;
+
+                for (let usuarios of data) {
+                    respuesta += '<tr>' +
                         '	<td>' + usuarios.ID_usuario + '</td><td>' + usuarios.nombre + '</td><td>' + usuarios.apellido_paterno + '</td><td>' + usuarios.apellido_materno + '</td><td>' + usuarios.correo + '</td><td>' + usuarios.nombre_rol + '</td>' +
                         '</tr>';
                 }
@@ -99,7 +110,13 @@
             });
         };
 
-        document.getElementById('buscar').onkeyup = accion_asincrona;
+
+        bus = document.getElementById('buscar');
+        if (bus != null) {
+            document.getElementById('buscar').onkeyup = accion_asincrona;
+        }
+
+        //document.getElementById('buscar').onkeyup = accion_asincrona;
     </script>
 
 
