@@ -319,6 +319,26 @@
                                                                     </div>
                                                                     <div id="tests<%= z+4%>">
                                                                         <%= ticket2.comentarios_solucion %>
+                                                                            <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                                            <div id="agregarcomentario<%=y%>" class="modal">
+                                                                                <div class="modal-content">
+                                                                                    <h4>
+                                                                                        Agregar comentario?
+                                                                                    </h4>
+                                                                                    <p>
+                                                                                        <div class="input-field">
+                                                                                            <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
+                                                                                            <label for="first_name">Comentario</label>
+                                                                                        </div>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <%y=y+1%>
+                                                                                    <div class="modal-footer">
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+
+                                                                                    </div>
+                                                                            </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -492,16 +512,16 @@
                         <div class="col s6">
                             <ul class="collapsible">
                                 <li class="active">
-                                    <div class="collapsible-header"><i class="material-icons">place</i>First</div>
-                                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                    <div class="collapsible-header"><i class="material-icons">place</i>Tickets Nuevos</div>
+                                    <div class="collapsible-body"><span>Estos son los tickets nuevos y listos por asignar </span></div>
                                 </li>
                                 <li>
-                                    <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                    <div class="collapsible-header"><i class="material-icons">place</i>Mis Tickets</div>
+                                    <div class="collapsible-body"><span>Este es la seccion de los tickets en donde se almacenan los tickets que han sido creado por el usuario.</span></div>
                                 </li>
                                 <li>
-                                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Tickets Asignados</div>
+                                    <div class="collapsible-body"><span>Los tickets asignados son los tickets que han sido tomados por el usuario y esta en espera de ser terminado.</span></div>
                                 </li>
                             </ul>
                         </div>
