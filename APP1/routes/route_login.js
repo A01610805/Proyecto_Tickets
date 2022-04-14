@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const clogin = require('../controllers/controller_login');
+const isAuth = require('../util/is-auth.js');
 
 router.get('/login', clogin.get_login);
 router.post('/login', clogin.login);
