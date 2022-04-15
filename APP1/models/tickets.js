@@ -26,7 +26,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 LIMIT ?, 1', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 LIMIT ?, 4', [num]);
     }
     static fetchticketsactivos() {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 ');
@@ -51,7 +51,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsarchivados_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 LIMIT ?, 1', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 LIMIT ?, 4', [num]);
     }
 
     static fetchticketsusuario_filtro(valor) {
@@ -63,7 +63,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketspropios_pag(nom, num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? LIMIT ?, 1', ['%' + nom + '%', num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? LIMIT ?, 4', ['%' + nom + '%', num]);
     }
 
     static borrarticketpropio(id) {
