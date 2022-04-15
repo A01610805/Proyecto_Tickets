@@ -387,7 +387,7 @@
                                         <% var j = 0; %>
                                             <% for (let ticket2 of ticketobtenido) { %>
                                                 <%var color =''; 
-                                            if (ticket2.ID_estado != 1){
+                                            if (ticket2.ID_estado != 1 && ticket2.ID_estado!= 5 && ticket2.ID_estado!= 6){
                                                 if(ticket2.ID_estado == 1){ 
                                                     color = 'grey lighten-2'; 
                                                 } else if(ticket2.ID_estado == 2){ 
