@@ -43,6 +43,7 @@ exports.post_genticket = async(request,response, next) => {
     console.log('Esto es antes de ticket.save()');
     console.log(ticket);
     ticket.save();
+    ticket.registrarFecha(request.cookies.correo_usuario);
     console.log('Esto es después de ticket.save()');
 
     
