@@ -109,11 +109,12 @@ module.exports = class Ticket {
     }
 
     static fetchrespuestas() {
-        return db.execute('SELECT * FROM conjuntoderespuestas');
-    }
-
+            return db.execute('SELECT * FROM conjuntoderespuestas');
+        }
+        // ==========================================================================================
     static borrarticket(id) {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
     }
+
 
 }
