@@ -20,8 +20,8 @@ exports.login = (request, response, next) => {
                 return response.redirect('/users/login');
             }
             const user = new User(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
+            const rolusuario = rows[0].ID_rol;
 
-            const rolusuario = rows[0].ID_rol
             response.cookie('rolusuario', rolusuario, {
                 httpOnly: true
             })
@@ -30,8 +30,6 @@ exports.login = (request, response, next) => {
             response.cookie('correo_usuario', correo_usuario, {
                 httpOnly: true
             })
-
-
 
             console.log(request.body.password);
             console.log(user.password);
@@ -48,6 +46,7 @@ exports.login = (request, response, next) => {
                     }
                     response.redirect('/users/login');
                 }).catch(err => {
+                    alert("Correo o contraseña incorrectos; favor de volver a intentarlo");
                     response.redirect('/users/login');
                 });
         }).catch((error) => {
