@@ -10,5 +10,11 @@ module.exports = class Busqueda {
     static fetch(valor){
         return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, nombre_rol FROM usuario NATURAL JOIN rol WHERE (nombre LIKE ? OR apellido_paterno LIKE ? OR apellido_materno LIKE ? OR ID_usuario LIKE ? OR ID_rol LIKE ? OR correo LIKE ? OR nombre_rol LIKE ?)', ['%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%', '%'+valor+'%']);
     }
+    static fetchEm(){
+        return db.execute('SELECT ID_usuario, nombre, apellido_paterno, nombre_rol FROM usuario NATURAL JOIN rol WHERE ID_rol = 2');
+    }
+    static fetchAd(){
+        return db.execute('SELECT ID_usuario, nombre, apellido_paterno, nombre_rol FROM usuario NATURAL JOIN rol WHERE ID_rol = 1');
+    }
 }
  

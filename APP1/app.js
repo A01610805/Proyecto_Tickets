@@ -50,6 +50,7 @@ const rutas_visualizacion = require('./routes/route_tickets');
 const rutas_busus = require('./routes/route_BuscarU');
 const rutas_modtem = require('./routes/route_ModTem');
 const rutas_gentem = require('./routes/route_GenTem');
+const rutas_asiprio = require('./routes/route_asignarP');
 
 
 app.use('/users', rutas_login);
@@ -60,6 +61,7 @@ app.use('/buscar_tickets', rutas_visualizacion);
 app.use('/buscar_usuario', rutas_busus);
 app.use('/modificar_template', rutas_modtem);
 app.use('/generar_template', rutas_gentem);
+app.use('/asignar_prioridad', rutas_asiprio);
 
 // app.get('/GenTem',authRole(1), (req, res) => {
 //     res.redirect(GenTem)

@@ -1,17 +1,6 @@
 <%- include('includes/head.ejs') %>
 
-        <div class="">
-            <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a>
-            <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
-                <% for (let categoria of categorias) { %>
-                    <li class="">
-                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-    
-                    </li>
-                <% } %>
-             </ul>
-             
-        </div>
+
          
 
         <div class="">
