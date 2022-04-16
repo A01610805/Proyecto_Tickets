@@ -115,6 +115,9 @@ module.exports = class Ticket {
     static borrarticket(id) {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
     }
+    static borrarticketnuevo(id) {
+        return db.execute('UPDATE ticketsnuevos SET ticketsnuevos.ID_estado=5 WHERE ticketsnuevos.ID_ticket=?', [id])
+    }
 
 
 }
