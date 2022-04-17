@@ -23,16 +23,19 @@ exports.get_principal = (request, response, next) => {
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
             });
 
+                                })
+                        })
+                })
         })
-    })
-})
-}) 
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');
     Tickets.borrarticket(request.body.idticket);
+    Tickets.borrarticketnuevo(request.body.idticket);
     response.redirect('/home');
 };
+
+
 
 // exports.get_mistickets = (request, response, next) => {
 //     console.log('Pantalla principal');
