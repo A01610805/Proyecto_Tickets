@@ -75,7 +75,7 @@ tickets=Ticket.fetchticketsarchivados_pag(start2)
             tickets: rows,
             respuestas: rows2,
             username: request.session.username ? request.session.username : '',
-            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
+            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
             tipo:tipo,
             total_tickets: total,
         }); 

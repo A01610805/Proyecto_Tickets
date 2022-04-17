@@ -19,7 +19,8 @@ exports.get_principal = (request, response, next) => {
                 ticketss: rows,
                 respuestas: rows2,
                 ticketsusuario: rows3,
-                ticketobtenido: rows4
+                ticketobtenido: rows4,
+                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
             });
 
         })
