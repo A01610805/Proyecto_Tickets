@@ -119,5 +119,8 @@ module.exports = class Ticket {
         return db.execute('UPDATE ticketsnuevos SET ticketsnuevos.ID_estado=5 WHERE ticketsnuevos.ID_ticket=?', [id])
     }
 
+    static modificarcomentario(com, id) {
+        return db.execute('UPDATE ticketstotal SET ticketstotal.comentario_solucion=?', [com], 'WHERE ticketstotal.ID_ticket=?', [id])
+    }
 
 }

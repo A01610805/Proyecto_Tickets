@@ -34,6 +34,11 @@ exports.post_principal = (request, response, next) => {
     response.redirect('/home');
 };
 
+exports.post_comentario = (request, response, next) => {
+    console.log('Pantalla principal');
+    Tickets.modificarcomentario(request.body.comentario, request.body.idticket)
+    response.redirect('/home');
+};
 
 
 // exports.get_mistickets = (request, response, next) => {
