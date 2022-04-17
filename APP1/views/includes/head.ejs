@@ -49,15 +49,25 @@
             </li>
             <% if(rol==3){ %>
                 <li><a href="/generar_ticket/enviar_ticket"><i class="material-icons">add_circle</i>Generar Ticket Nuevo</a></li>
+                <li><a href="/buscar_tickets/propio"><i class="material-icons">assignment_ind</i>Mis tickets</a></li>
+                <li><a href="/users/logout"><i class="material-icons">directions_run</i>Salir de la sesión</a></li>
+            <% } else if (rol==2) { %>
+                <li><a href="/generar_ticket/enviar_ticket"><i class="material-icons">add_circle</i>Generar Ticket Nuevo</a></li>
+                <li><a href="/buscar_tickets/activos"><i class="material-icons">assignment</i>Tickets Activos</a></li>
+                <li><a href="/buscar_tickets/archivo"><i class="material-icons">archive</i>Tickets Archivados</a></li>
+                <li><a href="/buscar_tickets/propio"><i class="material-icons">assignment_ind</i>Mis tickets</a></li>
+                <li><a href="/buscar_usuario/busqueda"><i class="material-icons">account_circle</i>Buscar Usuarios</a></li>
+                <li><a href="#"><i class="material-icons">insert_chart</i>Metricas</a></li>
                 <li><a href="/users/logout"><i class="material-icons">directions_run</i>Salir de la sesión</a></li>
             <% } else { %>
                 <li><a href="/generar_ticket/enviar_ticket"><i class="material-icons">add_circle</i>Generar Ticket Nuevo</a></li>
                 <li><a href="#"><i class="material-icons">add_circle</i>Nuevo Template</a></li>
-                <li><a href="/modificar_template/get_template"><i class="material-icons">add_circle</i>Modificar Template</a></li>
+                <li><a href="/modificar_template/get_template"><i class="material-icons">mode_edit</i>Modificar Template</a></li>
                 <li><a href="/buscar_tickets/activos"><i class="material-icons">assignment</i>Tickets Activos</a></li>
                 <li><a href="/buscar_tickets/archivo"><i class="material-icons">archive</i>Tickets Archivados</a></li>
+                <li><a href="/buscar_tickets/propio"><i class="material-icons">assignment_ind</i>Mis tickets</a></li>
                 <li><a href="/buscar_usuario/busqueda"><i class="material-icons">account_circle</i>Buscar Usuarios</a></li>
-                <li><a href="#"><i class="material-icons">border_color</i>Metricas</a></li>
+                <li><a href="#"><i class="material-icons">insert_chart</i>Metricas</a></li>
                 <li><a href="/users/logout"><i class="material-icons">directions_run</i>Salir de la sesión</a></li>
             <% } %>
             <li>
