@@ -78,11 +78,11 @@ else if(tipo==3){
         </div>
     </nav>
 <% } else if (tipo == 2) { %>
-    <nav class="grey darken-3">
+    <nav class="grey lighten-2">
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
                 <div class="right input-field col s4">
-                    <a class="boton" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
+                    <a class="waves-effect waves-light btn" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
                     <label for="buscar_encargado_2">Encargado: </label>
@@ -162,7 +162,7 @@ else if(tipo==3){
                                         <div class="card">
                                             <div class="card-content <%=color%>">
                                                 <h5 id="titulo">
-                                                <%= ticket2.titulo %>
+                                                <%= ticket2.ID_ticket + ". " + ticket2.titulo %>
                                                 <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
                                                 <div id="modal1<%=j%>" class="modal">
                                                     <div class="modal-content">
