@@ -9,8 +9,8 @@ exports.get_tic = (request, response, next) => {
     // console.log(tic);
     // const tic2 = Tickets.fetchresTiseleccionado(request.params.id)
     // console.log(tic2);
-    // console.log(request.params.id);
-    // console.log('Entrando a Asignar Prioridad');
+     console.log(request.params.id);
+     console.log('Entrando a Asignar Prioridad');
     Tickets.fetchticketSeleccionado(request.params.id)
         .then(([rows, fieldData]) => {
             // console.log('Entrando a fetchTicketSEle');
@@ -20,6 +20,7 @@ exports.get_tic = (request, response, next) => {
                     // console.log(rows);
                     // console.log(rows2);
                     response.render('APrioridad', {
+                        id: request.params.id ? request.params.id : 1,
                         username: request.session.name ? request.session.name : '',
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3,
                         tickets: rows,
@@ -29,11 +30,11 @@ exports.get_tic = (request, response, next) => {
         })
 }
 exports.post_prioridad = (request, response, next) => {
-    // console.log(request.body);
+     console.log(request.body);
     const prioridad = new Prioridad(request.body.prioridad, request.params.id);
-    // console.log('Iniciando update');
+     console.log('Iniciando update');
     prioridad.update()
-    // console.log('Terminando update');
+     console.log('Terminando update');
     response.redirect('/home')
 
 };

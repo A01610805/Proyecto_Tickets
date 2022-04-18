@@ -5,7 +5,7 @@
 
         <div class="">
 
-            <form action="/asignar_prioridad/post_prio/<%= id %>" method="post" id="form" class="respuesta_ajax" ></form>
+            <form action="/asignar_prioridad/post_prio/<%= id %>" method="POST" id="form" class="respuesta_ajax" ></form>
                 <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
                     <% for (let ticket of tickets) { %>
                         <% var estado = '';
@@ -32,10 +32,6 @@
                         <% } %>
                     
                 </div>
-                <div >
-                    <label  for="">Inserte Prioridad</label>
-                    <input required id="prioridad" name="prioridad"><span class=""></span>
-                </div>
                 <div class="center">
                     <h5 >Prioridades</h5>
                     <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Por asignar">1</a>
@@ -45,6 +41,11 @@
                     <a class="btn tooltipped red" data-position="bottom" data-tooltip="Urgente">5</a>
                 </div>
                 <br></br>
+                <div >
+                    <label  for="">Inserte Prioridad</label>
+                    <input required id="prioridad" name="prioridad"><span class=""></span>
+                </div>
+                
                 <div class="center ">
                     <button type="submit" class="waves-effect waves-light btn">Guardar</button>
                     <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
