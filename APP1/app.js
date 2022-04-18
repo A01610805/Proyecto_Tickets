@@ -62,7 +62,7 @@ app.use((request, response, ) => {
     console.log('Middleware!');
     response.redirect('/users');
 });
-
+  
 app.use((request, response, next) => {
     console.log("Error 404");
 });

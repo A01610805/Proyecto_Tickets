@@ -28,7 +28,7 @@ exports.get_tic = (request, response, next) => {
                     });
                 })
         })
-}
+};
 exports.post_prioridad = (request, response, next) => {
      console.log(request.body);
     const prioridad = new Prioridad(request.body.prioridad, request.params.id);
