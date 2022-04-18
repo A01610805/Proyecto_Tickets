@@ -21,6 +21,7 @@ exports.get_tic = (request, response, next) => {
                     // console.log(rows2);
                     response.render('APrioridad', {
                         username: request.session.name ? request.session.name : '',
+                        rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3,
                         tickets: rows,
                         respuestas: rows2,
                     });

@@ -3,7 +3,7 @@ const Pregunta = require('../models/news_preguntas');
 
 exports.get_gentem = (request, response, next) => {
         console.log('Aqui inicia generar template');
-            response.render('GenTem');  
+            response.render('GenTem', {rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3,});  
 };
 exports.post_gentem = async(request, response, next) =>{
     // console.log(request.body);
