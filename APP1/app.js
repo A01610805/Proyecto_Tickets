@@ -1,4 +1,4 @@
-//aqui se ponen las librerias necesarias
+//Aqui se ponen las librerias necesarias
 //express framework para crear web
 const express = require('express');
 // path nos permite poder manejar las rutas tanto relativas 
@@ -16,16 +16,11 @@ const bodyParser = require('body-parser');
 // permitiendo mantener la sesión del usuario "loggeada", por ejemplo.
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-//const placeholder = require('placeholder-loading');
-
-//const {authRole} = require('./controllers/authR');
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-
-//app.use(placeholder());
 
 app.use(session({
     secret: 'qweasdzxc',
@@ -62,10 +57,6 @@ app.use('/buscar_usuario', rutas_busus);
 app.use('/modificar_template', rutas_modtem);
 app.use('/generar_template', rutas_gentem);
 app.use('/asignar_prioridad', rutas_asiprio);
-
-// app.get('/GenTem',authRole(1), (req, res) => {
-//     res.redirect(GenTem)
-// })
 
 app.use((request, response, ) => {
     console.log('Middleware!');

@@ -19,6 +19,13 @@ module.exports = class Gen_Tickets {
 
     }
 
+    registrarFecha(correo){
+        return db.execute(
+            'CALL RegistraFecha(?)',
+            [correo]
+        );
+    }
+
     static obtenerid(){
         return db.execute('SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1')
     }

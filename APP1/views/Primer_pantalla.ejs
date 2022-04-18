@@ -99,7 +99,7 @@
                                                             <div id="carta" class="card">
                                                                 <div class="card-content <%=color%>">
                                                                     <p id="titulo">
-                                                                        <b><%= ticket.titulo %></b>
+                                                                        <b><%= ticket.ID_ticket + ": " + ticket.titulo %></b>
                                                                         <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal<%=j%>"><i class="material-icons">edit</i></a>
                                                                     </p>
                                                                 </div>
@@ -248,11 +248,11 @@
                                                     <p class="z-depth-4">
                                                         <div class="card">
                                                             <div class="card-content <%=color%>">
-                                                                <h5 id="titulo">
-                                                                    <%= ticket2.titulo %>
+                                                                <p id="titulo">
+                                                                    <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
 
                                                                         <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
-                                                                </h5>
+                                                                </p>
                                                             </div>
                                                             <div id="modal1<%=j%>" class="modal">
                                                                 <div class="modal-content">
@@ -401,7 +401,7 @@
                                                                 <div id="carta" class="card">
                                                                     <div class="card-content <%=color%>">
                                                                         <p id="titulo">
-                                                                            <%=ticket2.titulo %>
+                                                                            <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
 
                                                                                 <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
                                                                         </p>

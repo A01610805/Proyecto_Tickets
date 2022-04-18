@@ -10,6 +10,7 @@ exports.get_genticket = (request, response, next) => {
             response.render('GenerarTicket', {
                 Tiname: request.session.usuario ? request.session.usuario : '',
                 categorias: rows,
+                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
             }); 
         }) 
     .catch(error => {console.log(error)});
@@ -26,6 +27,7 @@ exports.get_preguntas = (request, response, next) => {
                     console.log('Entrando a pregunta y render');
                     response.render('TiGen', {
                         Tiname: request.session.usuario ? request.session.usuario : '',
+                        rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         categorias: rows,
                         preguntas: rows2,
                         id: request.params.id ? request.params.id : 1
@@ -43,6 +45,7 @@ exports.post_genticket = async(request,response, next) => {
     console.log('Esto es antes de ticket.save()');
     console.log(ticket);
     ticket.save();
+    ticket.registrarFecha(request.cookies.correo_usuario);
     console.log('Esto es después de ticket.save()');
 
     
