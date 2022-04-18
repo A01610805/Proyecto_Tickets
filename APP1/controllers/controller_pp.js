@@ -12,21 +12,32 @@ exports.get_principal = (request, response, next) => {
             .then(([rows2, fieldData]) => {
             Tickets.fetchticketsusuario(request.cookies.correo_usuario)
                 .then(([rows3, fieldData]) => {
-            Tickets.fetchticketsencargado(request.cookies.correo_usuario)
-                .then(([rows4, fieldData]) => {
-            response.render('Primer_pantalla', {
-                username: request.session.name ? request.session.name : '',
-                ticketss: rows,
-                respuestas: rows2,
-                ticketsusuario: rows3,
-                ticketobtenido: rows4,
-                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-            });
-
-                                })
-                        })
+                Tickets.fetchticketsencargado(request.cookies.correo_usuario)
+                    .then(([rows4, fieldData]) => {
+                        let numrol = request.cookies.rolusuario;
+                        if (numrol==3){
+                            response.render('Primer_pantalla3', {
+                                username: request.session.name ? request.session.name : '',
+                                ticketss: rows,
+                                respuestas: rows2,
+                                ticketsusuario: rows3,
+                                ticketobtenido: rows4,
+                                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                            });
+                        } else {
+                        response.render('Primer_pantalla', {
+                            username: request.session.name ? request.session.name : '',
+                            ticketss: rows,
+                            respuestas: rows2,
+                            ticketsusuario: rows3,
+                            ticketobtenido: rows4,
+                            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                        });
+                    }
                 })
+            })
         })
+    })
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');
