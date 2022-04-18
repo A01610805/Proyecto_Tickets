@@ -9,16 +9,16 @@ exports.get_tic = (request, response, next) => {
     // console.log(tic);
     // const tic2 = Tickets.fetchresTiseleccionado(request.params.id)
     // console.log(tic2);
-    console.log(request.params.id);
-    console.log('Entrando a Asignar Prioridad');
+    // console.log(request.params.id);
+    // console.log('Entrando a Asignar Prioridad');
     Tickets.fetchticketSeleccionado(request.params.id)
         .then(([rows, fieldData]) => {
-            console.log('Entrando a fetchTicketSEle');
+            // console.log('Entrando a fetchTicketSEle');
             Tickets.fetchresTiseleccionado(request.params.id)
                 .then(([rows2, fieldData]) => {
-                    console.log('WOW');
-                    console.log(rows);
-                    console.log(rows2);
+                    // console.log('WOW');
+                    // console.log(rows);
+                    // console.log(rows2);
                     response.render('APrioridad', {
                         username: request.session.name ? request.session.name : '',
                         tickets: rows,
@@ -28,11 +28,11 @@ exports.get_tic = (request, response, next) => {
         })
 }
 exports.post_prioridad = (request, response, next) => {
-    console.log(request.body);
+    // console.log(request.body);
     const prioridad = new Prioridad(request.body.prioridad, request.params.id);
-    console.log('Iniciando update');
+    // console.log('Iniciando update');
     prioridad.update()
-    console.log('Terminando update');
+    // console.log('Terminando update');
     response.redirect('/home')
 
 };
@@ -48,6 +48,6 @@ exports.post_prioridad = (request, response, next) => {
 // }
 
 exports.root = (req, res, next) => {
-    console.log('Ruta por defecto de buscar usuario');
+    // console.log('Ruta por defecto de buscar usuario');
     res.redirect('/asignar_prioridad');
 }
