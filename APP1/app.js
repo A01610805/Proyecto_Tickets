@@ -41,15 +41,23 @@ const rutas_login = require('./routes/route_login');
 const rutas_pp = require('./routes/route_Pp');
 const rutas_genticket = require('./routes/route_GenT');
 const rutas_visualizacion = require('./routes/route_tickets');
+<<<<<<< HEAD
 
 const rutas_busus = require('./routes/route_BuscarU');
 const rutas_modtem = require('./routes/route_ModTem');
 
+=======
+const rutas_busus = require('./routes/route_BuscarU');
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
 app.use('/generar_ticket', rutas_genticket);
 app.use('/buscar_tickets', rutas_visualizacion);
+<<<<<<< HEAD
+=======
+app.use('/buscar_usuario', rutas_busus);
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
 
 app.use('/buscar_usuario', rutas_busus);
 app.use('/modificar_template', rutas_modtem);
@@ -63,4 +71,8 @@ app.use((request, response, next) => {
     console.log("Error 404");
 });
 
+<<<<<<< HEAD
 app.listen(3000);
+=======
+app.listen(3000); 
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660

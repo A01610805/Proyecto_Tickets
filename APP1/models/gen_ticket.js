@@ -14,11 +14,18 @@ module.exports = class Gen_Tickets {
 
             'INSERT INTO ticket(ID_categoria, ID_estado, ID_prioridad, titulo, descripcion) VALUES(?,?,?,?,?)',
             [this.ID_categoria, 1, 1, this.titulo, this.descripcion]
+<<<<<<< HEAD
+=======
+            
+            // ('INSERT INTO genera_ticket(ID_ticket, ID_usuario) VALUES(?,?,?,?,?,?)',
+            // [this.ID_ticket, this.ID_usuario])
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
 
         )
 
     }
 
+<<<<<<< HEAD
     registrarFecha(correo){
         return db.execute(
             'CALL RegistraFecha(?)',
@@ -27,6 +34,9 @@ module.exports = class Gen_Tickets {
     }
 
     static obtenerid(){
+=======
+    obtenerid(){
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
         return db.execute('SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1')
     }
 

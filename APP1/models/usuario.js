@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 module.exports = class Busqueda {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
+<<<<<<< HEAD
     static fetchAll() {
         return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, nombre_rol FROM usuario NATURAL JOIN rol');
     }
@@ -14,3 +15,9 @@ module.exports = class Busqueda {
         return db.execute('SELECT ID_usuario FROM usuario WHERE correo=?', [id]);
     }
 }
+=======
+    static fetchAll(){
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario NATURAL JOIN rol');
+    }
+}
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660

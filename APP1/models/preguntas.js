@@ -18,12 +18,18 @@ module.exports = class Pregunta {
         return db.execute(
             'SELECT * FROM pregunta WHERE ID_categoria=?', [id]);
     }
+<<<<<<< HEAD
 
     static idpreg(id) {
+=======
+    
+    idpreg(id){
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
         return db.execute(
             'SELECT ID_pregunta FROM pregunta WHERE ID_categoria=?', [id]);
     }
 
+<<<<<<< HEAD
     static countpreg(id) {
         return db.execute(
             'SELECT COUNT(*) FROM pregunta WHERE ID_categoria = ?', [id]);
@@ -41,3 +47,10 @@ module.exports = class Pregunta {
         //         'INSERT INTO pregunta(texto_pregunta, ID_categoria) VALUES(?, ?) WHERE ID_categoria = ?', [this.texto_pregunta, this.ID_categoria])
         // }
 }
+=======
+    countpreg(id){
+        return db.execute(
+            'SELECT COUNT(*) FROM pregunta WHERE ID_categoria = ?', [id]);
+    }
+}
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660

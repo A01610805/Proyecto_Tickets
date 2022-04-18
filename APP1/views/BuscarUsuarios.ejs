@@ -1,4 +1,5 @@
 <%- include('includes/head.ejs') %>
+<<<<<<< HEAD
     <!-- <ul id="dropdown1" class="dropdown-content">
 		<% for (let roles of usuario) { %>
 			<li><a href="#!" id="rol"><%= roles.nombre_rol%></a></li>
@@ -123,3 +124,55 @@
 
 
     <%- include('includes/footer.ejs') %>
+=======
+	<ul id="dropdown5" class="dropdown-content">
+		<% for (let roles of rol) { %>
+			<li><a href="#!"><%= roles.nombre_rol%></a></li>
+		<% } %>
+	</ul>
+	<nav class="grey darken-3">
+		<div class="nav-wrapper">
+			<ul class="right hide-on-med-and-down">
+				 
+				<li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown5">Rol<i class="material-icons right">arrow_drop_down</i></a></li>
+				<div class=" right input-field col s6">
+					<input id="ID" type="text" class="validate">
+					<label for="ID">ID</label>
+				</div>
+				<div class="right input-field col s6">
+					<input id="first_name" type="text" class="validate">
+					<label for="first_name">Nombre</label>
+				</div>
+				<div class="right input-field col s6">
+					<input id="second_name" type="text" class="validate">
+					<label for="second_name">Apellido Paterno</label>
+				</div>
+				<div class="right input-field col s6">
+					<input  id="third_name" type="text" class="validate">
+					<label for="third_name">Apellido Materno</label>
+				</div>
+				<div class="right input-field col s6">
+					<input  id="email" type="text" class="validate">
+					<label for="email">Correo</label>
+				</div>
+			</ul>
+		</div>
+	</nav>
+
+	<div>
+
+	<table class="striped responsive-table centered" >
+		<thead>
+			<tr>
+				<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>
+			</tr>
+		</thead>
+		<% for (let usuario of model_login) { %>
+			<tr>
+				<td><%= usuario.ID_usuario%></td><td><%= usuario.nombre%></td><td><%= usuario.apellido_paterno%></td><td><%= usuario.apellido_materno%></td><td><%= usuario.correo %></td><td><%= usuario.nombre_rol %></td>
+			</tr>
+		<% } %>
+		
+	</table>
+<%- include('includes/footer.ejs') %>
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660

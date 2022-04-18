@@ -29,6 +29,31 @@
                 <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" name="descripcion" class="materialize-textarea" maxlength="100" required="required"></textarea>
                 <label for="descripcion" style="font-size:18px">Descripción</label>
             </div>
+<<<<<<< HEAD
+=======
+            <div class="grupo">
+<<<<<<< HEAD
+                <input required id="descripcion" name="Descripcion"><span class="barra"></span>
+=======
+                <input required id="descripcion" name="descripcion"><span class="barra"></span>
+>>>>>>> Int-RBAC
+                <label for="">Descripcion</label>
+            </div>
+            <%var i=1; %>
+            <% for (let pregunta of preguntas) { %> 
+                <div class="grupo">
+                    <%var nombre = "texto_respuesta"+i%>
+                    <input required id="<%nombre%>" name="texto_respuesta"><span class="barra"></span>
+                    <label  href="/generar_ticket/pregunta/<%= pregunta.ID_categoria %>" for="ID_pregunta"><%= pregunta.texto_pregunta %></label>
+                </div>
+                <%i=i+1;%>
+            <% } %>  
+            <br>
+            
+            <button type="submit">Generar</button>
+            <button type="submit">Cancelar</button>
+            </form>
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
         </div>
 
         <%var j=1; %>

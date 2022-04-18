@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const tilogin = require('../controllers/t_controllers');
+<<<<<<< HEAD
 const isAuth = require('../util/is-auth.js');
 const {authPage} = require('../util/rbac.js');
 
@@ -27,3 +28,15 @@ router.post('/propio', tilogin.borrarpropios);
 router.post('/', tilogin.root);
 
 module.exports = router;
+=======
+
+router.get('/activos', tilogin.get_activos);
+router.post('/activos', tilogin.post_activos);
+router.get('/archivo', tilogin.get_archivo);
+router.post('/archivo', tilogin.post_archivo);
+router.get('/propio', tilogin.get_ticketspropios);
+router.post('/propio', tilogin.borrarpropios);
+router.post('/', tilogin.root);
+
+module.exports = router;
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660

@@ -1,4 +1,5 @@
 const Busqueda = require('../models/usuario');
+<<<<<<< HEAD
 const BusquedaR = require('../models/rol');
 
 exports.get_busqueda = (request, response, next) => {
@@ -37,4 +38,27 @@ exports.buscar = (request, response, next) => {
 exports.root = (req, res, next) => {
     console.log('Ruta por defecto de buscar usuario');
     res.redirect('/home');
+=======
+const Rol = require('../models/rol');
+
+exports.get_busqueda = (req,res,next) => {
+    console.log('Entrando a Buscar Usuario');
+    Busqueda.fetchAll()
+        .then(([rows, fielData])=>{
+            Rol.findOne()
+                .then(([rows2, fielData]) => {
+                    res.render('BuscarUsuarios',{
+                        model_login: rows,
+                        rol: rows2,
+                    });
+                })
+            .catch(error => {console.log(error)});
+        })
+     .catch(error => {console.log(error)});
+};
+
+exports.root = (req,res,next) => {
+    console.log('Ruta por defecto de buscar usuario');
+    res.redirect('/home'); 
+>>>>>>> 307171d521586ba6900f349b0ef4600271bab660
 };
