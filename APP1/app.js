@@ -46,9 +46,10 @@ const rutas_login = require('./routes/route_login');
 const rutas_pp = require('./routes/route_Pp');
 const rutas_genticket = require('./routes/route_GenT');
 const rutas_visualizacion = require('./routes/route_tickets');
-
 const rutas_busus = require('./routes/route_BuscarU');
 const rutas_modtem = require('./routes/route_ModTem');
+const rutas_metricas = require('./routes/route_metricas');
+
 
 
 app.use('/users', rutas_login);
@@ -58,6 +59,7 @@ app.use('/buscar_tickets', rutas_visualizacion);
 
 app.use('/buscar_usuario', rutas_busus);
 app.use('/modificar_template', rutas_modtem);
+app.use('/metricas', rutas_metricas);
 
 // app.get('/GenTem',authRole(1), (req, res) => {
 //     res.redirect(GenTem)

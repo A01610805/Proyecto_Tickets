@@ -12,6 +12,7 @@ exports.get_ticket = (request, response, next) => {
         }) 
     .catch(error => {console.log(error)});
 };
+
 exports.get_preguntas = (request, response, next) => {
     console.log(request.params.id);
     //Categoria.fetchOne(request.params.id)
