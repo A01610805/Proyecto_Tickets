@@ -9,18 +9,19 @@ exports.get_principal = (request, response, next) => {
     Tickets.fetchticketsnuevos()
         .then(([rows, fielData]) => {
             Tickets.fetchrespuestas()
-                .then(([rows2, fieldData]) => {
-                    Tickets.fetchticketsusuario(request.cookies.correo_usuario)
-                        .then(([rows3, fieldData]) => {
-                            Tickets.fetchticketsencargado(request.cookies.correo_usuario)
-                                .then(([rows4, fieldData]) => {
-                                    response.render('Primer_pantalla', {
-                                        username: request.session.name ? request.session.name : '',
-                                        ticketss: rows,
-                                        respuestas: rows2,
-                                        ticketsusuario: rows3,
-                                        ticketobtenido: rows4
-                                    });
+            .then(([rows2, fieldData]) => {
+            Tickets.fetchticketsusuario(request.cookies.correo_usuario)
+                .then(([rows3, fieldData]) => {
+            Tickets.fetchticketsencargado(request.cookies.correo_usuario)
+                .then(([rows4, fieldData]) => {
+            response.render('Primer_pantalla', {
+                username: request.session.name ? request.session.name : '',
+                ticketss: rows,
+                respuestas: rows2,
+                ticketsusuario: rows3,
+                ticketobtenido: rows4,
+                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+            });
 
                                 })
                         })

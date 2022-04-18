@@ -1,23 +1,24 @@
 const Busqueda = require('../models/usuario');
 const BusquedaR = require('../models/rol');
 
-
-exports.get_busqueda = (req, res, next) => {
+exports.get_busqueda = (request, response, next) => {
     console.log('Entrando a Buscar Usuario');
     Busqueda.fetchAll()
         .then(([rows, fielData]) => {
-            res.render('BuscarUsuarios', {
+            console.log( request.cookies.rolusuario);
+            response.render('BuscarUsuarios', {
                 usuario: rows,
+                rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3, 
             });
         })
         .catch(error => { console.log(error) });
 }
 
-exports.buscar = (req, res, next) => {
-    Busqueda.fetch(req.params.valor)
+exports.buscar = (request, response, next) => {
+    Busqueda.fetch(request.params.valor)
         .then(([rows, fieldData]) => {
             console.log(rows);
-            res.status(200).json(rows);
+            response.status(200).json(rows);
         })
         .catch(error => { console.log(error) });
 

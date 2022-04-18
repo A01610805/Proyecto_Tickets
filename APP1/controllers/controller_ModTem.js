@@ -5,9 +5,11 @@ const Respuesta = require('../models/respuestas');
 exports.get_ticket = (request, response, next) => {
     Categoria.fetchAll()
         .then(([rows, fielData]) => {
+            console.log( request.cookies.rolusuario);
             response.render('ModificarTemplate', {
                 Tiname: request.session.usuario ? request.session.usuario : '',
                 categorias: rows,
+                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
             }); 
         }) 
     .catch(error => {console.log(error)});
@@ -26,6 +28,7 @@ exports.get_preguntas = (request, response, next) => {
                         categorias: rows,
                         preguntas: rows2,
                         id: request.params.id ? request.params.id : 1,
+                        rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                     }); 
                 }) 
                 .catch(error => {console.log(error)}); 
