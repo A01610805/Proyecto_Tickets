@@ -24,6 +24,9 @@ module.exports = class Ticket {
     static fetchticketsnuevos() {
         return db.execute('SELECT * FROM ticketsnuevos');
     }
+    static fetchticketsusuarionuevos(id) {
+        return db.execute('SELECT * FROM ticketsnuevos WHERE correo=?', [id]);
+    }
 
     static fetchticketsactivos_pag(num) {
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 LIMIT ?, 4', [num]);

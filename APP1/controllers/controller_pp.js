@@ -14,6 +14,8 @@ exports.get_principal = (request, response, next) => {
                 .then(([rows3, fieldData]) => {
                 Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                     .then(([rows4, fieldData]) => {
+                        Tickets.fetchticketsusuarionuevos(request.cookies.correo_usuario)
+                        .then(([rows5, fieldData]) => {
                         let numrol = request.cookies.rolusuario;
                         if (numrol==3){
                             response.render('Primer_pantalla3', {
@@ -22,6 +24,7 @@ exports.get_principal = (request, response, next) => {
                                 respuestas: rows2,
                                 ticketsusuario: rows3,
                                 ticketobtenido: rows4,
+                                ticketsusuarionuevos: rows5,
                                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                             });
                         } else {
@@ -31,6 +34,7 @@ exports.get_principal = (request, response, next) => {
                             respuestas: rows2,
                             ticketsusuario: rows3,
                             ticketobtenido: rows4,
+                            ticketsusuarionuevos: rows5,
                             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         });
                     }
@@ -38,6 +42,7 @@ exports.get_principal = (request, response, next) => {
             })
         })
     })
+})
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');
