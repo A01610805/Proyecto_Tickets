@@ -1,4 +1,5 @@
 const User = require('../models/model_login');
+const Usuario = require('../models/usuario');
 const Ticket = require("../models/tickets");
 const bcrypt = require('bcryptjs');
 var correo_usuario = '';
@@ -23,6 +24,10 @@ exports.login = (request, response, next) => {
 
             const rolusuario = rows[0].ID_rol
             response.cookie('rolusuario', rolusuario, {
+                httpOnly: true
+            })
+            const id_usuario = Usuario.getidusuario(rows[0].correo)
+            response.cookie('id_usuario', id_usuario, {
                 httpOnly: true
             })
 
