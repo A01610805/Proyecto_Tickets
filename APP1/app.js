@@ -52,7 +52,7 @@ const rutas_modtem = require('./routes/route_ModTem');
 const rutas_gentem = require('./routes/route_GenTem');
 const rutas_asiprio = require('./routes/route_asignarP');
 
-
+ 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
 app.use('/generar_ticket', rutas_genticket);

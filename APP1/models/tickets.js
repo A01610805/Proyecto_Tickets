@@ -21,7 +21,7 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketstotal WHERE Correo_encargado=?', [id]);
     }
     static fetchticketSeleccionado(id) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_ticket=?', [id]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_ticket = ?', [id]);
     }
     static fetchresTiseleccionado(id) {
         return db.execute('SELECT texto_respuesta FROM respuesta WHERE  ID_ticket = ?', [id]);
