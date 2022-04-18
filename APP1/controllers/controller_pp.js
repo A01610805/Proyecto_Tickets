@@ -14,6 +14,7 @@ exports.get_principal = (request, response, next) => {
                 .then(([rows3, fieldData]) => {
                 Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                     .then(([rows4, fieldData]) => {
+                        console.log(rows3);
                         let numrol = request.cookies.rolusuario;
                         if (numrol==3){
                             response.render('Primer_pantalla3', {
