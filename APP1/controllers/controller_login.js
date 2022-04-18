@@ -25,6 +25,10 @@ exports.login = (request, response, next) => {
             response.cookie('rolusuario', rolusuario, {
                 httpOnly: true
             })
+            const id_usuario = User.getidusuario(rows[0].correo)
+            response.cookie('id_usuario', id_usuario, {
+                httpOnly: true
+            })
 
             const correo_usuario = rows[0].correo
             response.cookie('correo_usuario', correo_usuario, {
