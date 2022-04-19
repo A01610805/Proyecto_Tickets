@@ -9,7 +9,7 @@ const db = require('../util/database');
      }
 
 
-    static update() {
+    update() {
         return db.execute('UPDATE ticketstotal set ID_prioridad = ? WHERE  ID_ticket = ?', [this.ID_prioridad, this.ID_ticket]
         );
     }

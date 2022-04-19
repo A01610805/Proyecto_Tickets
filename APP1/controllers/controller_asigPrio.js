@@ -27,14 +27,19 @@ exports.get_tic = (request, response, next) => {
                         respuestas: rows2,
                     });
                 })
+                .catch(error => {console.log(error)});
         })
+        .catch(error => {console.log(error)});
 };
-exports.post_prioridad = (request, response, next) => {
-     console.log(request.body);
+
+exports.post_prio = (request, response, next) => {
+    console.log('hola?');
+    console.log(request.body);
     const prioridad = new Prioridad(request.body.prioridad, request.params.id);
-     console.log('Iniciando update');
+    console.log(prioridad);
+    console.log('Iniciando update');
     prioridad.update()
-     console.log('Terminando update');
+    console.log('Terminando update');
     response.redirect('/home')
 
 };
