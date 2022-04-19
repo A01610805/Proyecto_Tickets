@@ -1,8 +1,6 @@
 Buscar Usuarios
     Prueba1, falla, declaracion de roles dropdown, solucion redeclarar for.
-
     Prueba2, falla, delcaracion de usuarios, solucion redeclarar for de tabla.
-
     Prueba3, falla, fetch_XXX no definidos, solucion reestructuracion del controlador buscar- (buscarXXX)*nfetch.
     Prueba4, falla, Invalid left-hand side assigment- getElementByID("rol"), solucion comentar por ahora, desconocimiento de sintaxis permitida
     Prueba5, falla, fetch_XXX siguen siendo marcados como no definidos,posible problema encontrado, thens incompletos, solucion dar instrucciones a then
@@ -22,5 +20,23 @@ Modificar template
     Prueba1, falla, no actualizo base de datos, restablecer modelos de preguntas y categorias
     Prueba2, falla, no actualizo base de datos, posible falla en actualizaciones UPDATE , solucion ?, 
     Prueba3, ya crasheo, solucion restructurar ejs.
-    Prueba4, actualiza una sola pregunta, problema no saber recorrer arreglo de preguntas
-    Prueba5, 
+    Prueba4, falla, actualiza una sola pregunta, problema no saber recorrer arreglo de preguntas
+    Prueba5, falla, problema no extraer id_pregunta hace que rescriba las preguntas solo por id, solucion establecer input con id_pregunta
+    Prueba6, exito, actualiza base de datos.
+
+Generar template
+    Prueba1, exito, renderizar generar template con bases para agregar pregunta en ejs.
+    Prueba2, intento de eliminar pregunta en ejs, falla, boton no funciona
+    Prueba3, intento de eliminar pregunta en ejs, falla, boton no funciona, sintaxis incorrecta
+    Prueba4, intento de eliminar pregunta en ejs, falla, boton no funciona, sintaxis incorrecta
+    Prueba5, intento de eliminar pregunta en ejs, falla, boton no funciona, restructurar class - id
+    Prueba6, intento de eliminar pregunta en ejs, falla, boton no funciona, sintaxis incorrecta
+    Prueba7, falla, elimina una sola div.
+    Prueba8, falla, no sabe que pregunta eliminar si hay mas de 1.
+    Prueba9, falla ,no funciona boton.
+    Prueba9, falla, mal uso de consulta en id categoria.
+    Prueba10, falla, mal sintaxys de sql, solucion restructurar insert(concepto de como funciona base de datos)
+    Prueba11, exito actualiza base de datos con categoria nueva.
+
+
+    

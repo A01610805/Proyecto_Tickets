@@ -1,0 +1,65 @@
+<%- include('includes/head.ejs') %>
+   
+    <div class="container">
+        <h1 class="center">Asignar Prioridad</h1>
+
+        
+
+            <form action="/asignar_prioridad/post_prio/<%= id %>" method="post" id="form" class="respuesta_ajax">
+                <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
+                    <% for (let ticket of tickets) { %>
+                        <% var estado = '';
+                        if(ticket.ID_estado == 1){ 
+                            estado = 'Nuevo'; 
+                        } else if(ticket.ID_estado == 2){ 
+                            estado = 'En Curso'; 
+                        } else if(ticket.ID_estado == 3){ 
+                            estado = 'En Espera de Información'; 
+                        } else if(ticket.ID_estado == 4){ 
+                            estado = 'En espera de Visto Bueno'; 
+                        } else if(ticket.ID_estado == 5){ 
+                            estado = 'Cancelado'; 
+                        } else if(ticket.ID_estado == 6){ 
+                            estado = 'Resuelto'; } %>
+                        <a class="center" for="">Ticket:</a>
+                        <h5 class="center" for=""><%=ticket.titulo%></h5>
+                        <a class="center" for="">Descripcion:</a>
+                        <h6 class="center" for=""><%=ticket.descripcion%></h6>
+                        <a class="center" for="">Estado:</a>
+                        <h6 class="center" for=""><%=estado%></h6>
+
+                        <% } %>
+                        <div class="centers">
+                            <label  for="">Inserte Prioridad</label>
+                            <input required id="prioridad" name="prioridad"><span class=""></span>
+                        </div>
+                        
+                        <div class="center ">
+                            <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                            <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
+                        </div>
+                    
+                </div>
+                <div class="center">
+                    <h5 >Prioridades</h5>
+                    <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Por asignar">1</a>
+                    <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Bajo">2</a>
+                    <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Medio">3</a>
+                    <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Alto">4</a>
+                    <a class="btn tooltipped red" data-position="bottom" data-tooltip="Urgente">5</a>
+                </div>
+                <br></br>
+                
+                
+            </form>
+
+               
+        
+    </div>
+    <br></br>
+
+
+
+        
+    
+<%- include('includes/footer.ejs') %>
