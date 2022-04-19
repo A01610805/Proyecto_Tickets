@@ -44,8 +44,10 @@ const rutas_visualizacion = require('./routes/route_tickets');
 
 const rutas_busus = require('./routes/route_BuscarU');
 const rutas_modtem = require('./routes/route_ModTem');
+const rutas_gentem = require('./routes/route_GenTem');
+const rutas_asiprio = require('./routes/route_asignarP');
 
-
+ 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
 app.use('/generar_ticket', rutas_genticket);
@@ -53,12 +55,14 @@ app.use('/buscar_tickets', rutas_visualizacion);
 
 app.use('/buscar_usuario', rutas_busus);
 app.use('/modificar_template', rutas_modtem);
+app.use('/generar_template', rutas_gentem);
+app.use('/asignar_prioridad', rutas_asiprio);
 
 app.use((request, response, ) => {
     console.log('Middleware!');
     response.redirect('/users');
 });
-
+  
 app.use((request, response, next) => {
     console.log("Error 404");
 });

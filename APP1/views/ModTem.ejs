@@ -1,21 +1,22 @@
 <%- include('includes/head.ejs') %>
-    <div class="container">
 
-         <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
-            <% for (let categoria of categorias) { %>
-                <li class="">
-                    <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-
-                </li>
-            <% } %>
-         </ul>
-        <nav class="grey darken-3">
-            <div class="nav-wrapper">
-                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a></li>
-            </div>
-        </nav>
         <div class="">
-            <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax">
+            <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a>
+            <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
+                <% for (let categoria of categorias) { %>
+                    <li class="">
+                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+    
+                    </li>
+                <% } %>
+             </ul>
+             
+        </div>
+         
+
+        <div class="">
+            <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
+                <h1>Modificar template</h1>
                 <div>
                     <div >
                         <label for="">Nombre Categoria</label>
@@ -36,7 +37,7 @@
                     <div>
 
                         <label  ><%= pregunta.texto_pregunta %></label>
-                        <div class="row col s6">
+                        <div class="row col s12">
                             <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
                             <input required id="texto_pregunta" name="texto_pregunta"><span ></span>
                             <label>Pregunta nueva</label>
@@ -52,16 +53,17 @@
                     <!-- <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> -->
                     <!-- <button href = "/modificar_template/de_preg" type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> -->
                 </div>
+                <br><br>
                 
             </form>
             <!-- <form action="" method="post">
                 
             </form> -->
-            
+            <br><br>
             
         </div>
     
-    </div>
+    
 
     	
 	<!-- <script>

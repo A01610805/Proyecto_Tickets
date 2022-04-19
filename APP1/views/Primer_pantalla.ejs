@@ -55,10 +55,16 @@
             #carta {
                 border-radius: 5%;
             }
+            
+            #tooltips1 {
+                background-color: grey;
+            }
         </style>
 
         <div class="row">
-            <div class="col s12 center">
+            <br>
+            <div id="tooltips2" class="col s6 center">
+                <h4>Estados del Ticket:</h4>
                 <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
                 <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                 <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
@@ -66,8 +72,16 @@
                 <a class="btn tooltipped red" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
                 <a class="btn tooltipped light-green" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
             </div>
-            <!-- <div class="col s12">
-            </div> -->
+
+            <div id="tooltips2" class="col s6 center">
+                <h4>Prioridades del Ticket:</h4>
+                <a class="btn tooltipped grey lighten-1" data-position="bottom" data-tooltip="Prioridad Por Asignar"><i class="material-icons">edit</i></a>
+                <a class="btn tooltipped teal lighten-3" data-position="bottom" data-tooltip="Prioridad Baja"><i class="material-icons">edit</i></a>
+                <a class="btn tooltipped yellow accent-1" data-position="bottom" data-tooltip="Prioridad Media"><i class="material-icons">edit</i></a>
+                <a class="btn tooltipped orange lighten-2" data-position="bottom" data-tooltip="Prioridad Alta"><i class="material-icons">edit</i></a>
+                <a class="btn tooltipped red lighten-1" data-position="bottom" data-tooltip="Prioridad Urgente"><i class="material-icons">edit</i></a>
+            </div>
+            <div class="col s12"></div>
             <div class="col s6">
                 <div id="global">
                     <blockquote>
@@ -156,6 +170,14 @@
                                                                                 <h4>
                                                                                     <%= ticket.descripcion %>
                                                                                 </h4>
+                                                                                <a href="#!" class="secondary-content">
+                                                                                    <form action="/home" method="POST">
+                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
+                                                                                        <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
+                                                                                        </button>
+                                                                                    </form>
+
+                                                                                </a>
                                                                             </li>
                                                                             <li class="collection-item avatar">
                                                                                 <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -163,7 +185,18 @@
                                                                                 <h4>
                                                                                     <%= prioridad %> <br>
                                                                                 </h4>
-                                                                                <a href="#!" class="secondary-content modal-close"><i class="material-icons">create</i></a>
+
+                                                                                <a class='dropdown-trigger secondary-content' href='#' data-target='dropdown1'><i class="material-icons">create</i></a>
+
+                                                                                <!-- Dropdown Structure -->
+                                                                                <ul id='dropdown1' class='dropdown-content'>
+                                                                                    <li><a href="#!">Por Asignar</a></li>
+                                                                                    <li><a href="#!">Baja</a></li>
+                                                                                    <li><a href="#!">Media</a></li>
+                                                                                    <li><a href="#!">Alta</a></li>
+                                                                                    <li><a href="#!">Urgente</a></li>
+                                                                                </ul>
+                                                                                <a href="/asignar_prioridad/get_tic/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
                                                                             </li>
                                                                             <li class="collection-item avatar">
                                                                                 <i class="material-icons circle red">account_box</i>
@@ -361,7 +394,7 @@
                                                                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                                                                             </div>
                                                                         </div>
-                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cambiar Prioridad</a>
+                                                                        <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="modal-close waves-effect waves-green btn-flat">Cambiar Prioridad</a>
 
 
                                                                     </div>
@@ -515,7 +548,7 @@
 
 
                                                                                     <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Asignar a:</a>
-                                                                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Cambiar Prioridad</a>
+                                                                                    <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="modal-close waves-effect waves-green btn-flat pulse">Cambiar Prioridad</a>
                                                                                 </div>
                                                                         </div>
 

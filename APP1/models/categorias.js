@@ -12,11 +12,11 @@ module.exports = class Categoria {
     //     this.texto_pregunta = texto_pregunta;
          }
     //El metodo save no es necesario dentro de la función
-    /*
-    save() {
-        return db.execute() VALUES ()', 
-            []);
-    }*/
+
+    // save() {
+    //     return db.execute(
+    //         []);
+    // }
  
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {

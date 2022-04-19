@@ -43,17 +43,26 @@ exports.post_mod = (request, response, next) => {
     categoria.update()
     console.log('Esto es antes de pregunta.update()');
     console.log(request.body); 
-    for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
-        console.log(index);
-        if (request.body.texto_pregunta[index] != null) {
+
+    if(Array.isArray(request.body.texto_pregunta) == true){
+        for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
+            console.log(index);
+            if (request.body.texto_pregunta[index] != null) {
+                
+                const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
+                console.log(pregunta);
+                pregunta.update()
             
-            const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
-            console.log(pregunta);
-            pregunta.update()
-        
+            }
         }
     }
-    
+    if(Array.isArray(request.body.texto_pregunta) == false){
+
+        const pregunta = new Pregunta(request.body.texto_pregunta, request.params.id,request.body.ID_pregunta)
+        // console.log(pregunta);
+        pregunta.update()
+    }
+
     response.redirect('/home')
 };
 // exports.post_npreg =(request, res, next) => { 
