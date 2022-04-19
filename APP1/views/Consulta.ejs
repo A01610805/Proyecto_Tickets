@@ -49,6 +49,7 @@ else if(tipo==3){
     #carrusel {
         background-color: #ddd;
     }
+
 </style>
 
 <h1>
@@ -56,62 +57,63 @@ else if(tipo==3){
 </h1>
 
 <% if (tipo==1){ %>
-    <nav class="grey darken-3">
+    <nav class="grey lighten-4">
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
                 <div class="right input-field col s4">
-                    <a class="boton" href="/buscar_tickets/activos">Reiniciar busqueda</a>
+                    <a class="waves-effect waves-light btn" href="/buscar_tickets/activos">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_encargado_1">Encargado: </label>
+                    <label for="buscar_encargado_1"><b>Encargado: </b></label>
                     <input type="text" name="buscar_encargado_1" id="buscar_encargado_1">
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_creador_1">Creador: </label>
+                    <label for="buscar_creador_1"><b>Creador: </b></label>
                     <input type="text" name="buscar_creador_1" id="buscar_creador_1">
                 </div>
                 <div class="right input-field col s4">
-                    <label for="titulo">Filtrar por: </label>
+                    
+                    <label for="titulo"><b>Filtrar por: </b></label>
                     <input disabled value='' type="text" name="titulo" id="titulo">
                 </div>
             </ul>
         </div>
     </nav>
 <% } else if (tipo == 2) { %>
-    <nav class="grey lighten-2">
+    <nav class="grey lighten-4">
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
                 <div class="right input-field col s4">
                     <a class="waves-effect waves-light btn" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_encargado_2">Encargado: </label>
+                    <label for="buscar_encargado_2" ><b>Encargado: </b></label>
                     <input type="text" name="buscar_encargado_2" id="buscar_encargado_2">
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_creador_2">Creador: </label>
+                    <label for="buscar_creador_2"><b>Creador: </b></label>
                     <input type="text" name="buscar_creador_2" id="buscar_creador_2">
                 </div>
                 <div class="right input-field col s4">
-                    <label for="titulo">Filtrar por: </label>
+                    <label for="titulo"><b>Filtrar por: </b></label>
                     <input disabled value='' type="text" name="titulo" id="titulo">
                 </div>
             </ul>
         </div>
     </nav>
 <% } else { %>
-    <nav class="grey darken-3">
+    <nav class="grey lighten-4">
         <div class="nav-wrapper">
             <ul class="left hide-on-med-and-down">
                 <div class="right input-field col s4">
-                    <a class="boton" href="/buscar_tickets/propio">Reiniciar busqueda</a>
+                    <a class="waves-effect waves-light btn" href="/buscar_tickets/propio">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_titulo">Titulo: </label>
+                    <label for="buscar_titulo"><b>Titulo: </b></label>
                     <input type="text" name="buscar_titulo" id="buscar_titulo">
                 </div>
                 <div class="right input-field col s4">
-                    <label for="titulo">Filtrar por: </label>
+                    <label for="titulo"><b>Filtrar por: </b></label>
                     <input disabled value='' type="text" name="titulo" id="titulo">
                 </div>
             </ul>
