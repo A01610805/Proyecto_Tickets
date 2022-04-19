@@ -30,6 +30,10 @@ module.exports = class Gen_Tickets {
         return db.execute('SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1')
     }
 
+    static obtenernombre(id){
+        return db.execute('SELECT nombre_categoria FROM categoria WHERE ID_categoria = ?', [id]);
+    }
+
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetch(id) {
         return db.execute(

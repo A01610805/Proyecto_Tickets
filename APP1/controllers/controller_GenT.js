@@ -11,6 +11,7 @@ exports.get_genticket = (request, response, next) => {
                 Tiname: request.session.usuario ? request.session.usuario : '',
                 categorias: rows,
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                nombre: request.params.nombre,
             }); 
         }) 
     .catch(error => {console.log(error)});
@@ -30,7 +31,8 @@ exports.get_preguntas = (request, response, next) => {
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         categorias: rows,
                         preguntas: rows2,
-                        id: request.params.id ? request.params.id : 1
+                        id: request.params.id ? request.params.id : 1,
+                        nombre: request.params.nombre,
                     }); 
                 }) 
                 .catch(error => {console.log(error)}); 

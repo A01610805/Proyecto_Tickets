@@ -6,7 +6,7 @@
         <ul class="collection">
             <% for (let categoria of categorias) { %>
                 <li class="col">
-                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class="collection-item"><p class="grey-text text-darken-2"><b><i><%= categoria.nombre_categoria %></i></b></p></a>
+                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>/ <%= categoria.nombre_categoria %>" class="collection-item"><p class="grey-text text-darken-2"><b><i><%= categoria.nombre_categoria %></i></b></p></a>
                 </li>
                 <% } %>
         </ul>

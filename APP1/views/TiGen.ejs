@@ -7,13 +7,13 @@
     <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
         <% for (let categoria of categorias) { %>
             <li class="">
-                <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>" class=""><%= categoria.nombre_categoria %></a>
             </li>
         <% } %>
         </ul>
 </div>
 
-<h1>Crear Nuevo Ticket</h1> <!-- Cambiar esto por el título de la categoría-->
+<h1><%= nombre %></h1>
 
 
 <div class="row">
