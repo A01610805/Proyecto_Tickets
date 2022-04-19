@@ -37,22 +37,18 @@ exports.post_activos = (request, response, next) => {
 }
 
 // A partir de aqui inicia la implementación en ajax de buscar_activos
-exports.buscar_activos = (request, response, next) => {
-    tickets=Ticket.fetchticketsactivos_filtros(request.params.valor)
-    .then(([rows, fieldData]) => {
-        tickets=Ticket.fetchrespuestas()
-        .then(([rows2, fieldData]) => {
-            console.log(request.params.valor);
-            console.log(rows);
-            response.status(200).json(rows);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    })
-    .catch(err => {
-        console.log(err);
-    });
+exports.buscar_activos = async (request, response, next) => {
+    console.log("A ver...");
+    tickets = await Ticket.fetchticketsactivos_filtros(request.params.valor);
+
+    for(let t in tickets[0]) {
+        console.log(tickets[0][t].ID_ticket);
+        tickets[0][t].respuestas = await Ticket.fetchrespuestas_busqueda(tickets[0][t].ID_ticket);
+        console.log(tickets[0][t]);
+    }
+    console.log(tickets[0]);
+    
+    response.status(200).json({rows: tickets[0]});
 }
 //Final de /buscar_tickets/activos
 

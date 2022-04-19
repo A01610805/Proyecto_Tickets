@@ -242,7 +242,7 @@ else if(tipo==3){
                                                     <%=ticket2.Apellido_P_encargado%>
                                                     <%=ticket2.Apellido_M_encargado%>
                                                     </p>
-                                                    <p>Correo del Creador:
+                                                    <p>Correo del Encargado:
                                                         <%=ticket2.Correo_encargado%>
                                                     </p>
                                                     <br>
@@ -349,7 +349,7 @@ else if(tipo==3){
                                         var z = 0; 
                                         var respuestaconticket=1;
                                         var j = 0;
-                                        for (let ticket2 of data) {
+                                        for (let ticket2 of data.rows) {
                                             var color =''; 
                                             if (ticket2.ID_estado != 1){
                                                 if(ticket2.ID_estado == 1){ 
@@ -397,25 +397,24 @@ else if(tipo==3){
                                                                 '<div class="card-content ">'+
                                                                     '<div id="tests'+(z+1)+'">'+ticket2.descripcion+'</div>'+
                                                                     '<div id="tests'+(z+2)+'">'+
+                                                                    '<br>'+ 
                                                                     '<p>';
-                                                                    /*let r=1;
+                                                                    let r=1;
                                                                     var pr="";
                                                                     var rp="";
-                                                                    for(let respuesta of respuestas){
-                                                                        if(respuesta.ID_ticket==ticket2.ID_ticket){
-                                                                            pr += r;
-                                                                            pr += ". ";
-                                                                            pr += respuesta.texto_pregunta;
-                                                                            rp += respuesta.texto_respuesta;
-                                                                            r=r+1;
-                                                                            <b> pr</b>
-                                                                            = rp
-                                                                            <br><br>
-                                                                            pr="";
-                                                                            rp="";  
-                                                                        }                            
-                                                                    }*/                           
-                                                                    respuesta += '</p>'                                 
+                                                                    for(let res of ticket2.respuestas[0]){
+                                                                        pr += r;
+                                                                        pr += ". ";
+                                                                        pr += res.texto_pregunta+' ';
+                                                                        rp += res.texto_respuesta;
+                                                                        respuesta += r=r+1;
+                                                                        respuesta += '<b>'+pr+'</b>'+
+                                                                        rp+
+                                                                        '<br><br>';
+                                                                        pr="";
+                                                                        rp="";                           
+                                                                    }                           
+                                                                    respuesta += '</p>' +                                
                                                                     '</div>'+
                                                                     '<div id="tests'+(z+3)+'">'+
                                                                         '<p>Nombre del Creador:'+ticket2.Nombre_creador+' '+ticket2.apellido_P_creador+' '+ticket2.Apellido_M_creador+' '+'</p>'+
