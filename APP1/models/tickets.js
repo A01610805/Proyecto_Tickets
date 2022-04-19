@@ -36,7 +36,9 @@ module.exports = class Ticket {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
+        console.log(arr[2]);
+        console.log(arr[3]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ? AND ID_estado LIKE ? AND ID_prioridad LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
     }
 
     static fetchticketsarchivados() {
@@ -109,15 +111,16 @@ module.exports = class Ticket {
     }
 
     static fetchrespuestas() {
-            return db.execute('SELECT * FROM conjuntoderespuestas');
-        }
-        // ==========================================================================================
-    static borrarticket(id) {
-        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
+        return db.execute('SELECT * FROM conjuntoderespuestas');
     }
+
+    // ==========================================================================================
+    static borrarticket(id) {
+        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])    
+    }
+
     static borrarticketnuevo(id) {
         return db.execute('UPDATE ticketsnuevos SET ticketsnuevos.ID_estado=5 WHERE ticketsnuevos.ID_ticket=?', [id])
     }
-
 
 }
