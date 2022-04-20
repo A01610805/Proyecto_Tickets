@@ -1,7 +1,7 @@
 const Metricas = require('../models/metricas');
 const Categoria = require('../models/categorias');
 
-exports.getmetricas = (request, response, next) => {
+exports.getmetricas = async(request, response, next) => {
     console.log("estamos dentro!");
 
     // Gráfica #1 (tiempos por categoría)
@@ -19,3 +19,6 @@ exports.getmetricas = (request, response, next) => {
     //response.render('metricas');
 };
 
+exports.postmetricas = (request, response, next) => {
+
+}
