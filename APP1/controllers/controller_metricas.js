@@ -5,15 +5,13 @@ exports.getmetricas = async(request, response, next) => {
     console.log("estamos dentro!");
 
     // Gráfica #1 (tiempos por categoría)
-    Metricas.tiemposCat() // Esto no funciona; lo dejo como ejemplo
+    Metricas.tiemposCat() 
         .then(([rows,fielData]) => {
-            console.log("Entrando a la promesa tiemposCat");
             //console.log(rows);
             let numeros= [];
             for (let dato of rows){
                 numeros.push(dato.info_metrica);
             }
-            console.log(numeros);
             response.render('metricas', {
                 tiempos: numeros,
             });  
@@ -25,6 +23,3 @@ exports.getmetricas = async(request, response, next) => {
     //response.render('metricas');
 };
 
-exports.postmetricas = (request, response, next) => {
-
-}
