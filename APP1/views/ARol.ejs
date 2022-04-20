@@ -1,0 +1,46 @@
+<%- include('includes/head.ejs') %>
+
+<div class="container">
+
+    <h1 class="center">Asignar rol</h1>
+
+    <form action="/asignar_rol/post_rol/<%= id %>" method="POST" id="form">
+
+        <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
+            <a class="center" for="">Información del usuario:</a>
+            <a class="center" for="">Nombre del usuario:</a>
+            <h6 class="center" for="">
+                <%=user.nombre%> 
+                <%=user.apellido_paterno%>
+                <%=user.apellido_materno%>
+            </h6>
+            <a class="center" for="">Correo electrónico:</a>
+            <h6 class="center" for="">
+                <%=user.correo%>
+            </h6>
+            <a class="center" for="">Rol actual:</a>
+            <h6 class="center" for="">
+                <%=user.nombre_rol%>
+            </h6>
+            <div class="centers">
+                <label for="">Inserte el nuevo rol del empleado:</label>
+                <input required id="rol_nuevo" name="rol_nuevo"><span class=""></span>
+            </div>
+            <div class="center ">
+                <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                <a href="/buscar_usuario" class="waves-effect waves-light btn">Cancelar</a>
+            </div>
+        </div>
+
+        <div class="center">
+            <h5>Roles disponibles dentro del sistema</h5>
+            <span class="new badge" data-badge-caption="Rol de administrador">1</span>
+            <span class="new badge" data-badge-caption="Rol de empleado de soporte">2</span>
+            <span class="new badge" data-badge-caption="Rol de empleado general de Zebrands">3</span>
+        </div>
+
+        <br></br>
+    </form>
+</div>
+
+<%- include('includes/footer.ejs') %>
