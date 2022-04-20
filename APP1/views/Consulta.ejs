@@ -96,8 +96,8 @@ else if(tipo==3){
                     <a class="boton" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_id_2">ID del ticket: </label>
-                    <input type="text" name="buscar_id_2" id="buscar_id_2">
+                    <label for="buscar_prioridad_2">Prioridad: </label>
+                    <input type="text" name="buscar_prioridad_2" id="buscar_prioridad_2">
                 </div>
                 <div class="right input-field col s4">
                     <label for="buscar_encargado_2">Encargado: </label>
@@ -108,8 +108,8 @@ else if(tipo==3){
                     <input type="text" name="buscar_creador_2" id="buscar_creador_2">
                 </div>
                 <div class="right input-field col s4">
-                    <label for="titulo">Filtrar por: </label>
-                    <input disabled value='' type="text" name="titulo" id="titulo">
+                    <label for="buscar_id_2">ID del ticket: </label>
+                    <input type="text" name="buscar_id_2" id="buscar_id_2">
                 </div>
             </ul>
         </div>
@@ -480,21 +480,24 @@ else if(tipo==3){
     }
 
     const archivados = () => {
-    var str1,str2,str3;
+    var str1,str2,str3, str4;
     let bc2 = document.getElementById('buscar_creador_2');
     let be2 = document.getElementById('buscar_encargado_2');
     let bid2 = document.getElementById('buscar_id_2');
-    if (bc2 != null || be2 != null || bid2 != null) {
+    let bpri2 = document.getElementById('buscar_prioridad_2');
+    if (bc2 != null || be2 != null || bid2 != null || bpri2 != null) {
         str1 = bc2.value;
         str2 = be2.value;
         str3 = bid2.value;
+        str4 = bpri2.value;
     }
     else {
         str1 = null;
         str2 = null;
         str3 = null;
+        str4 = null;
     }
-    const valor_busqueda = str1+'&'+str2+'&'+str3;
+    const valor_busqueda = str1+'&'+str2+'&'+str3+'&'+str4;
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -653,10 +656,12 @@ else if(tipo==3){
     let bc2 = document.getElementById('buscar_creador_2');
     let be2 = document.getElementById('buscar_encargado_2');
     let bid2 = document.getElementById('buscar_id_2');
+    let bpri2 = document.getElementById('buscar_prioridad_2');
     if (bc2 != null || be2 != null || bid2 != null) {
         document.getElementById('buscar_creador_2').onkeyup = archivados;
         document.getElementById('buscar_encargado_2').onkeyup = archivados;
         document.getElementById('buscar_id_2').onkeyup = archivados;
+        document.getElementById('buscar_prioridad_2').onkeyup = archivados;
     }
 
 const propios = () => {
