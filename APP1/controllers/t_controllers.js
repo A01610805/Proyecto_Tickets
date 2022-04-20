@@ -38,9 +38,7 @@ exports.post_activos = (request, response, next) => {
 
 // A partir de aqui inicia la implementación en ajax de buscar_activos
 exports.buscar_activos = async (request, response, next) => {
-    console.log("A ver...");
     tickets = await Ticket.fetchticketsactivos_filtros(request.params.valor);
-
     for(let t in tickets[0]) {
         console.log(tickets[0][t].ID_ticket);
         tickets[0][t].respuestas = await Ticket.fetchrespuestas_busqueda(tickets[0][t].ID_ticket);
@@ -88,22 +86,16 @@ exports.post_archivo = (request, response, next) => {
 }
 
 // A partir de aqui inicia la implementación en ajax de buscar_archivo
- exports.buscar_archivo = (request, response, next) => {
-    tickets=Ticket.fetchticketsarchivados_filtros(request.params.valor)
-    .then(([rows, fieldData]) => {
-        tickets=Ticket.fetchrespuestas()
-        .then(([rows2, fieldData]) => {
-            console.log(request.params.valor);
-            console.log(rows);
-            response.status(200).json(rows);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    })
-    .catch(err => {
-        console.log(err);
-    });
+exports.buscar_archivo = async (request, response, next) => {
+    tickets = await Ticket.fetchticketsarchivados_filtros(request.params.valor);
+    for(let t in tickets[0]) {
+        console.log(tickets[0][t].ID_ticket);
+        tickets[0][t].respuestas = await Ticket.fetchrespuestas_busqueda(tickets[0][t].ID_ticket);
+        console.log(tickets[0][t]);
+    }
+    console.log(tickets[0]);
+    
+    response.status(200).json({rows: tickets[0]});
 }
 //Final de /buscar_tickets/archivo
 
@@ -136,9 +128,9 @@ exports.get_ticketspropios=async(request, response, next)=>{
     }); 
 }
 // A partir de aqui inicia la implementación en ajax de buscar_archivo
-exports.buscar_propios = (request, response, next) => {
+exports.buscar_propios = async (request, response, next) => {
     let user_mail = request.cookies.correo_usuario;
-    let pregunta = '';
+    let titulo = '';
     if (request.params.valor != null) {
         pregunta = request.params.valor;
     }
@@ -147,21 +139,15 @@ exports.buscar_propios = (request, response, next) => {
         pregunta = '';
     }
     let valor_completo = user_mail+'&'+pregunta;
-    tickets=Ticket.fetchticketsusuario_filtro(valor_completo)
-    .then(([rows, fieldData]) => {
-        tickets=Ticket.fetchrespuestas()
-        .then(([rows2, fieldData]) => {
-            console.log(request.params.valor);
-            console.log(rows);
-            response.status(200).json(rows);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    tickets = await Ticket.fetchticketsarchivados_filtros(valor_completo);
+    for(let t in tickets[0]) {
+        console.log(tickets[0][t].ID_ticket);
+        tickets[0][t].respuestas = await Ticket.fetchrespuestas_busqueda(tickets[0][t].ID_ticket);
+        console.log(tickets[0][t]);
+    }
+    console.log(tickets[0]);
+    
+    response.status(200).json({rows: tickets[0]});
 }
 
 exports.post_propios=(request, response, next)=>{
