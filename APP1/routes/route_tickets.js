@@ -6,8 +6,8 @@ const isAuth = require('../util/is-auth.js');
 const {authPage} = require('../util/rbac.js');
 
 //Prueba con ajax
-router.get('/activos/:valor', isAuth, authPage(['1','2']), tilogin.buscar_activos);
 router.get('/start1/:start1', isAuth, authPage(['1','2']),tilogin.get_activos);
+router.get('/activos/:valor', isAuth, authPage(['1','2']), tilogin.buscar_activos);
 router.get('/activos', isAuth, authPage(['1','2']), tilogin.get_activos);
 router.post('/activos', tilogin.post_activos);
 
