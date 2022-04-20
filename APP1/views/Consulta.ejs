@@ -82,8 +82,8 @@ else if(tipo==3){
                     <input type="text" name="buscar_encargado_1" id="buscar_encargado_1">
                 </div>
                 <div class="right input-field col s1">
-                    <label for="buscar_creador_1">Creador: </label>
-                    <input type="text" name="buscar_creador_1" id="buscar_creador_1">
+                    <label for="buscar_id_1">ID del ticket: </label>
+                    <input type="text" name="buscar_id_1" id="buscar_id_1">
                 </div>
             </ul>
         </div>
@@ -297,12 +297,12 @@ else if(tipo==3){
 <script>
     const activos = () => {
         var str1,str2,str3, str4;
-        let bcreador1 = document.getElementById('buscar_creador_1');
+        let bid1 = document.getElementById('buscar_id_1');
         let bencargado1 = document.getElementById('buscar_encargado_1');
         let bestado1 = document.getElementById('buscar_estado_1');
         let bprioridad1 = document.getElementById('buscar_prioridad_1');
-        if (bcreador1 != null || bencargado1 != null || bestado1 != null || bprioridad1 != null) {
-            str1 = bcreador1.value;
+        if (bid1 != null || bencargado1 != null || bestado1 != null || bprioridad1 != null) {
+            str1 = bid1.value;
             str2 = bencargado1.value;
             str3 = bestado1.value;
             str4 = bprioridad1.value;
@@ -422,7 +422,7 @@ else if(tipo==3){
                                                                         '<p>Correo del Creador:'+ ticket2.correo_creador+'</p>'+
                                                                         '<br>'+
                                                                         '<p>Nombre del Encargado:'+' '+ticket2.Nombre_encargado+' '+ticket2.Apellido_P_encargado+' '+ticket2.Apellido_M_encargado+' '+'</p>'+
-                                                                        '<p>Correo del Creador:'+' '+ticket2.Correo_encargado+' '+'</p>'+
+                                                                        '<p>Correo del Encargado:'+' '+ticket2.Correo_encargado+' '+'</p>'+
                                                                         '<br>';
                                                                         if((rol != 3 || tipo == 3) && ticket2.ID_estado != 5 && ticket2.ID_estado !=6 ){
                                                                             var ruta='';
@@ -468,12 +468,12 @@ else if(tipo==3){
         });
     };
     //Implementción de los filtros dentro de la busqueda de tickets activos.
-    let bcreador1 = document.getElementById('buscar_creador_1');
+    let bid1 = document.getElementById('buscar_id_1');
     let bencargado1 = document.getElementById('buscar_encargado_1');
     let bestado1 = document.getElementById('buscar_estado_1');
     let bprioridad1 = document.getElementById('buscar_prioridad_1');
-    if (bcreador1 != null || bencargado1 != null || bestado1 != null || bprioridad1 != null) {
-        document.getElementById('buscar_creador_1').onkeyup = activos;
+    if (bid1 != null || bencargado1 != null || bestado1 != null || bprioridad1 != null) {
+        document.getElementById('buscar_id_1').onkeyup = activos;
         document.getElementById('buscar_encargado_1').onkeyup = activos;
         document.getElementById('buscar_estado_1').onkeyup = activos;
         document.getElementById('buscar_prioridad_1').onkeyup = activos;
@@ -603,7 +603,7 @@ else if(tipo==3){
                                                                         '<p>Correo del Creador:'+ ticket2.correo_creador+'</p>'+
                                                                         '<br>'+
                                                                         '<p>Nombre del Encargado:'+' '+ticket2.Nombre_encargado+' '+ticket2.Apellido_P_encargado+' '+ticket2.Apellido_M_encargado+' '+'</p>'+
-                                                                        '<p>Correo del Creador:'+' '+ticket2.Correo_encargado+' '+'</p>'+
+                                                                        '<p>Correo del Encargado:'+' '+ticket2.Correo_encargado+' '+'</p>'+
                                                                         '<br>';
                                                                         if((rol != 3 || tipo == 3) && ticket2.ID_estado != 5 && ticket2.ID_estado !=6 ){
                                                                             var ruta='';
@@ -777,7 +777,7 @@ const propios = () => {
                                                                         '<p>Correo del Creador:'+ ticket2.correo_creador+'</p>'+
                                                                         '<br>'+
                                                                         '<p>Nombre del Encargado:'+' '+ticket2.Nombre_encargado+' '+ticket2.Apellido_P_encargado+' '+ticket2.Apellido_M_encargado+' '+'</p>'+
-                                                                        '<p>Correo del Creador:'+' '+ticket2.Correo_encargado+' '+'</p>'+
+                                                                        '<p>Correo del Encargado:'+' '+ticket2.Correo_encargado+' '+'</p>'+
                                                                         '<br>';
                                                                         if((rol != 3 || tipo == 3) && ticket2.ID_estado != 5 && ticket2.ID_estado !=6 ){
                                                                             var ruta='';
@@ -810,8 +810,8 @@ const propios = () => {
                             '</div>'+
                             '<div class="s12">'+
                                 '<ul class="pagination center-align">';
-                                    for (let i = 1; i <= Math.ceil(data.rows.lenght/4); i++) {
-                                        respuesta += '<li class="active"><a href="/buscar_tickets/start'+tipo+'/'+ (i-1)*4 +'">'+i+'</a></li>';
+                                    for (let i = 1; i <= Math.ceil(data.rows.lenght/5); i++) {
+                                        respuesta += '<li class="active"><a href="/buscar_tickets/start'+tipo+'/ (i-1)*5 ">'+i+'</a></li>';
                                     }
                                 respuesta += '</ul>'+
                             '</div>'+
