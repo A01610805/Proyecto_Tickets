@@ -66,11 +66,11 @@
             <div id="tooltips2" class="col s6 center">
                 <h4>Estados del Ticket:</h4>
                 <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
-                <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
-                <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
-                <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Soy un ticket En Espera!"></a>
-                <a class="btn tooltipped red" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
-                <a class="btn tooltipped light-green" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
+                <a class="btn tooltipped light-blue lighten-3" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
+                <a class="btn tooltipped orange lighten-3" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información!"></a>
+                <a class="btn tooltipped yellow light-blue lighten-2" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno!"></a>
+                <a class="btn tooltipped red lighten-2" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
+                <a class="btn tooltipped light-green accent-1" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
             </div>
 
             <div id="tooltips2" class="col s6 center">
@@ -97,18 +97,18 @@
                                     <% var j = 0; %>
                                         <%var y = 0%>
                                             <% for (let ticket of ticketss) { %>
-                                                <%var color =''; 
+                                                <%var color ='grey lighten-2'; 
                                         if (ticket.ID_estado == 1){
                                         if(ticket.ID_estado == 1){ 
                                             color = 'grey lighten-2'; 
                                         } else if(ticket.ID_estado == 2){ 
                                             color = 'light-blue lighten-5'; 
                                         } else if(ticket.ID_estado == 3){ 
-                                            color = 'orange lighten-5'; 
+                                            color = 'orange lighten-3'; 
                                         } else if(ticket.ID_estado == 4){ 
                                             color = 'yellow light-blue lighten-5'; 
                                         } else if(ticket.ID_estado == 5){ 
-                                            color = 'red lighten-1'; 
+                                            color = 'red lighten-4'; 
                                         } else if(ticket.ID_estado == 6){ 
                                             color = 'light-green accent-1'; } 
 
@@ -298,11 +298,11 @@
                                         } else if(ticket2.ID_estado == 2){ 
                                             color = 'light-blue lighten-5'; 
                                         } else if(ticket2.ID_estado == 3){ 
-                                            color = 'orange lighten-5'; 
+                                            color = 'orange lighten-4'; 
                                         } else if(ticket2.ID_estado == 4){ 
-                                            color = 'yellow light-blue lighten-5'; 
+                                            color = 'yellow light-blue lighten-4'; 
                                         } else if(ticket2.ID_estado == 5){ 
-                                            color = 'red lighten-1'; 
+                                            color = 'red lighten-3'; 
                                         } else if(ticket2.ID_estado == 6){ 
                                             color = 'light-green accent-1'; 
                                         } 
@@ -513,11 +513,11 @@
                                                 } else if(ticket2.ID_estado == 2){ 
                                                     color = 'light-blue lighten-5'; 
                                                 } else if(ticket2.ID_estado == 3){ 
-                                                    color = 'orange lighten-5'; 
+                                                    color = 'orange lighten-4'; 
                                                 } else if(ticket2.ID_estado == 4){ 
-                                                    color = 'yellow light-blue lighten-5'; 
+                                                    color = 'yellow light-blue lighten-4'; 
                                                 } else if(ticket2.ID_estado == 5){ 
-                                                    color = 'red lighten-1'; 
+                                                    color = 'red lighten-3'; 
                                                 } else if(ticket2.ID_estado == 6){ 
                                                     color = 'light-green accent-1'; 
                                                 } 
