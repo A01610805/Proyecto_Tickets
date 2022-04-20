@@ -280,11 +280,8 @@ else if(tipo==3){
         </div>
         <div class="s12">
             <ul class="pagination center-align">
-                <% for (let i = 1; i <= Math.ceil(total_tickets/4); i++) { %>
-                    <li class="active">
-                        <a href="/buscar_tickets/start<%= tipo %>/<%= (i-1)*4 %>"><%= i %>
-                        </a>
-                    </li>
+                <% for (let i = 1; i <= Math.ceil(total_tickets/5); i++) { %>
+                    <li class="active"><a href="/buscar_tickets/start<%= tipo %>/<%= (i-1)*5 %>""><%= i %></a></li>
                 <% } %>
             </ul>
         </div>

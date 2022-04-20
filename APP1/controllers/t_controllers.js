@@ -4,12 +4,12 @@ const Ticket = require("../models/tickets");
 //Inicio de /buscar_tickets/activos
 exports.get_activos= async(request, response, next)=>{
     let tipo=1;
-    console.log(request.session.usuario);
 
     const total = await Ticket.getTotal_activos();
     console.log("En total hay: " + total);
-    const start = request.params.start ? request.params.start : 0
+    const start = request.params.start1 ? request.params.start1 : 0
     console.log(start);
+
     tickets=Ticket.fetchticketsactivos_pag(start)
         .then(([rows, fieldData]) => {
             respuestas=Ticket.fetchrespuestas()
@@ -62,7 +62,6 @@ console.log(start2);
 
 tickets=Ticket.fetchticketsarchivados_pag(start2)
     .then(([rows, fieldData]) => {
-        console.log(rows);
         respuestas=Ticket.fetchrespuestas()
         .then(([rows2, fieldData]) => {
         response.render('Consulta', {
