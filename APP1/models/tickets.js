@@ -50,7 +50,8 @@ module.exports = class Ticket {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 OR ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
+        console.log(arr[2]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 OR ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ? AND ID_ticket LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%',  '%' + arr[2] + '%']);
     }
 
     static fetchticketsarchivados_pag(num) {

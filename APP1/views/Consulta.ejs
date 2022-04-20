@@ -96,6 +96,10 @@ else if(tipo==3){
                     <a class="boton" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
+                    <label for="buscar_id_2">ID del ticket: </label>
+                    <input type="text" name="buscar_id_2" id="buscar_id_2">
+                </div>
+                <div class="right input-field col s4">
                     <label for="buscar_encargado_2">Encargado: </label>
                     <input type="text" name="buscar_encargado_2" id="buscar_encargado_2">
                 </div>
@@ -293,10 +297,10 @@ else if(tipo==3){
 <script>
     const activos = () => {
         var str1,str2,str3, str4;
-        bcreador1 = document.getElementById('buscar_creador_1');
-        bencargado1 = document.getElementById('buscar_encargado_1');
-        bestado1 = document.getElementById('buscar_estado_1');
-        bprioridad1 = document.getElementById('buscar_prioridad_1');
+        let bcreador1 = document.getElementById('buscar_creador_1');
+        let bencargado1 = document.getElementById('buscar_encargado_1');
+        let bestado1 = document.getElementById('buscar_estado_1');
+        let bprioridad1 = document.getElementById('buscar_prioridad_1');
         if (bcreador1 != null || bencargado1 != null || bestado1 != null || bprioridad1 != null) {
             str1 = bcreador1.value;
             str2 = bencargado1.value;
@@ -476,18 +480,21 @@ else if(tipo==3){
     }
 
     const archivados = () => {
-    var str1,str2,
-    bc2 = document.getElementById('buscar_creador_2');
-    be2 = document.getElementById('buscar_encargado_2');
-    if (bc2 != null || be2 != null) {
+    var str1,str2,str3;
+    let bc2 = document.getElementById('buscar_creador_2');
+    let be2 = document.getElementById('buscar_encargado_2');
+    let bid2 = document.getElementById('buscar_id_2');
+    if (bc2 != null || be2 != null || bid2 != null) {
         str1 = bc2.value;
         str2 = be2.value;
+        str3 = bid2.value;
     }
     else {
         str1 = null;
         str2 = null;
+        str3 = null;
     }
-    const valor_busqueda = str1+'&'+str2;
+    const valor_busqueda = str1+'&'+str2+'&'+str3;
       //El token de protección CSRF
       //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
@@ -645,9 +652,11 @@ else if(tipo==3){
   //Implementción de los filtros dentro de la busqueda de tickets activos.
     let bc2 = document.getElementById('buscar_creador_2');
     let be2 = document.getElementById('buscar_encargado_2');
-    if (bc2 != null || be2 != null) {
+    let bid2 = document.getElementById('buscar_id_2');
+    if (bc2 != null || be2 != null || bid2 != null) {
         document.getElementById('buscar_creador_2').onkeyup = archivados;
         document.getElementById('buscar_encargado_2').onkeyup = archivados;
+        document.getElementById('buscar_id_2').onkeyup = archivados;
     }
 
 const propios = () => {
