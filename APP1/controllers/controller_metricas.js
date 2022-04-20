@@ -8,8 +8,14 @@ exports.getmetricas = async(request, response, next) => {
     Metricas.tiemposCat() // Esto no funciona; lo dejo como ejemplo
         .then(([rows,fielData]) => {
             console.log("Entrando a la promesa tiemposCat");
+            //console.log(rows);
+            let numeros= [];
+            for (let dato of rows){
+                numeros.push(dato.info_metrica);
+            }
+            console.log(numeros);
             response.render('metricas', {
-                tiempos: rows,
+                tiempos: numeros,
             });  
         })
         .catch(error => {console.log(error)});
