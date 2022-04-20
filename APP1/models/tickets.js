@@ -63,7 +63,7 @@ module.exports = class Ticket {
         let arr = valor.split('&');
         console.log(arr[0]);
         console.log(arr[1]);
-        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? AND titulo LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? AND ID_ticket LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
     static fetchticketspropios_pag(nom, num) {
@@ -122,7 +122,7 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM conjuntoderespuestas WHERE ID_ticket = ?', [id]);
     }
 
-    // ==========================================================================================
+    // ========================================================================================== //
     static borrarticket(id) {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])    
     }

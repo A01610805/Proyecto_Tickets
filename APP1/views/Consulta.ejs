@@ -122,8 +122,8 @@ else if(tipo==3){
                     <a class="boton" href="/buscar_tickets/propio">Reiniciar busqueda</a>
                 </div>
                 <div class="right input-field col s4">
-                    <label for="buscar_titulo">Titulo: </label>
-                    <input type="text" name="buscar_titulo" id="buscar_titulo">
+                    <label for="buscar_id_3">ID del ticket: </label>
+                    <input type="text" name="buscar_id_3" id="buscar_id_3">
                 </div>
                 <div class="right input-field col s4">
                     <label for="titulo">Filtrar por: </label>
@@ -660,10 +660,10 @@ else if(tipo==3){
     }
 
 const propios = () => {
-    var str1,
-    bt = document.getElementById('buscar_titulo');
-    if (bt != null) {
-        str1 = bt.value;
+    var str1;
+    let bid3 = document.getElementById('buscar_id_3');
+    if (bid3 != null) {
+        str1 = bid3.value;
     }
     else {
         str1 = null;
@@ -823,9 +823,9 @@ const propios = () => {
         console.log(err);
     });
     }; 
-    let bt = document.getElementById('buscar_titulo');
-    if (bt != null) {
-        document.getElementById('buscar_titulo').onkeyup = propios;
+    let bid3 = document.getElementById('buscar_id_3');
+    if (bid3 != null) {
+        document.getElementById('buscar_id_3').onkeyup = propios;
     }
 </script>
 
