@@ -1,4 +1,3 @@
-
 const Tickets = require('../models/tickets');
 const Prioridad = require('../models/prioridad');
 
@@ -9,8 +8,8 @@ exports.get_tic = (request, response, next) => {
     // console.log(tic);
     // const tic2 = Tickets.fetchresTiseleccionado(request.params.id)
     // console.log(tic2);
-     console.log(request.params.id);
-     console.log('Entrando a Asignar Prioridad');
+    console.log(request.params.id);
+    console.log('Entrando a Asignar Prioridad');
     Tickets.fetchticketSeleccionado(request.params.id)
         .then(([rows, fieldData]) => {
             // console.log('Entrando a fetchTicketSEle');
@@ -22,23 +21,23 @@ exports.get_tic = (request, response, next) => {
                     response.render('APrioridad', {
                         id: request.params.id ? request.params.id : 1,
                         username: request.session.name ? request.session.name : '',
-                        rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3,
+                        rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         tickets: rows,
                         respuestas: rows2,
                     });
                 })
-                .catch(error => {console.log(error)});
+                .catch(error => { console.log(error) });
         })
-        .catch(error => {console.log(error)});
+        .catch(error => { console.log(error) });
 };
 
 exports.post_prio = (request, response, next) => {
     console.log('hola?');
-    console.log(request.body);
     const prioridad = new Prioridad(request.body.prioridad, request.params.id);
     console.log(prioridad);
     console.log('Iniciando update');
     prioridad.update()
+    prioridad.updatenuevo()
     console.log('Terminando update');
     response.redirect('/home')
 
