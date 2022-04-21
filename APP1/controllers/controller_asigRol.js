@@ -18,11 +18,11 @@ exports.get_usuario = (request, response, next) => {;
 exports.post_rol = (request, response, next) => {
     console.log('Entrando a la asignación de prioridad');
     const asignacion_rol = new Usuario(request.body.rol_nuevo, request.params.id);
-    console.log(prioridad);
+    console.log(asignacion_rol);
     console.log('Iniciando update');
-    asignacion_rol.updatenuevo()
+    asignacion_rol.update_rol()
     console.log('Terminando update');
-    response.redirect('/buscar_usuarios')
+    response.redirect('/buscar_usuario/busqueda')
 };
 
 exports.root = (req, res, next) => {
