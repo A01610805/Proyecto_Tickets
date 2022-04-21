@@ -122,8 +122,22 @@
                     '</thead>' ;
             for (let usuarios of data) {
                 respuesta += '<tr>' +
-                    '	<td>' + usuarios.ID_usuario + '</td><td>' + usuarios.nombre + '</td><td>' + usuarios.apellido_paterno + '</td><td>' + usuarios.apellido_materno + '</td><td>' + usuarios.correo + '</td><td>' + usuarios.nombre_rol + '</td>' +
-                    '</tr>';
+                    '	<td>' + 
+                        usuarios.ID_usuario + 
+                        '</td><td>' + 
+                        usuarios.nombre + 
+                        '</td><td>' + 
+                        usuarios.apellido_paterno +
+                        '</td><td>' + usuarios.apellido_materno +
+                        '</td><td>' + usuarios.correo + 
+                        '</td><td>' + usuarios.nombre_rol + 
+                        '</td>';
+                        if ( [<%=rol%>] ==1){
+                        respuesta += '<td>' + 
+                        '<a class="waves-effect waves-light btn" href="/asignar_rol/get_usuario/'+ usuarios.ID_usuario +'">Asignar rol</a>'+
+                        '</td>';
+                        }
+                    respuesta += '</tr>';
             }
             respuesta +='</table>'+
             '<div class="s12">'+
