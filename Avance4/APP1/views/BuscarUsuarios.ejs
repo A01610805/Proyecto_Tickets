@@ -1,0 +1,125 @@
+<%- include('includes/head.ejs') %>
+    <!-- <ul id="dropdown1" class="dropdown-content">
+		<% for (let roles of usuario) { %>
+			<li><a href="#!" id="rol"><%= roles.nombre_rol%></a></li>
+		<% } %>
+	</ul> -->
+    <nav class="grey darken-3">
+        <div class="nav-wrapper">
+            <div class="right input-field col s4">
+                <a class="boton" href="/buscar_usuario/busqueda">Reiniciar busqueda</a>
+            </div>
+            <ul class=" hide-on-med-and-down row">
+
+                <!-- <li><a class="dropdown-trigger grey darken-3" href="#!" data-target="dropdown1">Rol<i class="material-icons right">arrow_drop_down</i></a></li> -->
+                <h7 class=" left col s6">Busca un usuario por Correo, Rol, ID, Nombre, Apellidos:</h3>
+                    <div class=" right input-field col s6 ">
+                        <input id="buscar" type="text" name="buscar" class="validate">
+                        <label for="buscar">Buscar</label>
+                    </div>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <table class="striped responsive-table centered" id="respuesta_ajax">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <% for (let usuarios of usuario) { %>
+                <tr>
+                    <td>
+                        <%= usuarios.ID_usuario%>
+                    </td>
+                    <td>
+                        <%= usuarios.nombre%>
+                    </td>
+                    <td>
+                        <%= usuarios.apellido_paterno%>
+                    </td>
+                    <td>
+                        <%= usuarios.apellido_materno%>
+                    </td>
+                    <td>
+                        <%= usuarios.correo %>
+                    </td>
+                    <td>
+                        <%= usuarios.nombre_rol %>
+                    </td>
+                </tr>
+                <% } %>
+
+        </table>
+    </div>
+
+
+
+    <script>
+        const accion_asincrona = () => {
+            var str1,
+            bus = document.getElementById('buscar');
+            if (bus != null) {
+                str1 = bus.value;
+            }
+            else {
+                str1 = '';
+            }
+            const valor_busqueda1 = str1;
+            console.log(valor_busqueda1);
+
+            //El token de protección CSRF
+            //const csrf = document.getElementById('_csrf').value;
+
+            //función que manda la petición asíncrona
+            fetch('/buscar_usuario/buscar/' + valor_busqueda1, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    //'csrf-token': csrf
+                }
+                //body: JSON.stringify(data)
+            }).then(result => {
+                return result.json(); //Regresa otra promesa
+            }).then(data => {
+                //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+                console.log(data);
+                let respuesta = '';
+                respuesta += '<thead>' +
+                        '	<tr>' +
+                        '		<th>ID</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>correo</th><th>Rol</th>' +
+                        '	</tr>' +
+                        '</thead>' ;
+
+                for (let usuarios of data) {
+                    respuesta += '<tr>' +
+                        '	<td>' + usuarios.ID_usuario + '</td><td>' + usuarios.nombre + '</td><td>' + usuarios.apellido_paterno + '</td><td>' + usuarios.apellido_materno + '</td><td>' + usuarios.correo + '</td><td>' + usuarios.nombre_rol + '</td>' +
+                        '</tr>';
+                }
+
+                document.getElementById('respuesta_ajax').innerHTML = respuesta;
+
+            }).catch(err => {
+                console.log(err);
+            });
+        };
+
+
+        bus = document.getElementById('buscar');
+        if (bus != null) {
+            document.getElementById('buscar').onkeyup = accion_asincrona;
+        }
+
+        //document.getElementById('buscar').onkeyup = accion_asincrona;
+    </script>
+
+
+
+
+    <%- include('includes/footer.ejs') %>
