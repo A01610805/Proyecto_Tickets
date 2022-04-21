@@ -20,7 +20,7 @@ html, body {
 .form-structor {
   background-color: #222;
   border-radius: 15px;
-  height: 550px;
+  height: 650px;
   width: 350px;
   position: relative;
   overflow: hidden;
@@ -245,32 +245,33 @@ html, body {
   </style>
 
 </head>
-<body>
+<body onload="errorcontraseña()"> 
 <!-- partial:index.partial.html -->
 <div class="form-structor">
-  <form id="form-signup" action="/users/signup" onsubmit="return validateSignupForm()" method="POST" autocomplete="off">
+  <form id="form-login" action="" method="POST" autocomplete="off">
 	<div class="signup">
-		<h2 class="form-title" id="signup"><span>o</span>Regístrate</h2>
+		<h2 class="form-title" id="signup"><span>o</span>Iniciar Sesión</h2>
 		<div class="form-holder">
-			<input type="text" class="input" id="nombre" name="nombre" placeholder="Nombre(s) del Empleado" required/>
-            <input type="text" class="input" id="ApellidoP" name="ApellidoP"  placeholder="Apellido Paterno" required/>
-            <input type="text" class="input" id="ApellidoM" name="ApellidoM"  placeholder="Apellido Materno" required/>
-            <input type="email" class="input" id="email" name="email" placeholder="Correo @zeb.com/@zeb.mx" required/>
-            <input type="password" class="input" id="passwords" name="passwords" placeholder="Contraseña" required/>
-            <input type="password" class="input" id="password2" name="password2" placeholder="Repite la Contraseña" required/>
+           <input type="email" name='correo' id='correo' class="input" placeholder="Correo Institucional" />
+				    <input type="password" name='password' id='password' class="input" placeholder="Contraseña" />
 		</div>
-		<button class="submit-btn" name="botonsignup" id="botonsignup">Crear Usuario</button>
+    <button type="submit" value="Enviar" class="submit-btn">Ingresar</button>		
 	</div>
 </form>
-	<form id="form-login" action="" method="POST" autocomplete="off">
+
+<form id="form-signup" action="/users/signup" onsubmit="return validateSignupForm()" method="POST" autocomplete="off">
 	<div class="login slide-up">
 		<div class="center">
-			<h2 class="form-title" id="login"><span>o</span>Inicia Sesión</h2>
+			<h2 class="form-title" id="login"><span>o</span>Regístrate</h2>
 			<div class="form-holder">
-				<input type="email" name='correo' id='correo' class="input" placeholder="Correo Institucional" />
-				<input type="password" name='password' id='password' class="input" placeholder="Contraseña" />
+        <input type="text" class="input" id="nombre" name="nombre" placeholder="Nombre(s) del Empleado" required/>
+        <input type="text" class="input" id="ApellidoP" name="ApellidoP"  placeholder="Apellido Paterno" required/>
+        <input type="text" class="input" id="ApellidoM" name="ApellidoM"  placeholder="Apellido Materno" required/>
+        <input type="email" class="input" id="email" name="email" placeholder="Correo @zeb.com/@zeb.mx" required/>
+        <input type="password" class="input" id="passwords" name="passwords" placeholder="Contraseña" required/>
+        <input type="password" class="input" id="password2" name="password2" placeholder="Repite la Contraseña" required/>
 			</div>
-			<button type="submit" value="Enviar" class="submit-btn">Ingresar</button>
+			<button class="submit-btn" name="botonsignup" id="botonsignup">Crear Usuario</button>
 		</div>
 	</div>
 	</form>
@@ -337,6 +338,11 @@ function validateSignupForm() {
 		return true;
 	}
 }
+function errorcontraseña(){
+    <%if(error==1){%>
+      alert("El correo o contraseña están incorrectos.");
+      <%}%>
+    }
   </script>
 
 </body>
