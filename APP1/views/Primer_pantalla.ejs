@@ -478,17 +478,20 @@
                                                                                     <h4>
                                                                                         Agregar comentario?
                                                                                     </h4>
-                                                                                    <p>
-                                                                                        <div class="input-field">
-                                                                                            <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
-                                                                                            <label for="first_name">Comentario</label>
-                                                                                        </div>
-                                                                                    </p>
+
                                                                                 </div>
                                                                                 <%y=y+1%>
                                                                                     <div class="modal-footer">
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+                                                                                        <div class="center ">
+
+                                                                                            <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                            <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                        </div>
+                                                                                        </form>
+
+
+
+
 
                                                                                     </div>
                                                                             </div>
