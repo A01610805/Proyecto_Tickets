@@ -7,7 +7,7 @@
     <form action="/asignar_rol/post_rol/<%= id %>" method="POST" id="form">
 
         <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
-            <a class="center" for="">Información del usuario:</a>
+            <h5 class="center" for="">Información del usuario:</h5>
             <a class="center" for="">Nombre del usuario:</a>
             <h6 class="center" for="">
                 <%=user.nombre%> 
@@ -20,7 +20,7 @@
             </h6>
             <a class="center" for="">Rol actual:</a>
             <h6 class="center" for="">
-                <%=user.nombre_rol%>
+                <%=user.ID_rol%> - <%=user.nombre_rol%>
             </h6>
             <div class="centers">
                 <label for="">Inserte el nuevo rol del empleado:</label>
@@ -34,9 +34,11 @@
 
         <div class="center">
             <h5>Roles disponibles dentro del sistema</h5>
-            <span class="new badge" data-badge-caption="Rol de empleado general de Zebrands">3</span>
-            <span class="new badge" data-badge-caption="Rol de empleado de soporte">2</span>
-            <span class="new badge" data-badge-caption="Rol de administrador">1</span>
+        </div>
+        <div class="left">
+            <span class="new badge" data-badge-caption="Rol de empleado general de Zebrands">3 - </span>
+            <span class="new badge" data-badge-caption="Rol de empleado de soporte">2 - </span>
+            <span class="new badge" data-badge-caption="Rol de administrador">1 - </span>
         </div>
 
         <br></br>

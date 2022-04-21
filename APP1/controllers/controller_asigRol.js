@@ -5,11 +5,12 @@ exports.get_usuario = (request, response, next) => {;
     console.log('Entrando al render de asignar rol');
     Usuario.fetchusuario_id(request.params.id)
         .then(([rows, fieldData]) => {
+            console.log(rows);
             response.render('ARol', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.session.name ? request.session.name : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-                user: rows,
+                user: rows[0],
             });
         })
         .catch(error => { console.log(error) });
