@@ -12,9 +12,19 @@ exports.getmetricas = async(request, response, next) => {
             for (let dato of rows){
                 numeros.push(dato.info_metrica);
             }
-            response.render('metricas', {
-                tiempos: numeros,
-            });  
+            Metricas.nombresCat()
+                .then(([rows2, fielData]) => {
+                    let cats= [];
+                    for (let cat of rows2){
+                        cats.push(cat.nombre_categoria);
+                    }
+                    console.log(cats);
+                    response.render('metricas', {
+                        tiempos: numeros,
+                        categorias: cats,
+                    });  
+                })
+                .catch(error => {console.log(error)});
         })
         .catch(error => {console.log(error)});
     
