@@ -190,16 +190,7 @@
                                                                                         <%= prioridad %> <br>
                                                                                     </h5>
 
-                                                                                    <a class='dropdown-trigger secondary-content' href='#' data-target='dropdown1'><i class="material-icons">create</i></a>
 
-                                                                                    <!-- Dropdown Structure -->
-                                                                                    <ul id='dropdown1' class='dropdown-content'>
-                                                                                        <li><a href="#!">Por Asignar</a></li>
-                                                                                        <li><a href="#!">Baja</a></li>
-                                                                                        <li><a href="#!">Media</a></li>
-                                                                                        <li><a href="#!">Alta</a></li>
-                                                                                        <li><a href="#!">Urgente</a></li>
-                                                                                    </ul>
                                                                                     <a href="/asignar_prioridad/get_tic/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
                                                                                 </li>
                                                                                 <li class="collection-item avatar">
@@ -298,10 +289,11 @@
                         <ul class="collection">
                             <% var z = 0; %>
                                 <% var acumodal2 = 0 %>
+                                    <% var iconop = '' %>
 
-                                    <% var j = 0; %>
-                                        <% for (let ticket2 of ticketsusuario) { %>
-                                            <%var color =''; 
+                                        <% var j = 0; %>
+                                            <% for (let ticket2 of ticketsusuario) { %>
+                                                <%var color =''; 
                                     if (ticket2.ID_estado != 1){
                                         if(ticket2.ID_estado == 1){ 
                                             color = 'grey lighten-2'; 
@@ -321,128 +313,123 @@
                                         if(ticket2.ID_prioridad == 1){
                                             prioridad = 'Por Asignar'
                                             color_prioridad = 'grey lighten-1'
+                                            iconop = 'looks_1'
                                         }
                                         if(ticket2.ID_prioridad == 2){
                                             prioridad = 'Baja'
                                             color_prioridad ='teal lighten-3'
+                                            iconop = 'looks_2'
                                         }
                                         if(ticket2.ID_prioridad == 3){
                                             prioridad = 'Media'
                                             color_prioridad ='yellow accent-1'
+                                            iconop = 'looks_3'
                                         }
                                         if(ticket2.ID_prioridad == 4){
                                             prioridad = 'Alta'
                                             color_prioridad ='orange lighten-2'
+                                            iconop = 'looks_4'
                                         }
                                         if(ticket2.ID_prioridad == 5){
                                             prioridad = 'Urgente'
                                             color_prioridad ='red lighten-1'
+                                            iconop = 'looks_4'
                                         } 
                                         
                                         
                                         %>
 
-                                                <li class="collection-item grey">
-                                                    <div class="col s12">
-                                                        <p class="z-depth-4">
-                                                            <div class="card">
-                                                                <div class="card-content <%=color%>">
-                                                                    <p id="titulo">
-                                                                        <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
-                                                                        <a class="waves-effect waves-light  btn-small <%= color_prioridad%> modal-trigger pulse right" href="#modalb<%=acumodal2%>"><i class="material-icons">edit</i></a>
-                                                                    </p>
-                                                                </div>
-                                                                <div id="modalb<%=acumodal2%>" class="modal">
-                                                                    <div class="modal-content">
+                                                    <li class="collection-item grey">
+                                                        <div class="col s12">
+                                                            <p class="z-depth-4">
+                                                                <div class="card">
+                                                                    <div class="card-content <%=color%>">
+                                                                        <p id="titulo">
+                                                                            <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
+                                                                            <a class="waves-effect waves-light  btn-small <%= color_prioridad%> modal-trigger pulse right" href="#modalb<%=acumodal2%>"><i class="material-icons"><%= iconop %></i></a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div id="modalb<%=acumodal2%>" class="modal">
+                                                                        <div class="modal-content">
 
-                                                                        <ul class="collection">
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle green">folder</i>
-                                                                                <span class="title">
+                                                                            <ul class="collection">
+                                                                                <li class="collection-item avatar">
+                                                                                    <i class="material-icons circle green">folder</i>
+                                                                                    <span class="title">
                                                                                         Titulo
                                                                                     </span>
-                                                                                <h5>
-                                                                                    <%= ticket2.titulo %>
-                                                                                </h5>
-                                                                                <a href="#!" class="secondary-content">
-                                                                                    <form action="/home" method="POST">
-                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                        <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
+                                                                                    <h5>
+                                                                                        <%= ticket2.titulo %>
+                                                                                    </h5>
+                                                                                    <a href="#!" class="secondary-content">
+                                                                                        <form action="/home" method="POST">
+                                                                                            <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
+                                                                                            <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                         </button>
-                                                                                    </form>
-                                                                                </a>
+                                                                                        </form>
+                                                                                    </a>
 
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle blue">collections_bookmark</i>
-                                                                                <span class="title">Descripcion:</span><br>
-                                                                                <h5>
-                                                                                    <%= ticket2.descripcion %>
-                                                                                </h5>
-                                                                                <a href="#!" class="secondary-content">
-                                                                                    <form action="/home" method="POST">
-                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                        <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
+                                                                                </li>
+                                                                                <li class="collection-item avatar">
+                                                                                    <i class="material-icons circle blue">collections_bookmark</i>
+                                                                                    <span class="title">Descripcion:</span><br>
+                                                                                    <h5>
+                                                                                        <%= ticket2.descripcion %>
+                                                                                    </h5>
+                                                                                    <a href="#!" class="secondary-content">
+                                                                                        <form action="/home" method="POST">
+                                                                                            <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
+                                                                                            <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
                                                                                             </button>
-                                                                                    </form>
+                                                                                        </form>
 
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                <span class="title">Prioridad:</span>
-                                                                                <h5>
-                                                                                    <%= prioridad %> <br>
-                                                                                </h5>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="collection-item avatar">
+                                                                                    <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
+                                                                                    <span class="title">Prioridad:</span>
+                                                                                    <h5>
+                                                                                        <%= prioridad %> <br>
+                                                                                    </h5>
 
-                                                                                <a class='dropdown-trigger secondary-content' href='#' data-target='dropdown1'><i class="material-icons">create</i></a>
-
-                                                                                <!-- Dropdown Structure -->
-                                                                                <ul id='dropdown1' class='dropdown-content'>
-                                                                                    <li><a href="#!">Por Asignar</a></li>
-                                                                                    <li><a href="#!">Baja</a></li>
-                                                                                    <li><a href="#!">Media</a></li>
-                                                                                    <li><a href="#!">Alta</a></li>
-                                                                                    <li><a href="#!">Urgente</a></li>
-                                                                                </ul>
-                                                                                <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle red">account_box</i>
-                                                                                <span class="title">Asignar A:</span>
-                                                                                <h5>
-                                                                                    Creador:
-                                                                                    <%=ticket2.Nombre_creador%>
-                                                                                        <%=ticket2.apellido_P_creador%>
-                                                                                            <%=ticket2.Apellido_M_creador%>
-                                                                                </h5>
+                                                                                    <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
+                                                                                </li>
+                                                                                <li class="collection-item avatar">
+                                                                                    <i class="material-icons circle red">account_box</i>
+                                                                                    <span class="title">Asignar A:</span>
+                                                                                    <h5>
+                                                                                        Creador:
+                                                                                        <%=ticket2.Nombre_creador%>
+                                                                                            <%=ticket2.apellido_P_creador%>
+                                                                                                <%=ticket2.Apellido_M_creador%>
+                                                                                    </h5>
 
 
-                                                                                <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
-                                                                            </li>
+                                                                                    <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
+                                                                                </li>
+                                                                            </ul>
+
+
+                                                                            <%acumodal2=acumodal2+1%>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="card-tabs">
+                                                                        <ul id="hola" class="tabs tabs-fixed-width">
+                                                                            <li class="tab"><a class="active" href="#tests<%= z+1%>"><i class="material-icons">assignment</i></a></li>
+                                                                            <li class="tab"><a href="#tests<%= z+2%>"><i class="material-icons">forum</i></a></li>
+                                                                            <li class="tab"><a href="#tests<%= z+3%>"><i class="material-icons">assignment_ind</i></a></li>
+                                                                            <li class="tab"><a href="#tests<%= z+4%>"><i class="material-icons">chat_bubble_outline</i></a></li>
                                                                         </ul>
-
-
-                                                                        <%acumodal2=acumodal2+1%>
-
                                                                     </div>
-
-                                                                </div>
-                                                                <div class="card-tabs">
-                                                                    <ul id="hola" class="tabs tabs-fixed-width">
-                                                                        <li class="tab"><a class="active" href="#tests<%= z+1%>"><i class="material-icons">assignment</i></a></li>
-                                                                        <li class="tab"><a href="#tests<%= z+2%>"><i class="material-icons">forum</i></a></li>
-                                                                        <li class="tab"><a href="#tests<%= z+3%>"><i class="material-icons">assignment_ind</i></a></li>
-                                                                        <li class="tab"><a href="#tests<%= z+4%>"><i class="material-icons">chat_bubble_outline</i></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="card-content ">
-                                                                    <div id="tests<%= z+1%>">
-                                                                        <%= ticket2.descripcion %>
-                                                                    </div>
-                                                                    <div id="tests<%=z+2%>">
-                                                                        <p>
-                                                                            <% 
+                                                                    <div class="card-content ">
+                                                                        <div id="tests<%= z+1%>">
+                                                                            <%= ticket2.descripcion %>
+                                                                        </div>
+                                                                        <div id="tests<%=z+2%>">
+                                                                            <p>
+                                                                                <% 
                                                                             let r=1;
                                                                             var pr="";
                                                                             var rp="";
@@ -453,59 +440,62 @@
                                                                                     pr += respuesta.texto_pregunta;
                                                                                     rp += respuesta.texto_respuesta;
                                                                                     r=r+1; %>
-                                                                                <b><%= pr%></b>
-                                                                                <%= rp%>
-                                                                                    <br><br>
-                                                                                    <%pr="";rp="";  
+                                                                                    <b><%= pr%></b>
+                                                                                    <%= rp%>
+                                                                                        <br><br>
+                                                                                        <%pr="";rp="";  
                                                                                 }
                                                                             
                                                                             }%>
 
-                                                                        </p>
-                                                                    </div>
-                                                                    <div id="tests<%= z+3%>">
-                                                                        <p><b>Nombre del Creador:</b>
-                                                                            <%=ticket2.Nombre_creador%>
-                                                                                <%=ticket2.apellido_P_creador%>
-                                                                                    <%=ticket2.Apellido_M_creador%>
-                                                                        </p>
-                                                                        <p><b>Nombre del Encargado:</b>
-                                                                            <%=ticket2.Nombre_encargado%>
-                                                                                <%=ticket2.Apellido_P_encargado%>
-                                                                                    <%=ticket2.Apellido_M_encargado%>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div id="tests<%= z+4%>">
-                                                                        <%= ticket2.comentarios_solucion %>
-                                                                            <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
-                                                                            <div id="agregarcomentario<%=y%>" class="modal">
-                                                                                <div class="modal-content">
-                                                                                    <h4>
-                                                                                        Agregar comentario?
-                                                                                    </h4>
-                                                                                    <p>
-                                                                                        <div class="input-field">
-                                                                                            <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
-                                                                                            <label for="first_name">Comentario</label>
-                                                                                        </div>
-                                                                                    </p>
-                                                                                </div>
-                                                                                <%y=y+1%>
-                                                                                    <div class="modal-footer">
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div id="tests<%= z+3%>">
+                                                                            <p><b>Nombre del Creador:</b>
+                                                                                <%=ticket2.Nombre_creador%>
+                                                                                    <%=ticket2.apellido_P_creador%>
+                                                                                        <%=ticket2.Apellido_M_creador%>
+                                                                            </p>
+                                                                            <p><b>Nombre del Encargado:</b>
+                                                                                <%=ticket2.Nombre_encargado%>
+                                                                                    <%=ticket2.Apellido_P_encargado%>
+                                                                                        <%=ticket2.Apellido_M_encargado%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div id="tests<%= z+4%>">
+                                                                            <%= ticket2.comentarios_solucion %>
 
+                                                                                <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                                                <div id="agregarcomentario<%=y%>" class="modal">
+                                                                                    <div class="modal-content">
+                                                                                        <h4>
+                                                                                            Agregar comentario?
+                                                                                        </h4>
+                                                                                        <p>
+                                                                                            <div class="input-field">
+                                                                                                <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
+                                                                                                <label for="first_name">Comentario</label>
+                                                                                            </div>
+                                                                                        </p>
                                                                                     </div>
-                                                                            </div>
+                                                                                    <%y=y+1%>
+                                                                                        <div class="modal-footer">
+                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+
+                                                                                        </div>
+                                                                                </div>
+
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </p>
+                                                            </p>
 
-                                                </li>
-                                                <% z=z+4 %>
-                                                    <% } %>
+                                                    </li>
+                                                    <% z=z+4 %>
                                                         <% } %>
+                                                            <% } %>
                         </ul>
 
                         </div>
@@ -619,16 +609,6 @@
                                                                                             <%= prioridad %> <br>
                                                                                         </h5>
 
-                                                                                        <a class='dropdown-trigger secondary-content' href='#' data-target='dropdown1'><i class="material-icons">create</i></a>
-
-                                                                                        <!-- Dropdown Structure -->
-                                                                                        <ul id='dropdown1' class='dropdown-content'>
-                                                                                            <li><a href="#!">Por Asignar</a></li>
-                                                                                            <li><a href="#!">Baja</a></li>
-                                                                                            <li><a href="#!">Media</a></li>
-                                                                                            <li><a href="#!">Alta</a></li>
-                                                                                            <li><a href="#!">Urgente</a></li>
-                                                                                        </ul>
                                                                                         <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
                                                                                     </li>
                                                                                     <li class="collection-item avatar">
