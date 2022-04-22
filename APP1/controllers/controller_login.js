@@ -34,6 +34,7 @@ exports.login = (request, response, next) => {
             response.cookie('rolusuario', rolusuario, {
                 httpOnly: true
             })
+
             const id_usuario = Usuario.getidusuario(rows[0].correo)
             response.cookie('id_usuario', id_usuario, {
                 httpOnly: true
@@ -41,6 +42,11 @@ exports.login = (request, response, next) => {
 
             const correo_usuario = rows[0].correo
             response.cookie('correo_usuario', correo_usuario, {
+                httpOnly: true
+            })
+
+            const nombre_usuario = rows[0].nombre
+            response.cookie('nombre_usuario', nombre_usuario, {
                 httpOnly: true
             })
 

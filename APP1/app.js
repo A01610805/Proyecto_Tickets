@@ -46,7 +46,6 @@ const rutas_modtem = require('./routes/route_ModTem');
 const rutas_gentem = require('./routes/route_GenTem');
 const rutas_asiprio = require('./routes/route_asignarP');
 const rutas_modcomentario = require('./routes/route_modcomentario');
-
 const rutas_arol = require('./routes/route_asignarRol');
 
 app.use('/users', rutas_login);
