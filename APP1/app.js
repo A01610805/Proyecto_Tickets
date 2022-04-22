@@ -31,9 +31,8 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 //Estas son las rutas a utilizar se utiliza una constante poara almacenar la direccion de la rutas
 //despues se utiliza en un app.use completo
@@ -46,22 +45,25 @@ const rutas_busus = require('./routes/route_BuscarU');
 const rutas_modtem = require('./routes/route_ModTem');
 const rutas_gentem = require('./routes/route_GenTem');
 const rutas_asiprio = require('./routes/route_asignarP');
+const rutas_modcomentario = require('./routes/route_modcomentario');
 
- 
+const rutas_arol = require('./routes/route_asignarRol');
+
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
 app.use('/generar_ticket', rutas_genticket);
 app.use('/buscar_tickets', rutas_visualizacion);
-
 app.use('/buscar_usuario', rutas_busus);
 app.use('/modificar_template', rutas_modtem);
 app.use('/generar_template', rutas_gentem);
 app.use('/asignar_prioridad', rutas_asiprio);
+app.use('/mod_comentario', rutas_modcomentario);
+app.use('/asignar_rol', rutas_arol);
 
 app.use((request, response, ) => {
     response.redirect('/users');
 });
-  
+
 app.use((request, response, next) => {
     console.log("Error 404");
 });

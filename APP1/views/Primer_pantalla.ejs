@@ -181,14 +181,14 @@
                                                                                         <h5>
                                                                                             <%= ticket.descripcion %>
                                                                                         </h5>
-                                                                                        <a href="#!" class="secondary-content">
+                                                                                        <!-- <a href="#!" class="secondary-content">
                                                                                             <form action="/home" method="POST">
                                                                                                 <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                                                 <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
                                                                                         </button>
                                                                                             </form>
 
-                                                                                        </a>
+                                                                                        </a> -->
                                                                                     </li>
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -383,14 +383,14 @@
                                                                                 <h5>
                                                                                     <%= ticket2.descripcion %>
                                                                                 </h5>
-                                                                                <a href="#!" class="secondary-content">
+                                                                                <!-- <a href="#!" class="secondary-content">
                                                                                     <form action="/home" method="POST">
                                                                                         <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
                                                                                         <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
                                                                                             </button>
                                                                                     </form>
 
-                                                                                </a>
+                                                                                </a> -->
                                                                             </li>
                                                                             <li class="collection-item avatar">
                                                                                 <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -478,17 +478,20 @@
                                                                                     <h4>
                                                                                         Agregar comentario?
                                                                                     </h4>
-                                                                                    <p>
-                                                                                        <div class="input-field">
-                                                                                            <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
-                                                                                            <label for="first_name">Comentario</label>
-                                                                                        </div>
-                                                                                    </p>
+
                                                                                 </div>
                                                                                 <%y=y+1%>
                                                                                     <div class="modal-footer">
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                                                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+                                                                                        <div class="center ">
+
+                                                                                            <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                            <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                        </div>
+                                                                                        </form>
+
+
+
+
 
                                                                                     </div>
                                                                             </div>
@@ -605,14 +608,14 @@
                                                                                         <h5>
                                                                                             <%= ticket2.descripcion %>
                                                                                         </h5>
-                                                                                        <a href="#!" class="secondary-content">
+                                                                                        <!-- <a href="#!" class="secondary-content">
                                                                                             <form action="/home" method="POST">
                                                                                                 <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
                                                                                                 <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
                                                                                                     </button>
                                                                                             </form>
 
-                                                                                        </a>
+                                                                                        </a> -->
                                                                                     </li>
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -700,17 +703,20 @@
                                                                                             <h4>
                                                                                                 Agregar comentario?
                                                                                             </h4>
-                                                                                            <p>
-                                                                                                <div class="input-field">
-                                                                                                    <input placeholder="Escribe tu comentario" id="first_name" type="text" class="validate">
-                                                                                                    <label for="first_name">Comentario</label>
-                                                                                                </div>
-                                                                                            </p>
+
                                                                                         </div>
                                                                                         <%y=y+1%>
                                                                                             <div class="modal-footer">
-                                                                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                                                                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat pulse">Agregar Comentario</a>
+                                                                                                <div class="center ">
+
+                                                                                                    <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                                    <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                                </div>
+                                                                                                </form>
+
+
+
+
 
                                                                                             </div>
                                                                                     </div>

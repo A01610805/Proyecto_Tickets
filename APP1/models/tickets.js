@@ -2,6 +2,10 @@ const { execute } = require('../util/database');
 const db = require('../util/database');
 
 module.exports = class Ticket {
+    constructor(comentario_solucion, ID_ticket) {
+        this.comentarios_solucion = comentario_solucion;
+        this.ID_ticket = ID_ticket;
+    }
 
     fetch() {
         return db.execute('SELECT * FROM ticketentero');
@@ -32,7 +36,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket ASC LIMIT ?, 5', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5', [num]);
     }
 
     static fetchticketsactivos() {
@@ -62,7 +66,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsarchivados_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket ASC LIMIT ?, 5', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket DESC LIMIT ?, 5', [num]);
     }
 
     static fetchticketsusuario_filtro(valor) {
@@ -76,7 +80,7 @@ module.exports = class Ticket {
     static fetchticketspropios_pag(nom, num) {
         console.log(nom);
         console.log(num);
-        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ASC LIMIT ?, 5', ['%' + nom + '%', num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_estado ASC LIMIT ?, 5', ['%' + nom + '%', num]);
     }
 
     static borrarticketpropio(id) {
@@ -131,15 +135,16 @@ module.exports = class Ticket {
 
     // ========================================================================================== //
     static borrarticket(id) {
-        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])    
+        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
     }
 
     static borrarticketnuevo(id) {
         return db.execute('UPDATE ticketsnuevos SET ticketsnuevos.ID_estado=5 WHERE ticketsnuevos.ID_ticket=?', [id])
     }
 
-    static modificarcomentario(com, id) {
-        return db.execute('UPDATE ticketstotal SET ticketstotal.comentario_solucion=?', [com], 'WHERE ticketstotal.ID_ticket=?', [id])
+    static modificarcomentario(id1, id2) {
+
+        return db.execute('UPDATE ticketstotal set comentarios_solucion = ? WHERE  ID_ticket = ?', [id1, id2]);
     }
 
 }
