@@ -551,7 +551,8 @@ else if(tipo==3){
                             
                             '</div>'+ 
                         '</div>';               
-            document.getElementById('respuesta_ajax').innerHTML = respuesta;          
+            document.getElementById('respuesta_ajax').innerHTML = respuesta;       
+            M.AutoInit();   
         }).catch(err => {
             console.log('Error de ajax');
             console.log(err);
