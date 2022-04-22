@@ -23,24 +23,20 @@
                 <%=user.ID_rol%> - <%=user.nombre_rol%>
             </h6>
             <div class="centers">
-                <label for="">Inserte el nuevo rol del empleado:</label>
-                <input required id="rol_nuevo" name="rol_nuevo"><span class=""></span>
+                <select class="selectpicker" data-style="btn-info" name="rol_nuevo">
+                    <optgroup label="Select Table">
+                        <option name="" value="0">Seleccionar rol a asignar</option>
+                        <option name="table1" value="1">1 - Administrador</option>
+                        <option name="table2" value="2">2 - Empleado de soporte</option>
+                        <option name="table3" value="3">3 - Empleado general de Zebrands</option>
+                    </optgroup>
+                </select>
             </div>
-            <div class="center ">
+            <div class="right">
                 <button type="submit" class="waves-effect waves-light btn">Guardar</button>
                 <a href="/buscar_usuario/busqueda" class="waves-effect waves-light btn">Cancelar</a>
             </div>
         </div>
-
-        <div class="center">
-            <h5>Roles disponibles dentro del sistema</h5>
-        </div>
-        <div class="left">
-            <span class="new badge" data-badge-caption="Rol de empleado general de Zebrands">3 - </span>
-            <span class="new badge" data-badge-caption="Rol de empleado de soporte">2 - </span>
-            <span class="new badge" data-badge-caption="Rol de administrador">1 - </span>
-        </div>
-
         <br></br>
     </form>
 </div>
