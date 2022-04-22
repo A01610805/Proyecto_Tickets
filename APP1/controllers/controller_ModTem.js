@@ -29,6 +29,7 @@ exports.get_preguntas = (request, response, next) => {
                         preguntas: rows2,
                         id: request.params.id ? request.params.id : 1,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                        
                     }); 
                 }) 
                 .catch(error => {console.log(error)}); 

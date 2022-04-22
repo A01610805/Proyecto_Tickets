@@ -3,22 +3,30 @@ const Usuario = require('../models/usuario');
 const Ticket = require("../models/tickets");
 const bcrypt = require('bcryptjs');
 var correo_usuario = '';
+
 exports.get_login = (request, response, next) => {
-    response.render('Log_in', {
-        username: request.session.usuario ? request.session.usuario : '',
+    response.render('Log_in',{
+        error: 0
+    });
+};
+
+exports.get_login2 = (request, response, next) => {
+    console.log("Si llega");
+    response.render('Log_in',{
+        error: 1
     });
 };
 
 exports.login = (request, response, next) => {
     console.log('Entrando a fetchOne');
     console.log(request.body);
-    correo_usuario = request.body.correo;
+    correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
         .then(([rows, fielData]) => {
-
+            
             //Si no existe el usuario, redirige a la pantalla de login
             if (rows.length < 1) {
-                return response.redirect('/users/login');
+                return response.redirect('/users/loginw');
             }
             const user = new User(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
 
@@ -36,8 +44,6 @@ exports.login = (request, response, next) => {
                 httpOnly: true
             })
 
-
-
             console.log(request.body.password);
             console.log(user.password);
             bcrypt.compare(request.body.password, user.password)
@@ -51,14 +57,17 @@ exports.login = (request, response, next) => {
                             response.redirect('/home');
                         });
                     }
-                    response.redirect('/users/login');
+                    else{
+                        response.redirect('/users/loginw');
+                    }
+
                 }).catch(err => {
-                    response.redirect('/users/login');
+                    console.log('Hola');
+                    
                 });
         }).catch((error) => {
             console.log(error)
         });
-
 };
 
 exports.get_signup = (request, response, next) => {

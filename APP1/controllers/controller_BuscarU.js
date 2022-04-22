@@ -1,38 +1,36 @@
 const Busqueda = require('../models/usuario');
-const BusquedaR = require('../models/rol');
 
-exports.get_busqueda = (request, response, next) => {
-    console.log('Entrando a Buscar Usuario');
-    Busqueda.fetchAll()
+exports.get_usuarios = async(request, response, next)=>{
+
+    const total = await Busqueda.getTotal_usuarios();
+    console.log("En total hay: " + total);
+    const start = request.params.start ? request.params.start : 0
+    console.log(start);
+    usuarios = Busqueda.fetchusuarios_pag(start)
         .then(([rows, fielData]) => {
             console.log( request.cookies.rolusuario);
             response.render('BuscarUsuarios', {
                 usuario: rows,
+                username: request.session.username ? request.session.username : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3, 
+                total_usuarios: total,
             });
         })
-        .catch(error => { console.log(error) });
+        .catch(error => { 
+            console.log(error); 
+        });
 }
 
 exports.buscar = (request, response, next) => {
+    console.log(request.params.valor);
     Busqueda.fetch(request.params.valor)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            //console.log(rows);
             response.status(200).json(rows);
         })
         .catch(error => { console.log(error) });
 
 }
-
-// exports.buscarR = (req,res,next) =>{
-//     BusquedaR.fetchAll(req.params.valor)
-//         .then(([rows, fieldData]) => {
-//             console.log(rows);
-//             res.status(200).json(rows);
-//         })
-//         .catch(error => {console.log(error)});  
-
-// }
 
 exports.root = (req, res, next) => {
     console.log('Ruta por defecto de buscar usuario');

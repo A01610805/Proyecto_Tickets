@@ -4,16 +4,16 @@
     <div> <!--Dropdown para cambiar de ticket-->
         <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar categoría del ticket<i class="material-icons right">arrow_drop_down</i></a>
 
-        <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
-            <% for (let categoria of categorias) { %>
-                <li class="">
-                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-                </li>
-            <% } %>
-            </ul>
-    </div>
+    <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
+        <% for (let categoria of categorias) { %>
+            <li class="">
+                <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+            </li>
+        <% } %>
+        </ul>
+</div>
 
-    <h1>Crear Nuevo Ticket</h1>
+<h1><%= nombre %></h1>
 
 
     <div class="row">

@@ -5,6 +5,7 @@ const clogin = require('../controllers/controller_login');
 const isAuth = require('../util/is-auth.js');
 
 router.get('/login',  clogin.get_login);
+router.get('/loginw',  clogin.get_login2);
 router.post('/login', clogin.login);
 router.get('/logout', clogin.logout);
 router.get('/signup',  clogin.get_signup);

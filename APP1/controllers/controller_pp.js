@@ -9,35 +9,36 @@ exports.get_principal = (request, response, next) => {
     Tickets.fetchticketsnuevos()
         .then(([rows, fielData]) => {
             Tickets.fetchrespuestas()
-            .then(([rows2, fieldData]) => {
-            Tickets.fetchticketsusuario(request.cookies.correo_usuario)
-                .then(([rows3, fieldData]) => {
-                Tickets.fetchticketsencargado(request.cookies.correo_usuario)
-                    .then(([rows4, fieldData]) => {
-                        let numrol = request.cookies.rolusuario;
-                        if (numrol==3){
-                            response.render('Primer_pantalla3', {
-                                username: request.session.name ? request.session.name : '',
-                                ticketss: rows,
-                                respuestas: rows2,
-                                ticketsusuario: rows3,
-                                ticketobtenido: rows4,
-                                rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-                            });
-                        } else {
-                        response.render('Primer_pantalla', {
-                            username: request.session.name ? request.session.name : '',
-                            ticketss: rows,
-                            respuestas: rows2,
-                            ticketsusuario: rows3,
-                            ticketobtenido: rows4,
-                            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-                        });
-                    }
+                .then(([rows2, fieldData]) => {
+                    Tickets.fetchticketsusuario(request.cookies.correo_usuario)
+                        .then(([rows3, fieldData]) => {
+                            Tickets.fetchticketsencargado(request.cookies.correo_usuario)
+                                .then(([rows4, fieldData]) => {
+                                    console.log(rows3);
+                                    let numrol = request.cookies.rolusuario;
+                                    if (numrol == 3) {
+                                        response.render('Primer_pantalla3', {
+                                            username: request.session.name ? request.session.name : '',
+                                            ticketss: rows,
+                                            respuestas: rows2,
+                                            ticketsusuario: rows3,
+                                            ticketobtenido: rows4,
+                                            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                                        });
+                                    } else {
+                                        response.render('Primer_pantalla', {
+                                            username: request.session.name ? request.session.name : '',
+                                            ticketss: rows,
+                                            respuestas: rows2,
+                                            ticketsusuario: rows3,
+                                            ticketobtenido: rows4,
+                                            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                                        });
+                                    }
+                                })
+                        })
                 })
-            })
         })
-    })
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');
@@ -46,11 +47,14 @@ exports.post_principal = (request, response, next) => {
     response.redirect('/home');
 };
 
-exports.post_comentario = (request, response, next) => {
-    console.log('Pantalla principal');
-    Tickets.modificarcomentario(request.body.comentario, request.body.idticket)
-    response.redirect('/home');
-};
+// exports.post_comentario = (request, response, next) => {
+//     console.log('Pantalla principal');
+//     Tickets.modificarcomentario(request.body.comentario, request.body.idticket)
+//     response.redirect('/home');
+// };
+
+
+
 
 
 // exports.get_mistickets = (request, response, next) => {
