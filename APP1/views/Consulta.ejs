@@ -247,7 +247,6 @@ else if(tipo==3){
                                                             <span class="title">Descripcion:</span>
                                                             <br>
                                                             <h5> <%= ticket.descripcion %> </h5>
-                                                                                
                                                         </li>
                                                         <li class="collection-item avatar">
                                                             <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -299,7 +298,11 @@ else if(tipo==3){
                                                     </p>
                                                 </div>
                                                 <div id="test<%= i+3%>">
-                                                    <p><b>Nombre del Creador:</b> <%=ticket.nombre%> <%=ticket.apellido_paterno%> <%=ticket.Apellido_materno%></p>
+                                                    <p><b>Nombre del creador:</b> <%=ticket.Nombre_creador%> <%=ticket.apellido_P_creador%> <%=ticket.apellido_M_creador%></p>
+                                                    <p><b>Correo de creador:</b> <%=ticket.correo_creador%></p>
+                                                    <br>
+                                                    <p><b>Nombre del encargado:</b> <%=ticket.Nombre_encargado%> <%=ticket.Apellido_P_encargado%> <%=ticket.Apellido_M_encargado%></p>
+                                                    <p><b>Correo del encargado:</b> <%=ticket.Correo_encargado%></p>
                                                 </div>
                                                 <div id="test<%= i+4%>">
                                                     <%= ticket.comentarios_solucion %>
@@ -435,14 +438,14 @@ else if(tipo==3){
                                                     '<div class="col s12 ">'+
                                                         '<p class="z-depth-4">'+
                                                             '<div id="carta" class="card">'+
-                                                                '<div class="card-content'+color+'">'+
+                                                                '<div class="card-content '+color+' ">'+
                                                                     '<p id="titulo">'+
                                                                     '<b>'+ticket.ID_ticket + ": " + ticket.titulo +'</b>'+
-                                                                    '<i class="material-icons left">'+iconop+'</i>'+
+                                                                    '<i class="material-icons left"> '+iconop+' </i>'+
                                                                     '<a class="waves-effect waves-light  btn-small grey modal-trigger pulse right" href="#modala'+acumodal1+'"><i class="material-icons">edit</i></a>'+
                                                                     '</p>'+
                                                                 '</div>'+
-                                                                '<div id="modala'+ acumodal1+'" class="modal">'+
+                                                                '<div id="modala'+acumodal1+'" class="modal">'+
                                                                     '<div class="modal-content">'+
                                                                         '<ul class="collection">'+
                                                                             '<li class="collection-item avatar">'+
@@ -504,7 +507,7 @@ else if(tipo==3){
                                                                     '</ul>'+
                                                                 '</div>'+
                                                                 '<div class="card-content">'+
-                                                                    '<div id="test'+ (i+1)+'">'+ticket.descripcion +'</div>'
+                                                                    '<div id="test'+ (i+1)+'">'+ticket.descripcion +'</div>'+
                                                                     '<div id="test'+ (i+2)+'">'+
                                                                         '<p>'; 
                                                                         let r=1;
@@ -526,14 +529,18 @@ else if(tipo==3){
                                                                         respuesta += '</p>'+
                                                                     '</div>'+
                                                                     '<div id="test'+(i+3)+'">'+
-                                                                        '<p><b>Nombre del Creador:</b>'+ticket.nombre+' '+ticket.apellido_paterno+' '+ticket.Apellido_materno+'</p>'+
+                                                                        '<p><b>Nombre del creador:</b>'+ticket.Nombre_creador+ticket.apellido_P_creador+ticket.apellido_M_creador+'</p>'+
+                                                                        '<p><b>Correo de creador:</b> '+ticket.correo_creador+'</p>'+
+                                                                        '<br>'+
+                                                                        '<p><b>Nombre del encargado:</b>' +ticket.Nombre_encargado+ticket.Apellido_P_encargado+ticket.Apellido_M_encargado+'</p>'+
+                                                                        '<p><b>Correo del encargado:</b>' +ticket.Correo_encargado+'</p>'+
                                                                     '</div>'+
                                                                     '<div id="test'+(i+4)+'">'+
                                                                         +ticket.comentarios_solucion+
                                                                     '</div>'+
                                                                 '</div>'+
                                                             '</div>'+
-                                                        '</p>'
+                                                        '</p>'+
                                                     '</div>'+
                                                 '</li>';
                                                 i=i+4
