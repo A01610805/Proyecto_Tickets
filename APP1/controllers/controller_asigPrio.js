@@ -1,8 +1,6 @@
 const Tickets = require('../models/tickets');
 const Prioridad = require('../models/prioridad');
 
-
-
 exports.get_tic = (request, response, next) => {
     // const tic = Tickets.fetchticketSeleccionado(request.params.id)
     // console.log(tic);

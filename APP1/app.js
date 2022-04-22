@@ -34,7 +34,6 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 //Estas son las rutas a utilizar se utiliza una constante poara almacenar la direccion de la rutas
 //despues se utiliza en un app.use completo
 const rutas_login = require('./routes/route_login');
@@ -48,6 +47,7 @@ const rutas_gentem = require('./routes/route_GenTem');
 const rutas_asiprio = require('./routes/route_asignarP');
 const rutas_modcomentario = require('./routes/route_modcomentario');
 
+const rutas_arol = require('./routes/route_asignarRol');
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
@@ -58,6 +58,7 @@ app.use('/modificar_template', rutas_modtem);
 app.use('/generar_template', rutas_gentem);
 app.use('/asignar_prioridad', rutas_asiprio);
 app.use('/mod_comentario', rutas_modcomentario);
+app.use('/asignar_rol', rutas_arol);
 
 app.use((request, response, ) => {
     console.log('Middleware!');
