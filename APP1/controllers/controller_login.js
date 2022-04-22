@@ -19,7 +19,6 @@ exports.get_login2 = (request, response, next) => {
 
 exports.login = (request, response, next) => {
     console.log('Entrando a fetchOne');
-    console.log(request.body);
     correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
         .then(([rows, fielData]) => {
@@ -43,9 +42,6 @@ exports.login = (request, response, next) => {
             response.cookie('correo_usuario', correo_usuario, {
                 httpOnly: true
             })
-
-            console.log(request.body.password);
-            console.log(user.password);
             bcrypt.compare(request.body.password, user.password)
                 .then(doMatch => {
                     if (doMatch) {

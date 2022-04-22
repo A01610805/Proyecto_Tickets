@@ -59,7 +59,6 @@ app.use('/generar_template', rutas_gentem);
 app.use('/asignar_prioridad', rutas_asiprio);
 
 app.use((request, response, ) => {
-    console.log('Middleware!');
     response.redirect('/users');
 });
   
