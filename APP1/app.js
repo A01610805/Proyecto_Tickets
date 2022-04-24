@@ -46,7 +46,7 @@ const rutas_modtem = require('./routes/route_ModTem');
 const rutas_gentem = require('./routes/route_GenTem');
 const rutas_asiprio = require('./routes/route_asignarP');
 const rutas_modcomentario = require('./routes/route_modcomentario');
-
+const rutas_metricas = require('./routes/route_metricas');
 const rutas_arol = require('./routes/route_asignarRol');
 
 app.use('/users', rutas_login);
@@ -59,6 +59,7 @@ app.use('/generar_template', rutas_gentem);
 app.use('/asignar_prioridad', rutas_asiprio);
 app.use('/mod_comentario', rutas_modcomentario);
 app.use('/asignar_rol', rutas_arol);
+app.use('/metricas', rutas_metricas);
 
 app.use((request, response, ) => {
     response.redirect('/users');
