@@ -62,31 +62,30 @@
 </script>
 
 <script>
-  const cxr = document.getElementById('CreadosxResueltos');
-  const myChart2 = new Chart(cxr, {
-    type: 'line',
-      data: {
-        labels: [
-            <% for(let d of dates)  { %>
-              '<%= d %>',
-            <% } %>  
-          ], 
-          datasets: [
-    {
-      label: 'Tickets emitidos',
-      data: Utils.numbers([<%= ticketsemitidos %>]),
-      borderColor: Utils.CHART_COLORS.red,
-      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5)
-    },
-    {
-      label: 'Tickets concluidos',
-      data: Utils.numbers([<%= ticketsresueltos %>]),
-      borderColor: Utils.CHART_COLORS.blue,
-      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5)
-    }
-  ]  
+new Chart(document.getElementById("CreadosxResueltos"), {
+  type: 'line',
+  data: {
+    labels: ['Esta Semana', 'La Semana Pasada', '2 semanas atrás', '3 semanas atrás','4 semanas atrás','5 semanas atrás','6 semanas atrás','7 semanas atrás','8 semanas atrás','9 semanas atrás','10 semanas atrás'],
+    datasets: [{ 
+        data: ([<%= ticketsemitidos %>]),
+        label: 'Tickets emitidos',
+        borderColor: "#3e95cd",
+        fill: false
+      }, { 
+        label: 'Tickets concluidos',
+        data: [<%= ticketsresueltos %>],
+        borderColor: "#8e5ea2",
+        fill: false
       }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'World population per region (in millions)'
+    }
   }
+});
 </script>
 
 

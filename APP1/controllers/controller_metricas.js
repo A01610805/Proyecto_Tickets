@@ -23,7 +23,6 @@ exports.getmetricas = async(request, response, next) => {
                     for (let cat of rows2){
                         cats.push(cat.nombre_categoria);
                     }
-                    console.log(cats);
 
                     Metricas.ticketsemitidos()
                     .then(([rows4, fielData]) => {
@@ -31,7 +30,7 @@ exports.getmetricas = async(request, response, next) => {
                         for (let tee of rows4){
                             te.push(tee.fecha_emision);
                         }
-                    
+                        console.log(numeros)
                         Metricas.ticketsresueltos()
                         .then(([rows5, fielData]) => {
                             let tr=[];
