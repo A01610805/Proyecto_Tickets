@@ -27,10 +27,10 @@ module.exports = class Metricas {
     }
 
     static ticketsemitidos(){
-        return db.execute('SELECT fecha_emision FROM genera_ticket');
+        return db.execute('SELECT count(*) FROM genera_ticket as g GROUP BY g.fecha_emision');
     }
 
     static ticketsresueltos(){
-        return db.execute('SELECT fecha_fin FROM resuelve_ticket');
+        return db.execute('SELECT count(fecha_fin) FROM resuelve_ticket GROUP BY fecha_fin');
     }
 }
