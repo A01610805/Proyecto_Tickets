@@ -306,6 +306,7 @@ else if(tipo==3){
                                                 </div>
                                                 <div id="test<%= i+4%>">
                                                     <%= ticket.comentarios_solucion %>
+                                                    <%if(tipo==1){ %>
                                                     <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
                                                     <div id="agregarcomentario<%=y%>" class="modal">
                                                         <div class="modal-content">
@@ -321,6 +322,7 @@ else if(tipo==3){
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <% } %>
                                                 </div>
                                             </div>
                                         </div>
@@ -561,7 +563,7 @@ else if(tipo==3){
                                                                             respuesta += '<div class="modal-footer">'+
                                                                                 '<div class="center">'+
                                                                                     '<a href="/mod_comentario/get_comentario/'+ticket.ID_ticket+'" class="waves-effect waves-light btn">Aceptar</a>'+
-                                                                                    '<a href="/home" class="waves-effect waves-light btn">Cancelar</a>'+
+                                                                                    '<a href="/buscar_tickets/activos" class="waves-effect waves-light btn">Cancelar</a>'+
                                                                                 '</div>'+
                                                                             '</div>'+
                                                                         '</div>'+
@@ -759,13 +761,11 @@ else if(tipo==3){
                                                                                 '<i class="material-icons circle' + color_prioridad +'">priority_high</i>'+
                                                                                 '<span class="title">Prioridad:</span>'+
                                                                                 '<h5>'+prioridad +'<br> </h5>'+
-                                                                                '<a href="/asignar_prioridad/get_tic/'+ ticket.ID_ticket +'" class="secondary-content modal-close"><i class="material-icons">create</i></a>'+
                                                                             '</li>'+
                                                                             '<li class="collection-item avatar">'+
                                                                                 '<i class="material-icons circle red">account_box</i>'+
                                                                                 '<span class="title">Asignar A:</span>'+
                                                                                 '<h5> Creador: '+ticket.Nombre_creador+' '+ticket.apellido_P_creador+' '+ticket.Apellido_M_creador+'</h5>'+
-                                                                                '<a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>'+
                                                                             '</li>'+
                                                                         '</ul>';
                                                                         acumodal1=acumodal1+1;
@@ -810,19 +810,6 @@ else if(tipo==3){
                                                                     '</div>'+
                                                                     '<div id="test'+(i+4)+'">'+
                                                                         ticket.comentarios_solucion +
-                                                                        '<a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario'+y+'"><i class="material-icons">add_circle_outline</i></a>'+
-                                                                        '<div id="agregarcomentario'+y+'" class="modal">'+
-                                                                            '<div class="modal-content">'+
-                                                                                '<h4>Agregar comentario?</h4>'+
-                                                                            '</div>';
-                                                                            y=y+1
-                                                                            respuesta += '<div class="modal-footer">'+
-                                                                                '<div class="center">'+
-                                                                                    '<a href="/mod_comentario/get_comentario/'+ticket.ID_ticket+'" class="waves-effect waves-light btn">Aceptar</a>'+
-                                                                                    '<a href="/home" class="waves-effect waves-light btn">Cancelar</a>'+
-                                                                                '</div>'+
-                                                                            '</div>'+
-                                                                        '</div>'+
                                                                     '</div>'+
                                                                 '</div>'+
                                                             '</div>'+
@@ -977,26 +964,6 @@ const propios = () => {
                                                                                 '</span>'+
                                                                                 '<h5>'+ticket.titulo+'</h5>';
                                                                                 '<a href="#!" class="secondary-content">';
-
-                                                                                    if(([<%=rol%>] != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
-                                                                                        var ruta='';
-                                                                                        if(tipo==3){
-                                                                                            ruta='propio';
-                                                                                        }
-                                                                                        else if(tipo==2){
-                                                                                            ruta='archivo';
-                                                                                        }
-                                                                                        else if(tipo==1){
-                                                                                            ruta='activos';
-                                                                                        }
-
-                                                                                    respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST">'+
-                                                                                        '<input for="idticket" id="idticket" name="idticket" type="hidden" value="'+ticket.ID_ticket+'" />'+
-                                                                                        '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
-                                                                                    '</form>';
-
-                                                                                    }
-
                                                                                 respuesta += '</a>'+
                                                                             '</li>'+
                                                                             '<li class="collection-item avatar">'+
@@ -1005,16 +972,8 @@ const propios = () => {
                                                                                 '<br>'+ ticket.descripcion + '</h5>'+
                                                                             '</li>'+
                                                                             '<li class="collection-item avatar">'+
-                                                                                '<i class="material-icons circle' + color_prioridad +'">priority_high</i>'+
-                                                                                '<span class="title">Prioridad:</span>'+
-                                                                                '<h5>'+prioridad +'<br> </h5>'+
-                                                                                '<a href="/asignar_prioridad/get_tic/'+ ticket.ID_ticket +'" class="secondary-content modal-close"><i class="material-icons">create</i></a>'+
-                                                                            '</li>'+
-                                                                            '<li class="collection-item avatar">'+
                                                                                 '<i class="material-icons circle red">account_box</i>'+
-                                                                                '<span class="title">Asignar A:</span>'+
                                                                                 '<h5> Creador: '+ticket.Nombre_creador+' '+ticket.apellido_P_creador+' '+ticket.Apellido_M_creador+'</h5>'+
-                                                                                '<a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>'+
                                                                             '</li>'+
                                                                         '</ul>';
                                                                         acumodal1=acumodal1+1;
@@ -1059,19 +1018,6 @@ const propios = () => {
                                                                     '</div>'+
                                                                     '<div id="test'+(i+4)+'">'+
                                                                         ticket.comentarios_solucion +
-                                                                        '<a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario'+y+'"><i class="material-icons">add_circle_outline</i></a>'+
-                                                                        '<div id="agregarcomentario'+y+'" class="modal">'+
-                                                                            '<div class="modal-content">'+
-                                                                                '<h4>Agregar comentario?</h4>'+
-                                                                            '</div>';
-                                                                            y=y+1
-                                                                            respuesta += '<div class="modal-footer">'+
-                                                                                '<div class="center">'+
-                                                                                    '<a href="/mod_comentario/get_comentario/'+ticket.ID_ticket+'" class="waves-effect waves-light btn">Aceptar</a>'+
-                                                                                    '<a href="/home" class="waves-effect waves-light btn">Cancelar</a>'+
-                                                                                '</div>'+
-                                                                            '</div>'+
-                                                                        '</div>'+
                                                                     '</div>'+
                                                                 '</div>'+
                                                             '</div>'+
