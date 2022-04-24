@@ -74,34 +74,17 @@
           datasets: [
     {
       label: 'Tickets emitidos',
-      data: [<%= ticketsemitidos %>],
+      data: Utils.numbers([<%= ticketsemitidos %>]),
       borderColor: Utils.CHART_COLORS.red,
-      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-      yAxisID: 'y',
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5)
     },
     {
       label: 'Tickets concluidos',
-      data: [<%= ticketsresueltos %>],
+      data: Utils.numbers([<%= ticketsresueltos %>]),
       borderColor: Utils.CHART_COLORS.blue,
-      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-      yAxisID: 'y1',
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5)
     }
   ]  
-      },
-      options: {
-          scales: {
-              y: {
-            type: 'linear',
-            display: true,
-            position: 'right',
-              }
-              y1: {
-        type: 'linear',
-        display: true,
-        position: 'right',
-        }
-              
-          }
       }
   }
 </script>
