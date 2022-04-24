@@ -9,6 +9,6 @@ router.get('/start/:start', isAuth, authPage(['1','2']), bUser.get_usuarios);
 router.get('/busqueda/:valor', isAuth, authPage(['1','2']), bUser.buscar);
 router.get('/busqueda', isAuth, authPage(['1','2']), bUser.get_usuarios);
 //router.post('/activos', tilogin.post_activos);
-router.get('/', isAuth, authPage([1,2]), bUser.root);
+router.get('/', isAuth, authPage(['1','2']), bUser.root);
 
 module.exports = router; 
