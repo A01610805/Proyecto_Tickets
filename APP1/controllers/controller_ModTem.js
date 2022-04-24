@@ -10,6 +10,7 @@ exports.get_ticket = (request, response, next) => {
                 Tiname: request.session.usuario ? request.session.usuario : '',
                 categorias: rows,
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
             }); 
         }) 
     .catch(error => {console.log(error)});
@@ -29,7 +30,7 @@ exports.get_preguntas = (request, response, next) => {
                         preguntas: rows2,
                         id: request.params.id ? request.params.id : 1,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-                        
+                        username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                     }); 
                 }) 
                 .catch(error => {console.log(error)}); 
@@ -66,16 +67,6 @@ exports.post_mod = (request, response, next) => {
 
     response.redirect('/home')
 };
-// exports.post_npreg =(request, res, next) => { 
-//     const pregunta = new Pregunta(request.body.texto_preguntanew, request.params.id)
-//     pregunta.addpreg()
-// }
-
-// exports.delete_preguntas = (req, res, next) => {
-//     console.log(request.params.id);
-//     //Categoria.fetchOne(request.params.id)
-//     Pregunta.delete_preguntas(request.param.id)
-// };
 
 exports.root = (request, response, next) => {
     response.redirect('/modificar_template'); 

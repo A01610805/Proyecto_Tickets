@@ -8,7 +8,7 @@ exports.get_usuario = (request, response, next) => {;
             console.log(rows);
             response.render('ARol', {
                 id: request.params.id ? request.params.id : 1,
-                username: request.session.name ? request.session.name : '',
+                username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                 user: rows[0],
             });

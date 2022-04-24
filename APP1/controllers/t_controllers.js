@@ -18,7 +18,7 @@ exports.get_activos= async(request, response, next)=>{
                 response.render('Consulta', {
                     tickets: rows,
                     respuestas: rows2,
-                    username: request.session.username ? request.session.username : '',
+                    username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                     rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
                     tipo:tipo,
                     total_tickets: total,
@@ -67,7 +67,7 @@ tickets=Ticket.fetchticketsarchivados_pag(start2)
         response.render('Consulta', {
             tickets: rows,
             respuestas: rows2,
-            username: request.session.username ? request.session.username : '',
+            username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
             tipo:tipo,
             total_tickets: total,
@@ -115,7 +115,7 @@ exports.get_ticketspropios=async(request, response, next)=>{
         response.render('Consulta', {
             tickets: rows,
             respuestas: rows2,
-            username: request.session.nombre ? request.session.nombre : '',
+            username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
             rol: request.cookies.rolusuario ? request.cookies.rolusuario : 1,
             tipo:tipo,
             total_tickets: total,
