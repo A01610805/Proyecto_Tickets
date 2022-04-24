@@ -60,6 +60,7 @@
   });
 
 </script>
+
 <script>
   const cxr = document.getElementById('CreadosxResueltos');
   const myChart2 = new Chart(cxr, {
@@ -69,7 +70,38 @@
             <% for(let d of dates)  { %>
               '<%= d %>',
             <% } %>  
-          ],  
+          ], 
+          datasets: [
+    {
+      label: 'Tickets emitidos',
+      data: [<%= ticketsemitidos %>],
+      borderColor: Utils.CHART_COLORS.red,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+      yAxisID: 'y',
+    },
+    {
+      label: 'Tickets concluidos',
+      data: [<%= ticketsresueltos %>],
+      borderColor: Utils.CHART_COLORS.blue,
+      backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+      yAxisID: 'y1',
+    }
+  ]  
+      },
+      options: {
+          scales: {
+              y: {
+            type: 'linear',
+            display: true,
+            position: 'right',
+              }
+              y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        }
+              
+          }
       }
   }
 </script>
