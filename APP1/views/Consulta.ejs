@@ -221,7 +221,7 @@ else if(tipo==3){
                                                             </h5>
                                                             <a href="#!" class="secondary-content">
 
-                                                                <%if((rol != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
+                                                                <%if((rol != 3 && (tipo == 1 || tipo == 3)) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
                                                                     var ruta='';
                                                                     if(tipo==3){
                                                                         ruta='propio';
@@ -248,18 +248,24 @@ else if(tipo==3){
                                                             <br>
                                                             <h5> <%= ticket.descripcion %> </h5>
                                                         </li>
+                                                        <%if(tipo==1 || tipo == 2){ %>
                                                         <li class="collection-item avatar">
                                                             <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
                                                             <span class="title">Prioridad:</span>
                                                             <h5> <%= prioridad %> <br> </h5>
+                                                            <%if(tipo==1){ %>
                                                             <a href="/asignar_prioridad/get_tic/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
+                                                            <% } %>
                                                         </li>
+                                                        <% } %>
+                                                        <%if(tipo==1){ %>
                                                         <li class="collection-item avatar">
                                                             <i class="material-icons circle red">account_box</i>
                                                             <span class="title">Asignar A:</span>
                                                             <h5> Creador: <%=ticket.Nombre_creador%> <%=ticket.apellido_P_creador%> <%=ticket.apellido_M_creador%> </h5>
                                                             <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
                                                         </li>
+                                                        <% } %>
                                                     </ul>
                                                     <%acumodal1=acumodal1+1%>
                                                 </div>
@@ -318,7 +324,7 @@ else if(tipo==3){
                                                         <div class="modal-footer">
                                                             <div class="center ">
                                                                 <a href="/mod_comentario/get_comentario/<%= ticket.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
-                                                                <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                <a href="/buscar_tickets/activos" class="waves-effect waves-light btn">Cancelar</a>
                                                             </div>
                                                         </div>
                                                     </div>
