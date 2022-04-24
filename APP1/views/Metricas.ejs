@@ -63,7 +63,14 @@
 <script>
   const cxr = document.getElementById('CreadosxResueltos');
   const myChart2 = new Chart(cxr, {
-
+    type: 'line',
+      data: {
+        labels: [
+            <% for(let c of categorias)  { %>
+              '<%= c %>',
+            <% } %>  
+          ],  
+      }
   }
 </script>
 

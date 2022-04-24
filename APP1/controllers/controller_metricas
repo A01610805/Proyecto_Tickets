@@ -2,8 +2,13 @@ const Metricas = require('../models/metricas');
 const Categoria = require('../models/categorias');
 
 exports.getmetricas = async(request, response, next) => {
-    console.log("estamos dentro!");
-
+    Metricas.fechas()
+    .then(([rows3,fielData]) => {
+        let fechas= [];
+        for (let fecha of rows3){
+            fechas.push(fecha.Fechas);
+        }
+        console.log(fechas);
     // Gráfica #1 (tiempos por categoría)
     Metricas.tiemposCat() 
         .then(([rows,fielData]) => {
@@ -19,12 +24,33 @@ exports.getmetricas = async(request, response, next) => {
                         cats.push(cat.nombre_categoria);
                     }
                     console.log(cats);
+
+                    Metricas.ticketsemitidos()
+                    .then(([rows4, fielData]) => {
+                        let te=[];
+                        for (let tee of rows4){
+                            te.push(tee.fecha_emision);
+                        }
+                    
+                        Metricas.ticketsresueltos()
+                        .then(([rows5, fielData]) => {
+                            let tr=[];
+                            for (let trr of rows5){
+                                tr.push(trr.fecha_fin);
+                            }
+
                     response.render('metricas', {
                         tiempos: numeros,
                         categorias: cats,
+                        dates: fechas,
+                        ticketsemitidos: te,
+                        ticketsresueltos: tr,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                     });  
                 })
+            })
+        })
+    })
                 .catch(error => {console.log(error)});
         })
         .catch(error => {console.log(error)});

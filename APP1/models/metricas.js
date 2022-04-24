@@ -21,4 +21,16 @@ module.exports = class Metricas {
         );
     }
 
+    static fechas(){
+        return db.execute(
+            'SELECT CURRENT_DATE as Fechas UNION ALL SELECT (CURRENT_DATE() - INTERVAL 1 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 2 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 3 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 4 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 5 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 6 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 7 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 8 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 9 WEEK)UNION ALL SELECT (CURRENT_DATE() - INTERVAL 10 WEEK)')
+    }
+
+    static ticketsemitidos(){
+        return db.execute('SELECT fecha_emision FROM genera_ticket');
+    }
+
+    static ticketsresueltos(){
+        return db.execute('SELECT fecha_fin FROM resuelve_ticket');
+    }
 }
