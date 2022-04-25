@@ -7,4 +7,5 @@ Renato Sebastián Ramirez – A01275401 - A01275401@tec.mx
 Flavio Ruvalcaba Lejia – A0136731- A0136731@tec.mx 
 ## Nota
 Ejercicios ubicados en rama "develop"
+
 Avances ubicados en rama "avances"
