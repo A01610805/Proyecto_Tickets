@@ -11,7 +11,6 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.get_login2 = (request, response, next) => {
-    console.log("Si llega");
     response.render('Log_in',{
         error: 1
     });
