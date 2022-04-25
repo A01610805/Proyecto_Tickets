@@ -205,6 +205,17 @@
 
                                                                                         <a href="/asignar_prioridad/get_tic/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
                                                                                     </li>
+
+                                                                                    <li class="collection-item avatar">
+                                                                                        <i class="material-icons circle <%= color %>">priority_high</i>
+                                                                                        <span class="title">Estado:</span>
+                                                                                        <h5>
+                                                                                            <%= prioridad %> <br>
+                                                                                        </h5>
+    
+                                                                                        <a href="/asignar_estado/get_ticket/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
+                                                                                    </li>
+
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle red">account_box</i>
                                                                                         <span class="title">Asignar A:</span>
