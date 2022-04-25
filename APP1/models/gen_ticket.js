@@ -11,10 +11,8 @@ module.exports = class Gen_Tickets {
     //El metodo save no es necesario dentro de la función
     save() {
         return db.execute(
-
             'INSERT INTO ticket(ID_categoria, ID_estado, ID_prioridad, titulo, descripcion) VALUES(?,?,?,?,?)',
             [this.ID_categoria, 1, 1, this.titulo, this.descripcion]
-
         )
 
     }
