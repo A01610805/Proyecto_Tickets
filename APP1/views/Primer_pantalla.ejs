@@ -406,45 +406,10 @@
                                                                                 <h5>
                                                                                     <%= ticket2.descripcion %>
                                                                                 </h5>
-                                                                                <!-- <a href="#!" class="secondary-content">
-                                                                                    <form action="/home" method="POST">
-                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                        <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
-                                                                                            </button>
-                                                                                    </form>
-
-                                                                                </a> -->
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                <span class="title">Prioridad:</span>
-                                                                                <h5>
-                                                                                    <%= prioridad %> <br>
-                                                                                </h5>
-
-
-                                                                                <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle red">account_box</i>
-                                                                                <span class="title">Asignar A:</span>
-                                                                                <h5>
-                                                                                    Creador:
-                                                                                    <%=ticket2.Nombre_creador%>
-                                                                                        <%=ticket2.apellido_P_creador%>
-                                                                                            <%=ticket2.Apellido_M_creador%>
-                                                                                </h5>
-
-
-                                                                                <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
                                                                             </li>
                                                                         </ul>
-
-
                                                                         <%acumodal2=acumodal2+1%>
-
                                                                     </div>
-
                                                                 </div>
                                                                 <div class="card-tabs">
                                                                     <ul id="hola" class="tabs tabs-fixed-width">
@@ -478,7 +443,6 @@
                                                                                 }
                                                                             
                                                                             }%>
-
                                                                         </p>
                                                                     </div>
                                                                     <div id="tests<%= z+3%>">
@@ -550,16 +514,22 @@
                                             if (ticket2.ID_estado != 1 && ticket2.ID_estado!= 5 && ticket2.ID_estado!= 6){
                                                 if(ticket2.ID_estado == 1){ 
                                                     color = 'grey lighten-2'; 
+                                                    estado = '1 - Nuevo';
                                                 } else if(ticket2.ID_estado == 2){ 
-                                                    color = 'light-blue lighten-5'; 
+                                                    color = 'light-blue lighten-5';
+                                                    estado = '2- En curso'; 
                                                 } else if(ticket2.ID_estado == 3){ 
-                                                    color = 'orange lighten-4'; 
+                                                    color = 'orange lighten-4';
+                                                    estado = '3 - En espera de Información'; 
                                                 } else if(ticket2.ID_estado == 4){ 
-                                                    color = 'yellow light-blue lighten-4'; 
+                                                    color = 'yellow light-blue lighten-4';
+                                                    estado = '4 - En espera de Visto Bueno'; 
                                                 } else if(ticket2.ID_estado == 5){ 
-                                                    color = 'red lighten-3'; 
+                                                    color = 'red lighten-3';
+                                                    estado = '5 - Cancelado'; 
                                                 } else if(ticket2.ID_estado == 6){ 
                                                     color = 'light-green accent-1'; 
+                                                    estado = '6 - Resuelto';
                                                 } 
                                                     var prioridad = '';
                                                     var color_prioridad = ''
