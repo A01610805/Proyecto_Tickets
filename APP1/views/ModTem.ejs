@@ -31,12 +31,16 @@
                         
                     </div>
                 </div>
-            
+                <% for (let pregunta of preguntas) { %>
+                    <input type="hidden" name="text_preg" id="text_preg" value="<%= pregunta.texto_pregunta %>">
+                    <input type="hidden" name="idtext_preg" id="idtext_preg" value="<%= pregunta.ID_pregunta %>">
+                    <% } %>
                 
                 <% for (let pregunta of preguntas) { %> 
-                    <div>
+                    <div id="divpreg">
 
-                        <label  ><%= pregunta.texto_pregunta %></label>
+                        <label><%= pregunta.texto_pregunta %></label>
+                        
                         <div class="row col s12">
                             <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
                             <input required id="texto_pregunta" name="texto_pregunta"><span ></span>

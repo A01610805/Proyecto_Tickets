@@ -1,6 +1,6 @@
 const Categoria = require('../models/categorias');
 const Pregunta = require('../models/preguntas');
-const Respuesta = require('../models/respuestas');
+const Preguntan = require('../models/news_preguntas');
 
 exports.get_ticket = (request, response, next) => {
     Categoria.fetchAll()
@@ -47,16 +47,62 @@ exports.post_mod = (request, response, next) => {
     console.log(request.body); 
 
     if(Array.isArray(request.body.texto_pregunta) == true){
-        for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
-            console.log(index);
-            if (request.body.texto_pregunta[index] != null) {
+        if (request.body.texto_pregunta.length == request.body.text_preg.length) {
+            for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
+                // console.log(index);
+                if (request.body.texto_pregunta[index] != null) {
+                    
+                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id,request.body.ID_pregunta)
+                    // console.log(pregunta);
+                    pregunta.update()
                 
-                const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
-                console.log(pregunta);
-                pregunta.update()
-            
+                }
+                
             }
         }
+        if (request.body.texto_pregunta.length > request.body.text_preg.length) {
+            for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
+                
+                // console.log(index);
+                if ((request.body.texto_pregunta[index] != null) && (request.body.text_preg[index] != null)) {
+                    
+                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id,request.body.ID_pregunta)
+                    // console.log(pregunta);
+                    pregunta.update()
+                
+                }
+                if ((request.body.texto_pregunta[index] != null) && (request.body.text_preg[index] == undefined)) {
+                    
+                    const pregunta = new Preguntan(request.body.texto_pregunta[index])
+                    // console.log(pregunta);
+                    pregunta.save(request.params.id)
+                
+                }
+                
+            }
+        }
+        if (request.body.texto_pregunta.length < request.body.text_preg.length) {
+            for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
+                
+                // console.log(index);
+                if ((request.body.texto_pregunta[index] != null) && (request.body.text_preg[index] != null)) {
+                    
+                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id,request.body.ID_pregunta)
+                    // console.log(pregunta);
+                    pregunta.update()
+                
+                }
+                if ((request.body.texto_pregunta[index] == undefined) && (request.body.text_preg[index] != null)) {
+                    
+                    const pregunta = new Preguntan(request.body.texto_pregunta[index])
+                    // console.log(pregunta);
+                    pregunta.delete(request.params.id, request.body.idtext_preg)
+                
+                }
+                
+            }
+        }
+        
     }
     if(Array.isArray(request.body.texto_pregunta) == false){
 

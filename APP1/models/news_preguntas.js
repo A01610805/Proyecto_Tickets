@@ -39,4 +39,8 @@ module.exports = class Pregunta {
 
              'INSERT INTO pregunta(texto_pregunta, ID_categoria) VALUES(?, ?)', [this.texto_pregunta, id]);
      }
+     delete(id1, id2){
+        return db.execute(
+            'UPDATE pregunta SET disponible = 0 WHERE ID_categoria = ? AND ID_pregunta = ?', [id1, id2]);
+    }
 } 
