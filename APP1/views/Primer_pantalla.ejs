@@ -155,7 +155,7 @@
                                                                     <div id="carta" class="card">
                                                                         <div class="card-content <%=color%>">
                                                                             <p id="titulo">
-                                                                                <b><%= ticket.ID_ticket + ": " + ticket.titulo %></b>
+                                                                                <b id="logo"><%= ticket.ID_ticket + ": " + ticket.titulo %></b>
                                                                                 <i class="material-icons left"><%= iconop %></i>
                                                                                 <a class="waves-effect waves-light  btn-small grey modal-trigger right" href="#modala<%= acumodal1%>"><i class="material-icons">edit</i></a>
                                                                             </p>
@@ -166,7 +166,7 @@
                                                                                 <ul class="collection">
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle green">folder</i>
-                                                                                        <span class="title">
+                                                                                        <span id="logo" class="title">
                                                                                     Titulo
                                                                                 </span>
                                                                                         <h5>
@@ -175,7 +175,7 @@
                                                                                         <a href="#!" class="secondary-content">
                                                                                             <form action="/home" method="POST">
                                                                                                 <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
-                                                                                                <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
+                                                                                                <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                     </button>
                                                                                             </form>
                                                                                         </a>
@@ -183,7 +183,7 @@
                                                                                     </li>
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle blue">collections_bookmark</i>
-                                                                                        <span class="title">Descripcion:</span><br>
+                                                                                        <span id="logo" class="title">Descripcion:</span><br>
                                                                                         <h5>
                                                                                             <%= ticket.descripcion %>
                                                                                         </h5>
@@ -198,7 +198,7 @@
                                                                                     </li>
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                        <span class="title">Prioridad:</span>
+                                                                                        <span id="logo" class="title">Prioridad:</span>
                                                                                         <h5>
                                                                                             <%= prioridad %> <br>
                                                                                         </h5>
@@ -207,7 +207,7 @@
                                                                                     </li>
                                                                                     <li class="collection-item avatar">
                                                                                         <i class="material-icons circle red">account_box</i>
-                                                                                        <span class="title">Asignar A:</span>
+                                                                                        <span id="logo" class="title">Asignar A:</span>
                                                                                         <h5>
                                                                                             Creador:
                                                                                             <%=ticket.nombre %>
@@ -358,7 +358,7 @@
                                                                 <div class="card-content <%=color%>">
                                                                     <p id="titulo">
                                                                         <i class="material-icons left"><%= iconop %></i>
-                                                                        <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
+                                                                        <b id="logo"><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
                                                                         <a class="waves-effect waves-light  btn-small grey modal-trigger right" href="#modalb<%=acumodal2%>"><i class="material-icons">edit</i></a>
                                                                     </p>
                                                                 </div>
@@ -583,7 +583,7 @@
                                                                         <div class="card-content <%=color%>">
                                                                             <p id="titulo">
                                                                                 <i class="material-icons left"><%= iconop %></i>
-                                                                                <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
+                                                                                <b id="logo"><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
                                                                                 <a class="waves-effect waves-light  btn-small grey modal-trigger right" href="#modalc<%= acumodal3%>"><i class="material-icons">edit</i></a>
                                                                             </p>
                                                                         </div>
