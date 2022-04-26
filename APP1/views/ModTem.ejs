@@ -1,35 +1,49 @@
 <%- include('includes/head.ejs') %>
 
-        <div class="">
-            <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a>
-            <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
-                <% for (let categoria of categorias) { %>
-                    <li class="">
-                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-    
-                    </li>
-                <% } %>
-             </ul>
-             
-        </div>
-         
+    <div class="">
+        <a id="logo" class="dropdown-trigger btn grey black-text" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a>
+        <ul id="dropdown1" class=" hide-on-med-and-down dropdown-content">
+            <% for (let categoria of categorias) { %>
+                <li class="">
+                    <a id="logo" href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class="">
+                        <%= categoria.nombre_categoria %>
+                    </a>
 
-        
-            <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
-                <h1>Modificar template</h1>
-                <div>
-                    <div >
-                        <label for="">Nombre Categoria</label>
-                        <input required id="titulo" name="titulo"><span class=""></span>
-                        <label for="">Establece nuevo nombre de categoria. </label>
-                        
-                    </div>
-                    <div >
-                        <label for="">Tiempo estimado</label>
-                        <input required id="tiempo" name="tiempo"><span class=""></span>
-                        <label for="">Establece nuevo tiempo estimado. </label>
-                        
-                    </div>
+                </li>
+                <% } %>
+        </ul>
+
+    </div>
+
+
+
+    <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
+        <h1 id="logo">Modificar template</h1>
+        <div>
+            <div>
+                <label id="logo" for="">Nombre Categoria</label>
+                <input required id="titulo" name="titulo"><span class=""></span>
+                <label for="">Establece nuevo nombre de categoria. </label>
+
+            </div>
+            <div>
+                <label id="logo" for="">Tiempo estimado</label>
+                <input required id="tiempo" name="tiempo"><span class=""></span>
+                <label for="">Establece nuevo tiempo estimado. </label>
+
+            </div>
+        </div>
+
+
+        <% for (let pregunta of preguntas) { %>
+            <div>
+
+                <label id="logo"><%= pregunta.texto_pregunta %></label>
+                <div class="row col s12">
+                    <input type="hidden" name="ID_pregunta" value="<%= pregunta.ID_pregunta %>">
+                    <input required id="texto_pregunta" name="texto_pregunta"><span></span>
+                    <label id="logo">Pregunta nueva</label>
+
                 </div>
                 <% for (let pregunta of preguntas) { %>
                     <input type="hidden" name="text_preg" id="text_preg" value="<%= pregunta.texto_pregunta %>">
@@ -52,25 +66,25 @@
                 <% } %>  
 
                 <div class="center ">
-                    <button type="submit" class="waves-effect waves-light btn">Guardar</button>
-                    <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
+                    <button id="logo" type="submit" class="waves-effect waves-light btn grey black-text">Guardar</button>
+                    <a id="logo" href="/home" class="waves-effect waves-light btn grey black-text">Cancelar</a>
                     <!-- <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> -->
                     <!-- <button href = "/modificar_template/de_preg" type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> -->
                 </div>
                 <br><br>
-                
-            </form>
-            <!-- <form action="" method="post">
+
+    </form>
+    <!-- <form action="" method="post">
                 
             </form> -->
-            <br><br>
-            
-        
-    
-    
+    <br><br>
 
-    	
-	<!-- <script>
+
+
+
+
+
+    <!-- <script>
         let parameters = []
 
 
@@ -101,5 +115,5 @@
         })()
     </script> -->
 
-    
-<%- include('includes/footer.ejs') %>
+
+    <%- include('includes/footer.ejs') %>
