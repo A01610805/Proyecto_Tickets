@@ -24,6 +24,7 @@ exports.post_gentem = async(request, response, next) =>{
     // console.log('Esto es antes de pregunta.add()');
     // console.log(request.body); 
     if(Array.isArray(request.body.texto_pregunta) == true){
+        
         for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
             // console.log(index);
             if (request.body.texto_pregunta[index] != null) {
