@@ -36,9 +36,7 @@ exports.getmetricas = async(request, response, next) => {
                             let tr=[];
                             for (let trr of rows5){
                                 tr.push(trr.fecha_fin);
-                            }
-                        console.log('La cookie es:')
-                        console.log(request.cookies.id_usuario)      
+                            }    
                         Metricas.viewusuariote(request.cookies.id_usuario)
                         Metricas.ticketsresueltos_usuario()
                         .then(([rows6, fielData]) => {
