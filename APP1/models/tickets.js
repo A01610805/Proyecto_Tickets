@@ -36,7 +36,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket ASC LIMIT ?, 5', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5', [num]);
     }
 
     static fetchticketsactivos() {
@@ -49,7 +49,7 @@ module.exports = class Ticket {
         console.log(arr[1]);
         console.log(arr[2]);
         console.log(arr[3]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND ID_ticket LIKE ? AND Nombre_encargado LIKE ? AND ID_estado LIKE ? AND ID_prioridad LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND ID_ticket LIKE ? AND Nombre_encargado LIKE ? AND ID_estado LIKE ? AND ID_prioridad LIKE ? LIMIT 5', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
     }
 
     static fetchticketsarchivados() {
@@ -62,11 +62,11 @@ module.exports = class Ticket {
         console.log(arr[1]);
         console.log(arr[2]);
         console.log(arr[3]);
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 OR ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ? AND ID_ticket LIKE ? AND ID_prioridad LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado = 6 OR ID_estado = 5 AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ? AND ID_ticket LIKE ? AND ID_prioridad LIKE ? LIMIT 5', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
     }
 
     static fetchticketsarchivados_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket ASC LIMIT ?, 5', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket DESC LIMIT ?, 5', [num]);
     }
 
     static fetchticketsusuario_filtro(valor) {
@@ -80,7 +80,7 @@ module.exports = class Ticket {
     static fetchticketspropios_pag(nom, num) {
         console.log(nom);
         console.log(num);
-        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ASC LIMIT ?, 5', ['%' + nom + '%', num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_estado ASC LIMIT ?, 5', ['%' + nom + '%', num]);
     }
 
     static borrarticketpropio(id) {

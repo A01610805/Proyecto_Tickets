@@ -11,7 +11,7 @@ exports.get_usuarios = async(request, response, next)=>{
             console.log( request.cookies.rolusuario);
             response.render('BuscarUsuarios', {
                 usuario: rows,
-                username: request.session.username ? request.session.username : '',
+                username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3, 
                 total_usuarios: total,
             });

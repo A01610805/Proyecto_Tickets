@@ -15,8 +15,8 @@ module.exports = class Categoria {
 
     save() {
         return db.execute(
-            'INSERT INTO categoria(nombre_categoria, tiempo_estimado) VALUES(?,?)',
-            [this.nombre_categoria, this.tiempo_estimado]);
+            'INSERT INTO categoria(nombre_categoria, tiempo_estimado, disponible) VALUES(?,?,?)',
+            [this.nombre_categoria, this.tiempo_estimado, 1]);
     }
  
     obtenerid(){

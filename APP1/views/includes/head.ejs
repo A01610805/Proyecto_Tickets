@@ -43,8 +43,7 @@
                         <!-- <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"> -->
                     </div>
                     <a href="/home"><img class="circle" src="https://zebrands.mx/wp-content/uploads/2021/07/zebrands.jpg"></a>
-                    <!-- <a href="#name"><span class="white-text name">Bienvenido</span></a>
-                    <a href="#email"><span class="white-text email">Pagina de Tickets de Zebrands</span></a> -->
+                    <h5>Bienvenid@, <%= username %></h5>
                 </div>
             </li>
             <% if(rol==3){ %>
@@ -57,7 +56,7 @@
                 <li><a href="/buscar_tickets/archivo"><i class="material-icons">archive</i>Tickets Archivados</a></li>
                 <li><a href="/buscar_tickets/propio"><i class="material-icons">assignment_ind</i>Mis tickets</a></li>
                 <li><a href="/buscar_usuario/busqueda"><i class="material-icons">account_circle</i>Buscar Usuarios</a></li>
-                <li><a href="#"><i class="material-icons">insert_chart</i>Metricas</a></li>
+                <li><a href="/metricas"><i class="material-icons">insert_chart</i>Metricas</a></li>
                 <li><a href="/users/logout"><i class="material-icons">directions_run</i>Salir de la sesión</a></li>
             <% } else { %>
                 <li><a href="/generar_ticket/enviar_ticket"><i class="material-icons">add_circle</i>Generar Ticket Nuevo</a></li>
@@ -67,7 +66,7 @@
                 <li><a href="/buscar_tickets/archivo"><i class="material-icons">archive</i>Tickets Archivados</a></li>
                 <li><a href="/buscar_tickets/propio"><i class="material-icons">assignment_ind</i>Mis tickets</a></li>
                 <li><a href="/buscar_usuario/busqueda"><i class="material-icons">account_circle</i>Buscar Usuarios</a></li>
-                <li><a href="#"><i class="material-icons">insert_chart</i>Metricas</a></li>
+                <li><a href="/metricas"><i class="material-icons">insert_chart</i>Metricas</a></li>
                 <li><a href="/users/logout"><i class="material-icons">directions_run</i>Salir de la sesión</a></li>
             <% } %>
             <li>

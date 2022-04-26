@@ -15,10 +15,11 @@ exports.get_principal = (request, response, next) => {
                             Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                                 .then(([rows4, fieldData]) => {
                                     console.log(rows3);
+                                    console.log(request.cookies.nombre_usuario);
                                     let numrol = request.cookies.rolusuario;
                                     if (numrol == 3) {
                                         response.render('Primer_pantalla3', {
-                                            username: request.session.name ? request.session.name : '',
+                                            username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                                             ticketss: rows,
                                             respuestas: rows2,
                                             ticketsusuario: rows3,
@@ -27,7 +28,7 @@ exports.get_principal = (request, response, next) => {
                                         });
                                     } else {
                                         response.render('Primer_pantalla', {
-                                            username: request.session.name ? request.session.name : '',
+                                            username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                                             ticketss: rows,
                                             respuestas: rows2,
                                             ticketsusuario: rows3,
