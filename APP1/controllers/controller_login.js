@@ -20,8 +20,7 @@ exports.login = (request, response, next) => {
     console.log('Entrando a fetchOne');
     correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
-        .then(([rows, fielData]) => {
-            
+        .then(([rows, fielData]) => {   
             //Si no existe el usuario, redirige a la pantalla de login
             if (rows.length < 1) {
                 return response.redirect('/users/loginw');
@@ -33,7 +32,7 @@ exports.login = (request, response, next) => {
                 httpOnly: true
             })
 
-            const id_usuario = Usuario.getidusuario(rows[0].correo)
+            const id_usuario = rows[0].ID_usuario
             response.cookie('id_usuario', id_usuario, {
                 httpOnly: true
             })

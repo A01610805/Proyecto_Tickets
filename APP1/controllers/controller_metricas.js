@@ -37,18 +37,28 @@ exports.getmetricas = async(request, response, next) => {
                             for (let trr of rows5){
                                 tr.push(trr.fecha_fin);
                             }
-
+                        console.log('La cookie es:')
+                        console.log(request.cookies.id_usuario)      
+                        Metricas.viewusuariote(request.cookies.id_usuario)
+                        Metricas.ticketsresueltos_usuario()
+                        .then(([rows6, fielData]) => {
+                            let tru=[];
+                            for (let trru of rows6){
+                                tru.push(trru.fecha_fin);
+                            }
                     response.render('metricas', {
                         tiempos: numeros,
                         categorias: cats,
                         dates: fechas,
                         ticketsemitidos: te,
                         ticketsresueltos: tr,
+                        ticketsresueltosu: tru,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : ''
                     });  
                 })
             })
+        })
         })
     })
                 .catch(error => {console.log(error)});
