@@ -634,7 +634,7 @@ CREATE TABLE `usuario_comentario_ticket` (
   `ID_usuario` int(20) NOT NULL,
   `ID_comentario` int(20) NOT NULL,
   `ID_ticket` int(20) NOT NULL,
-  `fecha_comentario` date NOT NULL DEFAULT current_timestamp()
+  `fecha_comentario` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
