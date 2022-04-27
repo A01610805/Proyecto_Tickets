@@ -39,7 +39,7 @@
                     <input type="hidden" name = "ID_preg" value="<%= pregunta.texto_pregunta %>">
                 <% } %> 
                 <% for (let pregunta of preguntas) { %> 
-                    <div>
+                    <div id="contpreg">
 
                         <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
                         <div class="row col s12">
@@ -72,9 +72,9 @@
     	
 	<script>
 
-        (function load(){
+        
             const $btnAdd = document.getElementById("agregar")
-            const $form = document.getElementById("form")
+            const $form = document.getElementById("contpreg")
             const templateElement = () => {
                 return (`
                 
@@ -92,20 +92,15 @@
                 
             })
             const $btnEli = document.getElementById("eliminar")
-                const $form1 = document.getElementById("divpreg")
+            
+            $btnEli.addEventListener("click", (event) => {
+                const $form1 = document.getElementById("contpreg")
                 const $div1 = $form.lastElementChild;
-                $btnEli.addEventListener("click", (event) => {
-                    $form1.removeChild($div1)
+                $div1.remove()
             })
 
-        })()
+        
     </script>
 
-    <script>
-        (function load(){
-            
-
-        })()
-    </script>
     
 <%- include('includes/footer.ejs') %>
