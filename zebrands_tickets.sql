@@ -154,7 +154,7 @@ CREATE TABLE `funcion` (
 CREATE TABLE `genera_ticket` (
   `ID_ticket` int(20) NOT NULL,
   `ID_usuario` int(20) NOT NULL,
-  `fecha_emision` date NOT NULL DEFAULT current_timestamp()
+  `fecha_emision` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
