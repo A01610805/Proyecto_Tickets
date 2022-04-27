@@ -34,7 +34,7 @@ module.exports = class Pregunta {
         }
     delete(id){
         return db.execute(
-            'UPDATE pregutna SET disponible = 0 WHERE ID_pregunta = ?', [id]);
+            'UPDATE pregunta SET disponible = 0 WHERE ID_pregunta = ?', [id]);
     }
         // addpreg(){
         //     return db.execute(
