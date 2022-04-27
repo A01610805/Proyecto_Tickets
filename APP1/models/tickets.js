@@ -156,4 +156,8 @@ module.exports = class Ticket {
         return db.execute('UPDATE ticket set ID_estado = ? WHERE ID_ticket = ?', [nuevo_estado, idticket]);
     }
 
+    static estado_actual(idticket) {
+        return db.execute('SELECT ID_estado FROM ticket WHERE ID_ticket = ?', [idticket]);
+    }
+
 }

@@ -1,4 +1,5 @@
 const Ticket = require('../models/tickets');
+const Asignado = require('../models/resuelve_ticket');
 
 exports.get_ticket = (request, response, next) => {;
     console.log(request.params.id);
@@ -17,9 +18,28 @@ exports.get_ticket = (request, response, next) => {;
 };
 
 exports.post_estado = (request, response, next) => {
-    console.log('Entrando a la asignación de estado');    
-    console.log('Iniciando update');
-    Ticket.update_estado(request.body.estado_nuevo, request.params.id);
+    console.log('Entrando a la asignación de estado');   
+    ea = Ticket.estado_actual(request.params.id); 
+    en = request.body.estado_nuevo;
+    console.log(ea,en,'Iniciando update');
+    if (ea == 1){
+        if (en == 2 || en == 3 || en == 4){
+            Ticket.update_estado(request.body.estado_nuevo, request.params.id);
+            Asignado.encargado_inicial_234(request.cookies.id_usuario, request.params.id);
+        }
+        else if (en == 5 || en == 6){
+            Ticket.update_estado(request.body.estado_nuevo, request.params.id);
+            Asignado.encargado_inicial_56(request.cookies.id_usuario, request.params.id);
+        }
+    } else {
+        if (en == 2 || en == 3 || en == 4){
+            Ticket.update_estado(request.body.estado_nuevo, request.params.id);
+        }
+        else if (en == 5 || en == 6){
+            Ticket.update_estado(request.body.estado_nuevo, request.params.id);
+            Asignado.encargado_inicial_56(request.cookies.id_usuario, request.params.id);
+        }
+    }
     console.log('Terminando update');
     response.redirect('/home')
 };

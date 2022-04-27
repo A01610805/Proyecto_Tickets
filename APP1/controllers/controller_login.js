@@ -26,7 +26,7 @@ exports.login = (request, response, next) => {
             if (rows.length < 1) {
                 return response.redirect('/users/loginw');
             }
-            const user = new User(rows[0].ID_rol, rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
+            const user = new User(rows[0].nombre, rows[0].apellido_paterno, rows[0].apellido_materno, rows[0].correo, rows[0].password);
 
             const rolusuario = rows[0].ID_rol
             response.cookie('rolusuario', rolusuario, {
