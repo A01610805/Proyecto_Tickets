@@ -5,7 +5,7 @@
             <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
                 <% for (let categoria of categorias) { %>
                     <li class="">
-                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>" class=""><%= categoria.nombre_categoria %></a>
     
                     </li>
                 <% } %>
@@ -18,16 +18,18 @@
             <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
                 <h1>Modificar template</h1>
                 <div>
+                    <h3 for=""><%= nombre %></h3>
                     <div >
-                        <label for="">Nombre Categoria</label>
+                        <label for="">Establece nuevo nombre de categoria: </label>
                         <input required id="titulo" name="titulo"><span class=""></span>
-                        <label for="">Establece nuevo nombre de categoria. </label>
+                        
                         
                     </div>
                     <div >
-                        <label for="">Tiempo estimado</label>
+
+                        <label for="">Establece nuevo tiempo estimado: </label>
                         <input required id="tiempo" name="tiempo"><span class=""></span>
-                        <label for="">Establece nuevo tiempo estimado. </label>
+                        
                         
                     </div>
                 </div>
@@ -39,11 +41,10 @@
                 <% for (let pregunta of preguntas) { %> 
                     <div>
 
-                        <label  ><%= pregunta.texto_pregunta %></label>
+                        <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
                         <div class="row col s12">
                             <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
                             <input required id="texto_pregunta" name="texto_pregunta"><span ></span>
-                            <label>Pregunta nueva</label>
                            
                         </div>
                         
@@ -88,12 +89,13 @@
                 const $div = document.createElement("div")
                 $div.innerHTML = templateElement()
                 $form.insertBefore($div, $form.lastChild)
-                const $btnEli = document.getElementById("eliminar")
+                
+            })
+            const $btnEli = document.getElementById("eliminar")
                 const $form1 = document.getElementById("divpreg")
                 const $div1 = $form.lastElementChild;
                 $btnEli.addEventListener("click", (event) => {
                     $form1.removeChild($div1)
-            })
             })
 
         })()

@@ -29,6 +29,7 @@ exports.get_preguntas = (request, response, next) => {
                         categorias: rows,
                         preguntas: rows2,
                         id: request.params.id ? request.params.id : 1,
+                        nombre: request.params.nombre ? request.params.nombre : 1,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                     }); 
@@ -92,7 +93,7 @@ exports.post_mod = (request, response, next) => {
                     
                     const pregunta = new Pregunta(request.body.text_preg[index], request.params.id, request.body.ID_preg[index])
                     console.log(pregunta);
-                    pregunta.delete(request.params.id)
+                    pregunta.delete(request.body.ID_preg[index])
                 
                 }
             }
