@@ -32,7 +32,10 @@
                     </div>
                 </div>
             
-                
+                <% for (let pregunta of preguntas) { %> 
+                    <input type="hidden" name = "text_preg" value="<%= pregunta.texto_pregunta %>">
+                    <input type="hidden" name = "ID_preg" value="<%= pregunta.texto_pregunta %>">
+                <% } %> 
                 <% for (let pregunta of preguntas) { %> 
                     <div>
 
@@ -50,8 +53,8 @@
                 <div class="center ">
                     <button type="submit" class="waves-effect waves-light btn">Guardar</button>
                     <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
-                    <!-- <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> -->
-                    <!-- <button href = "/modificar_template/de_preg" type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> -->
+                     <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> 
+                     <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> 
                 </div>
                 <br><br>
                 
@@ -66,14 +69,7 @@
     
 
     	
-	<!-- <script>
-        let parameters = []
-
-
-        const addJsonElement = json => {
-            parameters.push(json)
-            return parameters.length - 1
-        }
+	<script>
 
         (function load(){
             const $btnAdd = document.getElementById("agregar")
@@ -92,10 +88,22 @@
                 const $div = document.createElement("div")
                 $div.innerHTML = templateElement()
                 $form.insertBefore($div, $form.lastChild)
+                const $btnEli = document.getElementById("eliminar")
+                const $form1 = document.getElementById("divpreg")
+                const $div1 = $form.lastElementChild;
+                $btnEli.addEventListener("click", (event) => {
+                    $form1.removeChild($div1)
+            })
             })
 
         })()
-    </script> -->
+    </script>
 
+    <script>
+        (function load(){
+            
+
+        })()
+    </script>
     
 <%- include('includes/footer.ejs') %>
