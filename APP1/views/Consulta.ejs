@@ -155,21 +155,28 @@ else if(tipo==3){
                     <% var j = 0; %>
                     <%var y = 0%>
                     <%var iconop = ''%>
+                    <%var estado = ''%>
                     <% for (let ticket of tickets) { %>
                         <%var color ='grey lighten-2'; 
                         if (ticket.ID_estado != 1){
                             if(ticket.ID_estado == 1){ 
-                                color = 'grey lighten-2'; 
+                                color = 'grey lighten-2';
+                                estado = '1 - Nuevo';
                             } else if(ticket.ID_estado == 2){ 
                                 color = 'light-blue lighten-5'; 
+                                estado = '2 - En curso';
                             } else if(ticket.ID_estado == 3){ 
                                 color = 'orange lighten-3'; 
+                                estado = '3 - En espera de Información';
                             } else if(ticket.ID_estado == 4){ 
                                 color = 'yellow light-blue lighten-5'; 
+                                estado = '4 - En espera de Visto Bueno';
                             } else if(ticket.ID_estado == 5){ 
-                                color = 'red lighten-4'; 
+                                color = 'red lighten-4';
+                                estado = '5 - Cancelado'; 
                             } else if(ticket.ID_estado == 6){ 
-                                color = 'light-green accent-1'; } 
+                                color = 'light-green accent-1'; 
+                                estado = '6 - Resuelto';} 
                             var prioridad = '';
                             var color_prioridad = ''
                             if(ticket.ID_prioridad == 1){
@@ -264,6 +271,14 @@ else if(tipo==3){
                                                             <span class="title">Asignar A:</span>
                                                             <h5> Creador: <%=ticket.Nombre_creador%> <%=ticket.apellido_P_creador%> <%=ticket.apellido_M_creador%> </h5>
                                                             <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
+                                                        </li>
+                                                        <li class="collection-item avatar">
+                                                            <i class="material-icons circle <%= color %>">priority_high</i>
+                                                            <span class="title">Estado:</span>
+                                                            <h5>
+                                                                <%= estado %> <br>
+                                                            </h5>
+                                                            <a href="/asignar_estado/get_ticket/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
                                                         </li>
                                                         <% } %>
                                                     </ul>
@@ -415,21 +430,29 @@ else if(tipo==3){
                                         var j = 0; 
                                         var y = 0;
                                         var iconop = '';
+                                        var estado = '';
                                         for (let ticket of data.rows) { 
                                             var color ='grey lighten-2'; 
                                             if (ticket.ID_estado != 1){
                                                 if(ticket.ID_estado == 1){ 
-                                                    color = 'grey lighten-2'; 
+                                                    color = 'grey lighten-2';
+                                                    estado = '1 - Nuevo';
                                                 } else if(ticket.ID_estado == 2){ 
                                                     color = 'light-blue lighten-5'; 
+                                                    estado = '2 - En curso';
                                                 } else if(ticket.ID_estado == 3){ 
                                                     color = 'orange lighten-3'; 
+                                                    estado = '3 - En espera de Información';
                                                 } else if(ticket.ID_estado == 4){ 
                                                     color = 'yellow light-blue lighten-5'; 
+                                                    estado = '4 - En espera de Visto Bueno';
                                                 } else if(ticket.ID_estado == 5){ 
-                                                    color = 'red lighten-4'; 
+                                                    color = 'red lighten-4';
+                                                    estado = '5 - Cancelado'; 
                                                 } else if(ticket.ID_estado == 6){ 
-                                                    color = 'light-green accent-1'; } 
+                                                    color = 'light-green accent-1'; 
+                                                    estado = '6 - Resuelto';
+                                                }
                                                 var prioridad = '';
                                                 var color_prioridad = ''
                                                 if(ticket.ID_prioridad == 1){
@@ -476,7 +499,7 @@ else if(tipo==3){
                                                                                 '<span class="title">'+
                                                                                     'Titulo'+
                                                                                 '</span>'+
-                                                                                '<h5>'+ticket.titulo+'</h5>';
+                                                                                '<h5>'+ticket.titulo+'</h5>'+
                                                                                 '<a href="#!" class="secondary-content">';
 
                                                                                     if(([<%=rol%>] != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
@@ -510,6 +533,12 @@ else if(tipo==3){
                                                                                 '<span class="title">Prioridad:</span>'+
                                                                                 '<h5>'+prioridad +'<br> </h5>'+
                                                                                 '<a href="/asignar_prioridad/get_tic/'+ ticket.ID_ticket +'" class="secondary-content modal-close"><i class="material-icons">create</i></a>'+
+                                                                            '</li>'+
+                                                                            '<li class="collection-item avatar">'+
+                                                                                '<i class="material-icons circle' + color +'">priority_high</i>'+
+                                                                                '<span class="title">Estado:</span>'+
+                                                                                '<h5>'+ estado + '<br>' + '</h5>'+
+                                                                                '<a href="/asignar_estado/get_ticket/' + ticket.ID_ticket +'" class="secondary-content modal-close"><i class="material-icons">create</i></a>'+
                                                                             '</li>'+
                                                                             '<li class="collection-item avatar">'+
                                                                                 '<i class="material-icons circle red">account_box</i>'+
