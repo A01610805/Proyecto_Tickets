@@ -1,10 +1,12 @@
 <%- include('includes/head.ejs') %>
+    <style>
 
-        <h1 id="logo" class="center">Asignar ticket a usuario</h1>
+    </style>
+    <h1 id="logo" class="center">Asignar ticket a usuario</h1>
 
-        <form action="" method="POST" id="form">
-            <div class="centers">
-                <select class="selectpicker" data-style="btn-info" name="asignacion">
+    <form action="" method="POST" id="form">
+        <div class="centers">
+            <select class="selectpicker" data-style="btn-info" name="asignacion">
                     <optgroup label="Select Table">
                         <% for (let user of users) { %>
                         <option name="<%=user.ID_usuario%>" value="<%=user.ID_usuario%>"><%=user.nombre%></option>
