@@ -9,7 +9,8 @@
             <select class="selectpicker" data-style="btn-info" name="asignacion">
                     <optgroup label="Select Table">
                         <% for (let user of users) { %>
-                        <option name="<%=user.ID_usuario%>" value="<%=user.ID_usuario%>"><%=user.nombre%></option>
+                        <% let n=(user.ID_usuario)+ ". "+(user.nombre)+" "+(user.apellido_paterno)+" "+(user.apellido_materno) %>
+                        <option name="<%=user.ID_usuario%>" value="<%=user.ID_usuario%>"><%=n%></option>
                         <% } %>
                     </optgroup>
                 </select>
