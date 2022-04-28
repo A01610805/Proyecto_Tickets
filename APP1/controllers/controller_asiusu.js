@@ -4,7 +4,7 @@ const Tickets = require('../models/tickets');
 exports.get_usuario = (request, response, next) => {
     console.log(request.params.id);
     console.log('Entrando al render de asignar ticket a usuario');
-    Usuario.fetchAll()
+    Usuario.fetchAllSoporte()
         .then(([rows, fieldData]) => {
             console.log(rows);
             response.render('asiusu', {
