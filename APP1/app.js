@@ -48,6 +48,7 @@ const rutas_modcomentario = require('./routes/route_modcomentario');
 const rutas_metricas = require('./routes/route_metricas');
 const rutas_arol = require('./routes/route_asignarRol');
 const rutas_asiusu = require('./routes/route_asiusu');
+const rutas_aestado = require('./routes/route_asignarEstado');
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
@@ -61,6 +62,7 @@ app.use('/mod_comentario', rutas_modcomentario);
 app.use('/asignar_rol', rutas_arol);
 app.use('/metricas', rutas_metricas);
 app.use('/asignar_usuario', rutas_asiusu);
+app.use('/asignar_estado', rutas_aestado);
 
 app.use((request, response, ) => {
     response.redirect('/users');

@@ -5,13 +5,13 @@ const bcrypt = require('bcryptjs');
 var correo_usuario = '';
 
 exports.get_login = (request, response, next) => {
-    response.render('Log_in',{
+    response.render('Log_In',{
         error: 0
     });
 };
 
 exports.get_login2 = (request, response, next) => {
-    response.render('Log_in',{
+    response.render('Log_In',{
         error: 1
     });
 };
