@@ -12,11 +12,12 @@
              </ul>
              
         </div>
+        
          
 
         
             <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
-                <h1>Modificar template</h1>
+                
                 <div>
                     <h3 for=""><%= nombre %></h3>
                     <div >
@@ -35,18 +36,22 @@
                 </div>
             
                 <% for (let pregunta of preguntas) { %> 
+                    <% if ( pregunta.disponible == 1) { %>
                     <input type="hidden" name = "text_preg" value="<%= pregunta.texto_pregunta %>">
                     <input type="hidden" name = "ID_preg" value="<%= pregunta.ID_pregunta %>">
+                    <% } %>
                 <% } %> 
                 <% for (let pregunta of preguntas) { %> 
-                    <div id="contpreg">
-                        <div class="row col s12">
-                            <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
-                            <input type="" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
-                            <input required id="texto_pregunta" name="texto_pregunta"><span ></span> 
+                    <% if ( pregunta.disponible == 1) { %>
+                        <div id="contpreg">
+                            <div class="row col s12">
+                                <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
+                                <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
+                                <input required id="texto_pregunta" name="texto_pregunta"><span ></span> 
+                            </div>
+                            
                         </div>
-                        
-                    </div>
+                    <% } %>
                 <% } %>  
                 
 
