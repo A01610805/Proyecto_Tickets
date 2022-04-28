@@ -4,7 +4,7 @@
 
         <h1 id="logo" class="center">Asignar rol</h1>
 
-        <form action="/asignar_rol/post_rol/<%= id %>" method="POST" id="form">
+        <form action="/asignar_rol/post_rol/<%= id %>" method="POST" id="form" onsubmit="return validar()">
 
             <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
                 <h5 id="logo" class="center" for="">Información del usuario:</h5>
@@ -24,8 +24,9 @@
                         <%=user.nombre_rol%>
                 </h6>
                 <div class="centers">
-                    <select class="selectpicker" data-style="btn-info" name="rol_nuevo">
+                    <select class="selectpicker" data-style="btn-info" name="rol_nuevo" id="asignacion">
                     <optgroup label="Select Table">
+                        <option value="nulo" disabled selected>Elige tu opción</option>
                         <option name="table1" value="1">1 - Administrador</option>
                         <option name="table2" value="2">2 - Empleado de soporte</option>
                         <option name="table3" value="3">3 - Empleado general de Zebrands</option>
@@ -40,5 +41,18 @@
             <br></br>
         </form>
     </div>
+
+    <script>
+        function validar() {
+            var asignacion = document.getElementById("asignacion").value;
+            if (asignacion=="nulo"){
+                alert("Selecciona una opción válida");
+                return false;
+            }
+            else if(asignacion!="nulo"){
+                return true;    
+            }
+        }
+    </script>
 
     <%- include('includes/footer.ejs') %>
