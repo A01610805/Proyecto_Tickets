@@ -47,8 +47,6 @@ exports.login = (request, response, next) => {
                 httpOnly: true
             })
 
-            console.log(request.body.password);
-            console.log(user.password);
             bcrypt.compare(request.body.password, user.password)
                 .then(doMatch => {
                     if (doMatch) {
