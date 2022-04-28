@@ -32,6 +32,10 @@ module.exports = class Pregunta {
             return db.execute(
                 'UPDATE pregunta SET texto_pregunta = ? WHERE ID_categoria = ? AND ID_pregunta = ?', [this.texto_pregunta, this.ID_categoria, this.ID_pregunta]);
         }
+    delete(id1, id2){
+            return db.execute(
+                'UPDATE pregunta SET disponible = 0 WHERE ID_categoria = ? AND ID_pregunta = ?', [id1, id2]);
+    }
         // delete(id){
         //     return db.execute(
         //         'DELETE FROM pregunta WHERE  ID_categoria=?', [id]);

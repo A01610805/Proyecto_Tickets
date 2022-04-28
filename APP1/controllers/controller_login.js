@@ -5,25 +5,22 @@ const bcrypt = require('bcryptjs');
 var correo_usuario = '';
 
 exports.get_login = (request, response, next) => {
-    response.render('Log_in',{
+    response.render('Log_In',{
         error: 0
     });
 };
 
 exports.get_login2 = (request, response, next) => {
-    console.log("Si llega");
-    response.render('Log_in',{
+    response.render('Log_In',{
         error: 1
     });
 };
 
 exports.login = (request, response, next) => {
     console.log('Entrando a fetchOne');
-    console.log(request.body);
     correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
-        .then(([rows, fielData]) => {
-            
+        .then(([rows, fielData]) => {   
             //Si no existe el usuario, redirige a la pantalla de login
             if (rows.length < 1) {
                 return response.redirect('/users/loginw');
@@ -34,13 +31,19 @@ exports.login = (request, response, next) => {
             response.cookie('rolusuario', rolusuario, {
                 httpOnly: true
             })
-            const id_usuario = Usuario.getidusuario(rows[0].correo)
+
+            const id_usuario = rows[0].ID_usuario
             response.cookie('id_usuario', id_usuario, {
                 httpOnly: true
             })
 
             const correo_usuario = rows[0].correo
             response.cookie('correo_usuario', correo_usuario, {
+                httpOnly: true
+            })
+
+            const nombre_usuario = rows[0].nombre
+            response.cookie('nombre_usuario', nombre_usuario, {
                 httpOnly: true
             })
 

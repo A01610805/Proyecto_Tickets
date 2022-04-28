@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col s12">
                 <div class="center">
-                    <a id="tamanio" href="/generar_ticket/enviar_ticket" class="center waves-effect waves-green btn-flat">Registrar Ticket</a>
+                    <a id="logo" id="tamanio" href="/generar_ticket/enviar_ticket" class="center waves-effect waves-green btn-flat">Registrar Ticket</a>
                 </div>
             </div>
             <p></p>
@@ -113,7 +113,7 @@
                                                             <div class="card">
                                                                 <div class="card-content <%=color%>">
                                                                     <p id="titulo">
-                                                                        <b><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
+                                                                        <b id="logo"><%= ticket2.ID_ticket + ": " + ticket2.titulo %></b>
 
                                                                         <a class="waves-effect waves-light  btn-small grey lighten modal-trigger pulse right" href="#modal1<%=j%>"><i class="material-icons">edit</i></a>
                                                                     </p>
@@ -230,7 +230,5 @@
 
                     <!--JavaScript at end of body for optimized loading-->
                     <script type="text/javascript" src="js/materialize.min.js"></script>
-    </body>
 
-    </html>
-    <%- include('includes/footer.ejs') %>
+                    <%- include('includes/footer.ejs') %>

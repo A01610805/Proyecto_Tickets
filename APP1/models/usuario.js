@@ -12,6 +12,10 @@ module.exports = class Busqueda {
         return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, nombre_rol FROM usuario NATURAL JOIN rol');
     }
 
+    static fetchAllSoporte() {
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, nombre_rol FROM usuario NATURAL JOIN rol WHERE ID_rol=2 AND ID_rol=1');
+    }
+
     static fetch(valor) {
         let arr = valor.split('&');
         console.log(arr[0]);
@@ -37,7 +41,7 @@ module.exports = class Busqueda {
     }
 
     static fetchusuarios_pag(num) {
-        return db.execute('SELECT * FROM usuario NATURAL JOIN rol GROUP BY nombre ASC LIMIT ?, 5', [num]);
+        return db.execute('SELECT * FROM usuario NATURAL JOIN rol GROUP BY ID_usuario ASC LIMIT ?, 5', [num]);
     }
 
     static fetchusuario_id(id_usuario) {
@@ -45,6 +49,10 @@ module.exports = class Busqueda {
     }
 
     update_rol() {
+        return db.execute('UPDATE usuario set ID_rol = ? WHERE ID_usuario = ?', [this.ID_rol, this.ID_usuario]);
+    }
+
+    static update_rol() {
         return db.execute('UPDATE usuario set ID_rol = ? WHERE ID_usuario = ?', [this.ID_rol, this.ID_usuario]);
     }
 
