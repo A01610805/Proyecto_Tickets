@@ -6,9 +6,11 @@
 
     <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
         <% for (let categoria of categorias) { %>
-            <li class="">
-                <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>" class=""><%= categoria.nombre_categoria %></a>
-            </li>
+            <% if ( categoria.disponible == 1) { %>
+                <li class="">
+                    <a href="/generar_ticket/categoria/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                </li>
+            <% } %>
         <% } %>
         </ul>
 </div>
@@ -33,13 +35,15 @@
 
             <%var j=1; %>
             <% for (let pregunta of preguntas) { %> 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea placeholder="respuesta" id="respuesta+<%j%>" name="respuesta<%+j%>" class="materialize-textarea" maxlength="1000" required="required"></textarea>  
-                        <label for="respuesta+<%j%>" style="font-size:18px"><%= pregunta.texto_pregunta %></label>
+                <% if ( pregunta.disponible == 1) { %>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea placeholder="respuesta" id="respuesta+<%j%>" name="respuesta<%+j%>" class="materialize-textarea" maxlength="1000" required="required"></textarea>  
+                            <label for="respuesta+<%j%>" style="font-size:18px"><%= pregunta.texto_pregunta %></label>
+                        </div>
                     </div>
-                </div>
-                <div id="idpreg" name="idpreg" style="display:none"><%= pregunta.ID_pregunta%></div>
+                    <div id="idpreg" name="idpreg" style="display:none"><%= pregunta.ID_pregunta%></div>
+                    <% } %>
                 <%j=j+1;%>
             <% } %>  
             

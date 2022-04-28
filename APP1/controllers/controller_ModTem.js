@@ -30,6 +30,7 @@ exports.get_preguntas = (request, response, next) => {
                         preguntas: rows2,
                         id: request.params.id ? request.params.id : 1,
                         nombre: request.params.nombre ? request.params.nombre : 1,
+                        tiempo: request.params.tiempo ? request.params.tiempo : 1,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                     }); 
@@ -106,6 +107,13 @@ exports.post_mod = (request, response, next) => {
 
     response.redirect('/home')
 };
+exports.post_delete = (request, response, next) => {
+    
+    const categoria = new Categoria( request.params.nombre, request.params.tiempo, request.params.id);
+    categoria.delete()
+    console.log('Se elimino una categoria');
+    response.redirect('/home')
+}
 
 exports.root = (request, response, next) => {
     response.redirect('/modificar_template'); 

@@ -5,7 +5,7 @@
             <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
                 <% for (let categoria of categorias) { %>
                     <li class="">
-                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>" class=""><%= categoria.nombre_categoria %></a>
+                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>/<%= categoria.tiempo_estimado %>" class=""><%= categoria.nombre_categoria %></a>
     
                     </li>
                 <% } %>
@@ -14,12 +14,14 @@
         </div>
         
          
-
+        
         
             <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
                 
                 <div>
                     <h3 for=""><%= nombre %></h3>
+                    
+
                     <div >
                         <label for="">Establece nuevo nombre de categoria: </label>
                         <input required id="titulo" name="titulo"><span class=""></span>
@@ -64,9 +66,16 @@
                 </div>
                 <br><br>
                 
+                
+            </form>
+            <form action = "/modificar_template/delete_tem/<%= id %>/<%=nombre %>/<%= tiempo %>" method = "post">
+                <button class="btn tooltipped btn-floating btn-large waves-effect waves-light red " data-position="bottom" data-tooltip="Eliminar template"><i class="material-icons">clear</i></button>
             </form>
 
             <br><br>
+            
+
+            
             
         
     
