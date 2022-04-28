@@ -48,6 +48,15 @@
                 display: none;
             }
             
+            #nsb {
+                height: 100px;
+                border: 1px solid #ddd;
+                background: white;
+                border-radius: 5%;
+                overflow-y: scroll;
+                flex-wrap: wrap;
+            }
+            
             .modal-footer::-webkit-scrollbar {
                 display: none;
             }
@@ -291,9 +300,22 @@
                                                                                 <%=ticket.Apellido_materno%>
                                                                     </p>
                                                                 </div>
-                                                                <div id="test<%= i+4%>">
-                                                                    <%= ticket.comentarios_solucion %>
 
+                                                                <div id="test<%= i+4%>">
+                                                                    <div id="nsb">
+                                                                        <div class="row">
+                                                                            <div class="col 12">
+                                                                                <strong>El creador fue: Flavio</strong>
+
+                                                                            </div>
+                                                                            <div class="col s12">
+                                                                                <p>12/02/22: </p>
+                                                                                <p>me gusta el nepe</p>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
                                                                 </div>
 
                                                             </div>
@@ -493,30 +515,34 @@
                                                                 </p>
                                                             </div>
                                                             <div id="tests<%= z+4%>">
-                                                                <%= ticket2.comentarios_solucion %>
-                                                                    <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
-                                                                    <div id="agregarcomentario<%=y%>" class="modal">
-                                                                        <div class="modal-content">
-                                                                            <h4>
-                                                                                Agregar comentario?
-                                                                            </h4>
+                                                                <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                                <div id="nsb">
+                                                                    <%= ticket2.comentarios_solucion %>
+                                                                </div>
+
+
+                                                                <div id="agregarcomentario<%=y%>" class="modal">
+                                                                    <div class="modal-content">
+                                                                        <h4>
+                                                                            Agregar comentario?
+                                                                        </h4>
+
+                                                                    </div>
+                                                                    <%y=y+1%>
+                                                                        <div class="modal-footer">
+                                                                            <div class="center ">
+
+                                                                                <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                            </div>
+                                                                            </form>
+
+
+
+
 
                                                                         </div>
-                                                                        <%y=y+1%>
-                                                                            <div class="modal-footer">
-                                                                                <div class="center ">
-
-                                                                                    <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
-                                                                                    <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
-                                                                                </div>
-                                                                                </form>
-
-
-
-
-
-                                                                            </div>
-                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
