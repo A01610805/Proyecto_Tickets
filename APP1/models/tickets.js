@@ -83,8 +83,12 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
     }
 
-    static borrarticketpropio(id) {
-        return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
+    static cancelar_ticket_1(idticket) {
+        return db.execute('UPDATE ticket SET ID_estado = 5 WHERE ID_ticket=?', [idticket])
+    }
+
+    static cancelar_ticket_2(idticket) {
+        return db.execute('UPDATE resuelve_ticket SET fecha_fin = CURRENT_TIMESTAMP WHERE ID_ticket=?', [idticket])
     }
 
     static getTotal_activos() {
@@ -134,16 +138,19 @@ module.exports = class Ticket {
     }
 
     // ========================================================================================== //
-    static borrarticket(id) {
+    /*static borrarticket(id) {
         return db.execute('UPDATE ticketstotal SET ticketstotal.ID_estado=5 WHERE ticketstotal.ID_ticket=?', [id])
+    }*/
+
+    static borrarticketnuevo1(idticket) {
+        return db.execute('UPDATE ticket SET ID_estado = 5 WHERE ID_ticket=?', [idticket])
     }
 
-    static borrarticketnuevo(id) {
-        return db.execute('UPDATE ticketsnuevos SET ticketsnuevos.ID_estado=5 WHERE ticketsnuevos.ID_ticket=?', [id])
+    static borrarticketnuevo2(idusuario,idticket) {
+        return db.execute('UPDATE resuelve_ticket SET ID_usuario = ?, fecha_inicio = CURRENT_TIMESTAMP, fecha_fin = CURRENT_TIMESTAMP, comentarios_solucion = "Ticket cancelado" WHERE ID_ticket=?', [idusuario,idticket])
     }
 
     static modificarcomentario(id1, id2) {
-
         return db.execute('UPDATE ticketstotal set comentarios_solucion = ? WHERE  ID_ticket = ?', [id1, id2]);
     }
 
