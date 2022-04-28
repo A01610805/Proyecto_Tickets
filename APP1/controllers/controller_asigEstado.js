@@ -17,12 +17,13 @@ exports.get_ticket = (request, response, next) => {;
         .catch(error => { console.log(error) });
 };
 
-exports.post_estado = (request, response, next) => {
+exports.post_estado = async (request, response, next) => {
     console.log('Entrando a la asignación de estado');   
-    ea = Ticket.estado_actual(request.params.id); 
-    en = request.body.estado_nuevo;
-    console.log(ea,en,'Iniciando update');
-    if (ea == 1){
+    const ea = await Ticket.estado_actual(request.params.id); 
+    let en = request.body.estado_nuevo;
+    console.log(ea[0][0].ID_estado,en,'Iniciando update');
+    console.log(request.cookies.id_usuario, request.params.id);
+    if (ea[0][0].ID_estado == 1){
         if (en == 2 || en == 3 || en == 4){
             Ticket.update_estado(request.body.estado_nuevo, request.params.id);
             Asignado.encargado_inicial_234(request.cookies.id_usuario, request.params.id);
