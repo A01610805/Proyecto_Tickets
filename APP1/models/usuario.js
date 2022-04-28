@@ -13,7 +13,7 @@ module.exports = class Busqueda {
     }
 
     static fetchAllSoporte() {
-        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, nombre_rol FROM usuario NATURAL JOIN rol WHERE ID_rol=2 AND ID_rol=1');
+        return db.execute('SELECT ID_usuario, ID_rol, nombre, apellido_paterno, apellido_materno, correo, nombre_rol FROM usuario NATURAL JOIN rol WHERE ID_rol=2 OR ID_rol=1');
     }
 
     static fetch(valor) {
