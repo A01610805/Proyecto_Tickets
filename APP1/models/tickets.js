@@ -147,4 +147,17 @@ module.exports = class Ticket {
         return db.execute('UPDATE ticketstotal set comentarios_solucion = ? WHERE  ID_ticket = ?', [id1, id2]);
     }
 
+    //================================================================================================//
+    static fetchticket_estado(id) {
+        return db.execute('SELECT * FROM ticket WHERE ID_ticket = ?', [id]);
+    }
+
+    static update_estado(nuevo_estado, idticket) {
+        return db.execute('UPDATE ticket set ID_estado = ? WHERE ID_ticket = ?', [nuevo_estado, idticket]);
+    }
+
+    static estado_actual(idticket) {
+        return db.execute('SELECT ID_estado FROM ticket WHERE ID_ticket = ?', [idticket]);
+    }
+
 }
