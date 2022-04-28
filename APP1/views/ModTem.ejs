@@ -40,17 +40,15 @@
                 <% } %> 
                 <% for (let pregunta of preguntas) { %> 
                     <div id="contpreg">
-
-                        
                         <div class="row col s12">
                             <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
-                            <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
-                            <input required id="texto_pregunta" name="texto_pregunta"><span ></span>
-                           
+                            <input type="" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
+                            <input required id="texto_pregunta" name="texto_pregunta"><span ></span> 
                         </div>
                         
                     </div>
                 <% } %>  
+                
 
                 <div class="center ">
                     
@@ -89,7 +87,7 @@
             $btnAdd.addEventListener("click", (event) => {
                 const $div = document.createElement("div")
                 $div.innerHTML = templateElement()
-                $form.insertBefore($div, $form.lastChild)
+                $form.insertBefore($div, $form.lastElementChild)
                 
             })
             const $btnEli = document.getElementById("eliminar")

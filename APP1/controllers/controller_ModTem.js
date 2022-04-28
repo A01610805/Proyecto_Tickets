@@ -49,69 +49,33 @@ exports.post_mod = (request, response, next) => {
 
     if((Array.isArray(request.body.texto_pregunta) == true) && Array.isArray(request.body.text_preg) == true){ 
         console.log('Los dos son un arreglo');
-        if (request.body.texto_pregunta.length == request.body.text_preg.length) {
-            console.log('Aqui se van actualizar un template entero');
-            for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
-                console.log(index);
-                if (request.body.texto_pregunta[index] != null) {
-                    
-                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
-                    console.log(pregunta);
-                    pregunta.update()
-                    console.log('Funciono');
-                
-                }
+        for (let index = 0; index < request.body.text_preg.length; index++) {
+            if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] != undefined)) {
+                const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_preg[index])
+                console.log(pregunta);
+                pregunta.update()
+                console.log('Se actualizo una pregunta')
             }
-        }
-        if (request.body.texto_pregunta.length >= request.body.text_preg.length) {
-            console.log('Aqui se va a extender un template');
-            for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
-                console.log(index);
-                if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] != undefined)) {
-                    
-                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
-                    console.log(pregunta);
-                    pregunta.update()
-                    
-                
-                }
-                if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] == undefined)) {
-                    
-                    const pregunta = new Preguntan(request.body.texto_pregunta[index])
-                    console.log(pregunta);
-                    pregunta.save(request.params.id)
-                    console.log('Funciono');
-                
-                }
+
+            if ((request.body.texto_pregunta[index] == undefined) && (request.body.text_preg[index] != undefined)) {
+                const pregunta = new Pregunta(request.body.text_preg[index], request.params.id, request.body.ID_preg[index])
+                console.log(pregunta);
+                pregunta.delete(request.body.ID_preg[index])
+                console.log('Se elimino una pregunta');
             }
-        }
-        if (request.body.texto_pregunta.length <= request.body.text_preg.length) {
-            console.log('Aqui se va a reducir un template');
-            for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
-                console.log(index);
-                if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] != undefined)) {
-                    
-                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_pregunta[index])
-                    console.log(pregunta);
-                    pregunta.update() 
-                    
-                
-                }
-                if ((request.body.texto_pregunta[index] == undefined) && (request.body.text_preg[index] != undefined)) {
-                    
-                    const pregunta = new Pregunta(request.body.text_preg[index], request.params.id, request.body.ID_preg[index])
-                    console.log(pregunta);
-                    pregunta.delete(request.body.ID_preg[index])
-                    console.log('Funciono');
-                
-                }
+            if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] == undefined)) {
+                console.log('Se agrego una pregunta');
+                const pregunta = new Preguntan(request.body.texto_pregunta[index])
+                console.log(pregunta);
+                pregunta.save(request.params.id)
             }
+            
         }
         
     }
     if((Array.isArray(request.body.texto_pregunta) == false) && (Array.isArray(request.body.text_preg) == true) ){
         console.log('El original es  un arreglo y el nuevo no');
-        for (let index = 1; index <= request.body.text_preg.length; index++) {
+        for (let index = 1; index < request.body.text_preg.length; index++) {
             const pregunta = new Pregunta(request.body.text_preg[index], request.params.id, request.body.ID_preg[index])
             console.log(pregunta);
             pregunta.delete(request.body.ID_preg[index])
@@ -122,17 +86,20 @@ exports.post_mod = (request, response, next) => {
     }
     if((Array.isArray(request.body.texto_pregunta) == true) && (Array.isArray(request.body.text_preg) == false) ){
         console.log('Solo el nuevo es un arrglo');
-        for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
+        for (let index = 0; index < request.body.texto_pregunta.length; index++) {
+            console.log(index);
             if (index == 0) {
-                const pregunta = new Pregunta(request.body.texto_pregunta, request.params.id,request.body.ID_pregunta)
+                console.log('IF del 0');
+                const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id,request.body.ID_pregunta[index])
                 console.log(pregunta);
                 pregunta.update()
-            }else if (index != 0){
+            }
+            if (index != 0){
+                console.log('despues del 0');
                 const pregunta = new Preguntan(request.body.texto_pregunta[index])
                 console.log(pregunta);
                 pregunta.save(request.params.id)
             }
-            
             
         }
     }

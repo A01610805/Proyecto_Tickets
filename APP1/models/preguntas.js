@@ -29,12 +29,12 @@ module.exports = class Pregunta {
             'SELECT COUNT(*) FROM pregunta WHERE ID_categoria = ?', [id]);
     }
     update() {
-            return db.execute(
-                'UPDATE pregunta SET texto_pregunta = ? WHERE ID_categoria = ? AND ID_pregunta = ?', [this.texto_pregunta, this.ID_categoria, this.ID_pregunta]);
+        return db.execute(
+            'UPDATE pregunta SET texto_pregunta = ? WHERE ID_categoria = ? AND ID_pregunta = ?', [this.texto_pregunta, this.ID_categoria, this.ID_pregunta]);
         }
     delete(id){
         return db.execute(
-            'UPDATE pregunta SET disponible = 0 WHERE ID_pregunta = ?', [id]);
+            'UPDATE pregunta SET disponible = ? WHERE ID_pregunta = ?', [0, id]);
     }
         // addpreg(){
         //     return db.execute(
