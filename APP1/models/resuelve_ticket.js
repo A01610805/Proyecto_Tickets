@@ -11,8 +11,12 @@ module.exports = class RESUELVE {
         return db.execute('UPDATE resuelve_ticket set ID_usuario = ?, fecha_inicio = CURRENT_TIMESTAMP, fecha_fin = CURRENT_TIMESTAMP, comentarios_solucion = "Ticket resuelto o cancelado instantaneamente"  WHERE ID_ticket = ?', [idusuario,idticket]);
     }
 
-    static estado_56(idusuario,idticket) {
-        return db.execute('UPDATE resuelve_ticket set fecha_fin = CURRENT_TIMESTAMP WHERE ID_ticket = ?', [idusuario,idticket]);
+    static estado_56(idticket) {
+        return db.execute('UPDATE resuelve_ticket set fecha_fin = CURRENT_TIMESTAMP WHERE ID_ticket = ?', [idticket]);
+    }
+
+    static estado_1(idticket) {
+        return db.execute('UPDATE resuelve_ticket set ID_usuario = NULL, fecha_inicio = NULL WHERE ID_ticket = ?', [idticket]);
     }
 
     /*static inicio_solucion(idticket) {

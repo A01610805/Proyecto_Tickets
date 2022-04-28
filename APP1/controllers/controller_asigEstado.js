@@ -33,12 +33,16 @@ exports.post_estado = async (request, response, next) => {
             Asignado.encargado_inicial_56(request.cookies.id_usuario, request.params.id);
         }
     } else {
-        if (en == 2 || en == 3 || en == 4){
+        if (en == 1){
+            Ticket.update_estado(request.body.estado_nuevo, request.params.id);
+            Asignado.estado_1(request.params.id);
+        }
+        else if (en == 2 || en == 3 || en == 4){
             Ticket.update_estado(request.body.estado_nuevo, request.params.id);
         }
         else if (en == 5 || en == 6){
             Ticket.update_estado(request.body.estado_nuevo, request.params.id);
-            Asignado.estado_56(request.cookies.id_usuario, request.params.id);
+            Asignado.estado_56(request.params.id);
         }
     }
     console.log('Terminando update');
