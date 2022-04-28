@@ -15,6 +15,10 @@ exports.get_usuario = (request, response, next) => {
         })
         .catch(error => { console.log(error) });  
 }
-exports.post_asiusu = (request, response, next) => {}
+exports.post_asiusu = (request, response, next) => {
+    console.log(request.body.asignacion)
+    
+    response.redirect('/home')    
+}
 exports.root = (request, response, next) => {
 res.redirect('/asignar');}
