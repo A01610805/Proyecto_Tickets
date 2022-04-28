@@ -44,7 +44,7 @@ exports.getmetricas = async(request, response, next) => {
                             for (let trru of rows6){
                                 tru.push(trru.fecha_fin);
                             }
-                    response.render('metricas', {
+                    response.render('Metricas', {
                         tiempos: numeros,
                         categorias: cats,
                         dates: fechas,
