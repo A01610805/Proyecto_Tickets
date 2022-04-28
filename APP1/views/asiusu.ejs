@@ -1,2 +1,21 @@
 <%- include('includes/head.ejs') %>
-<%- include('includes/footer.ejs') %>
+
+        <h1 id="logo" class="center">Asignar ticket a usuario</h1>
+
+        <form action="" method="POST" id="form">
+            <div class="centers">
+                <select class="selectpicker" data-style="btn-info" name="asignacion">
+                    <optgroup label="Select Table">
+                        <% for (let user of users) { %>
+                        <option name="<%=user.ID_usuario%>" value="<%=user.ID_usuario%>"><%=user.nombre%></option>
+                        <% } %>
+                    </optgroup>
+                </select>
+                </div>
+                <div class="right">
+                    <button id="logo" type="submit" class="waves-effect waves-light btn">Guardar</button>
+                    <a id="logo" href="/buscar_usuario/busqueda" class="waves-effect waves-light btn">Cancelar</a>
+                </div>
+        </form>
+            
+            <%- include('includes/footer.ejs') %>
