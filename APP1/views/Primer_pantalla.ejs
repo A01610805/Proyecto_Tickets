@@ -71,36 +71,6 @@
 
         <div class="row">
             <br>
-<<<<<<< HEAD
-            <h4>Estados del Ticket:</h4>
-            <a class="btn tooltipped grey " data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
-            <a class="btn tooltipped light-blue lighten-3" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
-            <a class="btn tooltipped orange lighten-3" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información!"></a>
-            <a class="btn tooltipped yellow light-blue lighten-2" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno!"></a>
-            <a class="btn tooltipped red lighten-2" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
-            <a class="btn tooltipped light-green accent-1" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
-        </div>
-
-        <div id="tooltips2" class="col s6 center">
-            <h4>Prioridades del Ticket:</h4>
-            <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad Por Asignar"><i class="material-icons">filter_1</i></a>
-            <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad Baja"><i class="material-icons">filter_2</i></a>
-            <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad Media"><i class="material-icons">looks_3</i></a>
-            <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad Alta"><i class="material-icons">looks_4</i></a>
-            <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad Urgente"><i class="material-icons">looks_5</i></a>
-        </div>
-        <div class="col s12"></div>
-        <div class="col s6">
-            <div id="global">
-                <blockquote>
-                    <div class="center">
-                        <h5 id="logo">Tickets Nuevos</h5>
-
-                    </div>
-                </blockquote>
-                <div class=" center">
-                    <ul class="collection">
-=======
             <div id="tooltips2" class="col s6 center">
                 <h4 id="logo">Estados del Ticket:</h4>
                 <a class="btn tooltipped grey pulse" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
@@ -132,7 +102,6 @@
                     </blockquote>
                     <div class=" center">
                         <!-- <ul class="collection"> -->
->>>>>>> develop
                         <% var i = 0; %>
                             <% var acumodal1 = 0 %>
                                 <% var j = 0; %>
@@ -140,10 +109,7 @@
                                         <%var iconop = ''%>
                                             <% for (let ticket of ticketss) { %>
                                                 <%var color ='grey lighten-2'; 
-<<<<<<< HEAD
-=======
                                                     var estado = '';
->>>>>>> develop
                                         if (ticket.ID_estado == 1){
                                         if(ticket.ID_estado == 1){ 
                                             color = 'grey lighten-2';
@@ -194,47 +160,6 @@
                                         } 
                                         
                                         %>
-<<<<<<< HEAD
-                                                    <li class="collection-item grey">
-                                                        <div class="col s12 ">
-                                                            <p class="z-depth-4">
-                                                                <div id="carta" class="card">
-                                                                    <div class="card-content <%=color%>">
-                                                                        <p id="titulo">
-                                                                            <b><%= ticket.ID_ticket + ": " + ticket.titulo %></b>
-                                                                            <i class="material-icons left"><%= iconop %></i>
-                                                                            <a class="waves-effect waves-light  btn-small grey modal-trigger pulse right" href="#modala<%= acumodal1%>"><i class="material-icons">edit</i></a>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div id="modala<%= acumodal1%>" class="modal">
-                                                                        <div class="modal-content">
-
-                                                                            <ul class="collection">
-                                                                                <li class="collection-item avatar">
-                                                                                    <i class="material-icons circle green">folder</i>
-                                                                                    <span class="title">
-                                                                                    Titulo
-                                                                                </span>
-                                                                                    <h5>
-                                                                                        <%= ticket.titulo %>
-                                                                                    </h5>
-                                                                                    <a href="#!" class="secondary-content">
-                                                                                        <form action="/home" method="POST">
-                                                                                            <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
-                                                                                            <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
-                                                                                    </button>
-                                                                                        </form>
-                                                                                    </a>
-
-                                                                                </li>
-                                                                                <li class="collection-item avatar">
-                                                                                    <i class="material-icons circle blue">collections_bookmark</i>
-                                                                                    <span class="title">Descripcion:</span><br>
-                                                                                    <h5>
-                                                                                        <%= ticket.descripcion %>
-                                                                                    </h5>
-                                                                                    <!-- <a href="#!" class="secondary-content">
-=======
                                                     <!-- <li class="collection-item grey darken-2"> -->
                                                     <div class="col s12 ">
                                                         <!-- <p class="z-depth-4"> -->
@@ -274,7 +199,6 @@
                                                                                 <%= ticket.descripcion %>
                                                                             </h5>
                                                                             <!-- <a href="#!" class="secondary-content">
->>>>>>> develop
                                                                                             <form action="/home" method="POST">
                                                                                                 <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                                                 <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
@@ -282,56 +206,6 @@
                                                                                             </form>
 
                                                                                         </a> -->
-<<<<<<< HEAD
-                                                                                </li>
-                                                                                <li class="collection-item avatar">
-                                                                                    <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                    <span class="title">Prioridad:</span>
-                                                                                    <h5>
-                                                                                        <%= prioridad %> <br>
-                                                                                    </h5>
-
-                                                                                    <a href="/asignar_prioridad/get_tic/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                                </li>
-                                                                                <li class="collection-item avatar">
-                                                                                    <i class="material-icons circle red">account_box</i>
-                                                                                    <span class="title">Asignar A:</span>
-                                                                                    <h5>
-                                                                                        Creador:
-                                                                                        <%=ticket.nombre %>
-                                                                                            <%=ticket.apellido_paterno%>
-                                                                                                <%=ticket.Apellido_materno%>
-                                                                                    </h5>
-
-
-                                                                                    <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
-                                                                                </li>
-                                                                            </ul>
-
-
-                                                                            <%acumodal1=acumodal1+1%>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="card-tabs">
-                                                                        <ul id="hola" class="tabs tabs-fixed-width">
-                                                                            <li class="tab"><a class="active" href="#test<%= i+1%>"><i class="material-icons">assignment</i></a></li>
-                                                                            <li class="tab "><a href="#test<%= i+2%>"><i class="material-icons">forum</i></a></li>
-                                                                            <li class="tab"><a href="#test<%=i+3%>"><i class="material-icons">assignment_ind</i></a></li>
-                                                                            <li class="tab "><a href="#test<%= i+4%>"><i class="material-icons">chat_bubble_outline</i></a></li>
-
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="card-content">
-                                                                        <div id="test<%= i+1%>">
-                                                                            <%= ticket.descripcion %>
-
-                                                                        </div>
-                                                                        <div id="test<%= i+2%>">
-                                                                            <p>
-                                                                                <% 
-=======
                                                                         </li>
                                                                         <li class="collection-item avatar">
                                                                             <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -390,7 +264,6 @@
                                                                 <div id="test<%= i+2%>">
                                                                     <p>
                                                                         <% 
->>>>>>> develop
                                                                                 let r=1;
                                                                                 var pr="";
                                                                                 var rp="";
@@ -401,47 +274,14 @@
                                                                                         pr += respuesta.texto_pregunta;
                                                                                         rp += respuesta.texto_respuesta;
                                                                                         r=r+1; %>
-<<<<<<< HEAD
-                                                                                    <b><%= pr%></b>
-                                                                                    <%= rp%>
-                                                                                        <br><br>
-                                                                                        <%pr="";rp="";  
-=======
                                                                             <b><%= pr%></b>
                                                                             <%= rp%>
                                                                                 <br><br>
                                                                                 <%pr="";rp="";  
->>>>>>> develop
                                                                                     }
                                                                                 
                                                                                 }%>
 
-<<<<<<< HEAD
-                                                                            </p>
-                                                                        </div>
-                                                                        <div id="test<%= i+3%>">
-                                                                            <p><b>Nombre del Creador:</b>
-                                                                                <%=ticket.nombre%>
-                                                                                    <%=ticket.apellido_paterno%>
-                                                                                        <%=ticket.Apellido_materno%>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div id="test<%= i+4%>">
-                                                                            <%= ticket.comentarios_solucion %>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </p>
-                                                        </div>
-
-                                                    </li>
-                                                    <% i=i+4 %>
-                                                        <% } %>
-                                                            <% } %>
-                    </ul>
-=======
                                                                     </p>
                                                                 </div>
                                                                 <div id="test<%= i+3%>">
@@ -466,26 +306,11 @@
                                                         <% } %>
                                                             <% } %>
                                                                 <!-- </ul> -->
->>>>>>> develop
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-<<<<<<< HEAD
-        <div class="col s6">
-            <div id="global1">
-                <blockquote>
-                    <div class="center">
-                        <h5 id="logo">Mis Tickets</h5>
-                    </div>
-                </blockquote>
-                <div class=" center">
-                    <ul class="collection">
-                        <% var z = 0; %>
-                            <% var acumodal2 = 0 %>
-                                <% var iconop = '' %>
-=======
             <div class="col s6">
                 <div id="global1">
                     <blockquote>
@@ -497,7 +322,6 @@
                         <ul class="collection">
                             <% var z = 0; %>
                                 <% var acumodal2 = 0 %>
->>>>>>> develop
 
                                     <% var j = 0; %>
                                         <% for (let ticket2 of ticketsusuario) { %>
@@ -594,57 +418,6 @@
                                                                                     </form>
 
                                                                                 </a> -->
-<<<<<<< HEAD
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                <span class="title">Prioridad:</span>
-                                                                                <h5>
-                                                                                    <%= prioridad %> <br>
-                                                                                </h5>
-
-
-                                                                                <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle red">account_box</i>
-                                                                                <span class="title">Asignar A:</span>
-                                                                                <h5>
-                                                                                    Creador:
-                                                                                    <%=ticket2.Nombre_creador%>
-                                                                                        <%=ticket2.apellido_P_creador%>
-                                                                                            <%=ticket2.Apellido_M_creador%>
-                                                                                </h5>
-
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                <span class="title">Prioridad:</span>
-                                                                                <h5>
-                                                                                    <%= prioridad %> <br>
-                                                                                </h5>
-
-                                                                                <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                            </li>
-                                                                            <li class="collection-item avatar">
-                                                                                <i class="material-icons circle red">account_box</i>
-                                                                                <span class="title">Asignar A:</span>
-                                                                                <h5>
-                                                                                    Creador:
-                                                                                    <%=ticket2.Nombre_creador%>
-                                                                                        <%=ticket2.apellido_P_creador%>
-                                                                                            <%=ticket2.Apellido_M_creador%>
-                                                                                </h5>
-
-
-                                                                                <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
-                                                                            </li>
-                                                                        </ul>
-
-
-                                                                        <%acumodal2=acumodal2+1%>
-=======
                                                                     </li>
                                                                     <!-- <li class="collection-item avatar">
                                                                         <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -665,7 +438,6 @@
                                                                                 <%=ticket2.apellido_P_creador%>
                                                                                     <%=ticket2.Apellido_M_creador%>
                                                                         </h5>
->>>>>>> develop
 
 
                                                                         <a href="/asignar_usuario/asignar/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">add</i></a>
@@ -743,15 +515,6 @@
 
 
 
-<<<<<<< HEAD
-                                                                                    </div>
-
-                                                                            </div>
-                                                                    </div>
-                                                        </p>
-
-                                                </li>
-=======
                                                                             </div>
                                                                     </div>
                                                             </div>
@@ -760,16 +523,11 @@
                                                     <!-- </p> -->
                                                 </div>
                                                 <!-- </li> -->
->>>>>>> develop
                                                 <% z=z+4 %>
                                                     <% } %>
                                                         <% } %>
-                    </ul>
+                        </ul>
 
-<<<<<<< HEAD
-                    </div>
-=======
->>>>>>> develop
                     </div>
                 </div>
                 <p></p>
@@ -886,35 +644,6 @@
                                                                                             </form>
 
                                                                                         </a> -->
-<<<<<<< HEAD
-                                                                                    </li>
-                                                                                    <li class="collection-item avatar">
-                                                                                        <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                                        <span class="title">Prioridad:</span>
-                                                                                        <h5>
-                                                                                            <%= prioridad %> <br>
-                                                                                        </h5>
-
-                                                                                        <<<<<<< HEAD=======>>>>>>> develop
-                                                                                            <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                                    </li>
-                                                                                    <li class="collection-item avatar">
-                                                                                        <i class="material-icons circle red">account_box</i>
-                                                                                        <span class="title">Asignar A:</span>
-                                                                                        <h5>
-                                                                                            Creador:
-                                                                                            <%=ticket2.Nombre_creador %>
-                                                                                                <%=ticket2.apellido_P_creador %>
-                                                                                                    <%=ticket2.Apellido_M_creador %>
-                                                                                        </h5>
-
-                                                                                        <a href="#!" class="secondary-content modal-close"><i class="material-icons">add</i></a>
-                                                                                    </li>
-                                                                                </ul>
-
-
-                                                                                <%acumodal3 = acumodal3 + 1%>
-=======
                                                                         </li>
                                                                         <li class="collection-item avatar">
                                                                             <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
@@ -945,7 +674,6 @@
                                                                             <a href="/asignar_usuario/asignar/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">add</i></a>
                                                                         </li>
                                                                     </ul>
->>>>>>> develop
 
 
                                                                     <%acumodal3 = acumodal3 + 1%>
