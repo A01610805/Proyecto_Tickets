@@ -38,7 +38,7 @@ exports.post_estado = async (request, response, next) => {
         }
         else if (en == 5 || en == 6){
             Ticket.update_estado(request.body.estado_nuevo, request.params.id);
-            Asignado.encargado_inicial_56(request.cookies.id_usuario, request.params.id);
+            Asignado.estado_56(request.cookies.id_usuario, request.params.id);
         }
     }
     console.log('Terminando update');
