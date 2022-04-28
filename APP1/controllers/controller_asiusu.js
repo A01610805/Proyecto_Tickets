@@ -1,4 +1,5 @@
 const Usuario = require('../models/usuario');
+const Tickets = require('../models/tickets');
 
 exports.get_usuario = (request, response, next) => {
     console.log(request.params.id);
@@ -16,8 +17,8 @@ exports.get_usuario = (request, response, next) => {
         .catch(error => { console.log(error) });  
 }
 exports.post_asiusu = (request, response, next) => {
-    console.log(request.body.asignacion)
-    
+    Tickets.asignarusuario(request.body.asignacion, request.params.id);
+    Tickets.actualizarestado(request.params.id);
     response.redirect('/home')    
 }
 exports.root = (request, response, next) => {

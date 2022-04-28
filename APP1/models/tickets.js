@@ -159,5 +159,11 @@ module.exports = class Ticket {
     static estado_actual(idticket) {
         return db.execute('SELECT ID_estado FROM ticket WHERE ID_ticket = ?', [idticket]);
     }
+    static asignarusuario(idu, idt){
+        return db.execute('UPDATE resuelve_ticket SET ID_usuario=?, fecha_inicio=CURRENT_DATE() WHERE ID_ticket=?',[idu, idt]);
+    }
+    static actualizarestado(idt){
+        return db.execute('UPDATE ticketstotal SET ID_estado=2 WHERE ID_ticket=?',[idt]);
+    }
 
 }
