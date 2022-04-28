@@ -18,8 +18,8 @@ exports.get_usuario = (request, response, next) => {
 }
 exports.post_asiusu = (request, response, next) => {
     Tickets.asignarusuario(request.body.asignacion, request.params.id);
-    Tickets.actualizarestado(request.params.id);
-    response.redirect('/home')    
+    response.redirect('/home'); 
 }
+
 exports.root = (request, response, next) => {
 res.redirect('/asignar');}
