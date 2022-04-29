@@ -15,7 +15,6 @@ router.post('/activos', tilogin.post_activos);
 router.get('/start2/:start2', isAuth, authPage(['1','2']), tilogin.get_archivo);
 router.get('/archivo/:valor', isAuth, authPage(['1','2']), tilogin.buscar_archivo);
 router.get('/archivo', isAuth, authPage(['1','2']), tilogin.get_archivo);
-router.post('/archivo', tilogin.post_archivo);
 
 //Prueba con ajax
 router.get('/start3/:start3', isAuth, tilogin.get_ticketspropios);

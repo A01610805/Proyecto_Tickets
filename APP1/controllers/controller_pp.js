@@ -43,52 +43,12 @@ exports.get_principal = (request, response, next) => {
 };
 exports.post_principal = (request, response, next) => {
     console.log('Pantalla principal');
-    Tickets.borrarticket(request.body.idticket);
-    Tickets.borrarticketnuevo(request.body.idticket);
+
+    Tickets.cancelar_ticket_1(request.body.idticket);
+    Tickets.cancelar_ticket_2(request.body.idticket);
+
+    Tickets.borrarticketnuevo1(request.body.idticket);
+    Tickets.borrarticketnuevo2(request.cookies.id_usuario,request.body.idticket);
+
     response.redirect('/home');
 };
-
-// exports.post_comentario = (request, response, next) => {
-//     console.log('Pantalla principal');
-//     Tickets.modificarcomentario(request.body.comentario, request.body.idticket)
-//     response.redirect('/home');
-// };
-
-
-
-
-
-// exports.get_mistickets = (request, response, next) => {
-//     console.log('Pantalla principal');
-//     Tickets.fetchmistickets()
-//         .then(([rows, fielData]) => {
-//             response.render('Primer_pantalla', {
-//                 username: request.session.name ? request.session.name : '',
-//                 ticketss: rows
-//             });
-
-//         })
-// };
-
-// exports.get_principal1 = (request, response, next) => {
-//     console.log('Pantalla principal');
-//     Tickets.fetchticketsactivos()
-//         .then(([rows, fielData]) => {
-//             response.render('Primer_pantalla', {
-//                 username: request.session.name ? request.session.name : '',
-//                 ticketsss: rows
-//             });
-
-//         })
-//         .catch(error => { console.log(error) });
-// };
-// exports.get_genticket = (request, response, next) => {
-//     Categoria.fetchAll()
-//         .then(([rows, fielData]) => {
-//             response.render('GenerarTicket', {
-//                 Tiname: request.session.usuario ? request.session.usuario : '',
-//                 categrias: rows,
-//             });
-//         })
-//         .catch(error => { console.log(error) });
-// };

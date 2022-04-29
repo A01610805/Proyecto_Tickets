@@ -32,7 +32,8 @@ exports.get_activos= async(request, response, next)=>{
 
 exports.post_activos = (request, response, next) => {
     console.log(request.body);
-    Ticket.borrarticketpropio(request.body.idticket);
+    Ticket.cancelar_ticket_1(request.body.idticket);
+    Ticket.cancelar_ticket_2(request.body.idticket);
     response.redirect('/home');
 }
 
@@ -80,7 +81,9 @@ tickets=Ticket.fetchticketsarchivados_pag(start2)
 }
 
 exports.post_archivo = (request, response, next) => {
-    Ticket.borrarticketpropio(request.body.idticket);
+    console.log(request.body);
+    Ticket.cancelar_ticket_1(request.body.idticket);
+    Ticket.cancelar_ticket_2(request.body.idticket);
     response.redirect('/home');
 }
 
@@ -88,9 +91,7 @@ exports.post_archivo = (request, response, next) => {
 exports.buscar_archivo = async (request, response, next) => {
     tickets = await Ticket.fetchticketsarchivados_filtros(request.params.valor);
     for(let t in tickets[0]) {
-        console.log(tickets[0][t].ID_ticket);
         tickets[0][t].respuestas = await Ticket.fetchrespuestas_busqueda(tickets[0][t].ID_ticket);
-        console.log(tickets[0][t]);
     }
     console.log(tickets[0]);
     
@@ -143,14 +144,16 @@ exports.buscar_propios = async (request, response, next) => {
 }
 
 exports.post_propios=(request, response, next)=>{
-    Ticket.borrarticketpropio(request.body.idticket);
+    Ticket.cancelar_ticket_1(request.body.idticket);
+    Ticket.cancelar_ticket_2(request.body.idticket);
     response.redirect('/home'); 
 }
 
 //Final de /buscar_tickets/propio
 
 exports.borrarpropios=(request, response, next)=>{
-    Ticket.borrarticketpropio(request.body.idticket);
+    Ticket.cancelar_ticket_1(request.body.idticket);
+    Ticket.cancelar_ticket_2(request.body.idticket);
     response.redirect('/home');
 }
 

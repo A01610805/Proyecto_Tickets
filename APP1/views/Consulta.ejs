@@ -2,14 +2,18 @@
 
 <% var i=1; 
 var titulo='';
+var ruta = '';
 if(tipo==1){
     titulo='Consulta de tickets asignados';
+    ruta='activos';
 }
 else if(tipo==2){
     titulo='Consulta de tickets archivados';
+    ruta='archivado';
 }
 else if(tipo==3){
     titulo='Consulta de tickets propios';
+    ruta='propio';
 } %>
 
 <style type="text/css">
@@ -217,24 +221,14 @@ else if(tipo==3){
                                                             <h5>
                                                                 <%= ticket.titulo %>
                                                             </h5>
+                                                            <%if(tipo==1 || (tipo == 3 && (ticket.ID_estado != 5 && ticket.ID_estado != 6))){%>
                                                             <a href="#!" class="secondary-content">
-                                                                <%if((rol != 3 && (tipo == 1 || tipo == 3)) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
-                                                                    var ruta='';
-                                                                    if(tipo==3){
-                                                                        ruta='propio';
-                                                                    }
-                                                                    else if(tipo==2){
-                                                                        ruta='archivo';
-                                                                    }
-                                                                    else if(tipo==1){
-                                                                        ruta='activos';
-                                                                    }%>
                                                                 <form action="/buscar_tickets/<%=ruta%>" method="POST">
                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                     <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
                                                                 </form>
-                                                                <%}%>
                                                             </a>
+                                                            <%}%>
                                                         </li>
                                                         <li class="collection-item avatar">
                                                             <i class="material-icons circle blue">collections_bookmark</i>
@@ -483,7 +477,7 @@ else if(tipo==3){
                                                                                 '</span>'+
                                                                                 '<h5>'+ticket.titulo+'</h5>'+
                                                                                 '<a href="#!" class="secondary-content">';
-                                                                                    if(([<%=rol%>] != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
+                                                                                    if( tipo != 2 && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
                                                                                         var ruta='';
                                                                                         if(tipo==3){
                                                                                             ruta='propio';
@@ -626,9 +620,9 @@ else if(tipo==3){
     let bid2 = document.getElementById('buscar_id_2');
     let bpri2 = document.getElementById('buscar_prioridad_2');
     if (bc2 != null || be2 != null || bid2 != null || bpri2 != null) {
-        str1 = bc2.value;
-        str2 = be2.value;
-        str3 = bid2.value;
+        str1 = bid2.value;
+        str2 = bc2.value;
+        str3 = be2.value;
         str4 = bpri2.value;
     }
     else {
@@ -769,7 +763,6 @@ else if(tipo==3){
                                                                             '</li>'+
                                                                             '<li class="collection-item avatar">'+
                                                                                 '<i class="material-icons circle red">account_box</i>'+
-                                                                                '<span class="title">Asignar A:</span>'+
                                                                                 '<h5> Creador: '+ticket.Nombre_creador+' '+ticket.apellido_P_creador+' '+ticket.Apellido_M_creador+'</h5>'+
                                                                             '</li>'+
                                                                         '</ul>';
