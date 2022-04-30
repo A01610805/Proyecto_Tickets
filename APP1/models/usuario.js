@@ -56,4 +56,8 @@ module.exports = class Busqueda {
         return db.execute('UPDATE usuario set ID_rol = ? WHERE ID_usuario = ?', [this.ID_rol, this.ID_usuario]);
     }
 
+    static getusuariobyid(idusuario) {
+        return db.execute('SELECT * FROM usuario WHERE ID_usuario = ?', [idusuario]);
+    }
+
 }
