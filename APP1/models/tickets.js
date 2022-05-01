@@ -170,4 +170,8 @@ module.exports = class Ticket {
         return db.execute('UPDATE resuelve_ticket, ticket SET resuelve_ticket.ID_usuario=?, resuelve_ticket.fecha_inicio=CURRENT_DATE(), ticket.ID_estado=2 WHERE resuelve_ticket.ID_ticket=ticket.ID_ticket AND resuelve_ticket.ID_ticket=?',[idu, idt]);
     }
 
+    static fetchticket_prioridad(id) {
+        return db.execute('SELECT * FROM ticket WHERE ID_ticket = ?', [id]);
+    }
+
 }
