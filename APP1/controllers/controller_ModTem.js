@@ -50,28 +50,45 @@ exports.post_mod = (request, response, next) => {
 
     if((Array.isArray(request.body.texto_pregunta) == true) && Array.isArray(request.body.text_preg) == true){ 
         console.log('Los dos son un arreglo');
-        for (let index = 0; index < request.body.text_preg.length; index++) {
-            if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] != undefined)) {
-                const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_preg[index])
-                console.log(pregunta);
-                pregunta.update()
-                console.log('Se actualizo una pregunta')
+        if (request.body.texto_pregunta.length <= request.body.text_preg.length) {
+            for (let index = 0; index < request.body.text_preg.length; index++) {
+                if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] != undefined)) {
+                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_preg[index])
+                    console.log(pregunta);
+                    pregunta.update()
+                    console.log('Se actualizo una pregunta')
+                }
+    
+                if ((request.body.texto_pregunta[index] == undefined) && (request.body.text_preg[index] != undefined)) {
+                    const pregunta = new Pregunta(request.body.text_preg[index], request.params.id, request.body.ID_preg[index])
+                    console.log(pregunta);
+                    pregunta.delete(request.body.ID_preg[index])
+                    console.log('Se elimino una pregunta');
+                }
+                
+                
             }
-
-            if ((request.body.texto_pregunta[index] == undefined) && (request.body.text_preg[index] != undefined)) {
-                const pregunta = new Pregunta(request.body.text_preg[index], request.params.id, request.body.ID_preg[index])
-                console.log(pregunta);
-                pregunta.delete(request.body.ID_preg[index])
-                console.log('Se elimino una pregunta');
-            }
-            if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] == undefined)) {
-                console.log('Se agrego una pregunta');
-                const pregunta = new Preguntan(request.body.texto_pregunta[index])
-                console.log(pregunta);
-                pregunta.save(request.params.id)
-            }
-            
         }
+
+        if (request.body.texto_pregunta.length >= request.body.text_preg.length) {
+            for (let index = 0; index < request.body.texto_pregunta.length; index++) {
+                if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] != undefined)) {
+                    const pregunta = new Pregunta(request.body.texto_pregunta[index], request.params.id, request.body.ID_preg[index])
+                    console.log(pregunta);
+                    pregunta.update()
+                    console.log('Se actualizo una pregunta')
+                }
+    
+                if ((request.body.texto_pregunta[index] != undefined) && (request.body.text_preg[index] == undefined)) {
+                    console.log('Se agrego una pregunta');
+                    const pregunta = new Preguntan(request.body.texto_pregunta[index])
+                    console.log(pregunta);
+                    pregunta.save(request.params.id)
+                }
+                
+            }
+        }
+        
         
     }
     if((Array.isArray(request.body.texto_pregunta) == false) && (Array.isArray(request.body.text_preg) == true) ){
@@ -108,10 +125,9 @@ exports.post_mod = (request, response, next) => {
     response.redirect('/home')
 };
 exports.post_delete = (request, response, next) => {
-    
     const categoria = new Categoria( request.params.nombre, request.params.tiempo, request.params.id);
     categoria.delete()
-    console.log('Se elimino una categoria');
+    console.log('Se elimino una categoria');    
     response.redirect('/home')
 }
 
