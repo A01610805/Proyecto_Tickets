@@ -3,17 +3,36 @@
     <div class="container">
 
         <h3>Escoger Categoría a Modificar</h3>
-        <ul class="collection">
+        <table class="highlight ">
+            <thead class="white-text grey darken-3">
+                <th>Categorias</th>
+                <th></th>
+            </thead>
+            
+        
             <% for (let categoria of categorias) { %>
                 <% if ( categoria.disponible == 1) { %>
-                    <li class="">
-                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>/<%= categoria.tiempo_estimado %>" class="collection-item">
-                            <%= categoria.nombre_categoria %>
-                        </a>
-                    </li>
+                    <tr>
+                        <td class="">
+                            <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>">
+                                <%= categoria.nombre_categoria %>
+                            </a>
+                        </td>
+                        <td class="">
+                            <form action="/modificar_template/delete_tem" method="post">
+                                <button type="submit" href="" class=" tooltipped btn" data-position="bottom" data-tooltip="Eliminar template"><i class="material-icons">clear</i></button>
+                                <input type="hidden" id="id" name="id" value="<%= categoria.ID_categoria %>">
+                                <input type="hidden" id="nombre" name="nombre" value="<%= categoria.nombre_categoria %>">
+                                <input type="hidden" id="tiempo" name="tiempo" value="<%= categoria.tiempo_estimado %>">
+                            </form>
+                            
+                        </td>
+                    </tr>
+                    
                 <% } %>
             <% } %>
-        </ul>
+            
+        </table>
 
     </div>
 

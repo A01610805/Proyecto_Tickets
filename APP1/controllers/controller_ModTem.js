@@ -125,7 +125,8 @@ exports.post_mod = (request, response, next) => {
     response.redirect('/home')
 };
 exports.post_delete = (request, response, next) => {
-    const categoria = new Categoria( request.params.nombre, request.params.tiempo, request.params.id);
+    console.log('Se va a eliminar una categoria')
+    const categoria = new Categoria( request.body.nombre, request.body.tiempo, request.body.id);
     categoria.delete()
     console.log('Se elimino una categoria');    
     response.redirect('/home')
