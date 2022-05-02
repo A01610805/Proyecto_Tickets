@@ -21,10 +21,10 @@
                 </div>
                 <br></br>
                 <div class="center ">
-                    <button id="logo" type="submit" class="waves-effect waves-light btn grey black-text">Guardar</button>
-                    <a id="logo" href="/home" class="waves-effect waves-light btn grey black-text">Cancelar</a>
-                    <button type="button" id="agregar" class="waves-effect waves-light btn grey black-text">Agregar pregunta</button>
-                    <!-- <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button>  -->
+                    <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                    <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
+                    <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> 
+                     <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> 
                 </div>
 
             </form>
@@ -35,7 +35,7 @@
     <br></br>
 
     <script>
-        (function añadir(){
+        
             const $btnAdd = document.getElementById("agregar")
             const $form = document.getElementById("divpreg")
             const templateElement = () => {
@@ -52,18 +52,15 @@
                 const $div = document.createElement("div")
                 $div.innerHTML = templateElement()
                 $form.insertBefore($div, $form.lastChild)
-                const $btnEli = document.getElementById("eliminar")
-                const $form2 = document.getElementById("divpreg")
-                const $div2 = $form2.lastElementChild;
-                console.log($div2);
-                $btnEli.addEventListener("click", (event) => {
-                    $form2.removeChild($div2)
-                })
+               
             })
-            
-            
-
-        })()
+            const $btnEli = document.getElementById("eliminar")
+            $btnEli.addEventListener("click", (event) => {
+                const $form1 = document.getElementById("divpreg")
+                const $div1 = $form1.lastElementChild;
+                $div1.remove()
+            })
+        
     </script> 
 <!-- 
      <script>

@@ -37,7 +37,7 @@ module.exports = class Pregunta {
     save(id){
          return db.execute(
 
-             'INSERT INTO pregunta(texto_pregunta, ID_categoria) VALUES(?, ?)', [this.texto_pregunta, id]);
+             'INSERT INTO pregunta(texto_pregunta, ID_categoria, disponible) VALUES(?, ?, ?)', [this.texto_pregunta, id, 1]);
      }
      delete(id1, id2){
         return db.execute(

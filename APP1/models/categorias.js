@@ -34,4 +34,9 @@ module.exports = class Categoria {
             'UPDATE categoria SET  nombre_categoria = ?, tiempo_estimado = ? WHERE ID_categoria = ?', [this.nombre_categoria, this.tiempo_estimado, this.ID_categoria]);
 
     }
+    delete() {
+        return db.execute(
+            'UPDATE categoria SET disponible = ? WHERE ID_categoria = ?', [0, this.ID_categoria]);
+        
+    }
 }
