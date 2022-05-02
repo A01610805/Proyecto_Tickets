@@ -1,0 +1,85 @@
+<%- include('includes/head.ejs') %>
+
+<div class="container">
+    <h1 class="center">Cambio de contraseña</h1>
+
+    <form action="/perfil/personal/cambio_pass" onsubmit='return validatePassword()' method="POST" autocomplete="off">
+        <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
+            <h5 class="center" for="">Verifique sus datos</h5>
+
+            <h5 class="form-title" id="signup">Ingrese su contraseña actual:</h5>
+            <div class="form-holder">
+                <input type="password" name='password_actual' id='password_actual' class="input" placeholder="Contraseña" />
+            </div>
+            <h5 class="form-title" id="signup">Ingrese su contraseña actual:</h5>
+            <div class="form-holder">
+                <input type="password" name='password_nueva_1' id='password_nueva_1' class="input" placeholder="Contraseña nueva" />
+                <input type="password" name='password_nueva_2' id='password_nueva_2' class="input" placeholder="Repita la nueva contraseña" />
+            </div>
+
+            <br></br>
+            <div class="center">
+                <button type=submit class="waves-effect waves-light btn"> Cambiar contraseña </button>
+                <a href="/perfil/personal" class="waves-effect waves-light btn">Regresar a la pagína principal</a>
+            </div>
+        </div>
+    </form>
+    <br></br>
+</div>
+
+<script>
+    function validatePassword() {
+        var pa = document.getElementById("password_actual").value;
+        var pn1 = document.getElementById("password_nueva_1").value;
+        var pn2 = document.getElementById("password_nueva_2").value;
+        /*alert(pa,[<%= pass_actual %>]);
+        bcrypt.compare(pa, pabd)
+            .then(doMatch => {
+                if (doMatch) {
+                    if (pa == "" || pn1 == "" || pn2 == "") {
+                        alert("Llene todos los campos requeridos");
+                        return false;
+                    } else if (pa != [<%= pass_actual %>]) {
+                        console.log(pa);
+                        console.log(pass_actual);
+                        alert("La contraseñe no coincide con la suya.");
+                        return false;
+                    } else if (pn1 != pn2) {
+                        alert("La contraseña nueva no coincide.");
+                        return false;
+                    } else if (pn1.length < 8) {
+                        alert("Tu contraseña debe tener 8 caracteres como mínimo.");
+                        return false;
+                    } else {
+                        alert("La contraseña se ha actualizado.");
+                        return true;
+                    }
+                } else {
+                    alert("La contraseña nueva no coincide con la registrada en el sistema.");
+                    return false;
+                }
+            }).catch(err => {
+                console.log('Hola');                
+            });*/
+        if (pa == "" || pn1 == "" || pn2 == "") {
+            alert("Llene todos los campos requeridos");
+            return false;
+        } /*else if (pa != [<%= pass_actual %>]) {
+            console.log(pa);
+            console.log(pass_actual);
+            alert("La contraseñe no coincide con la suya.");
+            return false;
+        }*/ else if (pn1 != pn2) {
+            alert("La contraseña nueva no coincide.");
+            return false;
+        } else if (pn1.length < 8) {
+            alert("Tu contraseña debe tener 8 caracteres como mínimo.");
+            return false;
+        } else {
+            alert("La contraseña se ha actualizado.");
+            return true;
+        }
+    }
+</script>
+
+<%- include('includes/footer.ejs') %>

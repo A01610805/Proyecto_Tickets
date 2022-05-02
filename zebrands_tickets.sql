@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-04-2022 a las 03:16:47
+-- Tiempo de generación: 29-04-2022 a las 17:44:45
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -28,7 +28,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerarTicket` (IN `U_idcategoria` INT, IN `U_titulo` VARCHAR(100) CHARSET utf8, IN `U_descripcion` VARCHAR(400) CHARSET utf8)  NO SQL
 INSERT INTO ticket VALUES (NULL, U_idcategoria, 1, 1, (U_titulo COLLATE utf8_spanish2_ci), (U_descripcion COLLATE utf8_spanish2_ci))$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistraFecha` (IN `U_correo` VARCHAR(100))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistraFecha` (IN `U_correo` VARCHAR(100) CHARSET utf8)  NO SQL
 INSERT INTO genera_ticket(ID_ticket, ID_usuario, fecha_emision) VALUES((SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1),(SELECT ID_usuario from usuario WHERE correo = (U_correo COLLATE utf8_spanish2_ci)), CURRENT_TIMESTAMP)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistraRespuesta` (IN `U_idpregunta` INT, IN `U_textorespuesta` VARCHAR(1000) CHARSET utf8)  NO SQL
@@ -92,6 +92,23 @@ INSERT INTO `comentario` (`ID_comentario`, `texto_comentario`) VALUES
 (8, 'Solucionado sin ningun problema'),
 (9, 'Ticket detenido por el momento'),
 (10, 'Ticket en pausa, esperando confirmación por parte del cliente');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `comentariosproceso`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `comentariosproceso` (
+`ID_ticket` int(20)
+,`ID_usuario` int(20)
+,`nombre` varchar(40)
+,`apellido_paterno` varchar(40)
+,`apellido_materno` varchar(40)
+,`ID_comentario` int(20)
+,`texto_comentario` varchar(1000)
+,`fecha_comentario` date
+);
 
 -- --------------------------------------------------------
 
@@ -180,17 +197,7 @@ INSERT INTO `genera_ticket` (`ID_ticket`, `ID_usuario`, `fecha_emision`) VALUES
 (21, 5, '2022-03-10'),
 (22, 2, '2022-03-11'),
 (26, 2, '2022-04-02'),
-(28, 2, '2022-04-15'),
-(29, 2, '2022-04-15'),
-(30, 2, '2022-04-15'),
-(32, 2, '2022-04-15'),
-(33, 2, '2022-04-15'),
-(34, 2, '2022-04-15'),
-(35, 2, '2022-04-15'),
-(37, 2, '2022-04-15'),
-(38, 2, '2022-04-15'),
 (39, 2, '2022-04-15'),
-(40, 2, '2022-04-15'),
 (41, 2, '2022-04-16'),
 (42, 2, '2022-04-16'),
 (43, 2, '2022-04-18'),
@@ -386,7 +393,6 @@ INSERT INTO `resuelve_ticket` (`ID_ticket`, `ID_usuario`, `fecha_inicio`, `fecha
 (20, 2, '2022-03-23', '2022-04-12', 'Solicitamos el servicio a la paquetería'),
 (21, 1, '2022-04-04', '2022-04-09', 'Directo en la base de datos'),
 (22, 3, '2022-04-10', '2022-04-15', 'Cubetazo de agua fría'),
-(40, 6, NULL, NULL, NULL),
 (50, NULL, NULL, NULL, NULL),
 (51, NULL, NULL, NULL, NULL),
 (52, NULL, NULL, NULL, NULL);
@@ -410,6 +416,34 @@ INSERT INTO `rol` (`ID_rol`, `nombre_rol`) VALUES
 (1, 'Administrador'),
 (2, 'Empleado de Soporte'),
 (3, 'Empleado Zebrands');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `temporal_resueltos`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `temporal_resueltos` (
+`ID_ticket` int(20)
+,`ID_estado` int(20)
+,`ID_prioridad` int(20)
+,`titulo` varchar(100)
+,`descripcion` varchar(400)
+,`Creador` int(20)
+,`Nombre_creador` varchar(40)
+,`apellido_P_creador` varchar(40)
+,`Apellido_M_creador` varchar(40)
+,`correo_creador` varchar(100)
+,`fecha_emision` date
+,`Encargado` int(20)
+,`Nombre_encargado` varchar(40)
+,`Apellido_P_encargado` varchar(40)
+,`Apellido_M_encargado` varchar(40)
+,`Correo_encargado` varchar(100)
+,`fecha_inicio` date
+,`fecha_fin` date
+,`comentarios_solucion` varchar(1000)
+);
 
 -- --------------------------------------------------------
 
@@ -451,18 +485,6 @@ INSERT INTO `ticket` (`ID_ticket`, `ID_categoria`, `ID_estado`, `ID_prioridad`, 
 (23, 1, 1, 1, 'Prueba1', 'P1'),
 (25, 4, 1, 1, 'Problemas con la entrega', 'No me ha llegado mi colchón'),
 (26, 2, 5, 1, 'Problema con crédito', 'tengo un problema para pagar mi colchón con mi tarjeta'),
-(27, 3, 1, 1, 'Fallo en registro de fechas', 'No se están almacenando las fechas de creación'),
-(28, 3, 5, 1, 'Fallo en registro de fechas', 'No se están almacenando las fechas de creación'),
-(29, 3, 5, 1, 'Fallo en registro de fechas', 'No se están almacenando las fechas de creación'),
-(30, 1, 5, 1, 'Prueba', 'Esta es una prueba'),
-(31, 1, 1, 1, 'Prueba', 'Esta es una prueba'),
-(32, 2, 1, 2, 'Error', 'Prueba'),
-(33, 2, 1, 1, 'Error', 'Prueba'),
-(34, 2, 1, 1, 'Error', 'Prueba'),
-(35, 5, 1, 1, 'Prueba', 'Esto es una prueba'),
-(36, 5, 1, 1, 'Prueba', 'Esto es una prueba'),
-(37, 5, 1, 1, 'Prueba', 'Esto es una prueba'),
-(38, 5, 5, 1, 'Prueba', 'Esto es una prueba'),
 (39, 6, 1, 1, 'Error en creación de ticket', 'Tengo un error al crear un ticket'),
 (40, 7, 1, 1, 'Prueba', 'Registro de tickets'),
 (41, 8, 1, 1, 'Quiero cambiar de domicilio', 'mi cuenta tiene un domicilio incorrecto'),
@@ -654,6 +676,15 @@ INSERT INTO `usuario_comentario_ticket` (`ID_usuario`, `ID_comentario`, `ID_tick
 -- --------------------------------------------------------
 
 --
+-- Estructura para la vista `comentariosproceso`
+--
+DROP TABLE IF EXISTS `comentariosproceso`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `comentariosproceso`  AS  (select `usuario_comentario_ticket`.`ID_ticket` AS `ID_ticket`,`usuario_comentario_ticket`.`ID_usuario` AS `ID_usuario`,`usuario`.`nombre` AS `nombre`,`usuario`.`apellido_paterno` AS `apellido_paterno`,`usuario`.`apellido_materno` AS `apellido_materno`,`usuario_comentario_ticket`.`ID_comentario` AS `ID_comentario`,`comentario`.`texto_comentario` AS `texto_comentario`,`usuario_comentario_ticket`.`fecha_comentario` AS `fecha_comentario` from ((`usuario_comentario_ticket` join `usuario`) join `comentario`) where `usuario_comentario_ticket`.`ID_comentario` = `comentario`.`ID_comentario` and `usuario_comentario_ticket`.`ID_usuario` = `usuario`.`ID_usuario`) ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura para la vista `conjuntoderespuestas`
 --
 DROP TABLE IF EXISTS `conjuntoderespuestas`;
@@ -668,6 +699,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `info_tickets`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `info_tickets`  AS SELECT `c`.`ID_categoria` AS `ID_categoria`, `c`.`nombre_categoria` AS `nombre_categoria`, `c`.`tiempo_estimado` AS `tiempo_estimado`, `p`.`ID_pregunta` AS `ID_pregunta`, `p`.`texto_pregunta` AS `texto_pregunta` FROM (`categoria` `c` join `pregunta` `p` on(`c`.`ID_categoria` = `p`.`ID_categoria`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `temporal_resueltos`
+--
+DROP TABLE IF EXISTS `temporal_resueltos`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `temporal_resueltos`  AS  (select `ticketstotal`.`ID_ticket` AS `ID_ticket`,`ticketstotal`.`ID_estado` AS `ID_estado`,`ticketstotal`.`ID_prioridad` AS `ID_prioridad`,`ticketstotal`.`titulo` AS `titulo`,`ticketstotal`.`descripcion` AS `descripcion`,`ticketstotal`.`Creador` AS `Creador`,`ticketstotal`.`Nombre_creador` AS `Nombre_creador`,`ticketstotal`.`apellido_P_creador` AS `apellido_P_creador`,`ticketstotal`.`Apellido_M_creador` AS `Apellido_M_creador`,`ticketstotal`.`correo_creador` AS `correo_creador`,`ticketstotal`.`fecha_emision` AS `fecha_emision`,`ticketstotal`.`Encargado` AS `Encargado`,`ticketstotal`.`Nombre_encargado` AS `Nombre_encargado`,`ticketstotal`.`Apellido_P_encargado` AS `Apellido_P_encargado`,`ticketstotal`.`Apellido_M_encargado` AS `Apellido_M_encargado`,`ticketstotal`.`Correo_encargado` AS `Correo_encargado`,`ticketstotal`.`fecha_inicio` AS `fecha_inicio`,`ticketstotal`.`fecha_fin` AS `fecha_fin`,`ticketstotal`.`comentarios_solucion` AS `comentarios_solucion` from `ticketstotal` where `ticketstotal`.`Encargado` = 2) ;
 
 -- --------------------------------------------------------
 

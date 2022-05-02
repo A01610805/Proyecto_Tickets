@@ -9,10 +9,14 @@ module.exports = class Prioridad {
     }
 
 
-    update() {
+    /*update() {
         return db.execute('UPDATE ticketstotal set ID_prioridad = ? WHERE  ID_ticket = ?', [this.ID_prioridad, this.ID_ticket]);
-    }
+    }*/
     updatenuevo() {
         return db.execute('UPDATE ticketsnuevos set ID_prioridad = ? WHERE  ID_ticket = ?', [this.ID_prioridad, this.ID_ticket]);
+    }
+
+    update() {
+        return db.execute('UPDATE ticket set ID_prioridad = ? WHERE  ID_ticket = ?', [this.ID_prioridad, this.ID_ticket]);
     }
 }

@@ -56,4 +56,18 @@ module.exports = class Busqueda {
         return db.execute('UPDATE usuario set ID_rol = ? WHERE ID_usuario = ?', [this.ID_rol, this.ID_usuario]);
     }
 
+    static getusuariobyid(idusuario) {
+        return db.execute('SELECT * FROM usuario WHERE ID_usuario = ?', [idusuario]);
+    }
+
+    static actualizar_password(npass,idusuario) {
+        return bcrypt.hash(npass, 12)
+            .then((nuevo_password_cifrado) => {
+                return db.execute(
+                    'UPDATE usuario SET password = ? WHERE ID_usuario = ?', [nuevo_password_cifrado,idusuario]);
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
+
 }

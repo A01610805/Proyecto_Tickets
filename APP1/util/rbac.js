@@ -6,7 +6,7 @@ const authPage  = (permisos) => {
         if (permisos.includes(rol_usuario)){
             next();
         } else {
-            return response.status(401).json("No tienes permiso.");
+            return response.status(401).json('No tienes permiso para acceder a esta pagina');
         }
     };
 };
