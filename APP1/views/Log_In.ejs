@@ -284,6 +284,7 @@
     <!-- partial:index.partial.html -->
     <div class="form-structor">
         <form id="form-login" action="/users/login" method="POST" autocomplete="off">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="signup">
                 <h2 class="form-title" id="signup"><span>o</span>Iniciar Sesión</h2>
                 <div class="form-holder">
@@ -295,6 +296,7 @@
         </form>
 
         <form id="form-signup" action="/users/signup" onsubmit="return validateSignupForm()" method="POST" autocomplete="off">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="login slide-up">
                 <div class="center">
                     <h2 class="form-title" id="login"><span>o</span>Regístrate</h2>

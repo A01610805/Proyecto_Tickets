@@ -5,6 +5,7 @@
 
         <div class="">
             <form action="/generar_template/enviar_template" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 20px;">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 <div>
                     <div>
                         <label id="logo" for="">Nombre Categoria</label>

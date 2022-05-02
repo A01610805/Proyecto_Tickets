@@ -16,6 +16,8 @@ const bodyParser = require('body-parser');
 // permitiendo mantener la sesión del usuario "loggeada", por ejemplo.
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const csrf = require('csurf');
+const csrfProtection = csrf();
 
 const app = express();
 
@@ -33,6 +35,12 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(csrfProtection); 
+
+app.use((request, response, next) => {
+    response.locals.csrfToken = request.csrfToken();
+    next();
+});
 
 //Estas son las rutas a utilizar se utiliza una constante poara almacenar la direccion de la rutas
 //despues se utiliza en un app.use completo
