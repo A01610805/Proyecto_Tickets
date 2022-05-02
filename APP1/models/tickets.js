@@ -163,11 +163,11 @@ module.exports = class Ticket {
             return db.execute('UPDATE resuelve_ticket, ticket SET resuelve_ticket.ID_usuario=?, resuelve_ticket.fecha_inicio=CURRENT_DATE(), ticket.ID_estado=2 WHERE resuelve_ticket.ID_ticket=ticket.ID_ticket AND resuelve_ticket.ID_ticket=?', [idu, idt]);
         }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    static obtenercomentarios(id1) {
-        return db.execute('SELECT * FROM comentariosproceso WHERE ID_ticket = ?', [id1]);
+    static obtenercomentarios() {
+        return db.execute('SELECT * FROM comentariosproceso ');
     }
-    static agregarcomentarios(id1, id2, id3, id4, id5, id6, id7, id8) {
-        return db.execute('INSERT INTO comentariosproceso(ID_ticket, ID_usuario, nombre, apellido_paterno, apellido_materno, ID_comentario, texto_comentario, fecha_comentario) VALUES(?,?,?,?,?,?,?,?)', [id1, id2, id3, id4, id5, id6, id7, id8]);
+    static agregarcomentarios(id1, id2, id3, id4) {
+        return db.execute('CALL AgregarComentario(?,?,?,?);', [id1, id2, id3, id4]);
     }
 
 }

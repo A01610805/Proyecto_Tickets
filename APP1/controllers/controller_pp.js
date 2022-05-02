@@ -6,36 +6,41 @@ const Tickets = require('../models/tickets');
 
 exports.get_principal = (request, response, next) => {
     console.log('Pantalla principal');
-    Tickets.fetchticketsnuevos()
+    Tickets.obtenercomentarios()
         .then(([rows, fielData]) => {
-            Tickets.fetchrespuestas()
-                .then(([rows2, fieldData]) => {
-                    Tickets.fetchticketsusuario(request.cookies.correo_usuario)
+            Tickets.fetchticketsnuevos()
+                .then(([rows2, fielData]) => {
+                    Tickets.fetchrespuestas()
                         .then(([rows3, fieldData]) => {
-                            Tickets.fetchticketsencargado(request.cookies.correo_usuario)
+                            Tickets.fetchticketsusuario(request.cookies.correo_usuario)
                                 .then(([rows4, fieldData]) => {
-                                    console.log(rows3);
-                                    console.log(request.cookies.nombre_usuario);
-                                    let numrol = request.cookies.rolusuario;
-                                    if (numrol == 3) {
-                                        response.render('Primer_pantalla3', {
-                                            username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
-                                            ticketss: rows,
-                                            respuestas: rows2,
-                                            ticketsusuario: rows3,
-                                            ticketobtenido: rows4,
-                                            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-                                        });
-                                    } else {
-                                        response.render('Primer_pantalla', {
-                                            username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
-                                            ticketss: rows,
-                                            respuestas: rows2,
-                                            ticketsusuario: rows3,
-                                            ticketobtenido: rows4,
-                                            rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
-                                        });
-                                    }
+                                    Tickets.fetchticketsencargado(request.cookies.correo_usuario)
+                                        .then(([rows5, fieldData]) => {
+                                            console.log(rows3);
+                                            console.log(request.cookies.nombre_usuario);
+                                            let numrol = request.cookies.rolusuario;
+                                            if (numrol == 3) {
+                                                response.render('Primer_pantalla3', {
+                                                    username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
+                                                    comentario: rows,
+                                                    ticketss: rows2,
+                                                    respuestas: rows3,
+                                                    ticketsusuario: rows4,
+                                                    ticketobtenido: rows5,
+                                                    rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                                                });
+                                            } else {
+                                                response.render('Primer_pantalla', {
+                                                    username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
+                                                    comentario: rows,
+                                                    ticketss: rows2,
+                                                    respuestas: rows3,
+                                                    ticketsusuario: rows4,
+                                                    ticketobtenido: rows5,
+                                                    rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
+                                                });
+                                            }
+                                        })
                                 })
                         })
                 })

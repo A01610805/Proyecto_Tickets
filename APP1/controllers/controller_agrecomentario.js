@@ -7,7 +7,7 @@ exports.get_agregarcomentario = (request, response, next) => {
     // console.log(tic2);
     console.log(request.params.id);
     console.log('Entrando a modificar comentario');
-    Tickets.obtenercomentarios(request.params.id)
+    Tickets.obtenercomentarios()
         .then(([rows, fieldData]) => {
             console.log('Entrando a comentarios');
             // console.log('WOW');
