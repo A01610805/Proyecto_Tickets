@@ -1,4 +1,5 @@
 const Usuario = require('../models/usuario');
+const bcrypt = require('bcryptjs');
 
 exports.get_cpass = (request, response, next) => {
     console.log(request.cookies.id_usuario);
@@ -12,15 +13,30 @@ exports.get_cpass = (request, response, next) => {
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                 user: rows[0],
-                pass_actual: rows[0].password,
             });
         })
         .catch(error => { console.log(error) });  
 }
 
 exports.post_cpass = (request, response, next) => {
-    Usuario.actualizar_password(request.body.password_nueva_1, request.cookies.id_usuario);
-    response.redirect('/home'); 
+    Usuario.getusuariobyid(request.cookies.id_usuario)
+    .then(([rows, fieldData]) => {
+        bcrypt.compare(request.body.password_actual, rows[0].password)
+            .then(doMatch => {
+                if (doMatch) {
+                    Usuario.actualizar_password(request.body.password_nueva_1, request.cookies.id_usuario);
+                    response.redirect('/home');
+                } else {
+                    response.redirect('/perfil/personal/cambio_pass'); 
+                }
+            }).catch(err => {
+                console.log(err);
+                console.log('Error en el cambio de password');                
+            })
+    })
+    .catch(error => { console.log(error) }); 
+    /*Usuario.actualizar_password(request.body.password_nueva_1, request.cookies.id_usuario);
+    response.redirect('/home'); */
 }
 
 exports.get_usuario = (request, response, next) => {
