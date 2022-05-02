@@ -302,6 +302,8 @@
                                                                 </div>
 
                                                                 <div id="test<%= i+4%>">
+
+                                                                    <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario1<%=y%>"><i class="material-icons">add_circle_outline</i></a>
                                                                     <div id="nsb">
                                                                         <div class="row">
                                                                             <div class="col s12">
@@ -319,6 +321,30 @@
 
 
                                                                     </div>
+
+
+                                                                    <div id="agregarcomentario1<%=y%>" class="modal">
+                                                                        <div class="modal-content">
+                                                                            <h4>
+                                                                                Agregar comentario?
+                                                                            </h4>
+
+                                                                        </div>
+                                                                        <%y=y+1%>
+                                                                            <div class="modal-footer">
+                                                                                <div class="center ">
+
+                                                                                    <a href="/agregar_com/get_agregarcomentario/<%= ticket.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                    <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                </div>
+                                                                                </form>
+
+
+
+
+
+                                                                            </div>
+                                                                    </div>
                                                                 </div>
 
                                                             </div>
@@ -328,9 +354,10 @@
 
                                                     <!-- </li> -->
                                                     <% i=i+4 %>
-                                                        <% } %>
+                                                        <% j=j+1 %>
                                                             <% } %>
-                                                                <!-- </ul> -->
+                                                                <% } %>
+                                                                    <!-- </ul> -->
 
                     </div>
                 </div>

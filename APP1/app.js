@@ -49,7 +49,7 @@ const rutas_metricas = require('./routes/route_metricas');
 const rutas_arol = require('./routes/route_asignarRol');
 const rutas_asiusu = require('./routes/route_asiusu');
 const rutas_aestado = require('./routes/route_asignarEstado');
-const rutas_acomentario = require("../routes/route_agrecomentario");
+const rutas_acomentario = require("./routes/route_agrecomentario");
 
 
 app.use('/users', rutas_login);
