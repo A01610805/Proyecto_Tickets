@@ -68,7 +68,7 @@
                 </tr>
                 <% } %>
         </table>
-        <div class="s12">
+        <div class="s12"> 
             <ul class="pagination center-align">
                 <% for (let i = 1; i <= Math.ceil(total_usuarios/5); i++) { %>
                     <li class="active">
@@ -107,7 +107,7 @@
             headers: {
                 'Content-Type': 'application/json',
                 //'csrf-token': csrf
-            }
+            },
             //body: JSON.stringify(data)
         }).then(result => {
             return result.json(); //Regresa otra promesa
