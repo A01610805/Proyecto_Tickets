@@ -22,6 +22,7 @@
         </div>
     </div>
     <form action="/asignar_estado/post_estado/<%= id %>" method="POST" id="form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
         <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
             <h5 class="center" for="">Información del ticket:</h5>
             <a class="center" for="">ID del ticket:</a>

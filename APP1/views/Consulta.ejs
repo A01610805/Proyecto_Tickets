@@ -376,7 +376,7 @@ else if(tipo==3){
             headers: {
                 'Content-Type': 'application/json',
                 //'csrf-token': csrf
-            }
+            },
             //body: JSON.stringify(data)
         }).then(result => {
             return result.json(); //Regresa otra promesa
@@ -633,15 +633,15 @@ else if(tipo==3){
     }
     const valor_busqueda = str1+'&'+str2+'&'+str3+'&'+str4;
       //El token de protección CSRF
-      //const csrf = document.getElementById('_csrf').value;
+    //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
     fetch('/buscar_tickets/archivo/'+ valor_busqueda, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             //'csrf-token': csrf
-        }
-          //body: JSON.stringify(data)
+        },
+        //body: JSON.stringify(data)
     }).then(result => {
         return result.json(); //Regresa otra promesa
     }).then(data => {
@@ -858,15 +858,15 @@ const propios = () => {
     }
     const valor_busqueda = str1;
       //El token de protección CSRF
-      //const csrf = document.getElementById('_csrf').value;
+        //const csrf = document.getElementById('_csrf').value;
       //función que manda la petición asíncrona
     fetch('/buscar_tickets/propio/'+ valor_busqueda, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-              //'csrf-token': csrf
-        }
-          //body: JSON.stringify(data)
+            //'csrf-token': csrf
+        },
+        //body: JSON.stringify(data)
     }).then(result => {
           return result.json(); //Regresa otra promesa
     }).then(data => {

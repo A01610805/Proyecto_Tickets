@@ -1,11 +1,9 @@
 <%- include('includes/head.ejs') %>
 
     <div class="container">
-
         <h1 id="logo" class="center">Asignar rol</h1>
-
         <form action="/asignar_rol/post_rol/<%= id %>" method="POST" id="form" onsubmit="return validar()">
-
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
                 <h5 id="logo" class="center" for="">Información del usuario:</h5>
                 <a id="logo" class="center" for="">Nombre del usuario:</a>
@@ -41,7 +39,6 @@
             <br></br>
         </form>
     </div>
-
     <script>
         function validar() {
             var asignacion = document.getElementById("asignacion").value;

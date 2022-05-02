@@ -4,6 +4,7 @@
     <h1 class="center">Cambio de contraseña</h1>
 
     <form action="/perfil/personal/cambio_pass" onsubmit='return validatePassword()' method="POST" autocomplete="off">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
         <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
             <h5 class="center" for="">Verifique sus datos</h5>
 
