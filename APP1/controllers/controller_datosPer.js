@@ -1,5 +1,6 @@
 const Usuario = require('../models/usuario');
 const bcrypt = require('bcryptjs');
+let errorc = 0;
 
 exports.get_cpass = (request, response, next) => {
     console.log(request.cookies.id_usuario);
@@ -13,6 +14,7 @@ exports.get_cpass = (request, response, next) => {
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                 user: rows[0],
+                errorc: errorc,
             });
         })
         .catch(error => { console.log(error) });  
@@ -24,9 +26,11 @@ exports.post_cpass = (request, response, next) => {
         bcrypt.compare(request.body.password_actual, rows[0].password)
             .then(doMatch => {
                 if (doMatch) {
+                    errorc = 0;
                     Usuario.actualizar_password(request.body.password_nueva_1, request.cookies.id_usuario);
                     response.redirect('/home');
-                } else {
+                } else { 
+                    errorc = 1;
                     response.redirect('/perfil/personal/cambio_pass'); 
                 }
             }).catch(err => {

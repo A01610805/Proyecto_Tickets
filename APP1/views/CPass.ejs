@@ -7,7 +7,9 @@
         <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
             <h5 class="center" for="">Verifique sus datos</h5>
             <br></br>
-
+            <%if(errorc == 1){%>
+                <h6 class="center" id="m_errorc">La contraseña introducida no coincide con la registrada.</h6>
+            <% }%>
             <h5 class="form-title" id="signup">Ingrese su contraseña actual:</h5>
             <div class="form-holder">
                 <input type="password" name='password_actual' id='password_actual' class="input" placeholder="Contraseña" />
