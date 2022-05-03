@@ -138,7 +138,6 @@
                                         } else if(ticket.ID_estado == 6){ 
                                             color = 'light-green accent-1'; 
                                             estado = '6 - Resuelto';} 
-
                                         var prioridad = '';
                                         var color_prioridad = ''
                                         if(ticket.ID_prioridad == 1){
@@ -165,7 +164,6 @@
                                             prioridad = 'Urgente'
                                             color_prioridad ='red lighten-1'
                                             iconop = 'looks_5'
-
                                         } 
                                         
                                         %>
@@ -302,19 +300,57 @@
                                                                 </div>
 
                                                                 <div id="test<%= i+4%>">
+
                                                                     <div id="nsb">
-                                                                        <div class="row">
-                                                                            <div class="col 12">
-                                                                                <strong>El creador fue: Flavio</strong>
+                                                                        <% for (let comment of comentario){%>
+                                                                            <% if(comment.ID_ticket == ticket.ID_ticket){%>
+                                                                                <div class="row">
 
-                                                                            </div>
-                                                                            <div class="col s12">
-                                                                                <p>12/02/22: </p>
-                                                                                <p>me gusta el nepe</p>
-                                                                            </div>
+                                                                                    <div class="col s12">
+
+                                                                                        <strong class="left">El creador fue: <%=comment.nombre%> <%=comment.apellido_paterno%> <%=comment.apellido_paterno%></strong>
+
+                                                                                    </div>
+                                                                                    <div class="col s2">
+                                                                                        <p>
+                                                                                            <%=comment.fecha_comentario%>
+                                                                                                : </p>
+
+                                                                                    </div>
+                                                                                    <div class="col s10">
+                                                                                        <p class="left">
+                                                                                            <%=comment.texto_comentario%>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <%}%>
+                                                                                    <%}%>
+
+
+                                                                    </div>
+
+
+                                                                    <div id="agregarcomentario1<%=y%>" class="modal">
+                                                                        <div class="modal-content">
+                                                                            <h4>
+                                                                                Agregar comentario?
+                                                                            </h4>
+
                                                                         </div>
+                                                                        <%y=y+1%>
+                                                                            <div class="modal-footer">
+                                                                                <div class="center ">
+
+                                                                                    <a href="/agregar_com/get_agregarcomentario/<%= ticket.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                    <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                </div>
+                                                                                </form>
 
 
+
+
+
+                                                                            </div>
                                                                     </div>
                                                                 </div>
 
@@ -325,9 +361,10 @@
 
                                                     <!-- </li> -->
                                                     <% i=i+4 %>
-                                                        <% } %>
+                                                        <% j=j+1 %>
                                                             <% } %>
-                                                                <!-- </ul> -->
+                                                                <% } %>
+                                                                    <!-- </ul> -->
 
                     </div>
                 </div>
@@ -515,13 +552,36 @@
                                                                 </p>
                                                             </div>
                                                             <div id="tests<%= z+4%>">
-                                                                <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
                                                                 <div id="nsb">
-                                                                    <%= ticket2.comentarios_solucion %>
+                                                                    <% for (let comment of comentario){%>
+                                                                        <% if(comment.ID_ticket == ticket2.ID_ticket){%>
+                                                                            <div class="row">
+
+                                                                                <div class="col s12">
+
+                                                                                    <strong class="left">El creador fue: <%=comment.nombre%> <%=comment.apellido_paterno%> <%=comment.apellido_paterno %> </strong>
+
+                                                                                </div>
+                                                                                <div class="col s2">
+                                                                                    <p>
+                                                                                        <%=comment.fecha_comentario%>
+                                                                                    </p>
+
+                                                                                </div>
+                                                                                <div class="col s10">
+                                                                                    <p class="left">
+                                                                                        <%=comment.texto_comentario%>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <%}%>
+                                                                                <%}%>
+
+
                                                                 </div>
 
 
-                                                                <div id="agregarcomentario<%=y%>" class="modal">
+                                                                <div id="agregarcomentario2<%=y%>" class="modal">
                                                                     <div class="modal-content">
                                                                         <h4>
                                                                             Agregar comentario?
@@ -532,14 +592,10 @@
                                                                         <div class="modal-footer">
                                                                             <div class="center ">
 
-                                                                                <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                <a href="/agregar_com/get_agregarcomentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
                                                                                 <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
                                                                             </div>
                                                                             </form>
-
-
-
-
 
                                                                         </div>
                                                                 </div>
@@ -756,30 +812,54 @@
                                                                     </p>
                                                                 </div>
                                                                 <div id="testss<%= j+4%>">
-                                                                    <%= ticket2.comentarios_solucion %>
-                                                                        <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
-                                                                        <div id="agregarcomentario<%=y%>" class="modal">
-                                                                            <div class="modal-content">
-                                                                                <h4>
-                                                                                    Agregar comentario?
-                                                                                </h4>
+                                                                    <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario3<%=y%>"><i class="material-icons">add_circle_outline</i></a>
+                                                                    <div id="nsb">
+                                                                        <% for (let comment of comentario){%>
+                                                                            <% if(comment.ID_ticket == ticket2.ID_ticket){%>
+                                                                                <div class="row">
+
+                                                                                    <div class="col s12">
+
+                                                                                        <strong class="left">El creador fue: <%=comment.nombre%> <%=comment.apellido_paterno%> <%=comment.apellido_paterno %> </strong>
+
+                                                                                    </div>
+                                                                                    <div class="col s2">
+                                                                                        <p>
+                                                                                            <%=comment.fecha_comentario%>
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                    <div class="col s10">
+                                                                                        <p class="left">
+                                                                                            <%=comment.texto_comentario%>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <%}%>
+                                                                                    <%}%>
+
+
+                                                                    </div>
+
+
+                                                                    <div id="agregarcomentario3<%=y%>" class="modal">
+                                                                        <div class="modal-content">
+                                                                            <h4>
+                                                                                Agregar comentario?
+                                                                            </h4>
+
+                                                                        </div>
+                                                                        <%y=y+1%>
+                                                                            <div class="modal-footer">
+                                                                                <div class="center ">
+
+                                                                                    <a href="/agregar_com/get_agregarcomentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                    <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                </div>
+                                                                                </form>
 
                                                                             </div>
-                                                                            <%y=y+1%>
-                                                                                <div class="modal-footer">
-                                                                                    <div class="center ">
-
-                                                                                        <a href="/mod_comentario/get_comentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
-                                                                                        <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
-                                                                                    </div>
-                                                                                    </form>
-
-
-
-
-
-                                                                                </div>
-                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

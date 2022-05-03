@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-04-2022 a las 17:44:45
+-- Tiempo de generación: 03-05-2022 a las 23:49:57
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -25,6 +25,11 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarComentario` (IN `U_textocomentario` VARCHAR(500) CHARSET utf8, IN `U_idusuario` INT, IN `U_idticket` INT)  BEGIN
+INSERT INTO comentario(texto_comentario) VALUES(U_textocomentario COLLATE utf8_spanish2_ci); 
+INSERT INTO usuario_comentario_ticket(ID_usuario, ID_comentario, ID_ticket, fecha_comentario) VALUES(U_idusuario, (SELECT MAX(ID_comentario) FROM comentario), U_idticket,CURRENT_TIMESTAMP);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GenerarTicket` (IN `U_idcategoria` INT, IN `U_titulo` VARCHAR(100) CHARSET utf8, IN `U_descripcion` VARCHAR(400) CHARSET utf8)  NO SQL
 INSERT INTO ticket VALUES (NULL, U_idcategoria, 1, 1, (U_titulo COLLATE utf8_spanish2_ci), (U_descripcion COLLATE utf8_spanish2_ci))$$
 
@@ -153,18 +158,6 @@ INSERT INTO `estado` (`ID_estado`, `nombre_estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `funcion`
---
-
-CREATE TABLE `funcion` (
-  `ID_funcion` int(20) NOT NULL,
-  `ID_rol` int(20) NOT NULL,
-  `nombre_funcion` varchar(100) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `genera_ticket`
 --
 
@@ -203,11 +196,7 @@ INSERT INTO `genera_ticket` (`ID_ticket`, `ID_usuario`, `fecha_emision`) VALUES
 (43, 2, '2022-04-18'),
 (44, 2, '2022-04-18'),
 (45, 2, '2022-04-18'),
-(47, 2, '2022-04-24'),
-(49, 2, '2022-04-26'),
-(50, 2, '2022-04-26'),
-(51, 2, '2022-04-26'),
-(52, 2, '2022-04-26');
+(47, 2, '2022-04-24');
 
 -- --------------------------------------------------------
 
@@ -327,9 +316,6 @@ INSERT INTO `respuesta` (`ID_respuesta`, `ID_pregunta`, `ID_ticket`, `texto_resp
 (43, 9, 21, 'Flavios'),
 (44, 10, 21, 'Me presenta que no encuentra el pedido'),
 (45, 11, 21, 'No'),
-(56, 13, 23, ''),
-(57, 14, 23, ''),
-(58, 12, 24, 'hdhdhdhdh'),
 (59, 18, 25, 'no'),
 (60, 20, 25, 'no'),
 (61, 19, 25, 'no'),
@@ -392,10 +378,7 @@ INSERT INTO `resuelve_ticket` (`ID_ticket`, `ID_usuario`, `fecha_inicio`, `fecha
 (19, 4, '2022-03-30', '2022-04-02', 'Se reembolsó al usuario'),
 (20, 2, '2022-03-23', '2022-04-12', 'Solicitamos el servicio a la paquetería'),
 (21, 1, '2022-04-04', '2022-04-09', 'Directo en la base de datos'),
-(22, 3, '2022-04-10', '2022-04-15', 'Cubetazo de agua fría'),
-(50, NULL, NULL, NULL, NULL),
-(51, NULL, NULL, NULL, NULL),
-(52, NULL, NULL, NULL, NULL);
+(22, 3, '2022-04-10', '2022-04-15', 'Cubetazo de agua fría');
 
 -- --------------------------------------------------------
 
@@ -482,7 +465,6 @@ INSERT INTO `ticket` (`ID_ticket`, `ID_categoria`, `ID_estado`, `ID_prioridad`, 
 (20, 7, 4, 5, 'No se puede hacer el retorno', 'No me aparece la opción de realizar un retorno dentro del menu'),
 (21, 8, 5, 1, 'Actualización de dirección dentro del sistema', 'Han pasado 4 días sin que mi dirección se actualice'),
 (22, 1, 5, 4, 'Aldo', 'Renato se quedó dormido'),
-(23, 1, 1, 1, 'Prueba1', 'P1'),
 (25, 4, 1, 1, 'Problemas con la entrega', 'No me ha llegado mi colchón'),
 (26, 2, 5, 1, 'Problema con crédito', 'tengo un problema para pagar mi colchón con mi tarjeta'),
 (39, 6, 1, 1, 'Error en creación de ticket', 'Tengo un error al crear un ticket'),
@@ -493,7 +475,6 @@ INSERT INTO `ticket` (`ID_ticket`, `ID_categoria`, `ID_estado`, `ID_prioridad`, 
 (44, 3, 1, 1, 'Error al crear acceso', 'NO me permite crear un nuevo acceso al sistema'),
 (45, 3, 1, 1, 'Error al crear acceso', 'No me permite crear un nuevo acceso'),
 (47, 3, 1, 1, 'Problema al crear acceso', 'Np uedo crear un acceso'),
-(49, 3, 1, 1, 'Problema', 'INSERT'),
 (50, 3, 1, 1, 'PRUEBA 2', 'TRIGGER'),
 (51, 3, 1, 1, 'Hola', 'Esto es una prueba'),
 (52, 3, 1, 1, 'Prueba', 'View');
@@ -614,13 +595,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`ID_usuario`, `ID_rol`, `nombre`, `apellido_paterno`, `apellido_materno`, `correo`, `password`) VALUES
-(1, 1, 'Aldo', 'Tena', 'García', 'A01275222@tec.mx', 'Aldo1234'),
-(2, 1, 'Flavio', 'Martinez', 'Martinez', 'flavio@zeb.com', '$2a$12$Tv098Ph/HE/JoFRsi5NapuCnpBelF5Rww/hBw5DxUKv3px55.mRf6'),
-(3, 2, 'José Antonio', 'López', 'Coulon', 'jose@zeb.com', '$2a$12$QYUR2hJgxW7rO/EBPcnvuuJMzGAiD24FCA4SBRTNw54BhfIxkujOO'),
-(4, 2, 'Marco Antonio', 'Camalich', 'Pérez', 'marco@zeb.com', '$2a$12$hg6UAGc01HL/3/pxZzFBSea0Z3PpwLc5ZgJqqiOa1OxqXarqP.T3O'),
-(5, 3, 'Renato Sebastián ', 'Ramírez ', 'Calva', 'renato@zeb.com', '$2a$12$6km8gdPmJ.y1cuPVQH1myehkTrovA.e4HIAdw8dKA9ZU95F9n4XeW'),
-(6, 3, 'Jose', 'Lopez', 'Coulon', 'jose@zeb.mx', '$2a$12$5pq.2GR7/Vuump2FTeaQc.0zpE8vdslY9mwK3QTqGwfuxCJs7YsnO'),
-(7, 3, 'Jose', 'Lopez', 'Coulon', 'joseantonio@zeb.mx', '$2a$12$qgrVIkrumssJlPFoG1P.Su1uUKnusPfcPptcjW1lslUBL8GLs7spG');
+(1, 1, 'Aldo', 'Tena', 'García', 'A01275222@zeb.mx', 'Aldo1234'),
+(2, 1, 'Flavio', 'Martinez', 'Martinez', 'flavio@zeb.mx', '$2a$12$Tv098Ph/HE/JoFRsi5NapuCnpBelF5Rww/hBw5DxUKv3px55.mRf6'),
+(3, 2, 'José Antonio', 'López', 'Coulon', 'jose@zeb.mx', '$2a$12$QYUR2hJgxW7rO/EBPcnvuuJMzGAiD24FCA4SBRTNw54BhfIxkujOO'),
+(4, 2, 'Marco Antonio', 'Camalich', 'Pérez', 'marco@zeb.mx', '$2a$12$hg6UAGc01HL/3/pxZzFBSea0Z3PpwLc5ZgJqqiOa1OxqXarqP.T3O'),
+(5, 3, 'Renato Sebastián ', 'Ramírez ', 'Calva', 'renato@zeb.mx', '$2a$12$6km8gdPmJ.y1cuPVQH1myehkTrovA.e4HIAdw8dKA9ZU95F9n4XeW'),
+(6, 3, 'Jose', 'Lopez', 'Coulon', 'jose@zeb.mx', '$2a$12$5pq.2GR7/Vuump2FTeaQc.0zpE8vdslY9mwK3QTqGwfuxCJs7YsnO');
 
 -- --------------------------------------------------------
 
@@ -768,13 +748,6 @@ ALTER TABLE `estado`
   ADD PRIMARY KEY (`ID_estado`);
 
 --
--- Indices de la tabla `funcion`
---
-ALTER TABLE `funcion`
-  ADD PRIMARY KEY (`ID_funcion`),
-  ADD KEY `ID_rol` (`ID_rol`);
-
---
 -- Indices de la tabla `genera_ticket`
 --
 ALTER TABLE `genera_ticket`
@@ -865,12 +838,6 @@ ALTER TABLE `estado`
   MODIFY `ID_estado` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `funcion`
---
-ALTER TABLE `funcion`
-  MODIFY `ID_funcion` int(20) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
 ALTER TABLE `pregunta`
@@ -909,12 +876,6 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `funcion`
---
-ALTER TABLE `funcion`
-  ADD CONSTRAINT `funcion_ibfk_1` FOREIGN KEY (`ID_rol`) REFERENCES `rol` (`ID_rol`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `genera_ticket`

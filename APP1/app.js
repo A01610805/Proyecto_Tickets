@@ -16,6 +16,8 @@ const bodyParser = require('body-parser');
 // permitiendo mantener la sesión del usuario "loggeada", por ejemplo.
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const csrf = require('csurf');
+const csrfProtection = csrf();
 
 const app = express();
 
@@ -33,6 +35,12 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(csrfProtection); 
+
+app.use((request, response, next) => {
+    response.locals.csrfToken = request.csrfToken();
+    next();
+});
 
 //Estas son las rutas a utilizar se utiliza una constante poara almacenar la direccion de la rutas
 //despues se utiliza en un app.use completo
@@ -50,6 +58,8 @@ const rutas_arol = require('./routes/route_asignarRol');
 const rutas_asiusu = require('./routes/route_asiusu');
 const rutas_aestado = require('./routes/route_asignarEstado');
 const rutas_datos = require('./routes/route_cambioDatos');
+const rutas_acomentario = require("./routes/route_agrecomentario");
+
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
@@ -65,6 +75,7 @@ app.use('/metricas', rutas_metricas);
 app.use('/asignar_usuario', rutas_asiusu);
 app.use('/asignar_estado', rutas_aestado);
 app.use('/perfil', rutas_datos);
+app.use('/agregar_com', rutas_acomentario);
 
 app.use((request, response, ) => {
     response.redirect('/users');

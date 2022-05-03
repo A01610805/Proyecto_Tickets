@@ -5,6 +5,7 @@
     <h1 id="logo" class="center">Asignar ticket a usuario</h1>
 
     <form action="" method="POST" id="form" onsubmit="return validar()">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
         <div class="centers">
             <select class="selectpicker" data-style="btn-info" name="asignacion" id="asignacion">
                     <optgroup label="Select Table">

@@ -36,7 +36,8 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5', [num]);
+        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT ?, 5", [num]);
+        //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);
     }
 
     static fetchticketsactivos() {
@@ -66,7 +67,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsarchivados_pag(num) {
-        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket DESC LIMIT ?, 5', [num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', [num]);
     }
 
     static fetchticketsusuario_filtro(valor) {
@@ -80,7 +81,7 @@ module.exports = class Ticket {
     static fetchticketspropios_pag(nom, num) {
         console.log(nom);
         console.log(num);
-        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
+        return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
     }
 
     static cancelar_ticket_1(idticket) {
@@ -166,12 +167,24 @@ module.exports = class Ticket {
     static estado_actual(idticket) {
         return db.execute('SELECT ID_estado FROM ticket WHERE ID_ticket = ?', [idticket]);
     }
-    static asignarusuario(idu, idt){
-        return db.execute('UPDATE resuelve_ticket, ticket SET resuelve_ticket.ID_usuario=?, resuelve_ticket.fecha_inicio=CURRENT_DATE(), ticket.ID_estado=2 WHERE resuelve_ticket.ID_ticket=ticket.ID_ticket AND resuelve_ticket.ID_ticket=?',[idu, idt]);
+    static asignarusuario(idu, idt) {
+            return db.execute('UPDATE resuelve_ticket, ticket SET resuelve_ticket.ID_usuario=?, resuelve_ticket.fecha_inicio=CURRENT_DATE(), ticket.ID_estado=2 WHERE resuelve_ticket.ID_ticket=ticket.ID_ticket AND resuelve_ticket.ID_ticket=?', [idu, idt]);
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    static obtenercomentarios() {
+        return db.execute('SELECT ID_ticket, ID_usuario, nombre, apellido_paterno, apellido_materno, ID_comentario, texto_comentario, DATE_FORMAT(fecha_comentario, "%m %d %Y") FROM comentariosproceso ');
+    }
+
+    static agregarcomentarios(id1, id2, id3) {
+        return db.execute('CALL AgregarComentario(?,?,?);', [id1, id2, id3]);
     }
 
     static fetchticket_prioridad(id) {
         return db.execute('SELECT * FROM ticket WHERE ID_ticket = ?', [id]);
+    }
+
+    static obtenercomentarios_id(id) {
+        return db.execute('SELECT * FROM comentariosproceso WHERE ID_ticket = ?', [id]);
     }
 
 }

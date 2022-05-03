@@ -41,7 +41,7 @@ module.exports = class Busqueda {
     }
 
     static fetchusuarios_pag(num) {
-        return db.execute('SELECT * FROM usuario NATURAL JOIN rol GROUP BY ID_usuario ASC LIMIT '+num+', 5');
+        return db.execute('SELECT * FROM usuario NATURAL JOIN rol GROUP BY ID_usuario ORDER BY ID_usuario ASC LIMIT '+num+', 5');
     }
 
     static fetchusuario_id(id_usuario) {
