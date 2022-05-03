@@ -5,7 +5,7 @@ const Respuesta = require('../models/respuestas');
 const Tickets = require('../models/tickets');
 
 exports.get_principal = (request, response, next) => {
-    console.log('Pantalla principal');
+    // console.log('Pantalla principal');
     Tickets.fetchticketsnuevos()
         .then(([rows, fielData]) => {
             Tickets.fetchrespuestas()
@@ -14,8 +14,8 @@ exports.get_principal = (request, response, next) => {
                         .then(([rows3, fieldData]) => {
                             Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                                 .then(([rows4, fieldData]) => {
-                                    console.log(rows3);
-                                    console.log(request.cookies.nombre_usuario);
+                                    // console.log(rows3);
+                                    // console.log(request.cookies.nombre_usuario);
                                     let numrol = request.cookies.rolusuario;
                                     if (numrol == 3) {
                                         response.render('Primer_pantalla3', {
@@ -42,7 +42,7 @@ exports.get_principal = (request, response, next) => {
         })
 };
 exports.post_principal = (request, response, next) => {
-    console.log('Pantalla principal');
+    // console.log('Pantalla principal');
 
     Tickets.cancelar_ticket_1(request.body.idticket);
     Tickets.cancelar_ticket_2(request.body.idticket);
