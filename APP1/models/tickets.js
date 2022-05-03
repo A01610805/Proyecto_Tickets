@@ -36,8 +36,8 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {
-        //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY 'ID_ticket' ORDER BY 'ID_ticket' DESC LIMIT ?, 5", [num]);
-        return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);
+        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT ?, 5", [num]);
+        //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);
     }
 
     static fetchticketsactivos() {
