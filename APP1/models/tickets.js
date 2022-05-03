@@ -183,4 +183,8 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticket WHERE ID_ticket = ?', [id]);
     }
 
+    static obtenercomentarios_id(id) {
+        return db.execute('SELECT * FROM comentariosproceso WHERE ID_ticket = ?', [id]);
+    }
+
 }
