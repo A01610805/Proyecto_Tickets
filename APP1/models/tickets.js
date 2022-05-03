@@ -80,7 +80,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketspropios_pag(id, num) {
-        console.log(nom);
+        console.log(id);
         console.log(num);
         //return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
         return db.execute("SELECT * FROM `ticketstotal` WHERE Creador ="+id+" GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
