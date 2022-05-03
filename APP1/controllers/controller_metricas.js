@@ -1,5 +1,6 @@
 const Metricas = require('../models/metricas');
 const Categoria = require('../models/categorias');
+const Usuario = require('../models/usuario');
 
 exports.getmetricas = async(request, response, next) => {
     Metricas.fechas()
