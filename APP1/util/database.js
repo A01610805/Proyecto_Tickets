@@ -16,6 +16,6 @@ const DBinstancia = {
     port: 3306
 }
 
-const pool = mysql.createPool(DBInstancia);
+const pool = mysql.createPool(DBlocal);
 
 module.exports = pool.promise();
