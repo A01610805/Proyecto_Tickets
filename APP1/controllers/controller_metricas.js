@@ -44,6 +44,8 @@ exports.getmetricas = async(request, response, next) => {
                             for (let trru of rows6){
                                 tru.push(trru.fecha_fin);
                             }
+                            Usuario.fetchAllSoporte()
+                        .then(([rows7, fieldData]) => {
                     response.render('Metricas', {
                         tiempos: numeros,
                         categorias: cats,
@@ -51,11 +53,13 @@ exports.getmetricas = async(request, response, next) => {
                         ticketsemitidos: te,
                         ticketsresueltos: tr,
                         ticketsresueltosu: tru,
+                        users: rows7,
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
                         username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : ''
                     });  
                 })
             })
+        })
         })
         })
     })
