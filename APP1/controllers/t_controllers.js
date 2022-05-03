@@ -115,11 +115,11 @@ exports.buscar_archivo = async(request, response, next) => {
 exports.get_ticketspropios = async(request, response, next) => {
         let tipo = 3;
 
-        const total = await Ticket.getTotal_propios(request.cookies.correo_usuario);
+        const total = await Ticket.getTotal_propios(request.cookies.id_usuario);
         console.log("En total hay: " + total);
         const start3 = request.params.start3 ? request.params.start3 : 0
 
-        tickets = Ticket.fetchticketspropios_pag(request.cookies.correo_usuario, start3)
+        tickets = Ticket.fetchticketspropios_pag(request.cookies.id_usuario, start3)
             .then(([rows, fieldData]) => {
                 console.log(rows);
                 Ticket.obtenercomentarios()
