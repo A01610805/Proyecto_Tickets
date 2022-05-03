@@ -61,11 +61,21 @@ else if(tipo==3){
         </h1>
 
         <% if (tipo==1){ %>
+            <blockquote>
+                <div class="center">
+                    <a class="btn tooltipped grey pulse" data-position="bottom" data-tooltip="Soy un ticket Nuevo"></a>
+                    <a class="btn tooltipped light-blue pulse" data-position="bottom" data-tooltip="Soy un ticket En Curso"></a>
+                    <a class="btn tooltipped orange pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información"></a>
+                    <a class="btn tooltipped yellow light-blue pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno"></a>
+                    <a class="btn tooltipped red pulse" data-position="bottom" data-tooltip="Soy un ticket Cancelado"></a>
+                    <a class="btn tooltipped light-green pulse" data-position="bottom" data-tooltip="Soy un ticket Resuelto"></a>
+                </div>
+            </blockquote>
             <nav class="grey lighten-4">
                 <div class="nav-wrapper">
                     <ul class="left hide-on-med-and-down">
                         <div class="right input-field col s10">
-                            <a class="waves-effect waves-light btn" href="/buscar_tickets/activos">Reiniciar busqueda</a>
+                            <a class="waves-effect waves-light btn grey white-text right" href="/buscar_tickets/activos">Reiniciar busqueda</a>
                         </div>
                         <div class="right input-field col s1">
                             <label for="buscar_estado_1">Estado: </label>
@@ -86,12 +96,23 @@ else if(tipo==3){
                     </ul>
                 </div>
             </nav>
+
             <% } else if (tipo == 2) { %>
+                <blockquote>
+                    <div class="center">
+                        <a class="btn tooltipped grey pulse" data-position="bottom" data-tooltip="Soy un ticket Nuevo"></a>
+                        <a class="btn tooltipped light-blue pulse" data-position="bottom" data-tooltip="Soy un ticket En Curso"></a>
+                        <a class="btn tooltipped orange pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información"></a>
+                        <a class="btn tooltipped yellow light-blue pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno"></a>
+                        <a class="btn tooltipped red pulse" data-position="bottom" data-tooltip="Soy un ticket Cancelado"></a>
+                        <a class="btn tooltipped light-green pulse" data-position="bottom" data-tooltip="Soy un ticket Resuelto"></a>
+                    </div>
+                </blockquote>
                 <nav class="grey lighten-4">
                     <div class="nav-wrapper">
                         <ul class="left hide-on-med-and-down">
                             <div class="right input-field col s4">
-                                <a class="waves-effect waves-light btn" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
+                                <a class="waves-effect waves-light btn grey white-text right" href="/buscar_tickets/archivo">Reiniciar busqueda</a>
                             </div>
                             <div class="right input-field col s4">
                                 <label for="buscar_prioridad_2">Prioridad: </label>
@@ -112,12 +133,23 @@ else if(tipo==3){
                         </ul>
                     </div>
                 </nav>
+
                 <% } else { %>
+                    <blockquote>
+                        <div class="center">
+                            <a class="btn tooltipped grey pulse" data-position="bottom" data-tooltip="Soy un ticket Nuevo"></a>
+                            <a class="btn tooltipped light-blue pulse" data-position="bottom" data-tooltip="Soy un ticket En Curso"></a>
+                            <a class="btn tooltipped orange pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información"></a>
+                            <a class="btn tooltipped yellow light-blue pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno"></a>
+                            <a class="btn tooltipped red pulse" data-position="bottom" data-tooltip="Soy un ticket Cancelado"></a>
+                            <a class="btn tooltipped light-green pulse" data-position="bottom" data-tooltip="Soy un ticket Resuelto"></a>
+                        </div>
+                    </blockquote>
                     <nav class="grey lighten-4">
                         <div class="nav-wrapper">
                             <ul class="left hide-on-med-and-down">
                                 <div class="right input-field col s4">
-                                    <a class="waves-effect waves-light btn" href="/buscar_tickets/propio">Reiniciar busqueda</a>
+                                    <a class="waves-effect waves-light btn grey white-text right" href="/buscar_tickets/propio">Reiniciar busqueda</a>
                                 </div>
                                 <div class="right input-field col s4">
                                     <label for="buscar_id_3">ID del ticket: </label>
@@ -130,21 +162,12 @@ else if(tipo==3){
                             </ul>
                         </div>
                     </nav>
+
                     <% } %>
 
                         <div class="row" id="respuesta_ajax">
                             <div class="col s12">
                                 <div id="global1">
-                                    <blockquote>
-                                        <div class="center">
-                                            <a class="btn tooltipped grey" data-position="bottom" data-tooltip="Soy un ticket Nuevo"></a>
-                                            <a class="btn tooltipped light-blue" data-position="bottom" data-tooltip="Soy un ticket En Curso"></a>
-                                            <a class="btn tooltipped orange" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información"></a>
-                                            <a class="btn tooltipped yellow light-blue" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno"></a>
-                                            <a class="btn tooltipped red" data-position="bottom" data-tooltip="Soy un ticket Cancelado"></a>
-                                            <a class="btn tooltipped light-green" data-position="bottom" data-tooltip="Soy un ticket Resuelto"></a>
-                                        </div>
-                                    </blockquote>
 
                                     <div class=" center">
                                         <ul class="collection">
@@ -180,12 +203,12 @@ else if(tipo==3){
                             if(ticket.ID_prioridad == 1){
                                 prioridad = 'Por Asignar'
                                 color_prioridad = 'grey lighten-1'
-                                iconop = 'filter_1'
+                                iconop = 'looks_one'
                             }
                             if(ticket.ID_prioridad == 2){
                                 prioridad = 'Baja'
                                 color_prioridad ='teal lighten-3'
-                                iconop = 'filter_2'
+                                iconop = 'looks_two'
                             }
                             if(ticket.ID_prioridad == 3){
                                 prioridad = 'Media'
@@ -339,24 +362,50 @@ else if(tipo==3){
                                                                                                     </p>
                                                                                                 </div>
                                                                                                 <div id="test<%= i+4%>">
-                                                                                                    <%= ticket.comentarios_solucion %>
-                                                                                                        <%if(tipo==1){ %>
-                                                                                                            <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario<%=y%>"><i class="material-icons">add_circle_outline</i></a>
-                                                                                                            <div id="agregarcomentario<%=y%>" class="modal">
-                                                                                                                <div class="modal-content">
-                                                                                                                    <h4>
-                                                                                                                        Agregar comentario?
-                                                                                                                    </h4>
-                                                                                                                </div>
-                                                                                                                <%y=y+1%>
-                                                                                                                    <div class="modal-footer">
-                                                                                                                        <div class="center ">
-                                                                                                                            <a href="/mod_comentario/get_comentario/<%= ticket.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
-                                                                                                                            <a href="/buscar_tickets/activos" class="waves-effect waves-light btn">Cancelar</a>
-                                                                                                                        </div>
+                                                                                                    <strong><%= ticket.comentarios_solucion %></strong>
+                                                                                                    <div id="nsb">
+                                                                                                        <% for (let comment of comentario){%>
+                                                                                                            <% if(comment.ID_ticket == ticket.ID_ticket){%>
+                                                                                                                <div class="row">
+
+                                                                                                                    <div class="col s12">
+
+                                                                                                                        <strong class="left">El creador fue: <%=comment.nombre%> <%=comment.apellido_paterno%> <%=comment.apellido_paterno %> </strong>
+
                                                                                                                     </div>
+                                                                                                                    <div class="col s2">
+                                                                                                                        <p>
+                                                                                                                            <%=comment.fecha_comentario%>
+                                                                                                                        </p>
+
+                                                                                                                    </div>
+                                                                                                                    <div class="col s10">
+                                                                                                                        <p class="left">
+                                                                                                                            <%=comment.texto_comentario%>
+                                                                                                                        </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <%}%>
+                                                                                                                    <%}%>
+
+
+                                                                                                    </div>
+                                                                                                    <%if(tipo==1){ %>
+                                                                                                        <div id="agregarcomentario<%=y%>" class="modal">
+                                                                                                            <div class="modal-content">
+                                                                                                                <h4>
+                                                                                                                    Agregar comentario?
+                                                                                                                </h4>
                                                                                                             </div>
-                                                                                                            <% } %>
+                                                                                                            <%y=y+1%>
+                                                                                                                <div class="modal-footer">
+                                                                                                                    <div class="center ">
+                                                                                                                        <a href="/mod_comentario/get_comentario/<%= ticket.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                                                        <a href="/buscar_tickets/activos" class="waves-effect waves-light btn">Cancelar</a>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                        </div>
+                                                                                                        <% } %>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -744,8 +793,8 @@ else if(tipo==3){
                                 </div>'+ '
                                 <div class="s12">'+ '
                                     <ul class="pagination center-align">'; for (let x = 1; x
-                                        <=M ath.ceil(data.rows.length/5); x++) { respuesta +='<li class="active"><a href="/buscar_tickets/start' +tipo+ '/'+(x-1)*5 + '"">'+x+ '</a></li>'; } respuesta +='</ul>' + '</div>'+ '</div>'; document.getElementById(
-                                            'respuesta_ajax').innerHTML=r espuesta; M.AutoInit(); }).catch(err=> { console.log('Error de ajax'); console.log(err); }); }; //Implementción de los filtros dentro de la busqueda de tickets activos. let bc2 = document.getElementById('buscar_creador_2'); let be2 = document.getElementById('buscar_encargado_2');
+                                        <=M ath.ceil(data.rows.length/5); x++) { respuesta +='<li class="active"><a href="/buscar_tickets/start' +tipo+ '/'+(x-1)*5 + '"">'+x+ '</a></li>'; } respuesta +='</ul>' + '</div>'+ '</div>'; document.getElementById( 'respuesta_ajax').innerHTML=r espuesta;
+                                            M.AutoInit(); }).catch(err=> { console.log('Error de ajax'); console.log(err); }); }; //Implementción de los filtros dentro de la busqueda de tickets activos. let bc2 = document.getElementById('buscar_creador_2'); let be2 = document.getElementById('buscar_encargado_2');
                                             let bid2 = document.getElementById('buscar_id_2'); let bpri2 = document.getElementById('buscar_prioridad_2'); if (bc2 != null || be2 != null || bid2 != null) { document.getElementById('buscar_creador_2').onkeyup
                                             = archivados; document.getElementById('buscar_encargado_2').onkeyup = archivados; document.getElementById('buscar_id_2').onkeyup = archivados; document.getElementById('buscar_prioridad_2').onkeyup = archivados;
                                             } const propios = () => { var str1; let bid3 = document.getElementById('buscar_id_3'); if (bid3 != null) { str1 = bid3.value; } else { str1 = null; } const valor_busqueda = str1; //El token de protección CSRF
@@ -839,7 +888,7 @@ else if(tipo==3){
                                                 </div>'+ '
                                                 <div class="s12">'+ '
                                                     <ul class="pagination center-align">'; for (let x = 1; x
-                                                        <=M ath.ceil(data.rows.length/5); x++) { respuesta +='<li class="active"><a href="/buscar_tickets/start' +tipo+ '/'+(x-1)*5 + '"">'+x+ '</a></li>'; } respuesta +='</ul>' +
-                                                            '</div>'+ '</div>'; document.getElementById( 'respuesta_ajax').innerHTML=r espuesta; M.AutoInit(); }).catch(err=> { console.log('Error de ajax'); console.log(err); }); }; let bid3 = document.getElementById('buscar_id_3'); if (bid3 != null) { document.getElementById('buscar_id_3').onkeyup = propios; }
+                                                        <=M ath.ceil(data.rows.length/5); x++) { respuesta +='<li class="active"><a href="/buscar_tickets/start' +tipo+ '/'+(x-1)*5 + '"">'+x+ '</a></li>'; } respuesta +='</ul>' + '</div>'+ '</div>'; document.getElementById( 'respuesta_ajax').innerHTML=r espuesta;
+                                                            M.AutoInit(); }).catch(err=> { console.log('Error de ajax'); console.log(err); }); }; let bid3 = document.getElementById('buscar_id_3'); if (bid3 != null) { document.getElementById('buscar_id_3').onkeyup = propios; }
                                                             </script>
                                                             <%- include('includes/footer.ejs') %>
