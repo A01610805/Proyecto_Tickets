@@ -12,10 +12,13 @@ exports.get_activos = async(request, response, next) => {
 
     tickets = Ticket.fetchticketsactivos_pag(start)
         .then(([rows, fieldData]) => {
+            console.log('1');
             Ticket.obtenercomentarios()
                 .then(([rows1, fieldData]) => {
+                    console.log('2');
                     respuestas = Ticket.fetchrespuestas()
                         .then(([rows2, fieldData]) => {
+                            console.log('3');
                             //console.log(rows);
                             response.render('Consulta', {
                                 tickets: rows,
