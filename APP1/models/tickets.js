@@ -79,11 +79,11 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? AND ID_ticket LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
-    static fetchticketspropios_pag(nom, num) {
+    static fetchticketspropios_pag(id, num) {
         console.log(nom);
         console.log(num);
         //return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
-        return db.execute("SELECT * FROM `ticketstotal` WHERE correo_creador ="+nom+" GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
+        return db.execute("SELECT * FROM `ticketstotal` WHERE Creador ="+id+" GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
     }
 
     static cancelar_ticket_1(idticket) {
