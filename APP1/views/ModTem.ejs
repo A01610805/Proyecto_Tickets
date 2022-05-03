@@ -18,6 +18,7 @@
     <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
         <h1 id="logo">Modificar template</h1>
+        <h4 id="logo"><%= nombre%></h4>
         <div>
             <div>
                 <label id="logo" for="">Nombre Categoria&nbsp;(Establece nuevo nombre de categoria): </label>
@@ -48,6 +49,7 @@
                                 <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
                                 <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
                                 <input required id="texto_pregunta" name="texto_pregunta"><span ></span> 
+                                
                             </div>
                             
                         
