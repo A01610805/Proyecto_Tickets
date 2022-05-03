@@ -11,7 +11,7 @@ exports.get_activos = async(request, response, next) => {
     console.log(start);
 
     //tickets =
-    Ticket.fetchticketsactivos_pag(start)
+    Ticket.fetchticketsactivos_pag(/*start*/)
         .then(([rows, fieldData]) => {
             console.log(rows);
             console.log('1');
