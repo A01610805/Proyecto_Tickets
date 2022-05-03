@@ -7,7 +7,7 @@ exports.get_activos = async(request, response, next) => {
 
     const total = await Ticket.getTotal_activos();
     console.log("En total hay: " + total);
-    const start = request.params.start1 ? request.params.start1 : 5
+    const start = request.params.start1 ? request.params.start1 : 0
     console.log(start);
 
     //tickets =
