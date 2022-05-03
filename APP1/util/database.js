@@ -5,7 +5,6 @@ const DBlocal = {
     user: 'root',
     database: 'zebrands_tickets',
     password: '',
-    port: 3307
 };
 
 const DBinstancia = {

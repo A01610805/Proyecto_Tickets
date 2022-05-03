@@ -58,6 +58,8 @@ const rutas_arol = require('./routes/route_asignarRol');
 const rutas_asiusu = require('./routes/route_asiusu');
 const rutas_aestado = require('./routes/route_asignarEstado');
 const rutas_datos = require('./routes/route_cambioDatos');
+const rutas_acomentario = require("./routes/route_agrecomentario");
+
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
@@ -73,6 +75,7 @@ app.use('/metricas', rutas_metricas);
 app.use('/asignar_usuario', rutas_asiusu);
 app.use('/asignar_estado', rutas_aestado);
 app.use('/perfil', rutas_datos);
+app.use('/agregar_com', rutas_acomentario);
 
 app.use((request, response, ) => {
     response.redirect('/users');
