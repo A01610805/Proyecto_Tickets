@@ -16,7 +16,7 @@ exports.get_principal = (request, response, next) => {
                                 .then(([rows4, fieldData]) => {
                                     Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                                         .then(([rows5, fieldData]) => {
-                                            console.log(rows3);
+
                                             console.log(request.cookies.nombre_usuario);
                                             let numrol = request.cookies.rolusuario;
                                             if (numrol == 3) {

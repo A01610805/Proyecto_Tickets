@@ -164,10 +164,11 @@ module.exports = class Ticket {
         }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     static obtenercomentarios() {
-        return db.execute('SELECT * FROM comentariosproceso ');
+        return db.execute('SELECT ID_ticket, ID_usuario, nombre, apellido_paterno, apellido_materno, ID_comentario, texto_comentario, DATE_FORMAT(fecha_comentario, "%m %d %Y") FROM comentariosproceso ');
     }
-    static agregarcomentarios(id1, id2, id3, id4) {
-        return db.execute('CALL AgregarComentario(?,?,?,?);', [id1, id2, id3, id4]);
+
+    static agregarcomentarios(id1, id2, id3) {
+        return db.execute('CALL AgregarComentario(?,?,?);', [id1, id2, id3]);
     }
 
 }

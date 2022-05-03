@@ -25,10 +25,10 @@ exports.get_agregarcomentario = (request, response, next) => {
 
 
 exports.post_agregarcomentario = (request, response, next) => {
-    console.log('hola?');
+    console.log('agregar comentario');
     console.log();
     console.log('Iniciando update');
-    Tickets.agregarcomentarios(request.body.comentario, request.params.id)
+    Tickets.agregarcomentarios(request.body.comentario, request.cookies.id_usuario, request.params.id)
     console.log('Terminando update');
     response.redirect('/home');
 };
