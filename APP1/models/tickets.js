@@ -166,8 +166,16 @@ module.exports = class Ticket {
     static estado_actual(idticket) {
         return db.execute('SELECT ID_estado FROM ticket WHERE ID_ticket = ?', [idticket]);
     }
-    static asignarusuario(idu, idt){
-        return db.execute('UPDATE resuelve_ticket, ticket SET resuelve_ticket.ID_usuario=?, resuelve_ticket.fecha_inicio=CURRENT_DATE(), ticket.ID_estado=2 WHERE resuelve_ticket.ID_ticket=ticket.ID_ticket AND resuelve_ticket.ID_ticket=?',[idu, idt]);
+    static asignarusuario(idu, idt) {
+            return db.execute('UPDATE resuelve_ticket, ticket SET resuelve_ticket.ID_usuario=?, resuelve_ticket.fecha_inicio=CURRENT_DATE(), ticket.ID_estado=2 WHERE resuelve_ticket.ID_ticket=ticket.ID_ticket AND resuelve_ticket.ID_ticket=?', [idu, idt]);
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    static obtenercomentarios() {
+        return db.execute('SELECT ID_ticket, ID_usuario, nombre, apellido_paterno, apellido_materno, ID_comentario, texto_comentario, DATE_FORMAT(fecha_comentario, "%m %d %Y") FROM comentariosproceso ');
+    }
+
+    static agregarcomentarios(id1, id2, id3) {
+        return db.execute('CALL AgregarComentario(?,?,?);', [id1, id2, id3]);
     }
 
     static fetchticket_prioridad(id) {
