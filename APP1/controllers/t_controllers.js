@@ -10,13 +10,16 @@ exports.get_activos = async(request, response, next) => {
     const start = request.params.start1 ? request.params.start1 : 0
     console.log(start);
 
-    tickets = Ticket.fetchticketsactivos_pag(start)
+    //tickets =
+    Ticket.fetchticketsactivos_pag(start)
         .then(([rows, fieldData]) => {
+            console.log(rows);
             console.log('1');
             Ticket.obtenercomentarios()
                 .then(([rows1, fieldData]) => {
                     console.log('2');
-                    respuestas = Ticket.fetchrespuestas()
+                    //respuestas = 
+                    Ticket.fetchrespuestas()
                         .then(([rows2, fieldData]) => {
                             console.log('3');
                             //console.log(rows);
