@@ -16,6 +16,8 @@ exports.get_principal = (request, response, next) => {
                                 .then(([rows4, fieldData]) => {
                                     Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                                         .then(([rows5, fieldData]) => {
+                                            Tickets.fetchticketsnuevosu(request.cookies.id_usuario)
+                                                .then(([rows6, fieldData]) => {
                                             // console.log(request.cookies.nombre_usuario);
                                             let numrol = request.cookies.rolusuario;
                                             if (numrol == 3) {
@@ -23,6 +25,7 @@ exports.get_principal = (request, response, next) => {
                                                     username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                                                     comentario: rows,
                                                     ticketss: rows2,
+                                                    ticketsss: rows6,
                                                     respuestas: rows3,
                                                     ticketsusuario: rows4,
                                                     ticketobtenido: rows5,
@@ -41,6 +44,7 @@ exports.get_principal = (request, response, next) => {
                                             }
                                         })
                                 })
+                            })
                         })
                 })
         })

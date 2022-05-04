@@ -35,6 +35,10 @@ module.exports = class Ticket {
         return db.execute('SELECT * FROM ticketsnuevos');
     }
 
+    static fetchticketsnuevosu(id) {
+        return db.execute('SELECT * FROM ticketsnuevos WHERE ID_usuario = ?', [id]);
+    }
+
     static fetchticketsactivos_pag(num) {                                                                                           
         return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
         //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);  GROUP BY `ID_ticket`
