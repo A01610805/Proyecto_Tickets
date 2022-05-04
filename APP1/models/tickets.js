@@ -36,8 +36,8 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {                                                                                           
-        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
-        //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);
+        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
+        //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);  GROUP BY `ID_ticket`
     }
 
     static fetchticketsactivos() {
@@ -46,10 +46,10 @@ module.exports = class Ticket {
 
     static fetchticketsactivos_filtros(valor) {
         let arr = valor.split('&');
-        console.log(arr[0]);
-        console.log(arr[1]);
-        console.log(arr[2]);
-        console.log(arr[3]);
+        // console.log(arr[0]);
+        // console.log(arr[1]);
+        // console.log(arr[2]);
+        // console.log(arr[3]);
         return db.execute('SELECT * FROM ticketstotal WHERE ID_estado != 6 AND ID_estado != 5 AND ID_ticket LIKE ? AND Nombre_encargado LIKE ? AND ID_estado LIKE ? AND ID_prioridad LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
     }
 
@@ -59,29 +59,29 @@ module.exports = class Ticket {
 
     static fetchticketsarchivados_filtros(valor) {
         let arr = valor.split('&');
-        console.log(arr[0]);
-        console.log(arr[1]);
-        console.log(arr[2]);
-        console.log(arr[3]);
+        // console.log(arr[0]);
+        // console.log(arr[1]);
+        // console.log(arr[2]);
+        // console.log(arr[3]);
         return db.execute('SELECT * FROM ticketstotal WHERE (ID_estado = 6 OR ID_estado = 5) AND ID_ticket LIKE ? AND Nombre_creador LIKE ? AND Nombre_encargado LIKE ? AND ID_prioridad LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%', '%' + arr[2] + '%', '%' + arr[3] + '%']);
     }
 
     static fetchticketsarchivados_pag(num) {
         //return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', [num]);
-        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`=6 OR `ID_estado`=5 GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
+        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`=6 OR `ID_estado`=5 ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
     }
 
     static fetchticketsusuario_filtro(valor) {
         //return db.execute('SELECT * FROM ticketstotal WHERE Nombre_creador=?',[id]);
         let arr = valor.split('&');
-        console.log(arr[0]);
-        console.log(arr[1]);
+        // console.log(arr[0]);
+        // console.log(arr[1]);
         return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? AND ID_ticket LIKE ?', ['%' + arr[0] + '%', '%' + arr[1] + '%']);
     }
 
     static fetchticketspropios_pag(id, num) {
-        console.log(id);
-        console.log(num);
+        // console.log(id);
+        // console.log(num);
         //return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
         return db.execute("SELECT * FROM `ticketstotal` WHERE Creador ="+id+" GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
     }
@@ -97,7 +97,7 @@ module.exports = class Ticket {
     static getTotal_activos() {
         return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5')
             .then(([rows, fieldData]) => {
-                console.log(rows[0].total);
+                // console.log(rows[0].total);
                 return rows[0].total;
             })
             .catch(error => {
@@ -109,8 +109,8 @@ module.exports = class Ticket {
     static getTotal_archivados() {
         return db.execute('SELECT count(*) as total FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5')
             .then(([rows, fieldData]) => {
-                console.log(rows);
-                console.log(rows[0].total);
+                // console.log(rows);
+                // console.log(rows[0].total);
                 return rows[0].total;
             })
             .catch(error => {
@@ -122,8 +122,8 @@ module.exports = class Ticket {
     static getTotal_propios(id) {
         return db.execute('SELECT COUNT(*) as total FROM ticketstotal WHERE correo_creador LIKE ?', ['%' + id + '%'])
             .then(([rows, fieldData]) => {
-                console.log(rows);
-                console.log(rows[0].total);
+                // console.log(rows);
+                // console.log(rows[0].total);
                 return rows[0].total;
             })
             .catch(error => {

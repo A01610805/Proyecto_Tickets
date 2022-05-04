@@ -5,8 +5,8 @@ exports.get_comentario = (request, response, next) => {
     // console.log(tic);
     // const tic2 = Tickets.fetchresTiseleccionado(request.params.id)
     // console.log(tic2);
-    console.log(request.params.id);
-    console.log('Entrando a modificar comentario');
+    // console.log(request.params.id);
+    // console.log('Entrando a modificar comentario');
     Tickets.fetchticketSeleccionado(request.params.id)
         .then(([rows, fieldData]) => {
             console.log('Entrando a fetchTicketSEle');
@@ -25,9 +25,9 @@ exports.get_comentario = (request, response, next) => {
 
 
 exports.post_comentario = (request, response, next) => {
-    console.log('hola?');
-    console.log();
-    console.log('Iniciando update');
+    // console.log('hola?');
+    // console.log();
+    // console.log('Iniciando update');
     Tickets.modificarcomentario(request.body.comentario, request.params.id)
     console.log('Terminando update');
     response.redirect('/home');

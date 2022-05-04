@@ -27,7 +27,7 @@ exports.get_login4 = (request, response, next) => {
 };
 
 exports.login = (request, response, next) => {
-    console.log('Entrando a fetchOne');
+    // console.log('Entrando a fetchOne');
     correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
         .then(([rows, fielData]) => {   
@@ -73,7 +73,7 @@ exports.login = (request, response, next) => {
                     }
 
                 }).catch(err => {
-                    console.log('Hola');
+                    // console.log('Hola');
                     
                 });
         }).catch((error) => {
@@ -89,6 +89,7 @@ exports.get_signup = (request, response, next) => {
 };
 
 exports.post_signup = (request, response, next) => {
+<<<<<<< HEAD
     console.log(request.body);
     User.get_correos()
     .then(([rows,fielData]) => {
@@ -99,11 +100,16 @@ exports.post_signup = (request, response, next) => {
     if(c.includes(request.body.email)==false){
         const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
         user.save()
+=======
+    // console.log(request.body);
+    const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
+    user.save()
+>>>>>>> e5e8a55369badeeae4f8ef3082408462b4a9c623
         .then(() => {
             return response.redirect('/users/loginwww');
         }).catch((error) => {
             console.log(error);
-            console.log('Aqui esta el error');
+            // console.log('Aqui esta el error');
         });
     }
 
@@ -124,7 +130,7 @@ exports.get_ticketspropios = (request, response, next) => {
     let tipo = 3;
     tickets = Ticket.fetchticketsusuario(correo_usuario)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            // console.log(rows);
             response.render('Consulta', {
                 tickets: rows,
                 username: request.session.nombre ? request.session.nombre : '',

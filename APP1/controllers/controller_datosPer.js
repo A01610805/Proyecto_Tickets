@@ -3,12 +3,12 @@ const bcrypt = require('bcryptjs');
 let errorc = 0;
 
 exports.get_cpass = (request, response, next) => {
-    console.log(request.cookies.id_usuario);
-    console.log('Entrando al render de cambio de contraseña');
+    // console.log(request.cookies.id_usuario);
+    // console.log('Entrando al render de cambio de contraseña');
     Usuario.getusuariobyid(request.cookies.id_usuario)
         .then(([rows, fieldData]) => {
-            console.log(rows[0]);
-            console.log(rows[0].password);
+            // console.log(rows[0]);
+            // console.log(rows[0].password);
             response.render('CPass', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
@@ -35,7 +35,7 @@ exports.post_cpass = (request, response, next) => {
                 }
             }).catch(err => {
                 console.log(err);
-                console.log('Error en el cambio de password');                
+                // console.log('Error en el cambio de password');                
             })
     })
     .catch(error => { console.log(error) }); 
@@ -44,11 +44,11 @@ exports.post_cpass = (request, response, next) => {
 }
 
 exports.get_usuario = (request, response, next) => {
-    console.log(request.cookies.id_usuario);
-    console.log('Entrando al render de datos personales');
+    // console.log(request.cookies.id_usuario);
+    // console.log('Entrando al render de datos personales');
     Usuario.getusuariobyid(request.cookies.id_usuario)
         .then(([rows, fieldData]) => {
-            console.log(rows[0]);
+            // console.log(rows[0]);
             response.render('Personal', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',

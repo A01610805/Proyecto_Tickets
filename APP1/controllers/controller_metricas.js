@@ -9,7 +9,7 @@ exports.getmetricas = async(request, response, next) => {
         for (let fecha of rows3){
             fechas.push(fecha.Fechas);
         }
-        console.log(fechas);
+        // console.log(fechas);
     // Gráfica #1 (tiempos por categoría)
     Metricas.tiemposCat() 
         .then(([rows,fielData]) => {
@@ -31,7 +31,7 @@ exports.getmetricas = async(request, response, next) => {
                         for (let tee of rows4){
                             te.push(tee.fecha_emision);
                         }
-                        console.log(numeros)
+                        // console.log(numeros)
                         Metricas.ticketsresueltos()
                         .then(([rows5, fielData]) => {
                             let tr=[];
