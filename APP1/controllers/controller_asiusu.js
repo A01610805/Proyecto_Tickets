@@ -2,11 +2,11 @@ const Usuario = require('../models/usuario');
 const Tickets = require('../models/tickets');
 
 exports.get_usuario = (request, response, next) => {
-    console.log(request.params.id);
-    console.log('Entrando al render de asignar ticket a usuario');
+    // console.log(request.params.id);
+    // console.log('Entrando al render de asignar ticket a usuario');
     Usuario.fetchAllSoporte()
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            // console.log(rows);
             response.render('asiusu', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',

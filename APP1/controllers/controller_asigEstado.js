@@ -2,11 +2,11 @@ const Ticket = require('../models/tickets');
 const Asignado = require('../models/resuelve_ticket');
 
 exports.get_ticket = (request, response, next) => {;
-    console.log(request.params.id);
-    console.log('Entrando al render de asignar estado');
+    // console.log(request.params.id);
+    // console.log('Entrando al render de asignar estado');
     Ticket.fetchticket_estado(request.params.id)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            // console.log(rows);
             response.render('AEstado', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
@@ -18,11 +18,11 @@ exports.get_ticket = (request, response, next) => {;
 };
 
 exports.post_estado = async (request, response, next) => {
-    console.log('Entrando a la asignación de estado');   
+    // console.log('Entrando a la asignación de estado');   
     const ea = await Ticket.estado_actual(request.params.id); 
     let en = request.body.estado_nuevo;
-    console.log(ea[0][0].ID_estado,en,'Iniciando update');
-    console.log(request.cookies.id_usuario, request.params.id);
+    // console.log(ea[0][0].ID_estado,en,'Iniciando update');
+    // console.log(request.cookies.id_usuario, request.params.id);
     if (ea[0][0].ID_estado == 1){
         if (en == 2 || en == 3 || en == 4){
             Ticket.update_estado(request.body.estado_nuevo, request.params.id);
@@ -45,7 +45,7 @@ exports.post_estado = async (request, response, next) => {
             Asignado.estado_56(request.params.id);
         }
     }
-    console.log('Terminando update');
+    // console.log('Terminando update');
     response.redirect('/home')
 };
 

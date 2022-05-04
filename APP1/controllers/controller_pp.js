@@ -5,7 +5,7 @@ const Respuesta = require('../models/respuestas');
 const Tickets = require('../models/tickets');
 
 exports.get_principal = (request, response, next) => {
-    console.log('Pantalla principal');
+    // console.log('Pantalla principal');
     Tickets.obtenercomentarios()
         .then(([rows, fielData]) => {
             Tickets.fetchticketsnuevos()
@@ -16,7 +16,7 @@ exports.get_principal = (request, response, next) => {
                                 .then(([rows4, fieldData]) => {
                                     Tickets.fetchticketsencargado(request.cookies.correo_usuario)
                                         .then(([rows5, fieldData]) => {
-                                            console.log(request.cookies.nombre_usuario);
+                                            // console.log(request.cookies.nombre_usuario);
                                             let numrol = request.cookies.rolusuario;
                                             if (numrol == 3) {
                                                 response.render('Primer_pantalla3', {

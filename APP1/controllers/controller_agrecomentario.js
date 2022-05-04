@@ -5,11 +5,11 @@ exports.get_agregarcomentario = (request, response, next) => {
     // console.log(tic);
     // const tic2 = Tickets.fetchresTiseleccionado(request.params.id)
     // console.log(tic2);
-    console.log(request.params.id);
-    console.log('Entrando a modificar comentario');
+    // console.log(request.params.id);
+    // console.log('Entrando a modificar comentario');
     Tickets.obtenercomentarios()
         .then(([rows, fieldData]) => {
-            console.log('Entrando a comentarios');
+            // console.log('Entrando a comentarios');
             // console.log('WOW');
             // console.log(rows);
             // console.log(rows2);
@@ -25,11 +25,11 @@ exports.get_agregarcomentario = (request, response, next) => {
 
 
 exports.post_agregarcomentario = (request, response, next) => {
-    console.log('agregar comentario');
-    console.log();
-    console.log('Iniciando update');
+    // console.log('agregar comentario');
+    // console.log();
+    // console.log('Iniciando update');
     Tickets.agregarcomentarios(request.body.comentario, request.cookies.id_usuario, request.params.id)
-    console.log('Terminando update');
+    // console.log('Terminando update');
     response.redirect('/home');
 };
 

@@ -1,11 +1,11 @@
 const Usuario = require('../models/usuario');
 
 exports.get_usuario = (request, response, next) => {;
-    console.log(request.params.id);
-    console.log('Entrando al render de asignar rol');
+    // console.log(request.params.id);
+    // console.log('Entrando al render de asignar rol');
     Usuario.fetchusuario_id(request.params.id)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            // console.log(rows);
             response.render('ARol', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
@@ -17,12 +17,12 @@ exports.get_usuario = (request, response, next) => {;
 };
 
 exports.post_rol = (request, response, next) => {
-    console.log('Entrando a la asignación de prioridad');
+    // console.log('Entrando a la asignación de prioridad');
     const asignacion_rol = new Usuario(request.body.rol_nuevo, request.params.id);
-    console.log(asignacion_rol);
-    console.log('Iniciando update');
+    // console.log(asignacion_rol);
+    // console.log('Iniciando update');
     asignacion_rol.update_rol()
-    console.log('Terminando update');
+    // console.log('Terminando update');
     response.redirect('/buscar_usuario/busqueda')
 };
 

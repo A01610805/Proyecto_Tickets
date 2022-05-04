@@ -17,7 +17,7 @@ exports.get_login2 = (request, response, next) => {
 };
 
 exports.login = (request, response, next) => {
-    console.log('Entrando a fetchOne');
+    // console.log('Entrando a fetchOne');
     correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
         .then(([rows, fielData]) => {   
@@ -63,7 +63,7 @@ exports.login = (request, response, next) => {
                     }
 
                 }).catch(err => {
-                    console.log('Hola');
+                    // console.log('Hola');
                     
                 });
         }).catch((error) => {
@@ -79,14 +79,14 @@ exports.get_signup = (request, response, next) => {
 };
 
 exports.post_signup = (request, response, next) => {
-    console.log(request.body);
+    // console.log(request.body);
     const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
     user.save()
         .then(() => {
             response.redirect('Log_In');
         }).catch((error) => {
             console.log(error);
-            console.log('Aqui esta el error');
+            // console.log('Aqui esta el error');
         });
 };
 
@@ -100,7 +100,7 @@ exports.get_ticketspropios = (request, response, next) => {
     let tipo = 3;
     tickets = Ticket.fetchticketsusuario(correo_usuario)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            // console.log(rows);
             response.render('Consulta', {
                 tickets: rows,
                 username: request.session.nombre ? request.session.nombre : '',
