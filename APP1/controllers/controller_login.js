@@ -89,7 +89,6 @@ exports.get_signup = (request, response, next) => {
 };
 
 exports.post_signup = (request, response, next) => {
-<<<<<<< HEAD
     console.log(request.body);
     User.get_correos()
     .then(([rows,fielData]) => {
@@ -100,11 +99,6 @@ exports.post_signup = (request, response, next) => {
     if(c.includes(request.body.email)==false){
         const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
         user.save()
-=======
-    // console.log(request.body);
-    const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
-    user.save()
->>>>>>> e5e8a55369badeeae4f8ef3082408462b4a9c623
         .then(() => {
             return response.redirect('/users/loginwww');
         }).catch((error) => {
