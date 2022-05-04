@@ -6,6 +6,7 @@
 
 
         <form action="/agregar_com/post_agregarcomentario/<%= id %>" method="post" id="form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
 
                 <div class="centers">
