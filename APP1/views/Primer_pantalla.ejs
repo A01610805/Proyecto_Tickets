@@ -192,6 +192,7 @@
                                                                             </h5>
                                                                             <a href="#!" class="secondary-content">
                                                                                 <form action="/home" method="POST">
+                                                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                                     <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                     </button>
@@ -456,6 +457,7 @@
                                                                         </h5>
                                                                         <a href="#!" class="secondary-content">
                                                                             <form action="/home" method="POST">
+                                                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                 <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
                                                                                 <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                         </button>
@@ -705,6 +707,7 @@
                                                                             </h5>
                                                                             <a href="#!" class="secondary-content">
                                                                                 <form action="/home" method="POST">
+                                                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
                                                                                     <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                                 </button>

@@ -271,6 +271,7 @@ else if(tipo==3){
                                                                         ruta='activos';
                                                                     }%>
                                                                                                                     <form action="/buscar_tickets/<%=ruta%>" method="POST">
+                                                                                                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                                                         <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                                                                         <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
                                                                                                                     </form>
