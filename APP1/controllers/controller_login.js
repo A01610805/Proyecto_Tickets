@@ -60,7 +60,7 @@ exports.login = (request, response, next) => {
             bcrypt.compare(request.body.password, user.password)
                 .then(doMatch => {
                     if (doMatch) {
-                        console.log('Pass coinciden');
+                        // console.log('Pass coinciden');
                         request.session.isLoggedIn = true;
                         request.session.user = user;
                         request.session.username = user.nombre;
@@ -89,7 +89,7 @@ exports.get_signup = (request, response, next) => {
 };
 
 exports.post_signup = (request, response, next) => {
-    console.log(request.body);
+    // console.log(request.body);
     User.get_correos()
     .then(([rows,fielData]) => {
         let c=[];
