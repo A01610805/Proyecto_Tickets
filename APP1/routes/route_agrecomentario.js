@@ -6,7 +6,6 @@ const isAuth = require('../util/is-auth.js');
 
 router.get('/get_agregarcomentario/:id', isAuth, comentarioagre.get_agregarcomentario);
 router.post('/post_agregarcomentario/:id', comentarioagre.post_agregarcomentario);
-
 router.get('/', isAuth, comentarioagre.root);
 
 
