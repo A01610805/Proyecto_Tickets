@@ -36,6 +36,7 @@ exports.get_principal = (request, response, next) => {
                                                     username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                                                     comentario: rows,
                                                     ticketss: rows2,
+                                                    ticketsss: rows6,
                                                     respuestas: rows3,
                                                     ticketsusuario: rows4,
                                                     ticketobtenido: rows5,
