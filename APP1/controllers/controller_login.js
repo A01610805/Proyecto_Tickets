@@ -4,7 +4,7 @@ const Ticket = require("../models/tickets");
 const bcrypt = require('bcryptjs');
 var correo_usuario = '';
 
-exports.get_login = (request, response, next) => {
+exports.get_login = (request, response, next) => {  
     response.render('Log_In',{
         error: 0
     });
@@ -13,6 +13,16 @@ exports.get_login = (request, response, next) => {
 exports.get_login2 = (request, response, next) => {
     response.render('Log_In',{
         error: 1
+    });
+};
+exports.get_login3 = (request, response, next) => {
+    response.render('Log_In',{
+        error: 2
+    });
+};
+exports.get_login4 = (request, response, next) => {
+    response.render('Log_In',{
+        error: 3
     });
 };
 
@@ -80,14 +90,28 @@ exports.get_signup = (request, response, next) => {
 
 exports.post_signup = (request, response, next) => {
     console.log(request.body);
-    const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
-    user.save()
+    User.get_correos()
+    .then(([rows,fielData]) => {
+        let c=[];
+        for (let co of rows){
+            c.push(co.correo);
+        }
+    if(c.includes(request.body.email)==false){
+        const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
+        user.save()
         .then(() => {
-            response.redirect('Log_In');
+            return response.redirect('/users/loginwww');
         }).catch((error) => {
             console.log(error);
             console.log('Aqui esta el error');
         });
+    }
+
+    else{
+        return response.redirect('/users/loginww');   
+    }
+
+    }).catch(error => {console.log(error)});
 };
 
 exports.logout = (request, response, next) => {

@@ -351,9 +351,8 @@
             var password2 = document.getElementById("password2").value;
             var apellidopaterno = document.getElementById("ApellidoM").value;
             var apellidomaterno = document.getElementById("ApellidoP").value;
-            console.log(mail.slice(-7));
 
-            if (mail == "" || name == "" || password == "" || apellidopaterno == "" || apellidomaterno == "") {
+                if (mail == "" || name == "" || password == "" || apellidopaterno == "" || apellidomaterno == "") {
                 alert("Llena todos los campos requeridos");
                 return false;
             } else if (password.length < 8) {
@@ -366,8 +365,8 @@
             } else if (mail.slice(-7) != '@zeb.mx') {
                 alert("Tu correo debe tener terminación @zeb.mx");
                 return false;
-            } else {
-                alert("El usuario ha sido dado de alta.");
+            }
+            else{
                 return true;
             }
         }
@@ -376,7 +375,17 @@
             <%if(error==1){%>
             alert("El correo o contraseña están incorrectos.");
             <%}%>
+
+            <%if(error==2){%>
+            alert("El correo ya ha sido utilizado en la plataforma de Zebrands Tickets.");
+            <%}%>
+
+            <%if(error==3){%>
+                alert("El usuario ha sido dado de alta.");
+            <%}%>
+
         }
+
     </script>
 
 </body>
