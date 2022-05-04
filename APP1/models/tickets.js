@@ -40,7 +40,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsactivos_pag(num) {                                                                                           
-        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
+        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`!=6 AND `ID_estado`!=5 ORDER BY `ID_ticket` ASC LIMIT "+num+",5");
         //return db.execute("SELECT * FROM ticketstotal WHERE ID_estado!=6 AND ID_estado!=5 GROUP BY ID_ticket DESC LIMIT ?, 5", [num]);  GROUP BY `ID_ticket`
     }
 
@@ -72,7 +72,7 @@ module.exports = class Ticket {
 
     static fetchticketsarchivados_pag(num) {
         //return db.execute('SELECT * FROM ticketstotal WHERE ID_estado=6 OR ID_estado=5 GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', [num]);
-        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`=6 OR `ID_estado`=5 ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
+        return db.execute("SELECT * FROM `ticketstotal` WHERE `ID_estado`=6 OR `ID_estado`=5 ORDER BY `ID_ticket` ASC LIMIT "+num+",5");
     }
 
     static fetchticketsusuario_filtro(valor) {
@@ -87,7 +87,7 @@ module.exports = class Ticket {
         // console.log(id);
         // console.log(num);
         //return db.execute('SELECT * FROM ticketstotal WHERE correo_creador LIKE ? GROUP BY ID_ticket ORDER BY ID_ticket DESC LIMIT ?, 5', ['%' + nom + '%', num]);
-        return db.execute("SELECT * FROM `ticketstotal` WHERE Creador ="+id+" GROUP BY `ID_ticket` ORDER BY `ID_ticket` DESC LIMIT "+num+",5");
+        return db.execute("SELECT * FROM `ticketstotal` WHERE Creador ="+id+" GROUP BY `ID_ticket` ORDER BY `ID_ticket` ASC LIMIT "+num+",5");
     }
 
     static cancelar_ticket_1(idticket) {
