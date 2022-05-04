@@ -382,7 +382,7 @@ else if(tipo==3){
                                                                                                             <% if(comment.ID_ticket == ticket.ID_ticket){%>
                                                                                                                 <div class="row">
                                                                                                                     <div class="col s12">
-                                                                                                                        <b class="left"><%=comment.nombre%> <%=comment.apellido_paterno%> <%=comment.apellido_materno %>: </b>
+                                                                                                                        <b class="left"><%=comment.nombre%> <%=comment.apellido_paterno%> <%=comment.apellido_materno %> dice: </b>
                                                                                                                     </div>
                                                                                                                     <div class="col s2">
                                                                                                                         <p>
@@ -654,7 +654,7 @@ else if(tipo==3){
                                                                         for (let comment of ticket.com[0]){
                                                                             respuesta += '<div class="row">'+
                                                                                     '<div class="col s12">'+
-                                                                                        '<b class="left">El creador fue:'+comment.nombre+''+comment.apellido_paterno+' '+comment.apellido_materno+'</b>'+
+                                                                                        '<b class="left">'+comment.nombre+''+comment.apellido_paterno+' '+comment.apellido_materno+' dice:</b>'+
                                                                                     '</div>'+
                                                                                     '<div class="col s2">'+
                                                                                         '<p>'+ comment.fecha_comentario + '</p>'+
@@ -916,7 +916,7 @@ else if(tipo==3){
                                                                         for (let comment of ticket.com[0]){
                                                                             respuesta += '<div class="row">'+
                                                                                     '<div class="col s12">'+
-                                                                                        '<b class="left">El creador fue:'+comment.nombre+''+comment.apellido_paterno+' '+comment.apellido_materno+'</b>'+
+                                                                                        '<b class="left">'+comment.nombre+''+comment.apellido_paterno+' '+comment.apellido_materno+' dice:</b>'+
                                                                                     '</div>'+
                                                                                     '<div class="col s2">'+
                                                                                         '<p>'+ comment.fecha_comentario + '</p>'+
@@ -1135,7 +1135,7 @@ const propios = () => {
                                                                         for (let comment of ticket.com[0]){
                                                                             respuesta += '<div class="row">'+
                                                                                     '<div class="col s12">'+
-                                                                                        '<b class="left">El creador fue:'+comment.nombre+''+comment.apellido_paterno+' '+comment.apellido_materno+'</b>'+
+                                                                                        '<b class="left">'+comment.nombre+''+comment.apellido_paterno+' '+comment.apellido_materno+' dice:</b>'+
                                                                                     '</div>'+
                                                                                     '<div class="col s2">'+
                                                                                         '<p>'+ comment.fecha_comentario + '</p>'+
