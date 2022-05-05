@@ -32,7 +32,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsnuevos() {
-        return db.execute('SELECT * FROM ticketsnuevos ORDER BY fecha_emision DESC');
+        return db.execute('SELECT * FROM ticketsnuevos ORDER BY ID_ticket DESC');
     }
 
     static fetchticketsnuevosu(id) {
