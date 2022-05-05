@@ -86,7 +86,7 @@
                 <a class="btn tooltipped light-blue lighten-3 pulse" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
                 <a class="btn tooltipped orange lighten-3 pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información!"></a>
                 <a class="btn tooltipped yellow light-blue lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno!"></a>
-                <a class="btn tooltipped red lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
+                <a class="btn tooltipped red lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket Archivado!"></a>
                 <a class="btn tooltipped light-green accent-1 pulse" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
             </div>
 
@@ -134,7 +134,7 @@
                                             estado = '4 - En espera de Visto Bueno';
                                         } else if(ticket.ID_estado == 5){ 
                                             color = 'red lighten-4'; 
-                                            estado = '5 - Cancelado';
+                                            estado = '5 - Archivado';
                                         } else if(ticket.ID_estado == 6){ 
                                             color = 'light-green accent-1'; 
                                             estado = '6 - Resuelto';} 
@@ -194,7 +194,7 @@
                                                                                 <form action="/home" method="POST">
                                                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
-                                                                                    <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
+                                                                                    <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                     </button>
                                                                                 </form>
                                                                             </a>
@@ -410,7 +410,7 @@
                         estado = '4 - En espera de Visto Bueno';
                     } else if(ticket.ID_estado == 5){ 
                         color = 'red lighten-4'; 
-                        estado = '5 - Cancelado';
+                        estado = '5 - Archivado';
                     } else if(ticket.ID_estado == 6){ 
                         color = 'light-green accent-1'; 
                         estado = '6 - Resuelto';} 
@@ -470,7 +470,7 @@
                                                                                                                 <form action="/home" method="POST">
                                                                                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
-                                                                                                                    <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
+                                                                                                                    <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                 </button>
                                                                                                                 </form>
                                                                                                             </a>
@@ -636,7 +636,7 @@
                                             estado = '4 - En espera de Visto Bueno';
                                         } else if(ticket2.ID_estado == 5){ 
                                             color = 'red lighten-4'; 
-                                            estado = '5 - Cancelado';
+                                            estado = '5 - Archivado';
                                         } else if(ticket2.ID_estado == 6){ 
                                             color = 'light-green accent-1'; 
                                             estado = '6 - Resuelto';} 
@@ -699,7 +699,7 @@
                                                                                                                                         <form action="/home" method="POST">
                                                                                                                                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                                                                             <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                                                                            <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
+                                                                                                                                            <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                                                                         </button>
                                                                                                                                         </form>
                                                                                                                                     </a>
@@ -867,7 +867,7 @@
                                                     estado = '4 - En espera de Visto Bueno'; 
                                                 } else if(ticket2.ID_estado == 5){ 
                                                     color = 'red lighten-3';
-                                                    estado = '5 - Cancelado'; 
+                                                    estado = '5 - Archivado'; 
                                                 } else if(ticket2.ID_estado == 6){ 
                                                     color = 'light-green accent-1'; 
                                                     estado = '6 - Resuelto';
@@ -931,7 +931,7 @@
                                                                                 <form action="/home" method="POST">
                                                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                    <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
+                                                                                    <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
                                                                                                 </button>
                                                                                 </form>
                                                                             </a>
