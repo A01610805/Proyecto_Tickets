@@ -43,7 +43,7 @@ exports.get_activos = async(request, response, next) => {
 
 exports.post_activos = (request, response, next) => {
 
-    const submit = request.body.submit;
+    const submit = request.body.value;
     console.log(submit);
     if(submit === "archivar"){
         Ticket.cancelar_ticket_1(request.body.idticket);
