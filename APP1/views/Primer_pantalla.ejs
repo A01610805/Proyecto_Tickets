@@ -684,8 +684,8 @@
                                                                                                                             <li class="collection-item avatar">
                                                                                                                                 <i class="material-icons circle green">folder</i>
                                                                                                                                 <span class="title">
-                                                                                        Titulo
-                                                                                    </span>
+                                                                                                                                    Titulo
+                                                                                                                                </span>
                                                                                                                                 <h5>
                                                                                                                                     <%= ticket2.titulo %>
                                                                                                                                 </h5>
@@ -694,7 +694,7 @@
                                                                                                                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                                                                         <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
                                                                                                                                         <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
-                                                                                        </button>
+                                                                                                                                        </button>
                                                                                                                                     </form>
                                                                                                                                 </a>
 
@@ -705,38 +705,9 @@
                                                                                                                                 <h5>
                                                                                                                                     <%= ticket2.descripcion %>
                                                                                                                                 </h5>
-                                                                                                                                <!-- <a href="#!" class="secondary-content">
-                                                                                    <form action="/home" method="POST">
-                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                        <button class="btn tooltipped modal-close waves-effect waves-green btn-flat" data-position="bottom" data-tooltip="Ticket Resuelto" type="submit" name="action"><i class="material-icons">check</i>
-                                                                                            </button>
-                                                                                    </form>
-
-                                                                                </a> -->
+                                                                                                                            
                                                                                                                             </li>
-                                                                                                                            <!-- <li class="collection-item avatar">
-                                                                        <i class="material-icons circle <%= color_prioridad %>">priority_high</i>
-                                                                        <span class="title">Prioridad:</span>
-                                                                        <h5>
-                                                                            <%= prioridad %> <br>
-                                                                        </h5>
-
-
-                                                                        <a href="/asignar_prioridad/get_tic/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
-                                                                    </li>
-                                                                    <li class="collection-item avatar">
-                                                                        <i class="material-icons circle red">account_box</i>
-                                                                        <span class="title">Asignar A:</span>
-                                                                        <h5>
-                                                                            Creador:
-                                                                            <%=ticket2.Nombre_creador%>
-                                                                                <%=ticket2.apellido_P_creador%>
-                                                                                    <%=ticket2.Apellido_M_creador%>
-                                                                        </h5>
-
-
-                                                                        <a href="/asignar_usuario/asignar/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">add</i></a>
-                                                                    </li> -->
+                                                                                                                            
                                                                                                                         </ul>
                                                                                                                         <%acumodal2=acumodal2+1%>
                                                                                                                     </div>
@@ -984,7 +955,7 @@
                                                                             </h5>
                                                                             <a href="/asignar_estado/get_ticket/<%= ticket2.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">create</i></a>
                                                                         </li>
-                                                                        <<li class="collection-item avatar">
+                                                                        <li class="collection-item avatar">
                                                                             <i class="material-icons circle red">account_box</i>
                                                                             <span id="logo" >Encargado:</span>
                                                                             <!-- id="logo" class="title" -->
