@@ -71,7 +71,7 @@ exports.post_genticket = async(request,response, next) => {
         Respuesta.save(ArrayIDs[0].ID_pregunta, ArrayResp);
     }
  
-    response.redirect('/home')
+    response.redirect('/home');
 
 };
 

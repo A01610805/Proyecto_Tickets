@@ -284,7 +284,7 @@
     <!-- partial:index.partial.html -->
     <div class="form-structor">
         <form id="form-login" action="/users/login" method="POST" autocomplete="off">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="signup">
                 <h2 class="form-title" id="signup"><span>o</span>Iniciar Sesión</h2>
                 <div class="form-holder">
@@ -296,7 +296,7 @@
         </form>
 
         <form id="form-signup" action="/users/signup" onsubmit="return validateSignupForm()" method="POST" autocomplete="off">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="login slide-up">
                 <div class="center">
                     <h2 class="form-title" id="login"><span>o</span>Regístrate</h2>
@@ -304,7 +304,7 @@
                         <input type="text" class="input" id="nombre" name="nombre" placeholder="Nombre(s) del Empleado" required/>
                         <input type="text" class="input" id="ApellidoP" name="ApellidoP" placeholder="Apellido Paterno" required/>
                         <input type="text" class="input" id="ApellidoM" name="ApellidoM" placeholder="Apellido Materno" required/>
-                        <input type="email" class="input" id="email" name="email" placeholder="Correo @zeb.com/@zeb.mx" required/>
+                        <input type="email" class="input" id="email" name="email" placeholder="Correo @zeb.mx" required/>
                         <input type="password" class="input" id="passwords" name="passwords" placeholder="Contraseña" required/>
                         <input type="password" class="input" id="password2" name="password2" placeholder="Repite la Contraseña" required/>
                     </div>
@@ -352,7 +352,7 @@
             var apellidopaterno = document.getElementById("ApellidoM").value;
             var apellidomaterno = document.getElementById("ApellidoP").value;
 
-                if (mail == "" || name == "" || password == "" || apellidopaterno == "" || apellidomaterno == "") {
+            if (mail == "" || name == "" || password == "" || apellidopaterno == "" || apellidomaterno == "") {
                 alert("Llena todos los campos requeridos");
                 return false;
             } else if (password.length < 8) {
@@ -365,8 +365,7 @@
             } else if (mail.slice(-7) != '@zeb.mx') {
                 alert("Tu correo debe tener terminación @zeb.mx");
                 return false;
-            }
-            else{
+            } else {
                 return true;
             }
         }
@@ -381,11 +380,10 @@
             <%}%>
 
             <%if(error==3){%>
-                alert("El usuario ha sido dado de alta.");
+            alert("El usuario ha sido dado de alta.");
             <%}%>
 
         }
-
     </script>
 
 </body>
