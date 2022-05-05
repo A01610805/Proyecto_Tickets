@@ -6,7 +6,7 @@ if(tipo==1){
     titulo='Consulta de tickets asignados';
 }
 else if(tipo==2){
-    titulo='Consulta de tickets archivados';
+    titulo='Consulta de tickets archivados/resueltos';
 }
 else if(tipo==3){
     titulo='Consulta de tickets propios en curso/terminados';
@@ -272,8 +272,13 @@ else if(tipo==3){
                                                                     }%>
                                                                                                                     <form action="/buscar_tickets/<%=ruta%>" method="POST">
                                                                                                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+<<<<<<< HEAD
                                                                                                                         <input for="idticket" id="idticket" name="idticket" type="hidden" value="archivar" />
                                                                                                                         <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
+=======
+                                                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
+                                                                                                                        <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
+>>>>>>> 2e3208a4742550aea00d9ef54e1a1dbf60688c75
                                                                                                                     </form>
                                                                                                                     <%}%>
                                                                                                             </a>
@@ -592,7 +597,7 @@ else if(tipo==3){
                                                                                         }
                                                                                     respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST">'+
                                                                                         '<input for="idticket" id="idticket" name="idticket" type="hidden" value="'+ticket.ID_ticket+'" />'+
-                                                                                        '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
+                                                                                        '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
                                                                                     '</form>';
                                                                                     }
                                                                                 respuesta += '</a>'+
@@ -867,7 +872,7 @@ else if(tipo==3){
                                                                                         }
                                                                                     respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST">'+
                                                                                         '<input for="idticket" id="idticket" name="idticket" type="hidden" value="'+ticket.ID_ticket+'" />'+
-                                                                                        '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
+                                                                                        '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
                                                                                     '</form>';
                                                                                     }
                                                                                 respuesta += '</a>'+
