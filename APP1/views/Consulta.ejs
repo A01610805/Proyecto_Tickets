@@ -300,12 +300,17 @@ else if(tipo==3){
                                                                                                                 <%if(tipo==1){ %>
                                                                                                                     <li class="collection-item avatar">
                                                                                                                         <i class="material-icons circle red">account_box</i>
-                                                                                                                        <span class="title">Asignar A:</span>
-                                                                                                                        <h5> Creador:
-                                                                                                                            <%=ticket.Nombre_creador%>
-                                                                                                                                <%=ticket.apellido_P_creador%>
-                                                                                                                                    <%=ticket.apellido_M_creador%>
+                                                                                                                        <span id="logo" >Encargado:</span>
+                                                                                                                        <!-- id="logo" class="title" -->
+                                                                                                                        <h5>
+                                                                                                                            <i>Asignar A:</i>
+                                                                                                                            <!-- Creador:
+                                                                                                                            <%=ticket.nombre %>
+                                                                                                                                <%=ticket.apellido_paterno%>
+                                                                                                                                    <%=ticket.Apellido_materno%> -->
                                                                                                                         </h5>
+                                            
+                                            
                                                                                                                         <a href="/asignar_usuario/asignar/<%= ticket.ID_ticket %>" class="secondary-content modal-close"><i class="material-icons">add</i></a>
                                                                                                                     </li>
                                                                                                                     <li class="collection-item avatar">
@@ -602,12 +607,16 @@ else if(tipo==3){
                                                                                 '<h5>'+ estado + '<br>' + '</h5>'+
                                                                                 '<a href="/asignar_estado/get_ticket/' + ticket.ID_ticket +'" class="secondary-content modal-close"><i class="material-icons">create</i></a>'+
                                                                             '</li>'+
-                                                                            '<li class="collection-item avatar">'+
+
+                                                                                '<li class="collection-item avatar">'+
                                                                                 '<i class="material-icons circle red">account_box</i>'+
-                                                                                '<span class="title">Asignar A:</span>'+
-                                                                                '<h5> Creador: '+ticket.Nombre_creador+' '+ticket.apellido_P_creador+' '+ticket.Apellido_M_creador+'</h5>'+
-                                                                                '<a href="/asignar_usuario/asignar/'+ ticket.ID_ticket +' " class="secondary-content modal-close"><i class="material-icons">add</i></a>'+
+                                                                                '<span id="logo" >Encargado:</span>'+
+                                                                                '<h5>'+
+                                                                                    '<i>Asignar A:</i>'+
+                                                                                '</h5>'+
+                                                                                '<a href="/asignar_usuario/asignar/'+ ticket.ID_ticket +'" class="secondary-content modal-close"><i class="material-icons">add</i></a>'+
                                                                             '</li>'+
+
                                                                         '</ul>';
                                                                         acumodal1=acumodal1+1;
                                                                     respuesta += '</div>'+
