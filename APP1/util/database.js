@@ -5,6 +5,7 @@ const DBlocal = {
     user: 'root',
     database: 'zebrands_tickets',
     password: '',
+    port: 3307
 };
 
 const DBinstancia = {
@@ -15,6 +16,6 @@ const DBinstancia = {
     port: 3306
 }
 
-const pool = mysql.createPool(DBinstancia);
+const pool = mysql.createPool(DBlocal);
 
 module.exports = pool.promise();
