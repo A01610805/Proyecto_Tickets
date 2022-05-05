@@ -44,7 +44,7 @@ exports.post_gentem = async(request, response, next) =>{
     }
     
     
-    response.redirect('/home')
+    response.redirect('/modificar_template/get_template')
 
 }
 

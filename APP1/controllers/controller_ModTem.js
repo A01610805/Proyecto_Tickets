@@ -122,14 +122,14 @@ exports.post_mod = (request, response, next) => {
         }
     }
 
-    response.redirect('/home')
+    response.redirect('/modificar_template/get_template')
 };
 exports.post_delete = (request, response, next) => {
-    console.log('Se va a eliminar una categoria')
+    //console.log('Se va a eliminar una categoria')
     const categoria = new Categoria( request.body.nombre, request.body.tiempo, request.body.id);
     categoria.delete()
-    console.log('Se elimino una categoria');    
-    response.redirect('/home')
+    //console.log('Se elimino una categoria');    
+    response.redirect('/modificar_template/get_template')
 }
 
 exports.root = (request, response, next) => {
