@@ -19,14 +19,14 @@ exports.get_genticket = (request, response, next) => {
 };
 
 exports.get_preguntas = (request, response, next) => {
-    console.log(request.params.id);
+    // console.log(request.params.id);
     //Categoria.fetchOne(request.params.id)
     Categoria.fetchAll()    
         .then(([rows, fielData]) => {
-            console.log('Entrando a categoria');
+            // console.log('Entrando a categoria');
             Pregunta.fetchPreguntas(request.params.id)
                 .then(([rows2, fielData]) => {
-                    console.log('Entrando a pregunta y render');
+                    // console.log('Entrando a pregunta y render');
                     response.render('TiGen', {
                         Tiname: request.session.usuario ? request.session.usuario : '',
                         rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
@@ -43,24 +43,24 @@ exports.get_preguntas = (request, response, next) => {
 };
 
 exports.post_genticket = async(request,response, next) => {
-    console.log('POST /ticket/nuevo');
-    console.log(request.body);
+    // console.log('POST /ticket/nuevo');
+    // console.log(request.body);
     const ticket = new Gen_Tickets(request.params.id, request.body.titulo, request.body.descripcion);
-    console.log('Esto es antes de ticket.save()');
-    console.log(ticket);
+    // console.log('Esto es antes de ticket.save()');
+    // console.log(ticket);
     ticket.save();
     ticket.registrarFecha(request.cookies.correo_usuario);
-    console.log('Esto es después de ticket.save()');
+    // console.log('Esto es después de ticket.save()');
 
     
     const ArrayResp = request.body.respuesta;   // Aqui tenemos las respuestas
     
 
     const ArrayofArrayIDs = await idpreg(request.params.id);
-    console.log(ArrayofArrayIDs);
+    // console.log(ArrayofArrayIDs);
     ArrayIDs = ArrayofArrayIDs[0];
-    console.log(ArrayIDs);
-    console.log(ArrayIDs[0].ID_pregunta);
+    // console.log(ArrayIDs);
+    // console.log(ArrayIDs[0].ID_pregunta);
 
     if (Array.isArray(ArrayResp)){
         for (let i = 0; i<ArrayResp.length; i++){
@@ -71,7 +71,7 @@ exports.post_genticket = async(request,response, next) => {
         Respuesta.save(ArrayIDs[0].ID_pregunta, ArrayResp);
     }
  
-    response.redirect('/home')
+    response.redirect('/home');
 
 };
 

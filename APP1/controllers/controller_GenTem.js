@@ -2,7 +2,7 @@ const Categoria = require('../models/news_categorias');
 const Pregunta = require('../models/news_preguntas');
 
 exports.get_gentem = (request, response, next) => {
-        console.log('Aqui inicia generar template');
+        // console.log('Aqui inicia generar template');
             response.render('GenTem', {rol: request.cookies.rolusuario ? request.cookies.rolusuario: 3, username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',});  
 };
 exports.post_gentem = async(request, response, next) =>{
@@ -24,6 +24,7 @@ exports.post_gentem = async(request, response, next) =>{
     // console.log('Esto es antes de pregunta.add()');
     // console.log(request.body); 
     if(Array.isArray(request.body.texto_pregunta) == true){
+        
         for (let index = 0; index <= request.body.texto_pregunta.length; index++) {
             // console.log(index);
             if (request.body.texto_pregunta[index] != null) {

@@ -31,4 +31,7 @@ module.exports = class User {
     static fetchAll() {
         return db.execute('SELECT ID_usuario, nombre, apellido_paterno,apellido_materno,correo, nombre_rol FROM usuario');
     }
+    static get_correos(){
+        return db.execute('SELECT correo FROM usuario');
+    }
 }

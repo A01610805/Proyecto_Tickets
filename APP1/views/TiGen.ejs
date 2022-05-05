@@ -1,5 +1,5 @@
 <%- include('includes/head.ejs') %>
-   
+
     <br><br>
     <div> <!--Dropdown para cambiar de ticket-->
         <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar categoría del ticket<i class="material-icons right">arrow_drop_down</i></a>
@@ -13,23 +13,26 @@
             <% } %>
         <% } %>
         </ul>
-</div>
+    </div>
 
-<h1><%= nombre %></h1>
+    <h1 id="logo">
+        <%= nombre %>
+    </h1>
 
 
     <div class="row">
-        <form method="post" class="col s12">
+        <form method="post" onsubmit='return validateTicket()' class="col s12">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="row">
                 <div class="input-field col s12">
-                    <input  id="titulo" name="titulo" type="text" class="validate" required="required">
-                    <label for="titulo" style="font-size:16px">Título</label>
+                    <input id="titulo" name="titulo" type="text" class="validate" required="required">
+                    <label id="logo" for="titulo" style="font-size:16px" class="black-text">Título</label>
                 </div>
-            </div> 
+            </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea placeholder="Escribe una breve descripción de tu problema" id="descripcion" name="descripcion" class="materialize-textarea" maxlength="100" required="required"></textarea>
-                    <label for="descripcion" style="font-size:18px">Descripción</label>
+                    <textarea placeholder="" id="descripcion" name="descripcion" class="materialize-textarea" maxlength="100" required="required"></textarea>
+                    <label id="logo" for="descripcion" style="font-size:18px" class="black-text">Descripción</label>
                 </div>
             </div>
 
@@ -50,9 +53,16 @@
             <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
                 <i class="material-icons right">send</i>
             </button>
-            <a class="waves-effect waves-light btn" href="/home">Cancelar</a>
+                            <a id="logo" class="waves-effect waves-light btn grey black-text" href="/home">Cancelar</a>
         </form>
     </div>
+    
+    <script>
+        function validateTicket() {
+            alert("Ticket registrado satisfactoriamente.");
+                return true;
+        }
+    </script>
 
-   
-<%- include('includes/footer.ejs') %>
+
+    <%- include('includes/footer.ejs') %>

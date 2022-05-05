@@ -16,6 +16,8 @@ const bodyParser = require('body-parser');
 // permitiendo mantener la sesión del usuario "loggeada", por ejemplo.
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const csrf = require('csurf');
+const csrfProtection = csrf();
 
 const app = express();
 
@@ -28,11 +30,17 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'publics')));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(csrfProtection); 
+
+app.use((request, response, next) => {
+    response.locals.csrfToken = request.csrfToken();
+    next();
+});
 
 //Estas son las rutas a utilizar se utiliza una constante poara almacenar la direccion de la rutas
 //despues se utiliza en un app.use completo
@@ -40,7 +48,6 @@ const rutas_login = require('./routes/route_login');
 const rutas_pp = require('./routes/route_Pp');
 const rutas_genticket = require('./routes/route_GenT');
 const rutas_visualizacion = require('./routes/route_tickets');
-
 const rutas_busus = require('./routes/route_BuscarU');
 const rutas_modtem = require('./routes/route_ModTem');
 const rutas_gentem = require('./routes/route_GenTem');
@@ -48,6 +55,11 @@ const rutas_asiprio = require('./routes/route_asignarP');
 const rutas_modcomentario = require('./routes/route_modcomentario');
 const rutas_metricas = require('./routes/route_metricas');
 const rutas_arol = require('./routes/route_asignarRol');
+const rutas_asiusu = require('./routes/route_asiusu');
+const rutas_aestado = require('./routes/route_asignarEstado');
+const rutas_datos = require('./routes/route_cambioDatos');
+const rutas_acomentario = require("./routes/route_agrecomentario");
+
 
 app.use('/users', rutas_login);
 app.use('/home', rutas_pp);
@@ -60,6 +72,10 @@ app.use('/asignar_prioridad', rutas_asiprio);
 app.use('/mod_comentario', rutas_modcomentario);
 app.use('/asignar_rol', rutas_arol);
 app.use('/metricas', rutas_metricas);
+app.use('/asignar_usuario', rutas_asiusu);
+app.use('/asignar_estado', rutas_aestado);
+app.use('/perfil', rutas_datos);
+app.use('/agregar_com', rutas_acomentario);
 
 app.use((request, response, ) => {
     response.redirect('/users');

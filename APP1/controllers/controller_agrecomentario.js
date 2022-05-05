@@ -1,19 +1,19 @@
 const Tickets = require('../models/tickets');
 
-exports.get_comentario = (request, response, next) => {
+exports.get_agregarcomentario = (request, response, next) => {
     // const tic = Tickets.fetchticketSeleccionado(request.params.id)
     // console.log(tic);
     // const tic2 = Tickets.fetchresTiseleccionado(request.params.id)
     // console.log(tic2);
     // console.log(request.params.id);
     // console.log('Entrando a modificar comentario');
-    Tickets.fetchticketSeleccionado(request.params.id)
+    Tickets.obtenercomentarios()
         .then(([rows, fieldData]) => {
-            console.log('Entrando a fetchTicketSEle');
+            // console.log('Entrando a comentarios');
             // console.log('WOW');
             // console.log(rows);
             // console.log(rows2);
-            response.render('Mod_Comentario', {
+            response.render('AComentario', {
                 id: request.params.id ? request.params.id : 1,
                 username: request.cookies.nombre_usuario ? request.cookies.nombre_usuario : '',
                 rol: request.cookies.rolusuario ? request.cookies.rolusuario : 3,
@@ -24,11 +24,11 @@ exports.get_comentario = (request, response, next) => {
 };
 
 
-exports.post_comentario = (request, response, next) => {
-    // console.log('hola?');
+exports.post_agregarcomentario = (request, response, next) => {
+    // console.log('agregar comentario');
     // console.log();
     // console.log('Iniciando update');
-    Tickets.modificarcomentario(request.body.comentario, request.params.id)
+    Tickets.agregarcomentarios(request.body.comentario, request.cookies.id_usuario, request.params.id)
     // console.log('Terminando update');
     response.redirect('/home');
 };

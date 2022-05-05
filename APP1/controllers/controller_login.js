@@ -4,24 +4,33 @@ const Ticket = require("../models/tickets");
 const bcrypt = require('bcryptjs');
 var correo_usuario = '';
 
-exports.get_login = (request, response, next) => {
-    response.render('Log_in',{
+exports.get_login = (request, response, next) => {  
+    response.render('Log_In',{
         error: 0
     });
 };
 
 exports.get_login2 = (request, response, next) => {
-    response.render('Log_in',{
+    response.render('Log_In',{
         error: 1
+    });
+};
+exports.get_login3 = (request, response, next) => {
+    response.render('Log_In',{
+        error: 2
+    });
+};
+exports.get_login4 = (request, response, next) => {
+    response.render('Log_In',{
+        error: 3
     });
 };
 
 exports.login = (request, response, next) => {
-    console.log('Entrando a fetchOne');
+    // console.log('Entrando a fetchOne');
     correo_usuario = (request.body.correo).toLowerCase();
     User.findOne(request.body.correo)
-        .then(([rows, fielData]) => {
-            
+        .then(([rows, fielData]) => {   
             //Si no existe el usuario, redirige a la pantalla de login
             if (rows.length < 1) {
                 return response.redirect('/users/loginw');
@@ -33,7 +42,7 @@ exports.login = (request, response, next) => {
                 httpOnly: true
             })
 
-            const id_usuario = Usuario.getidusuario(rows[0].correo)
+            const id_usuario = rows[0].ID_usuario
             response.cookie('id_usuario', id_usuario, {
                 httpOnly: true
             })
@@ -48,12 +57,10 @@ exports.login = (request, response, next) => {
                 httpOnly: true
             })
 
-            console.log(request.body.password);
-            console.log(user.password);
             bcrypt.compare(request.body.password, user.password)
                 .then(doMatch => {
                     if (doMatch) {
-                        console.log('Pass coinciden');
+                        // console.log('Pass coinciden');
                         request.session.isLoggedIn = true;
                         request.session.user = user;
                         request.session.username = user.nombre;
@@ -66,7 +73,7 @@ exports.login = (request, response, next) => {
                     }
 
                 }).catch(err => {
-                    console.log('Hola');
+                    // console.log('Hola');
                     
                 });
         }).catch((error) => {
@@ -82,15 +89,29 @@ exports.get_signup = (request, response, next) => {
 };
 
 exports.post_signup = (request, response, next) => {
-    console.log(request.body);
-    const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
-    user.save()
+    // console.log(request.body);
+    User.get_correos()
+    .then(([rows,fielData]) => {
+        let c=[];
+        for (let co of rows){
+            c.push(co.correo);
+        }
+    if(c.includes(request.body.email)==false){
+        const user = new User(3, request.body.nombre, request.body.ApellidoP, request.body.ApellidoM, request.body.email, request.body.passwords);
+        user.save()
         .then(() => {
-            response.redirect('Log_In');
+            return response.redirect('/users/loginwww');
         }).catch((error) => {
             console.log(error);
-            console.log('Aqui esta el error');
+            // console.log('Aqui esta el error');
         });
+    }
+
+    else{
+        return response.redirect('/users/loginww');   
+    }
+
+    }).catch(error => {console.log(error)});
 };
 
 exports.logout = (request, response, next) => {
@@ -103,7 +124,7 @@ exports.get_ticketspropios = (request, response, next) => {
     let tipo = 3;
     tickets = Ticket.fetchticketsusuario(correo_usuario)
         .then(([rows, fieldData]) => {
-            console.log(rows);
+            // console.log(rows);
             response.render('Consulta', {
                 tickets: rows,
                 username: request.session.nombre ? request.session.nombre : '',

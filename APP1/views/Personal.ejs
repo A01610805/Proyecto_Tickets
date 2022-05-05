@@ -1,0 +1,40 @@
+<%- include('includes/head.ejs') %>
+
+<div class="container">
+    <h1 class="center">Perfil del usuario</h1>
+    <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
+        <h5 class="center" for="">Mis datos</h5>
+        <a class="center" for="">ID del usuario:</a>
+        <h6 class="center" for="">
+            <%= user.ID_usuario %>
+        </h6>
+        <a class="center" for="">Nombre del usuario:</a>
+        <h6 class="center" for="">
+            <%= user.nombre %> <%= user.apellido_paterno %> <%= user.apellido_materno %>
+        </h6>
+        <a class="center" for="">Correo del usuario:</a>
+        <h6 class="center" for="">
+            <%= user.correo %>
+        </h6>
+        <a class="center" for="">Rol actual:</a>
+        <%var descripcion_rol = ''%>
+        <% if(user.ID_rol == 1){ 
+            descripcion_rol = '1 - Administrador'; 
+        } else if(user.ID_rol == 2){ 
+            descripcion_rol = '2 - Empleado de soporte'; 
+        } else if(user.ID_rol == 3){ 
+            descripcion_rol = '3 - Empleado Zebrands'; 
+        } %>
+        <h6 class="center" for="">
+            <%= descripcion_rol %>
+        </h6>
+        <br></br>
+        <div class="center">
+            <a href="/perfil/personal/cambio_pass" class="waves-effect waves-light btn">Cambiar contraseña</a>
+            <a href="/home" class="waves-effect waves-light btn">Regresar a la pagína principal</a>
+        </div>
+    </div>
+    <br></br>
+</div>
+
+<%- include('includes/footer.ejs') %>

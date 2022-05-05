@@ -9,33 +9,31 @@
     
                     </li>
                 <% } %>
-             </ul>
-             
+        </ul>
+
+    </div>
+
+
+
+    <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <h1 id="logo">Modificar template</h1>
+        <h4 id="logo"><%= nombre%></h4>
+        <div>
+            <div>
+                <label id="logo" for="">Nombre Categoria&nbsp;(Establece nuevo nombre de categoria): </label>
+                <input required id="titulo" name="titulo"><span class=""></span>
+                
+
+            </div>
+            <div>
+                <label id="logo" for="">Tiempo estimado&nbsp;(Establece nuevo tiempo estimado): </label>
+                <input required id="tiempo" name="tiempo"><span class=""></span>
+                
+
+            </div>
         </div>
         
-         
-        
-        
-            <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
-                
-                <div>
-                    <h3 for=""><%= nombre %></h3>
-                    
-
-                    <div >
-                        <label for="">Establece nuevo nombre de categoria: </label>
-                        <input required id="titulo" name="titulo"><span class=""></span>
-                        
-                        
-                    </div>
-                    <div >
-
-                        <label for="">Establece nuevo tiempo estimado: </label>
-                        <input required id="tiempo" name="tiempo"><span class=""></span>
-                        
-                        
-                    </div>
-                </div>
             
                 <% for (let pregunta of preguntas) { %> 
                     <% if ( pregunta.disponible == 1) { %>
@@ -51,6 +49,7 @@
                                 <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
                                 <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
                                 <input required id="texto_pregunta" name="texto_pregunta"><span ></span> 
+                                
                             </div>
                             
                         
@@ -61,9 +60,9 @@
 
                 <div class="center ">
                     
-                     <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> 
-                     <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> 
-                     <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                    <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> 
+                    <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> 
+                    <button type="submit" class="waves-effect waves-light btn">Guardar</button>
                     <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
                 </div>
                 <br><br>
@@ -114,5 +113,5 @@
         
     </script>
 
-    
-<%- include('includes/footer.ejs') %>
+
+    <%- include('includes/footer.ejs') %>
