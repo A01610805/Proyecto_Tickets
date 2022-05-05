@@ -5,6 +5,7 @@ const DBlocal = {
     user: 'root',
     database: 'zebrands_tickets',
     password: '',
+ 
 };
 
 const DBinstancia = {

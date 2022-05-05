@@ -36,7 +36,7 @@ module.exports = class Ticket {
     }
 
     static fetchticketsnuevosu(id) {
-        return db.execute('SELECT * FROM ticketsnuevos WHERE ID_usuario = ?', [id]);
+        return db.execute('SELECT * FROM ticketsnuevos WHERE ID_usuario = ? ORDER BY ID_ticket DESC', [id]);
     }
 
     static fetchticketsactivos_pag(num) {                                                                                           
