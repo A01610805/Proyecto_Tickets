@@ -22,8 +22,8 @@ exports.post_prio = (request, response, next) => {
     console.log(request.params.id);
 
     const prioridad = new Prioridad(request.body.prioridad, request.params.id);
-    console.log(prioridad);
-    console.log('Iniciando update');
+    // console.log(prioridad);
+    // console.log('Iniciando update');
     prioridad.update();
 
     //Prioridad.update(request.body.prioridad, request.params.id);
