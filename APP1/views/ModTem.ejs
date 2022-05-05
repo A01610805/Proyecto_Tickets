@@ -5,7 +5,7 @@
             <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
                 <% for (let categoria of categorias) { %>
                     <li class="">
-                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>/<%= categoria.tiempo_estimado %>" class=""><%= categoria.nombre_categoria %></a>
+                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>/" class=""><%= categoria.nombre_categoria %></a>
     
                     </li>
                 <% } %>
@@ -100,7 +100,7 @@
             $btnAdd.addEventListener("click", (event) => {
                 const $div = document.createElement("div")
                 $div.innerHTML = templateElement()
-                $form.insertBefore($div, $form.lastElementChild)
+                $form.appendChild($div);
                 
             })
             const $btnEli = document.getElementById("eliminar")
