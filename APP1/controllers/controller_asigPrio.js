@@ -18,8 +18,11 @@ exports.get_tic = (request, response, next) => {
 };
 
 exports.post_prio = (request, response, next) => {
+    console.log(request.body);
+    console.log(request.params.id);
     //const prioridad = new Prioridad(request.body.prioridad, request.params.id);
     Prioridad.update(request.body.prioridad, request.params.id);
+    //console.log(request.body);
     //prioridad.updatenuevo();
     response.redirect('/home');
 };
