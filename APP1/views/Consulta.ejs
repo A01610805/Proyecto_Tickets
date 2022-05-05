@@ -272,13 +272,8 @@ else if(tipo==3){
                                                                     }%>
                                                                                                                     <form action="/buscar_tickets/<%=ruta%>" method="POST">
                                                                                                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
-<<<<<<< HEAD
                                                                                                                         <input for="idticket" id="idticket" name="idticket" type="hidden" value="archivar" />
-                                                                                                                        <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
-=======
-                                                                                                                        <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
-                                                                                                                        <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
->>>>>>> 2e3208a4742550aea00d9ef54e1a1dbf60688c75
+                                                                                                                        <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
                                                                                                                     </form>
                                                                                                                     <%}%>
                                                                                                             </a>
@@ -308,7 +303,7 @@ else if(tipo==3){
                                                                                                                         <form action="/buscar_tickets/<%=ruta%>" method="POST">
                                                                                                                             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                                                             <input for="idticket" id="idticket" name="idticket" type="hidden" value="eliminar_asignacion" />
-                                                                                                                            <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Eliminar asignación del ticket" type="submit" name="eliminar_asignacion"><i class="material-icons">person_pin</i></button>
+                                                                                                                            <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="eliminar_asignacion" data-position="bottom" data-tooltip="Eliminar asignación del ticket" type="submit" name="eliminar_asignacion"><i class="material-icons">person_pin</i></button>
                                                                                                                         </form>
 
                                                                                                                         <i class="material-icons circle red">account_box</i>
