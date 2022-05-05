@@ -1,37 +1,45 @@
 <%- include('includes/head.ejs') %>
 
-    <div class="container">
-        <h1 class="center" id="logo">Asignar Prioridad</h1>
-        <div class="row">
-
-            <div id="tooltips2" class="col s12 center">
-                <h4>Prioridades del Ticket:</h4>
-                <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Por Asignar"><i class="material-icons">looks_one</i></a>
-                <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Baja"><i class="material-icons">looks_two</i></a>
-                <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Media"><i class="material-icons">looks_3</i></a>
-                <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Alta"><i class="material-icons">looks_4</i></a>
-                <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Urgente"><i class="material-icons">looks_5</i></a>
-            </div>
+<div class="container">
+    <h1 class="center" id="logo">Asignar Prioridad</h1>
+    <div class="row">
+        <div id="tooltips2" class="col s6 center">
+            <h4>Estados del Ticket:</h4>
+            <a class="btn tooltipped grey pulse" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
+            <a class="btn tooltipped light-blue lighten-3 pulse" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
+            <a class="btn tooltipped orange lighten-3 pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información!"></a>
+            <a class="btn tooltipped yellow light-blue lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno!"></a>
+            <a class="btn tooltipped red lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
+            <a class="btn tooltipped light-green accent-1 pulse" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
         </div>
-        <form action="/asignar_prioridad/post_prio/<%= id %>" method="post" id="form" class="respuesta_ajax">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
-                <h5 class="center" for="">Información del ticket:</h5>
-                <a class="center" for="">ID del ticket:</a>
-                <h6 class="center" for="">
-                    <%= ticket.ID_ticket %>
-                </h6>
-                <a class="center" for="">Titulo del ticket:</a>
-                <h6 class="center" for="">
-                    <%= ticket.titulo %>
-                </h6>
-                <a class="center" for="">Descripción del ticket:</a>
-                <h6 class="center" for="">
-                    <%= ticket.descripcion %>
-                </h6>
-                <a class="center" for="">Prioridad del ticket:</a>
-                <%var prioridad = ''%>
-                    <% if(ticket.ID_prioridad == 1){ 
+        <div id="tooltips2" class="col s6 center">
+            <h4>Prioridades del Ticket:</h4>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Por Asignar"><i class="material-icons">looks_one</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Baja"><i class="material-icons">looks_two</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Media"><i class="material-icons">looks_3</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Alta"><i class="material-icons">looks_4</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Urgente"><i class="material-icons">looks_5</i></a>
+        </div>
+    </div>
+    <form action="/asignar_prioridad/post_prio/<%= id %>" method="post" id="form" class="respuesta_ajax" onsubmit="return validar()">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
+            <h5 class="center" for="">Información del ticket:</h5>
+            <a class="center" for="">ID del ticket:</a>
+            <h6 class="center" for="">
+                <%= ticket.ID_ticket %>
+            </h6>
+            <a class="center" for="">Titulo del ticket:</a>
+            <h6 class="center" for="">
+                <%= ticket.titulo %>
+            </h6>
+            <a class="center" for="">Descripción del ticket:</a>
+            <h6 class="center" for="">
+                <%= ticket.descripcion %>
+            </h6>
+            <a class="center" for="">Prioridad del ticket:</a>
+            <%var prioridad = ''%>
+            <% if(ticket.ID_prioridad == 1){ 
                 prioridad = 'Por asignar'; 
                 iconop = 'looks_one'
             } else if(ticket.ID_prioridad == 2){ 
@@ -47,13 +55,13 @@
                 prioridad = 'Urgente'; 
                 iconop = 'looks_5'
             } %>
-                        <div class="center">
-                            <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad <%=prioridad%>"><i class="material-icons"><%=iconop%></i></a>
-                        </div>
-                        <a class="center" for="">Estado actual del ticket:</a>
-                        <%var estado_actual = '';%>
-                            <%var color ='grey lighten-2';%>
-                                <% if(ticket.ID_estado == 1){ 
+            <div class = "center">
+                <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad <%=prioridad%>"><i class="material-icons"><%=iconop%></i></a>
+            </div>
+            <a class="center" for="">Estado actual del ticket:</a>
+            <%var estado_actual = '';%>
+            <%var color ='grey lighten-2';%> 
+            <% if(ticket.ID_estado == 1){ 
                 color = 'grey lighten-2';
                 estado_actual = 'Soy un ticket Nuevo!'; 
             } else if(ticket.ID_estado == 2){ 
@@ -72,24 +80,24 @@
                 color = 'light-green accent-1'; 
                 estado_actual = 'Soy un ticket Resuelto!';
             }%>
-                                    <div class="center">
-                                        <a class="btn tooltipped <%=color%>" data-position="bottom" data-tooltip="<%=estado_actual%>" "></a>
+            <div class = "center">
+                <a class="btn tooltipped <%=color%>" data-position="bottom" data-tooltip= "<%=estado_actual%>""></a>
             </div>
-            <div class="centers ">
-                <select class="selectpicker " data-style="btn-info " name="prioridad " id="asignacion ">
-                    <optgroup label="Select Table ">
-                        <!-- <option value="nulo " disabled selected>Elige tu opción</option> -->
-                        <option id="logo " name="table1 " value=1 >1 - Por asignar</option>
-                        <option id="logo " name="table2 " value=2 >2 - Bajo</option>
-                        <option id="logo " name="table3 " value=3 >3 - Medio</option>
-                        <option id="logo " name="table2 " value=4 >4 - Alto</option>
-                        <option id="logo "name="table3 " value=5 >5 - Urgente</option>
+            <div class="centers">
+                <select class="selectpicker" data-style="btn-info" name="prioridad" id="asignacion">
+                    <optgroup label="Select Table">
+                        <option value="nulo" disabled selected>Elige tu opción</option>
+                        <option id="logo" name="table1" value="1">1 - Por asignar</option>
+                        <option id="logo" name="table2" value="2">2 - Bajo</option>
+                        <option id="logo" name="table3" value="3">3 - Medio</option>
+                        <option id="logo" name="table2" value="4">4 - Alto</option>
+                        <option id="logo"name="table3" value="5">5 - Urgente</option>
                     </optgroup>
                 </select>
             </div>
             <div class="center ">
-                <button id="logo " type="submit " class="waves-effect waves-light btn ">Guardar</button>
-                <a id="logo " href="/home " class="waves-effect waves-light btn ">Cancelar</a>
+                <button id="logo" type="submit" class="waves-effect waves-light btn">Guardar</button>
+                <a id="logo" href="/home" class="waves-effect waves-light btn">Cancelar</a>
             </div>
         </div>
         <br></br>
@@ -97,15 +105,14 @@
 </div>
 <script>
     function validar() {
-        var asignacion = document.getElementById("asignacion ").value;
-        if (asignacion=="nulo "){
-            alert("Selecciona una opción válida ");
+        var asignacion = document.getElementById("asignacion").value;
+        if (asignacion=="nulo"){
+            alert("Selecciona una opción válida");
             return false;
         }
-        else if(asignacion!="nulo "){
+        else if(asignacion!="nulo"){
             return true;    
         }
     }
 </script>
-
 <%- include('includes/footer.ejs') %>

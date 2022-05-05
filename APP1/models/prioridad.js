@@ -17,6 +17,7 @@ module.exports = class Prioridad {
     }
 
     static update(prioridad,id) {
-        return db.execute('UPDATE ticket set ID_prioridad = '+prioridad+' WHERE ID_ticket =' +id);
+        //return db.execute('UPDATE ticket set ID_prioridad = '+prioridad+' WHERE ID_ticket =' +id);
+        return db.execute('UPDATE ticket set ID_prioridad = ? WHERE  ID_ticket = ?', [this.ID_prioridad, this.ID_ticket]);
     }
 }
