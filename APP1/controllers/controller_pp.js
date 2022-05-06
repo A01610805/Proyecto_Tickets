@@ -51,18 +51,20 @@ exports.get_principal = (request, response, next) => {
                 })
         })
 };
-exports.post_principal = (request, response, next) => {
-    const submit = request.body.action;
-    if(submit === "archivar"){
-        Tickets.cancelar_ticket_1(request.body.idticket);
-        Tickets.cancelar_ticket_2(request.body.idticket);
-    } else if(submit === "eliminar_asignacion"){
-        Tickets.update_estado(1, request.body.idticket);
-        Asignado.estado_1(request.body.idticket);
+exports.post_principal = async (request, response, next) => {
+    estado_ticket = await Tickets.estado_actual(request.body.idticket);
+    if(estado_ticket != 1){
+        const submit = request.body.action;
+        if(submit === "archivar"){
+            Tickets.cancelar_ticket_1(request.body.idticket);
+            Tickets.cancelar_ticket_2(request.body.idticket);
+        } else if(submit === "eliminar_asignacion"){
+            Tickets.update_estado(1, request.body.idticket);
+            Asignado.estado_1(request.body.idticket);
+        }
+    } else {
+        Tickets.borrarticketnuevo1(request.body.idticket);
+        Tickets.borrarticketnuevo2(request.cookies.id_usuario,request.body.idticket);
     }
-
-    Tickets.borrarticketnuevo1(request.body.idticket);
-    Tickets.borrarticketnuevo2(request.cookies.id_usuario,request.body.idticket);
-
     response.redirect('/home');
 };
