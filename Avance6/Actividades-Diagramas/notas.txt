@@ -1,0 +1,42 @@
+Buscar Usuarios
+    Prueba1, falla, declaracion de roles dropdown, solucion redeclarar for.
+    Prueba2, falla, delcaracion de usuarios, solucion redeclarar for de tabla.
+    Prueba3, falla, fetch_XXX no definidos, solucion reestructuracion del controlador buscar- (buscarXXX)*nfetch.
+    Prueba4, falla, Invalid left-hand side assigment- getElementByID("rol"), solucion comentar por ahora, desconocimiento de sintaxis permitida
+    Prueba5, falla, fetch_XXX siguen siendo marcados como no definidos,posible problema encontrado, thens incompletos, solucion dar instrucciones a then
+    Prueba6, falla, fetch_XXX no declarados, solucion redefinir fetch_XXX a fetch
+    Prueba7,falla, unexpected token JSON, solucion arreglar rutas
+    Prueba8, falla, falla en consulta, columna apelllido, solucion cambiar apelllido a apellido
+    Prueba9, falla, cannot set propertie of null, problema encontrado, clase  en vez de id, solucion cambiar class = "respuesta_ajax" a id = "respuesta_ajax"
+    Prueba10,falla parcial, script rol sintaxis invalido  Uncaught ReferenceError: Invalid left-hand side in assignment, solucion Prueba12. 
+    Prueba10.5, falla parcial, Unknown  column falla sql, solucion cambio (apellido_pateno LIKE) a (apellido_paterno LIKE).
+    Prueba11 falla parcial, no mostrar consultas con ciertos valores en ciertos campos, solucion restructurar controlador  junto modelo
+    Prueba12, falla parcial, no muestra rol, solucion cambiar ruta (route_BuscarU) a (buscar_usuario)
+    Prueba13, falla parcial, no interactua input de rol, posibles errores de sintaxis en name y for
+    Prueba14, falla, no muetra consulta por medio de campo rol, no entra a funcion, ya estoy hasta la madre, solucion desconocida
+    Prueba15,exitosa, accion, restructurar campos de busqueda a barra
+
+Modificar template
+    Prueba1, falla, no actualizo base de datos, restablecer modelos de preguntas y categorias
+    Prueba2, falla, no actualizo base de datos, posible falla en actualizaciones UPDATE , solucion ?, 
+    Prueba3, ya crasheo, solucion restructurar ejs.
+    Prueba4, falla, actualiza una sola pregunta, problema no saber recorrer arreglo de preguntas
+    Prueba5, falla, problema no extraer id_pregunta hace que rescriba las preguntas solo por id, solucion establecer input con id_pregunta
+    Prueba6, exito, actualiza base de datos.
+
+Generar template
+    Prueba1, exito, renderizar generar template con bases para agregar pregunta en ejs.
+    Prueba2, intento de eliminar pregunta en ejs, falla, boton no funciona
+    Prueba3, intento de eliminar pregunta en ejs, falla, boton no funciona, sintaxis incorrecta
+    Prueba4, intento de eliminar pregunta en ejs, falla, boton no funciona, sintaxis incorrecta
+    Prueba5, intento de eliminar pregunta en ejs, falla, boton no funciona, restructurar class - id
+    Prueba6, intento de eliminar pregunta en ejs, falla, boton no funciona, sintaxis incorrecta
+    Prueba7, falla, elimina una sola div.
+    Prueba8, falla, no sabe que pregunta eliminar si hay mas de 1.
+    Prueba9, falla ,no funciona boton.
+    Prueba9, falla, mal uso de consulta en id categoria.
+    Prueba10, falla, mal sintaxys de sql, solucion restructurar insert(concepto de como funciona base de datos)
+    Prueba11, exito actualiza base de datos con categoria nueva.
+
+
+    
