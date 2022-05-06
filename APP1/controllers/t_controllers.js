@@ -45,9 +45,11 @@ exports.post_activos = (request, response, next) => {
     const submit = request.body.action;
     console.log(submit);
     if(submit === "archivar"){
+        console.log('archivando el ticket');
         Ticket.cancelar_ticket_1(request.body.idticket);
         Ticket.cancelar_ticket_2(request.body.idticket);
-    } else if(submit === "eliminar asignacion"){
+    } else if(submit === "eliminar_asignacion"){
+        console.log('Eliminando asignación');
         Ticket.update_estado(1, request.body.idticket);
         Asignado.estado_1(request.body.idticket);
     }
