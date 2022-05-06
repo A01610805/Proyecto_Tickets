@@ -190,7 +190,7 @@
                                                                             <h5>
                                                                                 <%= ticket.titulo %>
                                                                             </h5>
-                                                                            <a href="#!" class="secondary-content">
+                                                                            <a href="#!" class="secondary-content" onsubmit='return confirmar()'>
                                                                                 <form action="/home" method="POST">
                                                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
@@ -928,7 +928,7 @@
                                                                                 <%= ticket2.titulo %>
                                                                             </h5>
                                                                             <a href="#!" class="secondary-content">
-                                                                                <form action="/home" method="POST">
+                                                                                <form action="/home" method="POST"  onsubmit='return confirmar()' >
                                                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
                                                                                     <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
@@ -1135,4 +1135,18 @@
     </body>
 
     </html>
+
+    <script>
+        function confirmar() {
+            let text;
+            if (confirm("Esta seguro que desea archivar el ticket?") == true) {
+                text = "Archivar ticket";
+                return true;
+            } else {
+                text = "Cancelar";
+                return false;
+            }
+        }
+    </script>
+
     <%- include('includes/footer.ejs') %>
