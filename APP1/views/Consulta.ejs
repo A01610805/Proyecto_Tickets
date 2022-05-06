@@ -382,9 +382,9 @@ else if(tipo==3){
                                                                                                 </div>
                                                                                                 <div id="test<%= i+4%>">
                                                                                                     <b><%= ticket.comentarios_solucion %></b>
-                                                                                                    <%if(tipo==1){ %>
+                                                                                                    
                                                                                                     <a class="waves-effect waves-light  btn-tiny black-text modal-trigger right" href="#agregarcomentario1<%=y%>"><i class="material-icons">add_circle_outline</i></a>
-                                                                                                    <% } %>
+                                                                                                    
                                                                                                     <div id="nsb">
                                                                                                         <% for (let comment of comentario){%>
                                                                                                             <% if(comment.ID_ticket == ticket.ID_ticket){%>
@@ -416,7 +416,7 @@ else if(tipo==3){
                                                                                                             <%y=y+1%>
                                                                                                                 <div class="modal-footer">
                                                                                                                     <div class="center ">
-                                                                                                                        <a href="/mod_comentario/get_comentario/<%= ticket.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
+                                                                                                                        <a href="/agregar_com/get_agregarcomentario/<%= ticket2.ID_ticket %>" class="waves-effect waves-light btn">Aceptar</a>
                                                                                                                         <a href="/buscar_tickets/activos" class="waves-effect waves-light btn">Cancelar</a>
                                                                                                                     </div>
                                                                                                                 </div>
