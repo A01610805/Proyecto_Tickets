@@ -42,22 +42,14 @@ exports.get_activos = async(request, response, next) => {
 }
 
 exports.post_activos = (request, response, next) => {
-    console.log(request.body);
     const submit = request.body.action;
-    console.log(submit);
     if(submit === "archivar"){
-        console.log('archivando el ticket');
         Ticket.cancelar_ticket_1(request.body.idticket);
         Ticket.cancelar_ticket_2(request.body.idticket);
     } else if(submit === "eliminar_asignacion"){
-        console.log('Eliminando asignación');
         Ticket.update_estado(1, request.body.idticket);
         Asignado.estado_1(request.body.idticket);
     }
-
-    //Ticket.cancelar_ticket_1(request.body.idticket);
-    //Ticket.cancelar_ticket_2(request.body.idticket);
-
     response.redirect('/home');
 }
 
@@ -107,9 +99,14 @@ exports.get_archivo = async(request, response, next) => {
 }
 
 exports.post_archivo = (request, response, next) => {
-    console.log(request.body);
-    Ticket.cancelar_ticket_1(request.body.idticket);
-    Ticket.cancelar_ticket_2(request.body.idticket);
+    const submit = request.body.action;
+    if(submit === "archivar"){
+        Ticket.cancelar_ticket_1(request.body.idticket);
+        Ticket.cancelar_ticket_2(request.body.idticket);
+    } else if(submit === "eliminar_asignacion"){
+        Ticket.update_estado(1, request.body.idticket);
+        Asignado.estado_1(request.body.idticket);
+    }
     response.redirect('/home');
 }
 
@@ -175,16 +172,32 @@ exports.buscar_propios = async(request, response, next) => {
 }
 
 exports.post_propios=(request, response, next)=>{
-    Ticket.cancelar_ticket_1(request.body.idticket);
-    Ticket.cancelar_ticket_2(request.body.idticket);
-    response.redirect('/home'); 
+    const submit = request.body.action;
+    if(submit === "archivar"){
+        console.log('archivando el ticket');
+        Ticket.cancelar_ticket_1(request.body.idticket);
+        Ticket.cancelar_ticket_2(request.body.idticket);
+    } else if(submit === "eliminar_asignacion"){
+        console.log('Eliminando asignación');
+        Ticket.update_estado(1, request.body.idticket);
+        Asignado.estado_1(request.body.idticket);
+    }
+    response.redirect('/home');
 }
 
 //Final de /buscar_tickets/propio
 
 exports.borrarpropios=(request, response, next)=>{
-    Ticket.cancelar_ticket_1(request.body.idticket);
-    Ticket.cancelar_ticket_2(request.body.idticket);
+    const submit = request.body.action;
+    if(submit === "archivar"){
+        console.log('archivando el ticket');
+        Ticket.cancelar_ticket_1(request.body.idticket);
+        Ticket.cancelar_ticket_2(request.body.idticket);
+    } else if(submit === "eliminar_asignacion"){
+        console.log('Eliminando asignación');
+        Ticket.update_estado(1, request.body.idticket);
+        Asignado.estado_1(request.body.idticket);
+    }
     response.redirect('/home');
 }
 

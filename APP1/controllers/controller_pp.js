@@ -51,10 +51,16 @@ exports.get_principal = (request, response, next) => {
         })
 };
 exports.post_principal = (request, response, next) => {
-    // console.log('Pantalla principal');
-
-    Tickets.cancelar_ticket_1(request.body.idticket);
-    Tickets.cancelar_ticket_2(request.body.idticket);
+    const submit = request.body.action;
+    if(submit === "archivar"){
+        console.log('archivando el ticket');
+        Ticket.cancelar_ticket_1(request.body.idticket);
+        Ticket.cancelar_ticket_2(request.body.idticket);
+    } else if(submit === "eliminar_asignacion"){
+        console.log('Eliminando asignación');
+        Ticket.update_estado(1, request.body.idticket);
+        Asignado.estado_1(request.body.idticket);
+    }
 
     Tickets.borrarticketnuevo1(request.body.idticket);
     Tickets.borrarticketnuevo2(request.cookies.id_usuario,request.body.idticket);

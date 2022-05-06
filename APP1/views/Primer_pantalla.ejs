@@ -928,14 +928,13 @@
                                                                                 <%= ticket2.titulo %>
                                                                             </h5>
                                                                             <a href="#!" class="secondary-content">
-                                                                                <form action="/home" method="POST">
-                                                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                                                <form action="/buscar_tickets/<%=ruta%>" method="POST">
+                                                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket2.ID_ticket%>" />
-                                                                                    <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
-                                                                                                </button>
+                                                                                    <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
+                                                                                    <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="eliminar_asignacion" data-position="bottom" data-tooltip="Eliminar asignación del ticket" type="submit" name="action"><i class="material-icons">person_pin</i></button>
                                                                                 </form>
                                                                             </a>
-
                                                                         </li>
                                                                         <li class="collection-item avatar">
                                                                             <i class="material-icons circle blue">collections_bookmark</i>
