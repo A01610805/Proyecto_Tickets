@@ -270,7 +270,7 @@ else if(tipo==3){
                                                                     else if(tipo==1){
                                                                         ruta='activos';
                                                                     }%>
-                                                                                                                    <form action="/buscar_tickets/<%=ruta%>" method="POST">
+                                                                                                                    <form action="/buscar_tickets/<%=ruta%>" method="POST" onsubmit='return confirmar()'>
                                                                                                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                                                                                                                         <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                                                                         <button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>
@@ -590,7 +590,7 @@ else if(tipo==3){
                                                                                         else if(tipo==1){
                                                                                             ruta='activos';
                                                                                         }
-                                                                                    respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST">'+
+                                                                                    respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST" onsubmit="return confirmar()">'+
                                                                                         '<input for="idticket" id="idticket" name="idticket" type="hidden" value='+ticket.ID_ticket+'" />'+
                                                                                         '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
                                                                                         '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="eliminar_asignacion" data-position="bottom" data-tooltip="Eliminar asignación del ticket" type="submit" name="action"><i class="material-icons">person_pin</i></button>'+
@@ -865,7 +865,7 @@ else if(tipo==3){
                                                                                         else if(tipo==1){
                                                                                             ruta='activos';
                                                                                         }
-                                                                                    respuesta += respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST">'+
+                                                                                    respuesta += respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST" onsubmit="return confirmar()">'+
                                                                                         '<input for="idticket" id="idticket" name="idticket" type="hidden" value='+ticket.ID_ticket+'" />'+
                                                                                         '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
                                                                                         '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="eliminar_asignacion" data-position="bottom" data-tooltip="Eliminar asignación del ticket" type="submit" name="action"><i class="material-icons">person_pin</i></button>'+
@@ -1088,6 +1088,7 @@ const propios = () => {
                                                                 '<div id="modala'+acumodal1+'" class="modal">'+
                                                                     '<div class="modal-content">'+
                                                                         '<ul class="collection">'+
+
                                                                             '<li class="collection-item avatar">'+
                                                                                 '<i class="material-icons circle green">folder</i>'+
                                                                                 '<span class="title">'+
@@ -1095,6 +1096,23 @@ const propios = () => {
                                                                                 '</span>'+
                                                                                 '<h5>'+ticket.titulo+'</h5>';
                                                                                 '<a href="#!" class="secondary-content">';
+                                                                                    if(([<%=rol%>] != 3 || tipo == 3) && ticket.ID_estado != 5 && ticket.ID_estado !=6 ){
+                                                                                        var ruta='';
+                                                                                        if(tipo==3){
+                                                                                            ruta='propio';
+                                                                                        }
+                                                                                        else if(tipo==2){
+                                                                                            ruta='archivo';
+                                                                                        }
+                                                                                        else if(tipo==1){
+                                                                                            ruta='activos';
+                                                                                        }
+                                                                                    respuesta += respuesta += '<form action="/buscar_tickets/'+ruta+'" method="POST" onsubmit="return confirmar()">'+
+                                                                                        '<input for="idticket" id="idticket" name="idticket" type="hidden" value='+ticket.ID_ticket+'" />'+
+                                                                                        '<button class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" value="archivar" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i></button>'+
+                                                                    
+                                                                                        '</form>';
+                                                                                    }
                                                                                 respuesta += '</a>'+
                                                                             '</li>'+
                                                                             '<li class="collection-item avatar">'+
@@ -1196,5 +1214,10 @@ const propios = () => {
     if (bid3 != null) {
         document.getElementById('buscar_id_3').onkeyup = propios;
     }
+
+    function confirmar() {
+        return confirm("Esta seguro que desea archivar/eliminar la asignación del ticket?");
+    }
+
 </script>
 <%- include('includes/footer.ejs') %>
