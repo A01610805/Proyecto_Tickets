@@ -1,0 +1,117 @@
+<%- include('includes/head.ejs') %>
+
+        <div class="">
+            <a class="dropdown-trigger btn" href="#!" data-target="dropdown1">Cambiar Categoria<i class="material-icons right">arrow_drop_down</i></a>
+            <ul id = "dropdown1" class=" hide-on-med-and-down dropdown-content">
+                <% for (let categoria of categorias) { %>
+                    <li class="">
+                        <a href="/modificar_template/get_preg/<%= categoria.ID_categoria %>/<%= categoria.nombre_categoria %>/" class=""><%= categoria.nombre_categoria %></a>
+    
+                    </li>
+                <% } %>
+        </ul>
+
+    </div>
+
+
+
+    <form action="/modificar_template/camb_cat/<%= id %>" method="post" id="form" class="respuesta_ajax" style="background-color: azure; border-radius: 1%; padding: 10px;">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <h1 id="logo">Modificar template</h1>
+        <h4 id="logo"><%= nombre%></h4>
+        <div>
+            <div>
+                <label id="logo" for="">Nombre Categoria&nbsp;(Establece nuevo nombre de categoria): </label>
+                <input required id="titulo" name="titulo"><span class=""></span>
+                
+
+            </div>
+            <div>
+                <label id="logo" for="">Tiempo estimado&nbsp;(Establece nuevo tiempo estimado): </label>
+                <input required id="tiempo" name="tiempo"><span class=""></span>
+                
+
+            </div>
+        </div>
+        
+            
+                <% for (let pregunta of preguntas) { %> 
+                    <% if ( pregunta.disponible == 1) { %>
+                    <input type="hidden" name = "text_preg" value="<%= pregunta.texto_pregunta %>">
+                    <input type="hidden" name = "ID_preg" value="<%= pregunta.ID_pregunta %>">
+                    <% } %>
+                <% } %> 
+                <div id="contpreg">
+                <% for (let pregunta of preguntas) { %> 
+                    <% if ( pregunta.disponible == 1) { %>
+                        
+                            <div class="row col s12">
+                                <label  ><b><%= pregunta.texto_pregunta %></b></label><label> </label><label>Pregunta nueva:</label>
+                                <input type="hidden" name = "ID_pregunta" value="<%= pregunta.ID_pregunta %>">
+                                <input required id="texto_pregunta" name="texto_pregunta"><span ></span> 
+                                
+                            </div>
+                            
+                        
+                    <% } %>
+                <% } %>  
+                </div>
+                
+
+                <div class="center ">
+                    
+                    <button type="button" id="agregar" class="waves-effect waves-light btn">Agregar pregunta</button> 
+                    <button type="button" id="eliminar" class="waves-effect waves-light btn">Eliminar pregunta</button> 
+                    <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                    <a href = "/home" class="waves-effect waves-light btn">Cancelar</a> 
+                </div>
+                <br><br>
+                
+                
+            </form>
+
+            <br><br>
+            
+
+            
+            
+        
+    
+    
+
+    	
+	<script>
+
+        
+            const $btnAdd = document.getElementById("agregar")
+            const $form = document.getElementById("contpreg")
+            const templateElement = () => {
+                return (`
+                
+                        <div class="row col s6">
+                            <label for="ID_pregunta">Pregunta nueva:</label>
+                            <input required id="texto_pregunta" name="texto_pregunta"><span ></span>
+                            
+                        </div>
+                    
+                `)
+            }
+            $btnAdd.addEventListener("click", (event) => {
+                const $div = document.createElement("div")
+                $div.innerHTML = templateElement()
+                $form.appendChild($div);
+                
+            })
+            const $btnEli = document.getElementById("eliminar")
+            
+            $btnEli.addEventListener("click", (event) => {
+                const $form1 = document.getElementById("contpreg")
+                const $div1 = $form.lastElementChild;
+                $div1.remove()
+            })
+
+        
+    </script>
+
+
+    <%- include('includes/footer.ejs') %>

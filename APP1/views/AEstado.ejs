@@ -1,0 +1,106 @@
+<%- include('includes/head.ejs') %>
+
+<div class="container">
+    <h1 class="center">Asignar estado a ticket</h1>
+    <div class="row">
+        <div id="tooltips2" class="col s6 center">
+            <h4>Estados del Ticket:</h4>
+            <a class="btn tooltipped grey pulse" data-position="bottom" data-tooltip="Soy un ticket Nuevo!"></a>
+            <a class="btn tooltipped light-blue lighten-3 pulse" data-position="bottom" data-tooltip="Soy un ticket En Curso!"></a>
+            <a class="btn tooltipped orange lighten-3 pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Información!"></a>
+            <a class="btn tooltipped yellow light-blue lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket En Espera de Visto Bueno!"></a>
+            <a class="btn tooltipped red lighten-2 pulse" data-position="bottom" data-tooltip="Soy un ticket Cancelado!"></a>
+            <a class="btn tooltipped light-green accent-1 pulse" data-position="bottom" data-tooltip="Soy un ticket Resuelto!"></a>
+        </div>
+        <div id="tooltips2" class="col s6 center">
+            <h4>Prioridades del Ticket:</h4>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Por Asignar"><i class="material-icons">looks_one</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Baja"><i class="material-icons">looks_two</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Media"><i class="material-icons">looks_3</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Alta"><i class="material-icons">looks_4</i></a>
+            <a class="btn tooltipped pulse" data-position="bottom" data-tooltip="Prioridad Urgente"><i class="material-icons">looks_5</i></a>
+        </div>
+    </div>
+    <form action="/asignar_estado/post_estado/<%= id %>" method="POST" id="form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <div style="background-color:aliceblue;padding: 12px;  padding-bottom: 50px; padding-left: 10px; padding-right: 10px;border-radius: 4%;">
+            <h5 class="center" for="">Información del ticket:</h5>
+            <a class="center" for="">ID del ticket:</a>
+            <h6 class="center" for="">
+                <%= ticket.ID_ticket %>
+            </h6>
+            <a class="center" for="">Titulo del ticket:</a>
+            <h6 class="center" for="">
+                <%= ticket.titulo %>
+            </h6>
+            <a class="center" for="">Descripción del ticket:</a>
+            <h6 class="center" for="">
+                <%= ticket.descripcion %>
+            </h6>
+            <a class="center" for="">Prioridad del ticket:</a>
+            <%var prioridad = ''%>
+            <% if(ticket.ID_prioridad == 1){ 
+                prioridad = 'Por asignar'; 
+                iconop = 'looks_one'
+            } else if(ticket.ID_prioridad == 2){ 
+                prioridad = 'Baja'; 
+                iconop = 'looks_two'
+            } else if(ticket.ID_prioridad == 3){ 
+                prioridad = 'Media'; 
+                iconop = 'looks_3'
+            } else if(ticket.ID_prioridad == 4){ 
+                prioridad = 'Alta'; 
+                iconop = 'looks_4'
+            } else if(ticket.ID_prioridad == 5){ 
+                prioridad = 'Urgente'; 
+                iconop = 'looks_5'
+            } %>
+            <div class = "center">
+                <a class="btn tooltipped " data-position="bottom" data-tooltip="Prioridad <%=prioridad%>"><i class="material-icons"><%=iconop%></i></a>
+            </div>
+            <a class="center" for="">Estado actual del ticket:</a>
+            <%var estado_actual = '';%>
+            <%var color ='grey lighten-2';%> 
+            <% if(ticket.ID_estado == 1){ 
+                color = 'grey lighten-2';
+                estado_actual = 'Soy un ticket Nuevo!'; 
+            } else if(ticket.ID_estado == 2){ 
+                color = 'light-blue lighten-5'; 
+                estado_actual = 'Soy un ticket En Curso!';
+            } else if(ticket.ID_estado == 3){ 
+                color = 'orange lighten-3'; 
+                estado_actual = 'Soy un ticket En Espera de Información!';
+            } else if(ticket.ID_estado == 4){ 
+                color = 'yellow light-blue lighten-5'; 
+                estado_actual = 'Soy un ticket En Espera de Visto Bueno!';
+            } else if(ticket.ID_estado == 5){ 
+                color = 'red lighten-4'; 
+                estado_actual = 'Soy un ticket Cancelado!';
+            } else if(ticket.ID_estado == 6){ 
+                color = 'light-green accent-1'; 
+                estado_actual = 'Soy un ticket Resuelto!';
+            }%>
+            <div class = "center">
+                <a class="btn tooltipped <%=color%>" data-position="bottom" data-tooltip= "<%=estado_actual%>""></a>
+            </div>
+            <div class="centers">
+                <select class="selectpicker" data-style="btn-info" name="estado_nuevo">
+                    <optgroup label="Select Table">
+                        <option name="table1" value="1">1 - Nuevo</option>
+                        <option name="table2" value="2">2 - En curso</option>
+                        <option name="table3" value="3">3 - En espera de Información</option>
+                        <option name="table4" value="4">4 - En espera de Visto Bueno</option>
+                        <option name="table5" value="5">5 - Cancelado</option>
+                        <option name="table6" value="6">6 - Resuelto</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="right">
+                <button type="submit" class="waves-effect waves-light btn">Guardar</button>
+                <a href="/home" class="waves-effect waves-light btn">Cancelar</a>
+            </div>
+        </div>
+        <br></br>
+    </form>
+</div>
+<%- include('includes/footer.ejs') %>
