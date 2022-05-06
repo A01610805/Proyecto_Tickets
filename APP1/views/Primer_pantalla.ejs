@@ -190,8 +190,8 @@
                                                                             <h5>
                                                                                 <%= ticket.titulo %>
                                                                             </h5>
-                                                                            <a href="#!" class="secondary-content" onsubmit='return confirmar()'>
-                                                                                <form action="/home" method="POST">
+                                                                            <a href="#!" class="secondary-content">
+                                                                                <form action="/home" method="POST" onsubmit='return confirmar()'>
                                                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                                                     <input for="idticket" id="idticket" name="idticket" type="hidden" value="<%=ticket.ID_ticket%>" />
                                                                                     <button id="logo" class="btn tooltipped modal-close waves-effect waves-red btn-flat btn-small" data-position="bottom" data-tooltip="Archivar Ticket" type="submit" name="action"><i class="material-icons">delete</i>
