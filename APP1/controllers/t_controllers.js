@@ -42,6 +42,7 @@ exports.get_activos = async(request, response, next) => {
 }
 
 exports.post_activos = (request, response, next) => {
+    console.log(request.body);
     const submit = request.body.action;
     console.log(submit);
     if(submit === "archivar"){
