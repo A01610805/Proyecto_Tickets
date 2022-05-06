@@ -42,14 +42,13 @@ exports.get_activos = async(request, response, next) => {
 }
 
 exports.post_activos = (request, response, next) => {
-    console.log(request.body);
-    const submit = request.body.input;
+    const submit = request.body.action;
     console.log(submit);
     if(submit === "archivar"){
         Ticket.cancelar_ticket_1(request.body.idticket);
         Ticket.cancelar_ticket_2(request.body.idticket);
     } else if(submit === "eliminar asignacion"){
-        Ticket.update_estado(1, request.params.idticket);
+        Ticket.update_estado(1, request.body.idticket);
         Asignado.estado_1(request.body.idticket);
     }
 
